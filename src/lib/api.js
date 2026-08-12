@@ -44,6 +44,23 @@ export async function glossBatch(lang, words) {
   return out;
 }
 
+/**
+ * Second-opinion a batch of the learner's own words.
+ *
+ * Takes [{ t, e?, g?, s? }] — the term plus whatever the learner supplied —
+ * and returns [{ t, verdict, en, g, pos, note, s, ba, se }], one per input, in
+ * order, with `t` echoed back so the caller can re-pair even if order slips.
+ *
+ * There is no `b` in the response: the fill-in-the-blank sentence is built on
+ * the client from `s` and `ba`, so a blank that failed to replace anything is
+ * impossible rather than merely unlikely.
+ */
+export async function verifyBatch(lang, level, words) {
+  if (!words.length) return { rows: [], model: "" };
+  const { words: rows, model } = await post("/verify", { lang, level, words });
+  return { rows, model };
+}
+
 /** Translate one sentence into English. */
 export async function translate(lang, sentence) {
   const { text } = await post("/translate", { lang, sentence });
