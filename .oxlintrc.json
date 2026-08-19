@@ -12,7 +12,7 @@
   },
   "overrides": [
     {
-      "files": ["server/**/*.js"],
+      "files": ["server/**/*.js", "scripts/**/*.mjs"],
       "env": { "node": true, "browser": false }
     }
   ]
