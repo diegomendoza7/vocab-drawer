@@ -33,6 +33,7 @@ browser.
 | `src/data/content.js` | Reading passages, idioms, conjugation engine, grammar notes |
 | `src/lib/wordlist.js` | Parses pasted/uploaded word lists. Pure functions, no React — run it under node |
 | `src/lib/gloss.js` | Reading an English gloss — sense splitting, accepted answers |
+| `src/lib/dictionary.js` | Offline word lookup behind the hover definitions |
 | `src/lib/sentences.js` | The sentence-construction engine. Pure, no React |
 | `src/lib/storage.js` | IndexedDB persistence |
 | `src/lib/api.js` | Client adapter — talks to the proxy, never to Anthropic directly |
@@ -210,15 +211,83 @@ verbs *could* take listed 57 words for a round of 8.
 where "an animal, a food, an object" lives. The C1 verb tables and the abstract
 B1/B2 drawers are not wired in.
 
+## Hover definitions
+
+Any word in a checked sentence explains itself — hover on a pointer, tap on a
+phone, where hover does not exist. Only one bubble shows at a time. A word with
+no entry stays plain rather than offering an empty tooltip.
+
+The two sentence screens get their definitions from different places, because
+they know different amounts:
+
+**Sentence Constructions** needs no lookup. The engine assembled the sentence,
+so it knows what every tile is and says so exactly — `buildSentence` returns a
+`glosses` array parallel to `tokens`, and tiles pick theirs up by index at
+creation so it survives shuffling:
+
+| Tile | Definition |
+|---|---|
+| `haben` | from haben — the auxiliary that forms the perfect |
+| `den` | "the" — masculine accusative, because it is the object |
+| `Hasen` | der Hase — rabbit (weak noun: takes -n outside the nominative) |
+| `l'eau` | la + eau — the water; the article elides before a vowel |
+| `j'ai` | je + ai — "I" and the auxiliary avoir run together |
+
+That is the answer to *why was this the wrong tile*, which a bare translation
+would not give.
+
+**The typed sentence stage** shows arbitrary sentence text, so it looks words
+up in `src/lib/dictionary.js`, built from three sources:
+
+| Source | Covers |
+|---|---|
+| The deck | every headword, its sentence surface form (`ba`), and variants |
+| Conjugated forms | generated from the verb tables — `est` and `ist` are the two most common words in the whole corpus |
+| A closed-class table | articles, pronouns, prepositions, negation — hand-written, since no generator produces them |
+
+Deck and conjugation alone resolve 41%; the function-word table takes it to
+**75%**. The rest are inflected content words with no entry, and they render
+plain. `check-answers.mjs` asserts a 70% floor so the dictionary cannot quietly
+rot.
+
+Two collisions had to be designed around, both caught by reading the output:
+flattening accents merges `schon` (already) with `schön` (beautiful), and
+stripping the œ ligature turned `sœur` into the preposition `sur` — which then
+answered "on" with "sister". Lookup now tries an accent-preserving key first
+and falls back to the flattened one.
+
+## Keyboard
+
+A round is dozens of small decisions, and the trip to the mouse between each one
+is most of the elapsed time. On a device with a pointer and keys:
+
+| Key | Where | What |
+|---|---|---|
+| `1`–`9` | multiple choice, picture grid, conjugation choice | Pick that option |
+| `1`–`9` | Sentence Constructions | Place that word from the bank |
+| `Backspace` | Sentence Constructions | Take back the last word placed |
+| `Enter` | anywhere with a result showing | Check, or go to the next question |
+
+Numbers are shown on the options themselves rather than left to be discovered,
+and only where the keys exist — `matchMedia("(hover: hover) and (pointer:
+fine)")` gates them, so a phone gets none of the clutter.
+
+Screens with a text input are skipped by the global handler entirely. They bind
+Enter themselves, and inside an input a digit is just a digit.
+
+The bank renumbers as it empties, so the shortcut for a word is always its
+current position, not the one it started in.
+
 ## Checks
 
 ```bash
 node scripts/check-answers.mjs
 ```
 
-Covers the two pure layers — gloss matching over all 1,616 words and 2,409
-senses, and every legal sentence combination (~32,800). No React, so it runs
-under plain node. There is still no test suite for the component itself.
+Covers the pure layers — gloss matching over all 1,616 words and 2,409 senses,
+12,936 English verb renderings, the dictionary's coverage floor and its two
+known collisions, and every legal sentence combination (~29,300). No React, so
+it runs under plain node. There is still no test suite for the components.
 
 ## Two things the port had to fix
 

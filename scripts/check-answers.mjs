@@ -12,6 +12,7 @@ import { DATA } from "../src/data/vocab.js";
 import { FR_VERBS, DE_VERBS, FR_TENSES, DE_TENSES, conjugateEnglish } from "../src/data/content.js";
 import { FR_C1_VERBS, DE_C1_VERBS } from "../src/data/verbs-c1.js";
 import { splitSenses, acceptableEnglish } from "../src/lib/gloss.js";
+import { buildDictionary, describe, segmentSentence, lookupKey, exactKey } from "../src/lib/dictionary.js";
 import { buildSentence, SUBJECTS, timePhrasesFor, usableVerbs, nounPoolFor } from "../src/lib/sentences.js";
 
 const VERBS = { fr: FR_VERBS, de: DE_VERBS };
@@ -34,6 +35,45 @@ for (const lang of Object.keys(DATA))
         }
       }
 console.log(`glosses: ${words} words, ${senses} senses`);
+
+/* ---- dictionary: the offline lookup behind the hover definitions ----
+ *
+ * Coverage is partial on purpose, so this asserts a floor rather than
+ * completeness, plus the two collisions that actually bit: accent-flattening
+ * merged "schon"/"schön", and stripping the œ ligature turned "sœur" into the
+ * preposition "sur".
+ */
+for (const lang of ["fr", "de"]) {
+  const dict = buildDictionary(lang, DATA, VERBS[lang], TENSES[lang]);
+  let tokens = 0, resolved = 0;
+  for (const lvl of Object.keys(DATA[lang]))
+    for (const drawer of DATA[lang][lvl])
+      for (const w of drawer.words) {
+        if (!w.s) continue;
+        for (const seg of segmentSentence(w.s)) {
+          if (seg.type !== "word") continue;
+          tokens++;
+          if (describe(dict, seg.v)) resolved++;
+        }
+        // Rendering must never lose or duplicate a character.
+        check(segmentSentence(w.s).map((x) => x.v).join("") === w.s, `${lang}/${w.t}: segmentation is not lossless`);
+      }
+  const pct = Math.round((resolved / tokens) * 100);
+  console.log(`dictionary ${lang}: ${dict.size} entries, ${pct}% of sentence words resolve`);
+  check(pct >= 70, `${lang}: dictionary coverage fell to ${pct}% (floor is 70%)`);
+}
+for (const [lang, word, want] of [
+  ["fr", "sur", "on"],
+  ["fr", "sœur", "sœur — sister"],
+  ["de", "schon", "schon — already"],
+  ["de", "schön", "schön — beautiful"],
+]) {
+  const dict = buildDictionary(lang, DATA, VERBS[lang], TENSES[lang]);
+  const got = describe(dict, word);
+  check(got === want, `${lang}/${word}: got ${JSON.stringify(got)}, want ${JSON.stringify(want)}`);
+}
+check(lookupKey("sœur") !== lookupKey("sur"), "ligature collision: sœur and sur share a key");
+check(exactKey("Schön") === "schön", "exactKey must keep accents");
 
 /* ---- English renderings: no verb may inflect its phrase instead of its head ----
  *
@@ -86,6 +126,9 @@ for (const lang of ["fr", "de"]) {
             const at = `${lang}/${verb.inf}/${t.key}/${subject.tok}/${noun.t}${time ? "+" + time.tok : ""}`;
             check(r.tokens.every((x) => x && x === x.trim() && !x.includes("undefined")), `${at}: malformed tile`);
             check(r.tokens.length >= 2, `${at}: fewer than two tiles`);
+            // Every tile must be able to explain itself when hovered.
+            check(r.glosses.length === r.tokens.length, `${at}: gloss count does not match tiles`);
+            check(r.glosses.every((g) => g && g.trim() && !g.includes("undefined")), `${at}: missing or malformed gloss`);
             check(r.english && !r.english.includes("undefined"), `${at}: malformed English`);
             check(!time || time.tenses.includes(t.key), `${at}: time phrase disagrees with tense`);
             // German puts the non-finite part last, and the subject third once

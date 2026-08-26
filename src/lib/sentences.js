@@ -79,17 +79,6 @@ const DE_ACC = { der: "den", die: "die", das: "das" };
 const VOWEL = /^[aeiouyàâäéèêëîïôöùûüh]/i;
 
 /**
- * Article + noun, as tiles.
- *
- * Two tiles normally, so that choosing "le" over "la" is part of the exercise.
- * Elision genuinely fuses the two into one word — "l'oiseau" — and a tile that
- * could be split at the apostrophe would be a lie about the language.
- */
-function articleTiles(article, word) {
-  return VOWEL.test(word) ? [`${article.slice(0, -1)}'${word}`] : [article, word];
-}
-
-/**
  * Which drawers a verb can take its object from.
  *
  * Grammar alone is not enough here. The engine will happily build "Ihr habt
@@ -114,9 +103,6 @@ const OBJECT_TOPICS = {
     vouloir: { topics: ["Animals", "Food & Drink", "Home & Objects", "Travel & Transport"] },
     prendre: { topics: ["Food & Drink", "Home & Objects", "Shopping & Money", "Travel & Transport"] },
     voir:    { topics: ["Family & People", "Animals", "Home & Objects", "Directions & Home", "Travel & Transport", "Weather"], animate: true, place: true },
-    /* "faire" and "finir" are the two whose sense depends on the individual
-     * noun rather than the drawer — "faire la cuisine" is idiomatic, "faire le
-     * bureau" is not — so they name their objects outright. */
     faire:   { words: ["travail", "tâche"] },
     finir:   { words: ["travail", "tâche", "pain", "café"] },
   },
@@ -226,12 +212,56 @@ function accusative(noun) {
   return noun.t.endsWith("e") ? `${noun.t}n` : `${noun.t}en`;
 }
 
-/** The object phrase, as tiles. */
+/* Grammatical gender, spelled out — the whole reason a tile was the wrong one. */
+const DE_GENDER_NAME = { der: "masculine", die: "feminine", das: "neuter" };
+
+/**
+ * The object phrase, as tiles carrying their own explanation.
+ *
+ * Two tiles normally, so that choosing "le" over "la" is part of the exercise.
+ * Elision genuinely fuses the two into one word — "l'oiseau" — and a tile that
+ * could be split at the apostrophe would be a lie about the language.
+ */
 function objectTiles(lang, noun) {
-  if (lang === "de") return [DE_ACC[noun.g] || "das", accusative(noun)];
-  const article = (noun.gen || (noun.art === "une" || noun.art === "la" ? "f" : "m")) === "f" ? "la" : "le";
-  return articleTiles(article, noun.t);
+  const sense = firstSense(noun.e) || noun.e;
+  if (lang === "de") {
+    const art = DE_ACC[noun.g] || "das";
+    const gender = DE_GENDER_NAME[noun.g] || "neuter";
+    const surface = accusative(noun);
+    return [
+      { tok: art, gloss: `"the" — ${gender} accusative, because it is the object` },
+      {
+        tok: surface,
+        gloss: surface === noun.t
+          ? `${noun.g} ${noun.t} — ${sense}`
+          : `${noun.g} ${noun.t} — ${sense} (weak noun: takes -${surface.slice(noun.t.length)} outside the nominative)`,
+      },
+    ];
+  }
+  const fem = (noun.gen || (noun.art === "une" || noun.art === "la" ? "f" : "m")) === "f";
+  const article = fem ? "la" : "le";
+  if (VOWEL.test(noun.t)) {
+    return [{
+      tok: `${article.slice(0, -1)}'${noun.t}`,
+      gloss: `${article} + ${noun.t} — the ${sense}; the article elides before a vowel`,
+    }];
+  }
+  return [
+    { tok: article, gloss: `"the" — ${fem ? "feminine" : "masculine"}` },
+    { tok: noun.t, gloss: `${article} ${noun.t} — ${sense}` },
+  ];
 }
+
+/* Tenses built with an auxiliary plus a non-finite form. */
+const PERFECT_TENSES = new Set(["passe", "perfekt"]);
+
+/* How to name a tense in a tooltip. */
+const TENSE_NOTE = {
+  present: "present", praesens: "present",
+  imparfait: "imperfect", praeteritum: "simple past",
+  passe: "perfect", perfekt: "perfect",
+  futur: "future",
+};
 
 function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -249,38 +279,59 @@ export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null
   const p = subject.p;
   const { finite, after, tail } = verbParts(lang, verb, tenseKey, p);
   const obj = objectTiles(lang, noun);
-  const post = verb.post ? [verb.post] : [];
+  const vSense = firstSense(verb.en) || verb.en;
+  const label = verb.label || verb.inf;
+  const note = TENSE_NOTE[tenseKey] || "present";
+  /* Compound tenses put an auxiliary in the finite slot, so the tile the
+   * learner sees is not the verb they were asked to use. Saying so is the
+   * point of the tooltip. */
+  const compound = PERFECT_TENSES.has(tenseKey) || (lang === "de" && tenseKey === "futur");
+  const auxName = lang === "de" && tenseKey === "futur" ? "werden" : verb.aux;
+  const nonFinite = lang === "de" && tenseKey === "futur" ? "infinitive" : "past participle";
 
-  /* Tiles carry no sentence-initial capital. Baking one into the first token
-   * strands it when the learner legitimately reorders — "die Fahrkarte hat sie
-   * Heute gehabt" — so the capital is applied where it belongs, to whichever
-   * tile ends up first. German nouns keep the capital they have in the data. */
-  let tokens;
-  let alternates = [];
+  const T = (tok, gloss) => ({ tok, gloss });
+  const gSubject = T(subject.tok, subject.en);
+  const gTime = time ? T(time.tok, time.en) : null;
+  const gFinite = T(finite, compound
+    ? `from ${auxName} — the auxiliary that forms the ${note}`
+    : `from ${label} — ${vSense} (${note})`);
+  const gTail = tail.map((x) => T(x, `from ${label} — ${vSense} (${nonFinite})`));
+  const gAfter = after ? [T(after, `from ${label} — ${vSense} (past participle)`)] : [];
+  const post = verb.post ? [T(verb.post, `part of the fixed phrase "${label}"`)] : [];
+
+  let parts;
+  const alternates = [];
+  const toks = (a) => a.map((x) => x.tok);
 
   if (lang === "de") {
     if (time) {
       // Front field filled -> finite verb second, subject third.
-      tokens = [time.tok, finite, subject.tok, ...obj, ...post, ...tail];
+      parts = [gTime, gFinite, gSubject, ...obj, ...post, ...gTail];
       // The object may take the front field instead; the verb stays second.
-      alternates.push([...obj, finite, subject.tok, time.tok, ...post, ...tail]);
-      alternates.push([subject.tok, finite, time.tok, ...obj, ...post, ...tail]);
+      alternates.push(toks([...obj, gFinite, gSubject, gTime, ...post, ...gTail]));
+      alternates.push(toks([gSubject, gFinite, gTime, ...obj, ...post, ...gTail]));
     } else {
-      tokens = [subject.tok, finite, ...obj, ...post, ...tail];
-      alternates.push([...obj, finite, subject.tok, ...post, ...tail]);
+      parts = [gSubject, gFinite, ...obj, ...post, ...gTail];
+      alternates.push(toks([...obj, gFinite, gSubject, ...post, ...gTail]));
     }
   } else {
-    const head = subject.tok === "je" && VOWEL.test(finite) ? `j'${finite}` : null;
-    const core = head
-      ? [head, ...(after ? [after] : [])]
-      : [subject.tok, finite, ...(after ? [after] : [])];
-    tokens = time ? [time.tok, ...core, ...obj, ...post] : [...core, ...obj, ...post];
-    if (time) alternates.push([...core, ...obj, ...post, time.tok]);
+    /* "je" + a vowel fuses into one word, so it is one tile — and its tooltip
+     * has to account for both halves, since neither is visible on its own. */
+    const merged = subject.tok === "je" && VOWEL.test(finite);
+    const core = merged
+      ? [T(`j'${finite}`, `je + ${finite} — "${subject.en}" and ${compound ? `the auxiliary ${auxName}` : label} run together`), ...gAfter]
+      : [gSubject, gFinite, ...gAfter];
+    parts = time ? [gTime, ...core, ...obj, ...post] : [...core, ...obj, ...post];
+    if (time) alternates.push(toks([...core, ...obj, ...post, gTime]));
   }
 
+  const tokens = toks(parts);
   const english = englishFor({ lang, verb, tenseKey, subject, noun, time });
   return {
     tokens,
+    /* Parallel to `tokens`. Tiles pick their gloss up by index at creation, so
+     * it survives shuffling and reordering. */
+    glosses: parts.map((x) => x.gloss),
     display: capitalize(tokens.join(" ")) + ".",
     english,
     alternates,
@@ -290,8 +341,6 @@ export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null
   };
 }
 
-/* Tenses whose English is a present perfect — "I have eaten". */
-const PERFECT_TENSES = new Set(["passe", "perfekt"]);
 /* Adverbs that pin the event to finished past time. */
 const PAST_ADVERBS = new Set(["hier", "gestern"]);
 
