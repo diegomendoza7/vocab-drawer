@@ -266,14 +266,23 @@ is most of the elapsed time. On a device with a pointer and keys:
 | `1`–`9` | multiple choice, picture grid, conjugation choice | Pick that option |
 | `1`–`9` | Sentence Constructions | Place that word from the bank |
 | `Backspace` | Sentence Constructions | Take back the last word placed |
-| `Enter` | anywhere with a result showing | Check, or go to the next question |
+| `Enter` | typing, sentence, conjugation, dictation | Check your answer, then carry on to the next question |
+| `Enter` | anywhere else with a result showing | Check, or go to the next question |
 
 Numbers are shown on the options themselves rather than left to be discovered,
 and only where the keys exist — `matchMedia("(hover: hover) and (pointer:
 fine)")` gates them, so a phone gets none of the clutter.
 
-Screens with a text input are skipped by the global handler entirely. They bind
-Enter themselves, and inside an input a digit is just a digit.
+While a text input holds focus the global handler stays out of the way: those
+screens bind Enter on the input themselves, and inside an input a digit is just
+a digit. But they set the input `disabled` the moment an answer is checked, so
+focus drops to `<body>` exactly when Enter is most wanted — which is why the
+Continue button used to need the mouse even though Enter had "worked" a moment
+earlier. The handler picks it up from there, so one key carries a typed answer
+all the way through to the next question.
+
+Only the advance is handled that way. Checking still belongs to the input, so a
+stray Enter can never submit an empty box.
 
 The bank renumbers as it empties, so the shortcut for a word is always its
 current position, not the one it started in.
