@@ -35,9 +35,88 @@ browser.
 | `src/lib/gloss.js` | Reading an English gloss — sense splitting, accepted answers |
 | `src/lib/dictionary.js` | Offline word lookup behind the hover definitions |
 | `src/lib/sentences.js` | The sentence-construction engine. Pure, no React |
+| `src/lib/sections.js` | Which rail section a screen belongs to |
+| `src/hooks/useIsDesktop.js` | The ≥1024px branch |
+| `src/theme.js` | Colour tokens, each resolving through a CSS variable |
+| `src/components/` | The desktop surfaces (rail, shell, ledger, tables, workbench) plus the shared mobile shell |
 | `src/lib/storage.js` | IndexedDB persistence |
 | `src/lib/api.js` | Client adapter — talks to the proxy, never to Anthropic directly |
 | `server/index.js` | API proxy. Holds the key; pins output shape via structured outputs |
+
+## Two layouts
+
+Below 1024px the app is what it always was: one `max-w-xl` column, one screen at
+a time. At and above 1024px it becomes a desktop application — a persistent left
+rail beside a main column — following the wireframes in
+`design_handoff_vocab_drawer_desktop/`.
+
+The split is a hard branch, not a set of `lg:` classes, because several of the
+desktop screens are not reflows of a mobile one. Three My Words screens collapse
+into a single workspace; seven conjugation screens collapse into one workbench.
+No amount of CSS expresses "these three screens are now that one".
+
+```jsx
+{!isDesktop && ( /* the original screen, untouched */ )}
+{isDesktop  && ( /* the desktop surface */ )}
+```
+
+`useIsDesktop()` (`src/hooks/useIsDesktop.js`) is a live `matchMedia` query, so
+dragging a window across the boundary swaps layouts.
+
+| Area | Desktop | What changed |
+|---|---|---|
+| Home | left rail + demoted level strip | The level panel was eating the screen; language moved to the rail, mode to a toggle, the description to one line |
+| Study | stage rail + batch ledger | Every word's state is visible while it is being earned, instead of a reveal at the end |
+| Summary | per-word table | Word, meaning, first try, and its real next-due date — "mastered" as a date, not a percentage |
+| My Words | one workspace | Library table and the add-words panel side by side; hub → input → library was three screens for one job |
+| Grammar | workbench + coverage map | A verb and a tense are a selection, not a six-screen wizard. One table cell is blanked in place |
+
+**What the desktop does not redesign**: reading, phrase match, listening,
+dictation, sentence construction, import and progress render their existing
+single-column content inside the rail's main column. They were not part of the
+handoff.
+
+The study *content* is shared, not duplicated — the flashcard, matching grid,
+multiple-choice and typing box are the same JSX in both layouts. Only the chrome
+around them branches.
+
+### The Classical theme
+
+Desktop carries the handoff's own type and palette (Cormorant Garamond over
+Lora, a cool grey ground); mobile keeps the warm card-catalog look. That is
+possible because every colour token resolves through a CSS variable rather than
+a literal — see the token block in `src/index.css`. `C.ink` means
+`var(--vd-ink)`, and `.vd-classical` on the desktop shell redefines it, so a
+screen re-themes without knowing which shell it is in.
+
+The trade-off: inline styles now say `var(--vd-ink)` instead of `#1F2A44`, so
+DOM-text comparison can no longer verify mobile is unchanged. Regression checks
+compare computed styles instead — `scripts/mobile-regression.md`.
+
+## Themes
+
+Light, dark, or the device's own setting, remembered per device. "System" is a
+real third state rather than a synonym for light — a phone that flips at sunset
+should take the app with it.
+
+Both palettes have a dark form: the warm card-catalog below 1024px and Classical
+above it. They are re-stated rather than inverted, because a flipped palette
+reads as a photographic negative and the gold that carries meaning here would
+stop looking like gold. der/die/das brighten so they stay legible on a dark
+ground; the colour-word swatches deliberately do not move, since a red swatch
+has to stay red.
+
+## Weak spots
+
+The daily queue is ordered by due date, which says when a card is scheduled,
+not how well you know it. **Weak spots** orders by evidence of difficulty and
+ignores the schedule entirely — lapses weighted above ease, because a lapse
+counts a real failure while ease also drifts down from merely-hard answers.
+
+Cards you have never studied are excluded: "weak" has to mean tried and missed,
+or it becomes a second new-word queue. The button appears whether or not
+anything is due, which is the point — it reaches words the schedule has not
+surfaced yet.
 
 ## Levels
 
@@ -316,6 +395,29 @@ IndexedDB (localStorage's ~5MB cap won't survive generate-on-demand
 vocabulary). A genuine storage failure now reports `persisted: false` rather
 than pretending to work.
 
+## Moods and tenses
+
+Six per language. French adds the **conditionnel** and the **subjonctif**,
+German the **Konjunktiv II** — the moods a learner meets constantly and could
+not previously drill at all.
+
+Most of it is derived rather than stored, because the shapes are regular:
+
+| | How it is built |
+|---|---|
+| Conditionnel | the future stem with imperfect endings — nothing new to store |
+| Subjonctif | the `ils` stem: parlent → parl-, finissent → finiss-. About a dozen verbs whose subjunctive is genuinely irregular carry `subj` instead |
+| Konjunktiv II | the Präteritum, umlauted for strong verbs (kam → käme). Weak verbs do not change at all, which is exactly why German reaches for *würde* |
+
+The one class that defeats the rule is the mixed verbs — a weak `-te` past with
+a changed stem (bringen → brächte, haben → hätte). They are named in
+`DE_MIXED_K2`, keyed by stem so prefixed forms inherit.
+
+**The imperative is deliberately absent.** It has three persons where every
+other tense has six, and the six-person shape is assumed by the pronoun list,
+the matching board, the multiple-choice distractors and the coverage map.
+Adding it is a structural change, not another table.
+
 ## Models
 
 Set per job in `server/index.js`:
@@ -350,11 +452,47 @@ A few C1 glosses carry their false-friend warning inline — `lecture` is
 word does *not* mean, so it is dropped rather than accepted. It would be better
 in the `n` field; the data has not been rewritten.
 
+## What's next
+
+`NEXT-PHASE.md` holds the plan for the next round of work: four correctness
+fixes that should come before any new feature (a white-screen crash, a missing
+error boundary, a key collision in the missed-words list, and mobile's Home
+button discarding a sitting), then the restructure's loose ends, content gaps,
+and structural debt.
+
+## Data upkeep
+
+Three re-runnable scripts, all idempotent and all printing before they write:
+
+```bash
+node scripts/backfill-fr-gender.mjs          # French noun gender, from example sentences
+node scripts/fix-false-friend-glosses.mjs    # move "NOT \"lecture\"" out of the meaning
+node scripts/generate-c1-sentences.mjs --lang fr   # example sentences for C1 (needs a key)
+```
+
+**The C1 words have no example sentences** — all 945 of them. That is not
+cosmetic: `buildPracticeQueue` skips fill-in-the-blank without a cloze,
+`goToSentence` skips the sentence stage, dictation has nothing to read, and
+Sentence Constructions cannot use them. C1 quietly drills two question kinds
+instead of three and nothing says why.
+
+`generate-c1-sentences.mjs` fixes that, and needs `ANTHROPIC_API_KEY` in `.env`
+plus the API server running. It is a dry run by default, refuses any sentence
+that does not contain the headword — a cloze that cannot find its own answer is
+worse than no sentence — never overwrites an existing one, and writes per batch
+so an interrupted run keeps what it earned.
+
 ## Known rough edges
 
 - `apiLookupBatch` still returns `[]` on failure to avoid throwing into the UI.
   Failures now log to the console, but nothing surfaces in the interface yet.
-- Lint reports pre-existing warnings inherited from the artifact build (unused
-  imports, bare `catch` params, a dead `recordAnswer`, some `exhaustive-deps`).
-  Untouched by the port; worth a cleanup pass.
-- No test suite.
+- Four `exhaustive-deps` warnings remain, on two conjugation memos. They are
+  correct as written — the omitted values are stable for the lifetime of the
+  memo — and adding them changes what recomputes, so they were left alone
+  rather than silenced.
+- The bundle is split three ways (vendor / vocabulary / app) so the parts cache
+  independently, but first-paint bytes are unchanged. Loading the C1 sets on
+  demand needs `src/data/vocab.js` to stop building `DATA` eagerly; lazy-loading
+  whole areas needs component boundaries that one 5,900-line screen component
+  does not have.
+- No tests for the React screens. The pure layers are covered; see **Checks**.
