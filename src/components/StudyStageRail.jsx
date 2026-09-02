@@ -7,10 +7,15 @@ const STAGES = ["Learn", "Match", "Choose", "Type", "Sentence", "Done"];
  *
  * Read-only: it reports position, it doesn't navigate. Skipping ahead is still
  * done by the stage's own "skip" affordances, which know what to carry over. */
-export default function StudyStageRail({ breadcrumb, current, onLeave }) {
+export default function StudyStageRail({ breadcrumb, current, onLeave, minutesLeft }) {
   return (
     <div className="flex items-center gap-4 px-1 pb-3 mb-4 flex-wrap" style={{ borderBottom: `1px solid ${C.line}` }}>
-      <span className="text-xs font-serif shrink-0" style={{ color: C.muted }}>{breadcrumb}</span>
+      <span className="text-xs font-serif shrink-0" style={{ color: C.muted }}>
+        {breadcrumb}
+        {/* How much is left, in the unit people actually plan in. A sitting
+          * you can see the end of is one you are willing to start. */}
+        {minutesLeft > 0 && <> · about {minutesLeft} min left</>}
+      </span>
 
       <div className="flex items-center gap-1.5 flex-1 justify-center flex-wrap">
         {STAGES.map((label, i) => {

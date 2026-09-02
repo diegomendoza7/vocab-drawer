@@ -1,0 +1,502 @@
+[
+{
+"t": "begründen",
+"s": "Die Behörde muss jede Ablehnung schriftlich begründen.",
+"se": "The authority must justify every refusal in writing."
+},
+{
+"t": "belegen",
+"s": "Es ist bislang nicht gelungen, diese These empirisch zu belegen.",
+"se": "It has so far not been possible to substantiate this thesis empirically."
+},
+{
+"t": "bezweifeln",
+"s": "Niemand wird ernsthaft bezweifeln, dass der Trend anhält.",
+"se": "Nobody will seriously doubt that the trend is continuing."
+},
+{
+"t": "berücksichtigen",
+"s": "Das Modell sollte auch regionale Unterschiede berücksichtigen.",
+"se": "The model should also take regional differences into account."
+},
+{
+"t": "beleuchten",
+"s": "Der Beitrag will vor allem die politischen Folgen beleuchten.",
+"se": "The article aims above all to shed light on the political consequences."
+},
+{
+"t": "beziffern",
+"s": "Die Kosten lassen sich derzeit kaum seriös beziffern.",
+"se": "The costs can hardly be put at a serious figure at present."
+},
+{
+"t": "bewältigen",
+"s": "Kleinere Gemeinden können diesen Aufwand kaum allein bewältigen.",
+"se": "Smaller municipalities can hardly cope with this workload alone."
+},
+{
+"t": "beeinträchtigen",
+"s": "Der Lärm dürfte die Konzentration erheblich beeinträchtigen.",
+"se": "The noise is likely to impair concentration considerably."
+},
+{
+"t": "bekunden",
+"s": "Beide Seiten wollten damit ihren guten Willen bekunden.",
+"se": "Both sides wanted to express their goodwill by this."
+},
+{
+"t": "beschwichtigen",
+"s": "Der Vorstand versuchte vergeblich, die Belegschaft zu beschwichtigen.",
+"se": "The board tried in vain to appease the workforce."
+},
+{
+"t": "beharren auf",
+"s": "Die Gewerkschaft will beharren auf einer Forderung, die sie seit Jahren erhebt.",
+"se": "The union intends to insist on a demand it has been making for years."
+},
+{
+"t": "bewerkstelligen",
+"s": "Wie sich das ohne zusätzliche Mittel bewerkstelligen lässt, bleibt offen.",
+"se": "How this is to be managed without extra funds remains open."
+},
+{
+"t": "ermitteln",
+"s": "Die Staatsanwaltschaft konnte die Ursache bislang nicht ermitteln.",
+"se": "The prosecution has so far been unable to determine the cause."
+},
+{
+"t": "erschließen",
+"s": "Aus dem Kontext lässt sich die Bedeutung meist erschließen.",
+"se": "The meaning can usually be inferred from the context."
+},
+{
+"t": "ergründen",
+"s": "Der Aufsatz versucht, die Ursachen dieses Wandels zu ergründen.",
+"se": "The essay tries to get to the bottom of the causes of this change."
+},
+{
+"t": "erfassen",
+"s": "Die Statistik kann informelle Arbeit gar nicht erfassen.",
+"se": "The statistics cannot capture informal work at all."
+},
+{
+"t": "ermöglichen",
+"s": "Erst die neue Förderung soll den Ausbau ermöglichen.",
+"se": "Only the new funding is meant to make the expansion possible."
+},
+{
+"t": "erübrigen",
+"s": "Weitere Erläuterungen dürften sich damit erübrigen.",
+"se": "Further explanation should thereby become superfluous."
+},
+{
+"t": "sich erweisen als",
+"s": "Die Annahme sollte sich erweisen als der folgenschwerste Irrtum des Jahrzehnts.",
+"se": "The assumption was to prove the most consequential error of the decade."
+},
+{
+"t": "erwägen",
+"s": "Die Kommission will ein vollständiges Verbot erwägen.",
+"se": "The commission intends to consider a complete ban."
+},
+{
+"t": "ersuchen",
+"s": "Das Gericht kann die Behörde um Amtshilfe ersuchen.",
+"se": "The court may request administrative assistance from the authority."
+},
+{
+"t": "erlangen",
+"s": "Der Verein konnte die Gemeinnützigkeit erst 2019 erlangen.",
+"se": "The association was only able to attain charitable status in 2019."
+},
+{
+"t": "erwirtschaften",
+"s": "Der Betrieb muss den Überschuss selbst erwirtschaften.",
+"se": "The company has to generate the surplus itself."
+},
+{
+"t": "erfordern",
+"s": "Ein solcher Umbau würde Jahre erfordern.",
+"se": "Such a restructuring would require years."
+},
+{
+"t": "ersetzen",
+"s": "Digitale Werkzeuge können persönliche Beratung nicht ersetzen.",
+"se": "Digital tools cannot replace personal advice."
+},
+{
+"t": "verschärfen",
+"s": "Der Beschluss dürfte den Konflikt weiter verschärfen.",
+"se": "The decision is likely to intensify the conflict further."
+},
+{
+"t": "vermitteln",
+"s": "Ein Lehrbuch soll Zusammenhänge vermitteln, nicht nur Daten.",
+"se": "A textbook should convey connections, not just facts."
+},
+{
+"t": "verwerfen",
+"s": "Die Autoren mussten ihr erstes Modell wieder verwerfen.",
+"se": "The authors had to discard their first model."
+},
+{
+"t": "versäumen",
+"s": "Der Gesetzgeber wollte es nicht versäumen, eine Frist festzulegen.",
+"se": "The legislator did not want to fail to set a deadline."
+},
+{
+"t": "verzerren",
+"s": "Ein einziger Ausreißer kann das Ergebnis erheblich verzerren.",
+"se": "A single outlier can seriously distort the result."
+},
+{
+"t": "verankern",
+"s": "Der Entwurf will dieses Recht ausdrücklich in der Verfassung verankern.",
+"se": "The draft seeks to enshrine this right explicitly in the constitution."
+},
+{
+"t": "verorten",
+"s": "Der Aufsatz lässt sich schwer in einer einzigen Disziplin verorten.",
+"se": "The essay is hard to situate within a single discipline."
+},
+{
+"t": "verdrängen",
+"s": "Neue Anbieter konnten die etablierten Firmen rasch verdrängen.",
+"se": "New entrants were able to displace the established firms quickly."
+},
+{
+"t": "verharmlosen",
+"s": "Es wäre fahrlässig, dieses Risiko zu verharmlosen.",
+"se": "It would be negligent to play down this risk."
+},
+{
+"t": "verschleiern",
+"s": "Die Bilanz sollte offenbar die wahre Lage verschleiern.",
+"se": "The accounts were apparently meant to obscure the true position."
+},
+{
+"t": "vertuschen",
+"s": "Der Versuch, den Vorfall zu vertuschen, wog schwerer als der Vorfall selbst.",
+"se": "The attempt to cover up the incident weighed more heavily than the incident itself."
+},
+{
+"t": "verwässern",
+"s": "Die Änderungsanträge drohen den Entwurf zu verwässern.",
+"se": "The amendments threaten to water down the draft."
+},
+{
+"t": "verwehren",
+"s": "Man darf niemandem den Zugang zu diesen Daten verwehren.",
+"se": "Nobody may be denied access to these data."
+},
+{
+"t": "verfestigen",
+"s": "Solche Muster können sich über Generationen verfestigen.",
+"se": "Such patterns can become entrenched over generations."
+},
+{
+"t": "verstetigen",
+"s": "Ziel ist es, die Förderung dauerhaft zu verstetigen.",
+"se": "The aim is to put the funding on a permanent footing."
+},
+{
+"t": "veranschlagen",
+"s": "Für den Umbau sind zwei Jahre zu veranschlagen.",
+"se": "Two years should be budgeted for the conversion."
+},
+{
+"t": "entnehmen",
+"s": "Dem Bericht ist eine klare Warnung zu entnehmen.",
+"se": "A clear warning can be gathered from the report."
+},
+{
+"t": "entfalten",
+"s": "Die Regelung wird ihre Wirkung erst 2027 entfalten.",
+"se": "The rule will only unfold its effect in 2027."
+},
+{
+"t": "entziehen",
+"s": "Die Behörde kann die Zulassung jederzeit wieder entziehen.",
+"se": "The authority may withdraw the licence at any time."
+},
+{
+"t": "entsprechen",
+"s": "Die Anlage muss dem Stand der Technik entsprechen.",
+"se": "The installation must correspond to the state of the art."
+},
+{
+"t": "entgegnen",
+"s": "Darauf ließe sich mit einigem Recht entgegnen, dass die Daten alt sind.",
+"se": "One could retort with some justification that the data are old."
+},
+{
+"t": "entgehen",
+"s": "Dieser Widerspruch dürfte aufmerksamen Lesern kaum entgehen.",
+"se": "This contradiction is unlikely to escape attentive readers."
+},
+{
+"t": "entbehren",
+"s": "Die Vorwürfe entbehren jeder Grundlage, wie sich zeigen sollte.",
+"se": "The accusations lack any basis, as was to become clear."
+},
+{
+"t": "entgelten",
+"s": "Die geleistete Mehrarbeit ist angemessen zu entgelten.",
+"se": "The overtime worked must be appropriately compensated."
+},
+{
+"t": "entkoppeln",
+"s": "Wachstum und Emissionen lassen sich nur teilweise entkoppeln.",
+"se": "Growth and emissions can only partly be decoupled."
+},
+{
+"t": "entlarven",
+"s": "Ein einziger Beleg konnte die Fälschung entlarven.",
+"se": "A single piece of evidence was able to expose the forgery."
+},
+{
+"t": "entwerten",
+"s": "Die Inflation hat die Rücklagen praktisch entwerten können.",
+"se": "Inflation was able to devalue the reserves almost entirely."
+},
+{
+"t": "aufzeigen",
+"s": "Die Studie will strukturelle Ursachen aufzeigen.",
+"se": "The study sets out to reveal structural causes."
+},
+{
+"t": "aufwerfen",
+"s": "Das Urteil dürfte mehr Fragen aufwerfen, als es beantwortet.",
+"se": "The ruling is likely to raise more questions than it answers."
+},
+{
+"t": "aufdecken",
+"s": "Erst eine Routineprüfung konnte den Betrug aufdecken.",
+"se": "Only a routine audit was able to uncover the fraud."
+},
+{
+"t": "aufschlüsseln",
+"s": "Die Zahlen lassen sich nach Region und Alter aufschlüsseln.",
+"se": "The figures can be broken down by region and age."
+},
+{
+"t": "aufarbeiten",
+"s": "Die Kommission soll die Vorgänge lückenlos aufarbeiten.",
+"se": "The commission is to work through the events without gaps."
+},
+{
+"t": "auffassen",
+"s": "Man kann die Passage auch als Ironie auffassen.",
+"se": "The passage can also be understood as irony."
+},
+{
+"t": "aufweisen",
+"s": "Beide Gruppen sollen vergleichbare Merkmale aufweisen.",
+"se": "Both groups are supposed to exhibit comparable characteristics."
+},
+{
+"t": "aufkommen für",
+"s": "Am Ende muss die Allgemeinheit aufkommen für Schäden, die niemand versichert hat.",
+"se": "In the end the public has to bear the cost of damage nobody insured."
+},
+{
+"t": "aufheben",
+"s": "Das Gericht kann den Bescheid jederzeit wieder aufheben.",
+"se": "The court may repeal the decision at any time."
+},
+{
+"t": "aufbürden",
+"s": "Man darf den Kommunen diese Last nicht einfach aufbürden.",
+"se": "This burden must not simply be saddled onto the municipalities."
+},
+{
+"t": "aufwiegen",
+"s": "Der Zeitgewinn kann die Mehrkosten kaum aufwiegen.",
+"se": "The time saved can hardly offset the extra costs."
+},
+{
+"t": "ausgehen von",
+"s": "Man sollte nicht ausgehen von einer Entwicklung, die es so noch nie gegeben hat.",
+"se": "One should not assume a development that has never happened in that form."
+},
+{
+"t": "auswerten",
+"s": "Die Rohdaten ließen sich erst nach Monaten auswerten.",
+"se": "The raw data could only be analysed after months."
+},
+{
+"t": "ausarbeiten",
+"s": "Eine Arbeitsgruppe soll den Vorschlag im Detail ausarbeiten.",
+"se": "A working group is to work the proposal out in detail."
+},
+{
+"t": "ausschließen",
+"s": "Ein Zusammenhang lässt sich derzeit nicht ausschließen.",
+"se": "A connection cannot currently be ruled out."
+},
+{
+"t": "auszeichnen",
+"s": "Gerade die Nüchternheit soll diesen Stil auszeichnen.",
+"se": "It is precisely the sobriety that is said to characterise this style."
+},
+{
+"t": "ausweiten",
+"s": "Der Konzern will das Angebot auf ganz Europa ausweiten.",
+"se": "The group intends to extend the offering to the whole of Europe."
+},
+{
+"t": "ausloten",
+"s": "Beide Seiten wollen zunächst die Spielräume ausloten.",
+"se": "Both sides want first to sound out the room for manoeuvre."
+},
+{
+"t": "ausüben",
+"s": "Der Betriebsrat kann erheblichen Einfluss ausüben.",
+"se": "The works council can exert considerable influence."
+},
+{
+"t": "auslegen",
+"s": "Das Gericht musste die Klausel eng auslegen.",
+"se": "The court had to interpret the clause narrowly."
+},
+{
+"t": "ausräumen",
+"s": "Die Anhörung konnte die Bedenken nicht ausräumen.",
+"se": "The hearing was unable to dispel the concerns."
+},
+{
+"t": "ausgleichen",
+"s": "Die Prämie soll den Kaufkraftverlust teilweise ausgleichen.",
+"se": "The bonus is meant to compensate partly for the loss of purchasing power."
+},
+{
+"t": "aushandeln",
+"s": "Beide Seiten mussten den Kompromiss über Monate aushandeln.",
+"se": "Both sides had to negotiate the compromise over months."
+},
+{
+"t": "ausschöpfen",
+"s": "Die Länder konnten die Mittel nicht vollständig ausschöpfen.",
+"se": "The states were unable to make full use of the funds."
+},
+{
+"t": "einordnen",
+"s": "Der Fund lässt sich zeitlich nur schwer einordnen.",
+"se": "The find can only be placed chronologically with difficulty."
+},
+{
+"t": "einbeziehen",
+"s": "Künftig will man auch die Betroffenen einbeziehen.",
+"se": "In future those affected are also to be involved."
+},
+{
+"t": "eingrenzen",
+"s": "Zunächst muss man den Untersuchungszeitraum eingrenzen.",
+"se": "First the period under study has to be narrowed down."
+},
+{
+"t": "einleuchten",
+"s": "Dieses Argument will vielen Fachleuten nicht recht einleuchten.",
+"se": "This argument does not really make sense to many experts."
+},
+{
+"t": "einwenden",
+"s": "Dagegen ließe sich einwenden, dass die Stichprobe zu klein war.",
+"se": "One could object that the sample was too small."
+},
+{
+"t": "einführen",
+"s": "Die Regierung will eine Meldepflicht einführen.",
+"se": "The government intends to introduce a reporting requirement."
+},
+{
+"t": "einbüßen",
+"s": "Der Sektor dürfte in diesem Jahr Marktanteile einbüßen.",
+"se": "The sector is likely to forfeit market share this year."
+},
+{
+"t": "einlösen",
+"s": "Diese Zusage lässt sich mit dem geplanten Budget kaum einlösen.",
+"se": "This pledge can hardly be honoured with the planned budget."
+},
+{
+"t": "einschreiten",
+"s": "Die Aufsicht hätte deutlich früher einschreiten müssen.",
+"se": "The regulator should have intervened much earlier."
+},
+{
+"t": "eindämmen",
+"s": "Die Maßnahmen sollen die Ausbreitung eindämmen.",
+"se": "The measures are intended to contain the spread."
+},
+{
+"t": "einwirken auf",
+"s": "Der Verband will einwirken auf jene Stellen, die am Ende entscheiden.",
+"se": "The association wants to influence the bodies that ultimately decide."
+},
+{
+"t": "anknüpfen an",
+"s": "Der Aufsatz will anknüpfen an eine Debatte, die in den neunziger Jahren abbrach.",
+"se": "The essay aims to build on a debate that broke off in the 1990s."
+},
+{
+"t": "anstreben",
+"s": "Die Koalition will einen Ausgleich anstreben.",
+"se": "The coalition intends to aim for a compromise."
+},
+{
+"t": "andeuten",
+"s": "Der Minister wollte nur andeuten, dass eine Reform bevorsteht.",
+"se": "The minister only wanted to hint that a reform is imminent."
+},
+{
+"t": "ansetzen",
+"s": "Eine Kritik müsste hier ansetzen, nicht bei den Symptomen.",
+"se": "Criticism would have to start here, not with the symptoms."
+},
+{
+"t": "absehen von",
+"s": "Das Gericht kann absehen von einer Strafe, wenn der Schaden gering bleibt.",
+"se": "The court may refrain from a penalty if the damage remains slight."
+},
+{
+"t": "abzielen auf",
+"s": "Die Regelung dürfte abzielen auf jene Betriebe, die bislang nichts zahlen.",
+"se": "The rule presumably targets those firms that have paid nothing so far."
+},
+{
+"t": "abbilden",
+"s": "Kein Index kann diese Vielfalt vollständig abbilden.",
+"se": "No index can fully represent this diversity."
+},
+{
+"t": "abhandeln",
+"s": "Das Kapitel will drei Fragen zugleich abhandeln.",
+"se": "The chapter tries to deal with three questions at once."
+},
+{
+"t": "überprüfen",
+"s": "Die Angaben ließen sich bislang nicht unabhängig überprüfen.",
+"se": "The information could not so far be independently verified."
+},
+{
+"t": "überblicken",
+"s": "Die Folgen sind heute noch nicht zu überblicken.",
+"se": "The consequences cannot yet be surveyed today."
+},
+{
+"t": "überwiegen",
+"s": "In der Debatte dürften die Vorbehalte überwiegen.",
+"se": "Reservations are likely to predominate in the debate."
+},
+{
+"t": "überschreiten",
+"s": "Die Werte durften den Grenzwert nie überschreiten.",
+"se": "The readings were never allowed to exceed the limit."
+},
+{
+"t": "übertragen",
+"s": "Das Modell lässt sich nicht ohne Weiteres auf andere Länder übertragen.",
+"se": "The model cannot readily be applied to other countries."
+}
+]

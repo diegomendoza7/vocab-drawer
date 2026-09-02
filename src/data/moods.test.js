@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { FR_VERBS, DE_VERBS, FR_TENSES, DE_TENSES, conjugate, conjugateEnglish } from "./content.js";
+import { FR_VERBS, DE_VERBS, FR_TENSES, DE_TENSES, conjugate, conjugateEnglish, personsFor, hasTense, ALL_PERSONS } from "./content.js";
 import { FR_C1_VERBS, DE_C1_VERBS } from "./verbs-c1.js";
 
 const fr = (inf) => FR_VERBS.find((v) => v.inf === inf);
@@ -79,10 +79,112 @@ describe("German Konjunktiv II", () => {
   });
 });
 
-describe("every verb in every mood produces six usable forms", () => {
-  /* The rules run over 188 French and 351 German verbs. A stem that does not
+describe("French impératif", () => {
+  it("has tu, nous and vous — and nothing else", () => {
+    expect(personsFor("fr", "imperatif")).toEqual([1, 3, 4]);
+    const out = forms("fr", fr("parler"), "imperatif");
+    expect(out).toEqual([null, "parle", null, "parlons", "parlez", null]);
+  });
+
+  it("drops the -s from -er verbs and aller, and keeps it elsewhere", () => {
+    /* "parles" answers a question; "parle" gives an order. The -ir and -re
+     * verbs keep theirs, which is the half of the rule usually forgotten. */
+    expect(forms("fr", fr("parler"), "imperatif")[1]).toBe("parle");
+    expect(forms("fr", fr("manger"), "imperatif")[1]).toBe("mange");
+    expect(forms("fr", fr("aller"), "imperatif")[1]).toBe("va");
+    expect(forms("fr", fr("finir"), "imperatif")[1]).toBe("finis");
+    expect(forms("fr", fr("vendre"), "imperatif")[1]).toBe("vends");
+    expect(forms("fr", fr("prendre"), "imperatif")[1]).toBe("prends");
+  });
+
+  it("uses the subjunctive stem for the four verbs that do", () => {
+    expect(forms("fr", fr("être"), "imperatif")[1]).toBe("sois");
+    expect(forms("fr", fr("avoir"), "imperatif")[1]).toBe("aie");
+    expect(forms("fr", fr("savoir"), "imperatif")[1]).toBe("sache");
+    expect(forms("fr", fr("vouloir"), "imperatif")[4]).toBe("veuillez");
+    // vouloir keeps the regular nous — "veuillons" is not a form anyone says.
+    expect(forms("fr", fr("vouloir"), "imperatif")[3]).toBe("voulons");
+  });
+
+  it("moves the reflexive pronoun behind the verb, and te becomes toi", () => {
+    /* Everywhere else in French the pronoun precedes. The affirmative
+     * imperative is the one place it does not, and the one place "te" is
+     * stressed. */
+    expect(forms("fr", fr("lever"), "imperatif")).toEqual(
+      [null, "lève-toi", null, "levons-nous", "levez-vous", null]);
+  });
+});
+
+describe("German Imperativ", () => {
+  it("has du, wir, ihr and Sie", () => {
+    expect(personsFor("de", "imperativ")).toEqual([1, 3, 4, 5]);
+  });
+
+  it("keeps the e→i stem change but undoes the a→ä umlaut", () => {
+    /* The half of the rule that is actually hard: sprichst gives "sprich",
+     * but fährst gives "fahr", not "fähr". */
+    expect(forms("de", de("sprechen"), "imperativ")[1]).toBe("sprich");
+    expect(forms("de", de("geben"), "imperativ")[1]).toBe("gib");
+    expect(forms("de", de("nehmen"), "imperativ")[1]).toBe("nimm");
+    expect(forms("de", de("helfen"), "imperativ")[1]).toBe("hilf");
+    expect(forms("de", de("sehen"), "imperativ")[1]).toBe("sieh");
+    expect(forms("de", de("fahren"), "imperativ")[1]).toBe("fahr");
+  });
+
+  it("falls back to the infinitive stem when the present form is not a base", () => {
+    // hast → "ha" and wirst → "wir" are not stems; both must come off the infinitive.
+    expect(forms("de", de("haben"), "imperativ")[1]).toBe("hab");
+    expect(forms("de", de("werden"), "imperativ")[1]).toBe("werde");
+    expect(forms("de", de("sein"), "imperativ")[1]).toBe("sei");
+  });
+
+  it("adds -e only where the stem needs it", () => {
+    expect(forms("de", de("warten"), "imperativ")[1]).toBe("warte");
+    expect(forms("de", de("beenden"), "imperativ")[1]).toBe("beende");
+    // …and not after a doubled sonorant, where it would be wrong.
+    expect(forms("de", de("kommen"), "imperativ")[1]).toBe("komm");
+    expect(forms("de", de("lernen"), "imperativ")[1]).toBe("lern");
+  });
+
+  it("builds wir and Sie from the infinitive plus the pronoun", () => {
+    expect(forms("de", de("gehen"), "imperativ")[3]).toBe("gehen wir");
+    expect(forms("de", de("gehen"), "imperativ")[5]).toBe("gehen Sie");
+    expect(forms("de", de("sein"), "imperativ")[5]).toBe("seien Sie");
+  });
+
+  it("sends a separable prefix to the end in all four persons", () => {
+    expect(forms("de", de("aufstehen"), "imperativ"))
+      .toEqual([null, "steh auf", null, "stehen wir auf", "steht auf", "stehen Sie auf"]);
+  });
+
+  it("gives the modals no imperative at all", () => {
+    /* "kann!" is not something a German speaker can say, so the cell has to be
+     * absent rather than filled with a derived form. */
+    expect(hasTense("de", de("können"), "imperativ")).toBe(false);
+    expect(hasTense("de", de("gehen"), "imperativ")).toBe(true);
+    expect(forms("de", de("wollen"), "imperativ")).toEqual([null, null, null, null, null, null]);
+  });
+});
+
+describe("the imperative's English is a command, not a statement", () => {
+  it("drops the subject, and says let's for the first person plural", () => {
+    // Rendering through the pronoun table would give "you are" for "sois".
+    expect(conjugateEnglish("fr", fr("être"), "imperatif", 1)).toBe("be!");
+    expect(conjugateEnglish("fr", fr("parler"), "imperatif", 3)).toBe("let's speak!");
+    expect(conjugateEnglish("de", de("gehen"), "imperativ", 5)).toBe("go!");
+    expect(conjugateEnglish("de", de("essen"), "imperativ", 3)).toBe("let's eat!");
+  });
+});
+
+describe("every verb in every mood produces a usable form for every person it has", () => {
+  /* The rules run over 190 French and 355 German verbs. A stem that does not
    * fit shows up as an empty or undefined cell rather than an error, so the
-   * sweep is the only thing that would catch it. */
+   * sweep is the only thing that would catch it.
+   *
+   * Since the imperative arrived this also asserts the other direction: a
+   * person a mood does *not* have must be null, never an empty string. The
+   * whole app distinguishes "absent" from "blank", and a "" here would read
+   * as a data bug at every call site. */
   for (const [lang, verbs, tenses] of [
     ["fr", [...FR_VERBS, ...FR_C1_VERBS], FR_TENSES],
     ["de", [...DE_VERBS, ...DE_C1_VERBS], DE_TENSES],
@@ -93,10 +195,19 @@ describe("every verb in every mood produces six usable forms", () => {
         for (const t of tenses) {
           const out = conjugate(lang, v, t.key);
           if (out.length !== 6) bad.push(`${v.inf}/${t.key}: ${out.length} forms`);
-          out.forEach((f, i) => {
+          if (!hasTense(lang, v, t.key)) {
+            if (out.some((f) => f !== null)) bad.push(`${v.inf}/${t.key}: has forms it should not`);
+            continue;
+          }
+          const has = personsFor(lang, t.key);
+          for (const i of has) {
+            const f = out[i];
             if (!f || /undefined|NaN/.test(f)) bad.push(`${v.inf}/${t.key}[${i}] = ${f}`);
-          });
-          const en = conjugateEnglish(lang, v, t.key, 0);
+          }
+          for (const i of ALL_PERSONS) {
+            if (!has.includes(i) && out[i] !== null) bad.push(`${v.inf}/${t.key}[${i}] = ${JSON.stringify(out[i])}, want null`);
+          }
+          const en = conjugateEnglish(lang, v, t.key, has[0]);
           if (!en || /undefined/.test(en)) bad.push(`${v.inf}/${t.key} english = ${en}`);
         }
       }

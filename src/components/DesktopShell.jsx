@@ -1,6 +1,7 @@
 import { C } from "../theme.js";
 import GlobalStyles from "./GlobalStyles.jsx";
 import Rail from "./Rail.jsx";
+import { CONTENT_MAX } from "../lib/sections.js";
 
 /* The ≥1024px frame: a fixed rail beside a scrolling main column.
  *
@@ -26,8 +27,19 @@ export default function DesktopShell({
         theme={theme}
         onThemeChange={onThemeChange}
       />
-      <main className="flex-1 min-w-0 overflow-x-hidden" style={{ padding: "22px 26px" }}>
-        {children}
+      {/* The rail is fixed, so the main column carries all the flex. Its
+        * padding scales with the viewport rather than sitting at a constant
+        * 26px, which looks mean at 2560px and wasteful at 1024. The inner
+        * div is what caps and centres: past `CONTENT_MAX` the content stops
+        * growing and takes the middle, instead of stretching a card grid to
+        * arm's length across a wide monitor. */}
+      <main
+        className="flex-1 min-w-0 overflow-x-hidden"
+        style={{ padding: "clamp(16px, 2.2vw, 40px) clamp(18px, 2.6vw, 56px)" }}
+      >
+        <div className="mx-auto w-full" style={{ maxWidth: CONTENT_MAX }}>
+          {children}
+        </div>
       </main>
     </div>
   );

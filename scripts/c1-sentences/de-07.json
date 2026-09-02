@@ -1,0 +1,652 @@
+[
+{
+"t": "Weiterbildung",
+"s": "Weiterbildung findet meist außerhalb der Arbeitszeit statt.",
+"se": "Further training mostly takes place outside working hours."
+},
+{
+"t": "Fachkräftemangel",
+"s": "Der Fachkräftemangel trifft das Handwerk härter als die Industrie.",
+"se": "The skilled labour shortage hits the trades harder than industry."
+},
+{
+"t": "Arbeitslosenquote",
+"s": "Die Arbeitslosenquote verdeckt große regionale Unterschiede.",
+"se": "The unemployment rate conceals large regional differences."
+},
+{
+"t": "Mindestlohn",
+"s": "Der Mindestlohn wurde zuletzt deutlich über die Inflation angehoben.",
+"se": "The minimum wage was last raised well above inflation."
+},
+{
+"t": "Lohnnebenkosten",
+"s": "Die Lohnnebenkosten liegen seit Jahren über vierzig Prozent.",
+"se": "Non-wage labour costs have been above forty per cent for years."
+},
+{
+"t": "Rentenversicherung",
+"s": "Die Rentenversicherung wird zunehmend aus Steuern mitfinanziert.",
+"se": "Statutory pension insurance is increasingly co-funded from taxes."
+},
+{
+"t": "Vereinbarkeit von Familie und Beruf",
+"s": "Die Vereinbarkeit von Familie und Beruf bleibt vor allem ein Frauenproblem.",
+"se": "Work–life balance remains above all a women's problem."
+},
+{
+"t": "Chancengleichheit",
+"s": "Chancengleichheit endet in Deutschland oft an der Grundschule.",
+"se": "Equality of opportunity in Germany often ends at primary school."
+},
+{
+"t": "Bildungsgerechtigkeit",
+"s": "Bildungsgerechtigkeit lässt sich schwerer messen als beklagen.",
+"se": "Educational equity is harder to measure than to lament."
+},
+{
+"t": "soziale Ungleichheit",
+"s": "Die soziale Ungleichheit wächst schneller als das Einkommen.",
+"se": "Social inequality is growing faster than income."
+},
+{
+"t": "soziale Mobilität",
+"s": "Die soziale Mobilität ist seit den achtziger Jahren gesunken.",
+"se": "Social mobility has fallen since the 1980s."
+},
+{
+"t": "Schere zwischen Arm und Reich",
+"s": "Die Schere zwischen Arm und Reich öffnet sich weiter.",
+"se": "The gap between rich and poor is widening further."
+},
+{
+"t": "Armutsgefährdung",
+"s": "Die Armutsgefährdung liegt bei Alleinerziehenden dreimal so hoch.",
+"se": "The risk of poverty is three times as high among single parents."
+},
+{
+"t": "Grundsicherung",
+"s": "Die Grundsicherung im Alter beantragen viele Berechtigte gar nicht.",
+"se": "Many entitled people do not even apply for basic old-age support."
+},
+{
+"t": "Bürgergeld",
+"s": "Das Bürgergeld ersetzte 2023 die alte Grundsicherung.",
+"se": "The citizen's allowance replaced the old basic support in 2023."
+},
+{
+"t": "Sozialstaat",
+"s": "Der Sozialstaat ist teurer und wirksamer als seine Kritiker behaupten.",
+"se": "The welfare state is more expensive and more effective than its critics claim."
+},
+{
+"t": "Daseinsvorsorge",
+"s": "Daseinsvorsorge lässt sich nicht allein über den Markt organisieren.",
+"se": "Essential public provision cannot be organised through the market alone."
+},
+{
+"t": "Teilhabe",
+"s": "Teilhabe scheitert oft an ganz praktischen Hürden.",
+"se": "Participation often fails on entirely practical obstacles."
+},
+{
+"t": "Ausgrenzung",
+"s": "Ausgrenzung beginnt selten mit einer Entscheidung.",
+"se": "Exclusion rarely begins with a decision."
+},
+{
+"t": "Benachteiligung",
+"s": "Eine mittelbare Benachteiligung ist ebenso verboten wie eine offene.",
+"se": "Indirect disadvantaging is as prohibited as open discrimination."
+},
+{
+"t": "Diskriminierung",
+"s": "Diskriminierung lässt sich mit Bewerbungstests recht gut messen.",
+"se": "Discrimination can be measured quite well with application testing."
+},
+{
+"t": "Zuwanderung",
+"s": "Ohne Zuwanderung schrumpft die Erwerbsbevölkerung deutlich.",
+"se": "Without immigration the working population shrinks markedly."
+},
+{
+"t": "Migration",
+"s": "Migration wird häufiger als Problem denn als Tatsache beschrieben.",
+"se": "Migration is more often described as a problem than as a fact."
+},
+{
+"t": "Geflüchteten",
+"s": "Den Geflüchteten fehlt es vor allem an Wohnraum.",
+"se": "What refugees lack above all is housing."
+},
+{
+"t": "Asylverfahren",
+"s": "Das Asylverfahren dauert im Durchschnitt vierzehn Monate.",
+"se": "The asylum procedure takes fourteen months on average."
+},
+{
+"t": "Aufenthaltserlaubnis",
+"s": "Die Aufenthaltserlaubnis wurde nur für ein Jahr erteilt.",
+"se": "The residence permit was granted for one year only."
+},
+{
+"t": "Abschiebung",
+"s": "Die Abschiebung wurde vom Gericht im letzten Moment gestoppt.",
+"se": "The deportation was stopped by the court at the last moment."
+},
+{
+"t": "Integration",
+"s": "Integration misst sich am Zugang zu Arbeit und Wohnung.",
+"se": "Integration is measured by access to work and housing."
+},
+{
+"t": "Leitkultur",
+"s": "Der Begriff Leitkultur wird von jeder Seite anders gefüllt.",
+"se": "The term \"guiding culture\" is filled with different content by each side."
+},
+{
+"t": "Parallelgesellschaft",
+"s": "Von einer Parallelgesellschaft zu sprechen verdeckt mehr, als es erklärt.",
+"se": "Talk of a parallel society conceals more than it explains."
+},
+{
+"t": "Willkommenskultur",
+"s": "Die Willkommenskultur von 2015 hielt nicht einmal ein Jahr.",
+"se": "The culture of welcome of 2015 did not last even a year."
+},
+{
+"t": "Überalterung",
+"s": "Die Überalterung der Belegschaften ist längst absehbar.",
+"se": "The ageing of workforces has long been foreseeable."
+},
+{
+"t": "demografische Wandel",
+"s": "Der demografische Wandel wirkt langsam und dafür unerbittlich.",
+"se": "Demographic change works slowly and, in return, relentlessly."
+},
+{
+"t": "Geburtenrate",
+"s": "Die Geburtenrate fiel zuletzt auf den niedrigsten Stand seit 2009.",
+"se": "The birth rate recently fell to its lowest level since 2009."
+},
+{
+"t": "Pflegebedürftigkeit",
+"s": "Pflegebedürftigkeit beginnt für die meisten deutlich später als früher.",
+"se": "For most people the need for care begins considerably later than it used to."
+},
+{
+"t": "Generationenvertrag",
+"s": "Der Generationenvertrag beruht auf einer Annahme, die nicht mehr stimmt.",
+"se": "The intergenerational contract rests on an assumption that no longer holds."
+},
+{
+"t": "Gleichstellung",
+"s": "Die Gleichstellung ist im Gesetz weiter als in der Praxis.",
+"se": "Equality has gone further in law than in practice."
+},
+{
+"t": "Frauenquote",
+"s": "Die Frauenquote gilt bislang nur für börsennotierte Unternehmen.",
+"se": "The gender quota so far applies only to listed companies."
+},
+{
+"t": "Ehrenamt",
+"s": "Das Ehrenamt trägt einen großen Teil der sozialen Infrastruktur.",
+"se": "Voluntary work carries a large part of the social infrastructure."
+},
+{
+"t": "Zusammenhalt",
+"s": "Der gesellschaftliche Zusammenhalt lässt sich kaum verordnen.",
+"se": "Social cohesion can hardly be decreed."
+},
+{
+"t": "Zivilgesellschaft",
+"s": "Die Zivilgesellschaft reagierte schneller als jede Behörde.",
+"se": "Civil society reacted faster than any authority."
+},
+{
+"t": "Wohnraum",
+"s": "Bezahlbarer Wohnraum fehlt inzwischen auch in mittleren Städten.",
+"se": "Affordable housing is now lacking in medium-sized cities too."
+},
+{
+"t": "Mietpreisbremse",
+"s": "Die Mietpreisbremse wirkt dort am wenigsten, wo sie am nötigsten wäre.",
+"se": "Rent control works least where it would be most needed."
+},
+{
+"t": "Gentrifizierung",
+"s": "Gentrifizierung verläuft hier langsamer als in Berlin.",
+"se": "Gentrification proceeds more slowly here than in Berlin."
+},
+{
+"t": "Obdachlosigkeit",
+"s": "Obdachlosigkeit wird bundesweit erst seit 2022 gezählt.",
+"se": "Homelessness has only been counted nationwide since 2022."
+},
+{
+"t": "Vereinsamung",
+"s": "Vereinsamung betrifft junge Menschen häufiger als vermutet.",
+"se": "Loneliness affects young people more often than assumed."
+},
+{
+"t": "Klimawandel",
+"s": "Der Klimawandel verändert die Landwirtschaft schneller als die Politik.",
+"se": "Climate change is altering agriculture faster than politics."
+},
+{
+"t": "Erderwärmung",
+"s": "Die Erderwärmung liegt bereits über einem Grad.",
+"se": "Global warming already exceeds one degree."
+},
+{
+"t": "Treibhauseffekt",
+"s": "Der Treibhauseffekt ist seit dem 19. Jahrhundert physikalisch beschrieben.",
+"se": "The greenhouse effect has been described physically since the nineteenth century."
+},
+{
+"t": "Treibhausgasemissionen",
+"s": "Die Treibhausgasemissionen sanken zuletzt vor allem wegen der Konjunktur.",
+"se": "Greenhouse gas emissions recently fell mainly because of the economy."
+},
+{
+"t": "CO2-Ausstoß",
+"s": "Der CO2-Ausstoß pro Kopf liegt weiterhin über dem EU-Schnitt.",
+"se": "CO2 emissions per head remain above the EU average."
+},
+{
+"t": "Kohlenstoffausstoß",
+"s": "Der Kohlenstoffausstoß der Zementindustrie ist schwer zu senken.",
+"se": "The carbon output of the cement industry is hard to reduce."
+},
+{
+"t": "Klimaneutralität",
+"s": "Klimaneutralität bis 2045 verlangt ein Tempo ohne Vorbild.",
+"se": "Climate neutrality by 2045 demands an unprecedented pace."
+},
+{
+"t": "ökologische Fußabdruck",
+"s": "Der ökologische Fußabdruck lenkt von den großen Verursachern ab.",
+"se": "The ecological footprint distracts from the major emitters."
+},
+{
+"t": "Energiewende",
+"s": "Die Energiewende scheitert seltener an der Technik als am Netz.",
+"se": "The energy transition founders less often on technology than on the grid."
+},
+{
+"t": "Verkehrswende",
+"s": "Die Verkehrswende kommt in ländlichen Räumen kaum voran.",
+"se": "The transport transition is making little headway in rural areas."
+},
+{
+"t": "Wärmewende",
+"s": "Die Wärmewende ist teurer als jede andere Einzelmaßnahme.",
+"se": "The heating transition is more expensive than any other single measure."
+},
+{
+"t": "erneuerbaren Energien",
+"s": "Bei den erneuerbaren Energien ist das Speicherproblem ungelöst.",
+"se": "With renewable energies the storage problem is unsolved."
+},
+{
+"t": "fossilen Brennstoffe",
+"s": "Die fossilen Brennstoffe decken weiterhin drei Viertel des Bedarfs.",
+"se": "Fossil fuels still cover three quarters of demand."
+},
+{
+"t": "Kohleausstieg",
+"s": "Der Kohleausstieg wurde mehrfach vorgezogen und wieder verschoben.",
+"se": "The coal phase-out was repeatedly brought forward and postponed again."
+},
+{
+"t": "Atomausstieg",
+"s": "Der Atomausstieg war 2011 in wenigen Wochen beschlossen.",
+"se": "The nuclear phase-out was decided within a few weeks in 2011."
+},
+{
+"t": "Stromnetz",
+"s": "Das Stromnetz ist der eigentliche Engpass der Energiewende.",
+"se": "The electricity grid is the real bottleneck of the energy transition."
+},
+{
+"t": "Netzstabilität",
+"s": "Die Netzstabilität wurde bislang jedes Jahr gehalten.",
+"se": "Grid stability has been maintained every year so far."
+},
+{
+"t": "Wirkungsgrad",
+"s": "Der Wirkungsgrad sinkt bei hohen Temperaturen deutlich.",
+"se": "Efficiency drops markedly at high temperatures."
+},
+{
+"t": "Speicherung",
+"s": "Die Speicherung über mehrere Wochen bleibt technisch ungelöst.",
+"se": "Storage over several weeks remains technically unsolved."
+},
+{
+"t": "Grundlast",
+"s": "Der Begriff Grundlast passt schlecht zu einem volatilen Erzeugungsmix.",
+"se": "The term base load fits a volatile generation mix badly."
+},
+{
+"t": "Versorgungssicherheit",
+"s": "Versorgungssicherheit wurde lange als selbstverständlich behandelt.",
+"se": "Security of supply was long treated as a given."
+},
+{
+"t": "Abhängigkeit von Importen",
+"s": "Die Abhängigkeit von Importen war politisch bekannt und gewollt.",
+"se": "Import dependency was politically known and intended."
+},
+{
+"t": "Nachhaltigkeit",
+"s": "Nachhaltigkeit ist zum Etikett für fast alles geworden.",
+"se": "Sustainability has become a label for almost anything."
+},
+{
+"t": "Kreislaufwirtschaft",
+"s": "Die Kreislaufwirtschaft scheitert oft an fehlenden Rücknahmesystemen.",
+"se": "The circular economy often founders on missing take-back systems."
+},
+{
+"t": "Ressourcenschonung",
+"s": "Ressourcenschonung rechnet sich erst bei hohen Rohstoffpreisen.",
+"se": "Conservation of resources only pays off at high raw-material prices."
+},
+{
+"t": "Artenvielfalt",
+"s": "Die Artenvielfalt nimmt in Agrarlandschaften am schnellsten ab.",
+"se": "Biodiversity is declining fastest in agricultural landscapes."
+},
+{
+"t": "Artensterben",
+"s": "Das Artensterben verläuft leiser als der Klimawandel.",
+"se": "Species extinction proceeds more quietly than climate change."
+},
+{
+"t": "Lebensraum",
+"s": "Der Lebensraum vieler Arten ist auf Restflächen geschrumpft.",
+"se": "The habitat of many species has shrunk to remnant areas."
+},
+{
+"t": "Entwaldung",
+"s": "Die Entwaldung nahm nach zwei ruhigen Jahren wieder zu.",
+"se": "Deforestation increased again after two quiet years."
+},
+{
+"t": "Flächenversiegelung",
+"s": "Die Flächenversiegelung soll bis 2030 halbiert werden.",
+"se": "Land sealing is to be halved by 2030."
+},
+{
+"t": "Zersiedelung",
+"s": "Die Zersiedelung frisst mehr Fläche als der Wohnungsbau selbst.",
+"se": "Urban sprawl eats up more land than housebuilding itself."
+},
+{
+"t": "Bodenerosion",
+"s": "Bodenerosion kostet jedes Jahr Millionen Tonnen Humus.",
+"se": "Soil erosion costs millions of tonnes of humus every year."
+},
+{
+"t": "Grundwasserspiegel",
+"s": "Der Grundwasserspiegel hat sich nach drei nassen Wintern kaum erholt.",
+"se": "The water table has barely recovered after three wet winters."
+},
+{
+"t": "Dürre",
+"s": "Die Dürre hat den Ertrag um ein Drittel gemindert.",
+"se": "The drought cut the yield by a third."
+},
+{
+"t": "Hochwasser",
+"s": "Das Hochwasser erreichte den höchsten Pegel seit 1962.",
+"se": "The flood reached the highest level since 1962."
+},
+{
+"t": "Hitzewelle",
+"s": "Die Hitzewelle forderte mehr Opfer als jeder Sturm.",
+"se": "The heatwave claimed more victims than any storm."
+},
+{
+"t": "Extremwetterereignis",
+"s": "Jedes einzelne Extremwetterereignis lässt sich nur schwer zuordnen.",
+"se": "Any single extreme weather event is hard to attribute."
+},
+{
+"t": "Anpassung",
+"s": "Anpassung ist billiger als Wiederaufbau, aber politisch unattraktiv.",
+"se": "Adaptation is cheaper than rebuilding, but politically unattractive."
+},
+{
+"t": "Feinstaubbelastung",
+"s": "Die Feinstaubbelastung sinkt langsamer als erhofft.",
+"se": "Particulate pollution is falling more slowly than hoped."
+},
+{
+"t": "Schadstoffbelastung",
+"s": "Die Schadstoffbelastung wird nur an wenigen Stellen gemessen.",
+"se": "The pollutant load is measured at only a few points."
+},
+{
+"t": "Mülltrennung",
+"s": "Mülltrennung funktioniert dort am besten, wo sie bequem ist.",
+"se": "Waste separation works best where it is convenient."
+},
+{
+"t": "Verwertung",
+"s": "Die Verwertung von Bauschutt steckt noch in den Anfängen.",
+"se": "The recovery of construction rubble is still in its infancy."
+},
+{
+"t": "Verschwendung",
+"s": "Die Verschwendung von Lebensmitteln beginnt lange vor dem Haushalt.",
+"se": "Food waste begins long before the household."
+},
+{
+"t": "Raubbau",
+"s": "Der Raubbau an den Böden rächt sich erst nach Jahrzehnten.",
+"se": "The over-exploitation of soils takes its revenge only after decades."
+},
+{
+"t": "Grünfärberei",
+"s": "Grünfärberei ist inzwischen ein wettbewerbsrechtliches Problem.",
+"se": "Greenwashing has become a competition-law problem."
+},
+{
+"t": "Öffentlichkeit",
+"s": "Die Öffentlichkeit erfuhr davon erst durch eine Anfrage.",
+"se": "The public learned of it only through a parliamentary question."
+},
+{
+"t": "Berichterstattung",
+"s": "Die Berichterstattung konzentrierte sich auf zwei Tage.",
+"se": "Coverage concentrated on two days."
+},
+{
+"t": "Meinungsbildung",
+"s": "Die Meinungsbildung findet zunehmend außerhalb der Redaktionen statt.",
+"se": "Opinion formation increasingly takes place outside newsrooms."
+},
+{
+"t": "Meinungsvielfalt",
+"s": "Meinungsvielfalt entsteht nicht automatisch aus mehr Kanälen.",
+"se": "Diversity of opinion does not arise automatically from more channels."
+},
+{
+"t": "Leitartikel",
+"s": "Der Leitartikel widersprach der eigenen Nachrichtenlage.",
+"se": "The leading article contradicted the paper's own reporting."
+},
+{
+"t": "Kommentar",
+"s": "Der Kommentar war schärfer als jede Analyse im Blatt.",
+"se": "The opinion piece was sharper than any analysis in the paper."
+},
+{
+"t": "Glosse",
+"s": "Die Glosse traf den Ton besser als die Titelgeschichte.",
+"se": "The satirical column hit the tone better than the cover story."
+},
+{
+"t": "Recherche",
+"s": "Die Recherche zog sich über anderthalb Jahre.",
+"se": "The investigation stretched over a year and a half."
+},
+{
+"t": "Investigativjournalismus",
+"s": "Investigativjournalismus braucht Zeit, die kaum ein Verlag noch bezahlt.",
+"se": "Investigative journalism needs time that hardly any publisher still pays for."
+},
+{
+"t": "Informant",
+"s": "Der Informant blieb bis heute unbekannt.",
+"se": "The source has remained unknown to this day."
+},
+{
+"t": "Quellenschutz",
+"s": "Der Quellenschutz gilt auch gegenüber Ermittlungsbehörden.",
+"se": "Protection of sources applies even towards investigating authorities."
+},
+{
+"t": "Sorgfaltspflicht",
+"s": "Die Sorgfaltspflicht endet nicht bei der ersten Bestätigung.",
+"se": "The duty of care does not end at the first confirmation."
+},
+{
+"t": "Gegendarstellung",
+"s": "Die Gegendarstellung erschien an gleicher Stelle wie der Bericht.",
+"se": "The correction appeared in the same place as the report."
+},
+{
+"t": "Verleumdung",
+"s": "Verleumdung setzt voraus, dass die Behauptung wissentlich falsch ist.",
+"se": "Defamation presupposes that the claim is knowingly false."
+},
+{
+"t": "üble Nachrede",
+"s": "Die üble Nachrede ist in Deutschland ein Straftatbestand.",
+"se": "Malicious gossip is a criminal offence in Germany."
+},
+{
+"t": "Zensur",
+"s": "Zensur findet in Deutschland nicht statt, heißt es im Grundgesetz.",
+"se": "Censorship does not take place, says the Basic Law."
+},
+{
+"t": "Schere im Kopf",
+"s": "Die Schere im Kopf wirkt zuverlässiger als jedes Verbot.",
+"se": "Self-censorship works more reliably than any ban."
+},
+{
+"t": "Desinformation",
+"s": "Desinformation verbreitet sich schneller als ihre Widerlegung.",
+"se": "Disinformation spreads faster than its refutation."
+},
+{
+"t": "Falschmeldung",
+"s": "Die Falschmeldung wurde nach vier Stunden zurückgezogen.",
+"se": "The false report was withdrawn after four hours."
+},
+{
+"t": "Verschwörungserzählung",
+"s": "Jede Verschwörungserzählung erklärt zu viel auf einmal.",
+"se": "Every conspiracy narrative explains too much at once."
+},
+{
+"t": "Faktencheck",
+"s": "Ein Faktencheck erreicht selten dasselbe Publikum wie die Behauptung.",
+"se": "A fact-check rarely reaches the same audience as the claim."
+},
+{
+"t": "Filterblase",
+"s": "Die Filterblase erklärt weniger, als der Begriff verspricht.",
+"se": "The filter bubble explains less than the term promises."
+},
+{
+"t": "Echokammer",
+"s": "Eine Echokammer entsteht auch ohne jeden Algorithmus.",
+"se": "An echo chamber arises even without any algorithm."
+},
+{
+"t": "Algorithmus",
+"s": "Welcher Algorithmus hier entscheidet, ist Betriebsgeheimnis.",
+"se": "Which algorithm decides here is a trade secret."
+},
+{
+"t": "Datenschutzgrundverordnung",
+"s": "Die Datenschutzgrundverordnung gilt seit 2018 unmittelbar in allen Mitgliedstaaten.",
+"se": "The GDPR has applied directly in all member states since 2018."
+},
+{
+"t": "Datenschutz",
+"s": "Datenschutz wird gern als Ausrede für Untätigkeit benutzt.",
+"se": "Data protection is readily used as an excuse for inaction."
+},
+{
+"t": "Datensparsamkeit",
+"s": "Datensparsamkeit ist ein Grundsatz und keine Empfehlung.",
+"se": "Data minimisation is a principle, not a recommendation."
+},
+{
+"t": "Überwachung",
+"s": "Die Überwachung öffentlicher Plätze nahm ohne Debatte zu.",
+"se": "Surveillance of public spaces increased without debate."
+},
+{
+"t": "Vorratsdatenspeicherung",
+"s": "Die Vorratsdatenspeicherung wurde zweimal für rechtswidrig erklärt.",
+"se": "Data retention was declared unlawful twice."
+},
+{
+"t": "Hackerangriff",
+"s": "Ein Hackerangriff legte die Verwaltung für elf Tage lahm.",
+"se": "A hacking attack paralysed the administration for eleven days."
+},
+{
+"t": "Sicherheitslücke",
+"s": "Die Sicherheitslücke war seit zwei Jahren bekannt.",
+"se": "The vulnerability had been known for two years."
+},
+{
+"t": "Ausfall",
+"s": "Der Ausfall betraf mehr als eine Million Anschlüsse.",
+"se": "The outage affected more than a million connections."
+},
+{
+"t": "Digitalisierung",
+"s": "Digitalisierung heißt hier vor allem: dieselben Formulare als PDF.",
+"se": "Digitalisation here means above all the same forms as PDFs."
+},
+{
+"t": "digitale Kluft",
+"s": "Die digitale Kluft verläuft entlang von Alter und Einkommen.",
+"se": "The digital divide runs along age and income."
+},
+{
+"t": "Medienkompetenz",
+"s": "Medienkompetenz lässt sich schlecht in einem Schulfach unterbringen.",
+"se": "Media literacy fits badly into a single school subject."
+},
+{
+"t": "Hassrede",
+"s": "Hassrede wird häufiger gemeldet als gelöscht.",
+"se": "Hate speech is reported more often than it is deleted."
+},
+{
+"t": "Löschen",
+"s": "Das Löschen rechtswidriger Inhalte muss binnen 24 Stunden erfolgen.",
+"se": "The deletion of unlawful content must take place within 24 hours."
+},
+{
+"t": "Plattform",
+"s": "Die Plattform haftet erst ab Kenntnis des Verstoßes.",
+"se": "The platform is liable only from the moment it knows of the breach."
+},
+{
+"t": "geplante Obsoleszenz",
+"s": "Geplante Obsoleszenz ist schwer zu beweisen und leicht zu behaupten.",
+"se": "Planned obsolescence is hard to prove and easy to allege."
+}
+]

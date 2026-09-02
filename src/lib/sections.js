@@ -47,3 +47,37 @@ export const IN_DRILL = new Set([
 /* The stages that run inside the desktop study frame (stage rail + ledger).
  * `summary` is excluded — it gets its own full-width per-word table. */
 export const STUDY_SCREENS = new Set(["learn", "matching", "choose", "practice", "sentence"]);
+
+/* How much width a screen should be given at ≥1024px.
+ *
+ * The desktop redesigns lay themselves out — grids, side rails, facing
+ * columns — and have to be handed the room to do it. Everything else is still
+ * the phone's single column, which reads as a stranded phone screen if it is
+ * allowed to stretch, so it keeps a reading measure.
+ *
+ * The home screen was the trap: it *has* a desktop design, but that design is
+ * rendered inside the shared `screens` block rather than as its own branch, so
+ * the single-column cap was landing on it and leaving a third of a 1440px
+ * window empty.
+ */
+export const FULL_WIDTH_SCREENS = new Set([
+  "setup",                                        // HomeDesktop
+  "grammarWorkbench", "grammarHub", "summary",
+  "wordsHub", "wordsInput", "wordsReview",
+  "readingSelect", "readingQuiz", "readingDone",
+  "phraseSelect", "phraseMatch", "phraseDone",
+  "listenSelect", "dictation", "dictationDone", "speaking", "speakingDone",
+  "importPaste", "importReader", "importLibrary",
+  "progress", "sentence",
+]);
+
+/** The reading measure for screens that are still one phone-width column. */
+export const COLUMN_WIDTH = 720;
+
+/* The widest the main column ever gets. Past this the content centres rather
+ * than sprawling. Set generously — the screens that would suffer from the
+ * extra width already carry their own measure (a reading passage stops at
+ * 56ch whatever the frame does), while the grids genuinely get more useful
+ * with more columns, and 98 C1 drawers are easier to scan five across than
+ * three. */
+export const CONTENT_MAX = 1600;

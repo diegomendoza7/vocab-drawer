@@ -1,0 +1,602 @@
+[
+{
+"t": "Ursache für",
+"s": "Die Ursache für den Ausfall war ein einzelnes Bauteil.",
+"se": "The cause of the failure was a single component."
+},
+{
+"t": "Verzicht auf",
+"s": "Der Verzicht auf Kernkraft war politisch, nicht technisch begründet.",
+"se": "The renunciation of nuclear power was politically, not technically, motivated."
+},
+{
+"t": "Zugang zu",
+"s": "Der Zugang zu den Akten wurde erst nach Jahren gewährt.",
+"se": "Access to the files was granted only after years."
+},
+{
+"t": "Zweifel an",
+"s": "Zweifel an der Methode wurden früh geäußert.",
+"se": "Doubts about the method were voiced early."
+},
+{
+"t": "Auseinandersetzung",
+"s": "Eine ernsthafte Auseinandersetzung mit der Kritik fehlt völlig.",
+"se": "A serious engagement with the criticism is entirely absent."
+},
+{
+"t": "Erörterung",
+"s": "Die Erörterung dieser Frage füllt ein ganzes Kapitel.",
+"se": "The examination of this question fills a whole chapter."
+},
+{
+"t": "Betrachtung",
+"s": "Bei genauerer Betrachtung löst sich der Widerspruch auf.",
+"se": "On closer examination the contradiction dissolves."
+},
+{
+"t": "Überlegung",
+"s": "Diese Überlegung führt weiter als der Befund selbst.",
+"se": "This line of reasoning leads further than the finding itself."
+},
+{
+"t": "Erwägung",
+"s": "Eine Verschiebung wurde nie ernsthaft in Erwägung gezogen.",
+"se": "A postponement was never seriously considered."
+},
+{
+"t": "Schlussfolgerung",
+"s": "Die Schlussfolgerung geht weit über die Daten hinaus.",
+"se": "The conclusion goes well beyond the data."
+},
+{
+"t": "Deutung",
+"s": "Jede Deutung dieses Fundes bleibt vorläufig.",
+"se": "Every interpretation of this find remains provisional."
+},
+{
+"t": "Auslegung",
+"s": "Die enge Auslegung der Norm setzte sich schließlich durch.",
+"se": "The narrow interpretation of the rule eventually prevailed."
+},
+{
+"t": "Auffassung",
+"s": "Nach Auffassung des Gerichts war die Frist gewahrt.",
+"se": "In the court's view the deadline was met."
+},
+{
+"t": "Überblick",
+"s": "Der Überblick über die Literatur ist erfreulich knapp gehalten.",
+"se": "The overview of the literature is pleasingly concise."
+},
+{
+"t": "Gliederung",
+"s": "Die Gliederung verrät mehr über die These als das Vorwort.",
+"se": "The outline reveals more about the thesis than the preface does."
+},
+{
+"t": "Aufbau",
+"s": "Der Aufbau des Bandes folgt keiner erkennbaren Logik.",
+"se": "The structure of the volume follows no discernible logic."
+},
+{
+"t": "Gefüge",
+"s": "Das soziale Gefüge der Region hat sich vollständig verändert.",
+"se": "The social fabric of the region has changed completely."
+},
+{
+"t": "Tendenz",
+"s": "Die Tendenz ist eindeutig, das Tempo überrascht.",
+"se": "The trend is unambiguous; the pace is surprising."
+},
+{
+"t": "Wandel",
+"s": "Der demografische Wandel wird die Debatte noch lange bestimmen.",
+"se": "Demographic change will shape the debate for a long time yet."
+},
+{
+"t": "Umbruch",
+"s": "Die Branche steckt mitten in einem tiefgreifenden Umbruch.",
+"se": "The sector is in the middle of a far-reaching upheaval."
+},
+{
+"t": "Verschiebung",
+"s": "Eine leichte Verschiebung der Altersstruktur genügt schon.",
+"se": "A slight shift in the age structure is already enough."
+},
+{
+"t": "Gefälle",
+"s": "Das Nord-Süd-Gefälle hat sich seit 2010 wieder verstärkt.",
+"se": "The north–south disparity has widened again since 2010."
+},
+{
+"t": "Kluft",
+"s": "Die Kluft zwischen Anspruch und Wirklichkeit ist beträchtlich.",
+"se": "The gulf between aspiration and reality is considerable."
+},
+{
+"t": "Widerspruch",
+"s": "Ein offener Widerspruch zieht sich durch den ganzen Text.",
+"se": "An open contradiction runs through the whole text."
+},
+{
+"t": "Spannungsfeld",
+"s": "Die Behörde arbeitet im Spannungsfeld von Aufsicht und Beratung.",
+"se": "The authority works in the field of tension between oversight and advice."
+},
+{
+"t": "Tragfähigkeit",
+"s": "Die Tragfähigkeit des Modells wurde nie unabhängig geprüft.",
+"se": "The soundness of the model was never independently tested."
+},
+{
+"t": "Aussagekraft",
+"s": "Die Aussagekraft der Zahlen ist bei so kleinen Gruppen gering.",
+"se": "The informative value of the figures is low with groups this small."
+},
+{
+"t": "Stichhaltigkeit",
+"s": "An der Stichhaltigkeit der Beweisführung besteht kein Zweifel.",
+"se": "There is no doubt about the soundness of the reasoning."
+},
+{
+"t": "Nachvollziehbarkeit",
+"s": "Die Nachvollziehbarkeit der Rechenwege ist Voraussetzung jeder Veröffentlichung.",
+"se": "The traceability of the calculations is a precondition of any publication."
+},
+{
+"t": "Verhältnismäßigkeit",
+"s": "Die Verhältnismäßigkeit der Maßnahme wurde vom Gericht verneint.",
+"se": "The proportionality of the measure was denied by the court."
+},
+{
+"t": "Zwangsläufigkeit",
+"s": "Von einer Zwangsläufigkeit dieser Entwicklung kann keine Rede sein.",
+"se": "There can be no talk of this development being inevitable."
+},
+{
+"t": "Sonderfall",
+"s": "Der Fall gilt bis heute als Sonderfall ohne Parallele.",
+"se": "The case is still regarded as a special case without parallel."
+},
+{
+"t": "Regelfall",
+"s": "Im Regelfall entscheidet die Kammer binnen sechs Wochen.",
+"se": "As a rule the chamber decides within six weeks."
+},
+{
+"t": "Ausnahme",
+"s": "Jede Ausnahme muss einzeln begründet werden.",
+"se": "Every exception must be justified individually."
+},
+{
+"t": "Bandbreite",
+"s": "Die Bandbreite der Schätzungen reicht von zwei bis zwölf Prozent.",
+"se": "The range of estimates runs from two to twelve per cent."
+},
+{
+"t": "Spektrum",
+"s": "Das Spektrum der vertretenen Positionen ist erstaunlich breit.",
+"se": "The spectrum of positions represented is astonishingly broad."
+},
+{
+"t": "feststellen",
+"s": "Die Prüfer konnten keine Unregelmäßigkeiten feststellen.",
+"se": "The auditors were unable to establish any irregularities."
+},
+{
+"t": "festhalten",
+"s": "Man sollte an dieser Stelle festhalten, dass die Daten unvollständig sind.",
+"se": "It should be recorded at this point that the data are incomplete."
+},
+{
+"t": "konstatieren",
+"s": "Man kann nüchtern konstatieren, dass die Ziele verfehlt wurden.",
+"se": "One can soberly note that the objectives were missed."
+},
+{
+"t": "darlegen",
+"s": "Der Antragsteller muss seine Gründe schriftlich darlegen.",
+"se": "The applicant must set out his reasons in writing."
+},
+{
+"t": "ausführen",
+"s": "Der Autor wird diesen Punkt im nächsten Kapitel ausführen.",
+"se": "The author will elaborate on this point in the next chapter."
+},
+{
+"t": "erörtern",
+"s": "Der Aufsatz will drei Einwände nacheinander erörtern.",
+"se": "The essay sets out to examine three objections one after another."
+},
+{
+"t": "thematisieren",
+"s": "Kaum ein Beitrag will die Kosten offen thematisieren.",
+"se": "Hardly any contribution is willing to address the costs openly."
+},
+{
+"t": "aufgreifen",
+"s": "Der Gesetzgeber wollte den Vorschlag zunächst nicht aufgreifen.",
+"se": "The legislator was at first unwilling to take up the proposal."
+},
+{
+"t": "eingehen auf",
+"s": "Der Beitrag will eingehen auf Einwände, die bislang übergangen wurden.",
+"se": "The article intends to address objections that have so far been passed over."
+},
+{
+"t": "verweisen auf",
+"s": "Das Urteil muss verweisen auf eine Norm, die inzwischen aufgehoben ist.",
+"se": "The ruling has to refer to a provision that has since been repealed."
+},
+{
+"t": "hinweisen auf",
+"s": "Die Autoren wollen hinweisen auf einen Zusammenhang, der leicht übersehen wird.",
+"se": "The authors want to draw attention to a connection that is easily overlooked."
+},
+{
+"t": "hindeuten auf",
+"s": "Mehrere Befunde könnten hindeuten auf eine gemeinsame Ursache.",
+"se": "Several findings could be indicative of a common cause."
+},
+{
+"t": "nahelegen",
+"s": "Die Befunde könnten einen ursächlichen Zusammenhang nahelegen.",
+"se": "The findings could suggest a causal connection."
+},
+{
+"t": "folgern",
+"s": "Daraus lässt sich noch nichts folgern.",
+"se": "Nothing can yet be inferred from that."
+},
+{
+"t": "ableiten",
+"s": "Aus diesem Satz lässt sich keine Pflicht ableiten.",
+"se": "No obligation can be derived from this sentence."
+},
+{
+"t": "herleiten",
+"s": "Der Begriff lässt sich aus dem Lateinischen herleiten.",
+"se": "The term can be traced back to Latin."
+},
+{
+"t": "zurückführen auf",
+"s": "Man kann den Rückgang zurückführen auf Ursachen, die weit älter sind.",
+"se": "The decline can be attributed to causes that are far older."
+},
+{
+"t": "beruhen auf",
+"s": "Die Schätzung dürfte beruhen auf Annahmen, die niemand geprüft hat.",
+"se": "The estimate presumably rests on assumptions nobody has checked."
+},
+{
+"t": "fußen auf",
+"s": "Das ganze Kapitel scheint fußen auf einer einzigen Quelle.",
+"se": "The whole chapter appears to rest on a single source."
+},
+{
+"t": "sich stützen auf",
+"s": "Die Anklage kann sich stützen auf Aussagen von drei Zeugen.",
+"se": "The prosecution can rely on statements from three witnesses."
+},
+{
+"t": "sich ergeben aus",
+"s": "Die Pflicht soll sich ergeben aus dem Vertrag selbst.",
+"se": "The obligation is said to follow from the contract itself."
+},
+{
+"t": "hervorgehen aus",
+"s": "Das Ergebnis muss hervorgehen aus der Akte, nicht aus dem Vortrag.",
+"se": "The result must be evident from the file, not from the presentation."
+},
+{
+"t": "entspringen",
+"s": "Diese Vorstellung dürfte einem Missverständnis entspringen.",
+"se": "This notion presumably springs from a misunderstanding."
+},
+{
+"t": "bedingen",
+"s": "Beide Größen bedingen einander stärker als lange vermutet.",
+"se": "The two variables determine each other more strongly than long assumed."
+},
+{
+"t": "bewirken",
+"s": "Eine einzelne Maßnahme kann hier wenig bewirken.",
+"se": "A single measure can achieve little here."
+},
+{
+"t": "hervorrufen",
+"s": "Der Beschluss dürfte erheblichen Widerstand hervorrufen.",
+"se": "The decision is likely to provoke considerable resistance."
+},
+{
+"t": "auslösen",
+"s": "Ein einziger Tweet konnte die ganze Debatte auslösen.",
+"se": "A single tweet was able to trigger the whole debate."
+},
+{
+"t": "nach sich ziehen",
+"s": "Ein solcher Schritt würde erhebliche Kosten nach sich ziehen.",
+"se": "Such a step would entail considerable costs."
+},
+{
+"t": "mit sich bringen",
+"s": "Jede Umstellung wird Reibungsverluste mit sich bringen.",
+"se": "Every changeover will bring friction with it."
+},
+{
+"t": "voraussetzen",
+"s": "Das Verfahren will erhebliche Vorkenntnisse voraussetzen.",
+"se": "The procedure presupposes considerable prior knowledge."
+},
+{
+"t": "unterstellen",
+"s": "Man sollte niemandem böse Absicht unterstellen.",
+"se": "Nobody should be imputed bad intent."
+},
+{
+"t": "einräumen",
+"s": "Der Bericht muss immerhin einige Schwächen einräumen.",
+"se": "The report at least has to concede some weaknesses."
+},
+{
+"t": "zugestehen",
+"s": "Man wird der Gegenseite diesen Punkt zugestehen müssen.",
+"se": "This point will have to be conceded to the other side."
+},
+{
+"t": "widerlegen",
+"s": "Ein Gegenbeispiel genügt, um die Regel zu widerlegen.",
+"se": "One counter-example suffices to disprove the rule."
+},
+{
+"t": "entkräften",
+"s": "Die Anhörung konnte den Vorwurf nicht entkräften.",
+"se": "The hearing was unable to invalidate the accusation."
+},
+{
+"t": "relativieren",
+"s": "Man muss diesen Befund erheblich relativieren.",
+"se": "This finding has to be considerably qualified."
+},
+{
+"t": "einschränken",
+"s": "Die Autoren wollen ihre Aussage ausdrücklich einschränken.",
+"se": "The authors expressly wish to qualify their statement."
+},
+{
+"t": "differenzieren",
+"s": "An dieser Stelle müsste man deutlich stärker differenzieren.",
+"se": "At this point one would have to draw much finer distinctions."
+},
+{
+"t": "abgrenzen",
+"s": "Der Begriff lässt sich von benachbarten Konzepten kaum abgrenzen.",
+"se": "The term can hardly be distinguished from neighbouring concepts."
+},
+{
+"t": "gegenüberstellen",
+"s": "Das Kapitel will beide Ansätze systematisch gegenüberstellen.",
+"se": "The chapter aims to juxtapose both approaches systematically."
+},
+{
+"t": "abwägen",
+"s": "Man muss Nutzen und Risiko sorgfältig abwägen.",
+"se": "Benefit and risk have to be weighed up carefully."
+},
+{
+"t": "einschätzen",
+"s": "Die Folgen lassen sich derzeit kaum einschätzen.",
+"se": "The consequences can hardly be gauged at present."
+},
+{
+"t": "beurteilen",
+"s": "Ohne die Rohdaten lässt sich das nicht beurteilen.",
+"se": "Without the raw data that cannot be judged."
+},
+{
+"t": "gewichten",
+"s": "Die Kriterien lassen sich unterschiedlich gewichten.",
+"se": "The criteria can be weighted differently."
+},
+{
+"t": "hervorheben",
+"s": "Man sollte einen Punkt besonders hervorheben.",
+"se": "One point should be particularly emphasised."
+},
+{
+"t": "herausstellen",
+"s": "Der Beitrag will die praktischen Folgen herausstellen.",
+"se": "The article aims to bring out the practical consequences."
+},
+{
+"t": "verdeutlichen",
+"s": "Eine einfache Grafik könnte den Zusammenhang verdeutlichen.",
+"se": "A simple chart could make the connection clear."
+},
+{
+"t": "veranschaulichen",
+"s": "Zwei Beispiele sollen das Verfahren veranschaulichen.",
+"se": "Two examples are meant to illustrate the procedure."
+},
+{
+"t": "erläutern",
+"s": "Der Anhang will die Rechenwege im Einzelnen erläutern.",
+"se": "The appendix sets out to explain the calculations in detail."
+},
+{
+"t": "präzisieren",
+"s": "Die Definition müsste man an zwei Stellen präzisieren.",
+"se": "The definition would have to be made more precise in two places."
+},
+{
+"t": "vertiefen",
+"s": "Ein Folgeprojekt soll diese Fragen vertiefen.",
+"se": "A follow-up project is to explore these questions further."
+},
+{
+"t": "ausklammern",
+"s": "Man kann die Kostenfrage nicht dauerhaft ausklammern.",
+"se": "The cost question cannot be bracketed out indefinitely."
+},
+{
+"t": "außer Acht lassen",
+"s": "Man darf die regionalen Unterschiede nicht außer Acht lassen.",
+"se": "Regional differences must not be disregarded."
+},
+{
+"t": "vernachlässigen",
+"s": "Die Studie will kleinere Effekte bewusst vernachlässigen.",
+"se": "The study deliberately sets out to neglect smaller effects."
+},
+{
+"t": "übersehen",
+"s": "Diesen Zusammenhang kann man leicht übersehen.",
+"se": "This connection is easy to overlook."
+},
+{
+"t": "verkennen",
+"s": "Man würde die Lage verkennen, hielte man das für einen Einzelfall.",
+"se": "One would misjudge the situation in taking this for an isolated case."
+},
+{
+"t": "überschätzen",
+"s": "Die Wirkung solcher Kampagnen lässt sich leicht überschätzen.",
+"se": "The effect of such campaigns is easily overestimated."
+},
+{
+"t": "ausblenden",
+"s": "Der Bericht will die politische Dimension offenbar ausblenden.",
+"se": "The report evidently wants to screen out the political dimension."
+},
+{
+"t": "verschweigen",
+"s": "Man darf die Unsicherheiten nicht einfach verschweigen.",
+"se": "The uncertainties must not simply be kept quiet about."
+},
+{
+"t": "beanspruchen",
+"s": "Die Auswertung wird mehrere Monate beanspruchen.",
+"se": "The analysis will take up several months."
+},
+{
+"t": "sich befassen mit",
+"s": "Das Gericht muss sich befassen mit Fragen, für die es kaum Vorbilder gibt.",
+"se": "The court has to deal with questions for which there are hardly any precedents."
+},
+{
+"t": "sich auseinandersetzen mit",
+"s": "Der Autor will sich auseinandersetzen mit Einwänden aus der eigenen Disziplin.",
+"se": "The author intends to engage critically with objections from his own discipline."
+},
+{
+"t": "sich beziehen auf",
+"s": "Die Klausel kann sich beziehen auf Verträge, die längst ausgelaufen sind.",
+"se": "The clause may refer to contracts that expired long ago."
+},
+{
+"t": "sich abzeichnen",
+"s": "Eine Trendwende könnte sich abzeichnen, sobald die Zinsen fallen.",
+"se": "A turning point could emerge as soon as interest rates fall."
+},
+{
+"t": "zutage treten",
+"s": "Erst bei der Prüfung konnten die Mängel zutage treten.",
+"se": "The defects were able to come to light only during the audit."
+},
+{
+"t": "sich niederschlagen in",
+"s": "Die Reform soll sich niederschlagen in Gebühren, die deutlich sinken.",
+"se": "The reform is to be reflected in fees that fall markedly."
+},
+{
+"t": "sich widerspiegeln in",
+"s": "Die Unsicherheit dürfte sich widerspiegeln in den Kursen der kommenden Wochen.",
+"se": "The uncertainty is likely to be mirrored in the coming weeks' prices."
+},
+{
+"t": "einhergehen mit",
+"s": "Wachstum muss nicht einhergehen mit steigenden Emissionen.",
+"se": "Growth need not go hand in hand with rising emissions."
+},
+{
+"t": "zugrunde liegen",
+"s": "Welche Daten der Schätzung zugrunde liegen, bleibt unklar.",
+"se": "Which data underlie the estimate remains unclear."
+},
+{
+"t": "zugrunde legen",
+"s": "Man sollte für den Vergleich dieselbe Definition zugrunde legen.",
+"se": "The same definition should be taken as a basis for the comparison."
+},
+{
+"t": "anführen",
+"s": "Der Autor kann für seine These nur zwei Belege anführen.",
+"se": "The author can adduce only two pieces of evidence for his thesis."
+},
+{
+"t": "anmerken",
+"s": "Man sollte kritisch anmerken, dass die Stichprobe klein bleibt.",
+"se": "It should be critically noted that the sample remains small."
+},
+{
+"t": "anzweifeln",
+"s": "Niemand will die Redlichkeit der Beteiligten anzweifeln.",
+"se": "Nobody wishes to cast doubt on the integrity of those involved."
+},
+{
+"t": "bemängeln",
+"s": "Die Prüfer wollten vor allem die Dokumentation bemängeln.",
+"se": "The auditors wanted above all to find fault with the documentation."
+},
+{
+"t": "beanstanden",
+"s": "Der Kunde kann jeden Mangel binnen zwei Wochen beanstanden.",
+"se": "The customer may object to any defect within two weeks."
+},
+{
+"t": "befürworten",
+"s": "Zwei Fraktionen wollten den Antrag ausdrücklich befürworten.",
+"se": "Two parliamentary groups wanted expressly to support the motion."
+},
+{
+"t": "plädieren für",
+"s": "Der Aufsatz will plädieren für eine Öffnung der Archive.",
+"se": "The essay argues for opening up the archives."
+},
+{
+"t": "erwirken",
+"s": "Die Anwälte konnten eine einstweilige Verfügung erwirken.",
+"se": "The lawyers were able to obtain an injunction."
+},
+{
+"t": "erzielen",
+"s": "Beide Seiten konnten am Ende doch eine Einigung erzielen.",
+"se": "Both sides were able in the end to reach an agreement."
+},
+{
+"t": "erbringen",
+"s": "Der Antragsteller muss den Nachweis selbst erbringen.",
+"se": "The applicant must furnish the proof himself."
+},
+{
+"t": "aussagekräftig",
+"s": "Bei dieser Fallzahl ist das Ergebnis kaum aussagekräftig.",
+"se": "With this number of cases the result is hardly meaningful."
+},
+{
+"t": "stichhaltig",
+"s": "Das Argument ist rhetorisch stark, aber nicht stichhaltig.",
+"se": "The argument is rhetorically strong but not sound."
+},
+{
+"t": "schlüssig",
+"s": "Die Beweisführung ist in sich schlüssig.",
+"se": "The reasoning is coherent in itself."
+},
+{
+"t": "folgerichtig",
+"s": "Der zweite Schritt ist folgerichtig, der erste nicht.",
+"se": "The second step is logically consistent; the first is not."
+}
+]

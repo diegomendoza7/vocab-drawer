@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/classical-5b73a461-d30f-41a6-9a3c-e6d632c561ee/styles.css">
+<script src="_ds/classical-5b73a461-d30f-41a6-9a3c-e6d632c561ee/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--color-surface);color:var(--color-text);font-family:var(--font-body)}
+a{color:var(--color-accent-700);text-decoration:none;border-bottom:1px solid var(--color-accent-300)}
+a:hover{color:var(--color-accent-600);border-bottom-color:var(--color-accent-600)}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid var(--color-divider);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 22px}
+.dv-tid{font:400 10px/1 var(--font-body);letter-spacing:.09em;padding:4px 8px;background:var(--color-neutral-900);color:var(--color-bg);border-radius:var(--radius-sm);text-decoration:none;border:0;font-feature-settings:"tnum"}
+.dv-tid:hover{background:var(--color-accent-800);color:var(--color-bg)}
+.dv-tname{font:var(--font-heading-weight) 19px/1.2 var(--font-heading);color:var(--color-text)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:400 10.5px/1 var(--font-body);letter-spacing:.08em;padding:4px 8px;border:1px solid var(--color-accent);color:var(--color-accent-700);border-radius:var(--radius-sm);text-decoration:none;font-feature-settings:"tnum"}
+.dv-olabel{display:flex;align-items:baseline;gap:9px;font:400 15px/1.4 var(--font-body);color:var(--color-neutral-700)}
+.dv-card{max-width:100%;background:var(--color-bg);border:1px solid var(--color-divider);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)}
+.dv-opt:target .dv-oid{background:var(--color-accent-100)}
+.dv-next{margin:26px 0 0;font:400 14px/1.7 var(--font-body);color:var(--color-neutral-700);max-width:900px}
+.wf{font-family:var(--font-body);color:var(--color-text);font-size:12px;line-height:1.45}
+.wf-b{border:1px solid var(--color-divider);border-radius:var(--radius-md)}
+.wf-d{border:1px dashed var(--color-neutral-400);border-radius:var(--radius-md)}
+.wf-h{font-family:var(--font-heading);font-weight:var(--font-heading-weight);letter-spacing:.005em;color:var(--color-text)}
+.wf-cap{font-family:var(--font-body);font-size:11.5px;line-height:1.5;color:var(--color-neutral-700)}
+.wf-btn{white-space:nowrap;border:1px solid var(--color-neutral-500);border-radius:var(--radius-md);padding:7px 14px;font-family:var(--font-body);font-size:11.5px;text-align:center;background:transparent;color:var(--color-neutral-800)}
+.wf-btn-p{border-color:var(--color-accent);color:var(--color-accent-700);background:transparent}
+.wf-note{font-family:var(--font-body);font-size:11.5px;line-height:1.6;color:var(--color-accent-700);border-left:1px solid var(--color-accent);padding-left:11px}
+.wf-l{height:5px;background:var(--color-neutral-300);border-radius:var(--radius-sm)}
+.wf-hatch{background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 6px,transparent 6px 12px)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">The six screens with no desktop design — reading, phrases, listening, sentences, import, progress</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Reading Corner — passage holds the left column, questions track it on the right</div>
+<div class="dv-card wf" style="width:940px">
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:16px;min-height:600px">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <div class="wf-h" style="font-size:23px">Reading Corner</div>
+    <div class="wf-cap">French · A2 · 2 of 4 passages read</div>
+    <div style="flex:1"></div>
+    <div style="display:flex" class="wf-b">
+      <div style="padding:5px 11px;border-right:1px solid var(--color-divider)">A1</div>
+      <div style="padding:5px 11px;background:var(--color-accent-100);border-right:1px solid var(--color-divider)">A2</div>
+      <div style="padding:5px 11px;border-right:1px solid var(--color-divider)">B1</div>
+      <div style="padding:5px 11px">B2</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 320px;gap:24px;flex:1">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+        <div class="wf-h" style="font-size:26px">La rencontre</div>
+        <div class="wf-cap">Charles Perrault, Le Petit Chaperon Rouge (1697)</div>
+      </div>
+      <div style="text-align:justify;line-height:1.85;font-size:12.5px;max-width:56ch">
+        Le Petit Chaperon rouge <span style="border-bottom:1px solid var(--color-accent)">partit</span> aussitôt pour aller chez sa mère-grand, qui demeurait dans un autre village. En passant dans un bois, elle rencontra compère le <span style="border-bottom:1px solid var(--color-accent)">loup</span>, qui eut bien envie de la manger ; mais il n'osa, à cause de quelques bûcherons qui étaient dans la forêt. Il lui <span style="border-bottom:1px solid var(--color-accent)">demanda</span> où elle allait. La pauvre enfant, qui ne savait pas qu'il est dangereux de s'arrêter à écouter un loup, lui dit : je vais voir ma mère-grand, et lui porter une galette avec un petit pot de <span style="border-bottom:1px solid var(--color-accent)">beurre</span> que ma mère lui envoie.
+      </div>
+      <div style="display:flex;gap:9px;align-items:center">
+        <div class="wf-btn">Show English</div>
+        <div class="wf-btn">♪ Read aloud</div>
+        <div class="wf-cap">underlined = asked about below</div>
+      </div>
+      <div class="wf-d" style="padding:11px;max-width:56ch">
+        <div class="wf-cap">English, shown in place under each sentence when toggled on — never in a separate view.</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="border-top:1px solid var(--color-divider);padding-top:11px;display:flex;align-items:center;gap:12px">
+        <div class="wf-cap" style="flex:1">3 words here are not in your deck: bûcheron, galette, compère</div>
+        <div class="wf-btn">Add 3 to My Words</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:11px">
+      <div class="wf-b" style="padding:16px;border-left:3px solid var(--color-accent)">
+        <div class="wf-cap">Question 1 of 4</div>
+        <div style="font-size:12.5px;line-height:1.7;margin:7px 0 13px">Le Petit Chaperon rouge <span class="wf-d" style="padding:1px 22px">&nbsp;</span> aussitôt pour aller chez sa mère-grand, qui demeurait dans un autre village.</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div class="wf-b" style="padding:9px 12px">partit</div>
+          <div class="wf-b" style="padding:9px 12px">resta</div>
+          <div class="wf-b" style="padding:9px 12px">dormit</div>
+          <div class="wf-b" style="padding:9px 12px">pleura</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:13px">
+          <div class="wf-btn wf-btn-p" style="flex:1">Check</div>
+          <div class="wf-btn">Skip</div>
+        </div>
+        <div class="wf-cap" style="margin-top:9px">1–4 to pick · enter to check. The passage stays put; only this card advances.</div>
+      </div>
+      <div class="wf-b" style="padding:13px;background:var(--color-neutral-100)">
+        <div class="wf-h" style="font-size:16px;margin-bottom:7px">This passage</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between"><span>1. partit</span><span class="wf-cap">answering…</span></div>
+          <div style="display:flex;justify-content:space-between"><span>2. loup</span><span class="wf-cap">not yet</span></div>
+          <div style="display:flex;justify-content:space-between"><span>3. demanda</span><span class="wf-cap">not yet</span></div>
+          <div style="display:flex;justify-content:space-between"><span>4. beurre</span><span class="wf-cap">not yet</span></div>
+        </div>
+      </div>
+      <div class="wf-b wf-cap" style="padding:13px">Next: Le loup arrive (B1) · Le dénouement (B2)</div>
+    </div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Desktop lets the passage stay visible while you answer — today's readingSelect → readingQuiz → readingDone sequence hides the text the questions are about. Passage keeps a 56ch measure and stays justified.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Phrase Match — two facing columns, solved pairs drop into a glossed ledger</div>
+<div class="dv-card wf" style="width:880px">
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:15px;min-height:560px">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <div class="wf-h" style="font-size:23px">Phrase Match</div>
+    <div class="wf-cap">French · B1 · idioms, six at a time</div>
+    <div style="flex:1"></div>
+    <div class="wf-cap">3 of 6 paired · 1 wrong try</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf-cap">The French</div>
+      <div class="wf-b" style="padding:11px 13px;background:var(--color-accent-100);border-left:3px solid var(--color-accent)">Appeler un chat un chat</div>
+      <div class="wf-b" style="padding:11px 13px">Tourner autour du pot</div>
+      <div class="wf-b" style="padding:11px 13px">Mettre son grain de sel</div>
+      <div class="wf-b wf-cap" style="padding:11px 13px;border-style:dashed">Avoir d'autres chats à fouetter <span style="float:right">paired</span></div>
+      <div class="wf-b wf-cap" style="padding:11px 13px;border-style:dashed">Chercher midi à quatorze heures <span style="float:right">paired</span></div>
+      <div class="wf-b wf-cap" style="padding:11px 13px;border-style:dashed">Avoir le cœur sur la main <span style="float:right">paired</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf-cap">What it means</div>
+      <div class="wf-b" style="padding:11px 13px">To beat around the bush</div>
+      <div class="wf-b" style="padding:11px 13px">To put in one's two cents</div>
+      <div class="wf-b" style="padding:11px 13px">To call a spade a spade</div>
+      <div class="wf-b wf-cap" style="padding:11px 13px;border-style:dashed">To have other fish to fry</div>
+      <div class="wf-b wf-cap" style="padding:11px 13px;border-style:dashed">To overcomplicate a simple thing</div>
+      <div class="wf-b wf-cap" style="padding:11px 13px;border-style:dashed">To be very generous</div>
+    </div>
+  </div>
+
+  <div class="wf-cap">Click one from each column. Wrong pairs flash and stay; right pairs grey out here and appear below with the literal.</div>
+
+  <div style="border-top:1px solid var(--color-divider);padding-top:13px">
+    <div class="wf-h" style="font-size:17px;margin-bottom:9px">Paired so far</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px 18px">
+      <div><div>Avoir d'autres chats à fouetter</div><div class="wf-cap">To have other fish to fry · lit. "to have other cats to whip"</div></div>
+      <div><div>Chercher midi à quatorze heures</div><div class="wf-cap">To overcomplicate a simple thing · lit. "to look for noon at two o'clock"</div></div>
+      <div><div>Avoir le cœur sur la main</div><div class="wf-cap">To be very generous · lit. "to have the heart on the hand"</div></div>
+      <div class="wf-d wf-cap" style="padding:10px">The literal reading is the point of this exercise, so it is revealed on the pair, not held back for a results screen.</div>
+    </div>
+  </div>
+  <div style="flex:1"></div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <div class="wf-cap" style="flex:1">A1 · A2 · B1 · B2 — 24 idioms per language</div>
+    <div class="wf-btn">Change level</div>
+    <div class="wf-btn wf-btn-p">Next six →</div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Facing columns are what the extra width buys: today the two halves stack, so a match means scrolling between them.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Listening &amp; Speaking — one stage, two modes, attempt history beside it</div>
+<div class="dv-card wf" style="width:940px">
+<div style="min-height:560px;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--color-divider)">
+    <div style="display:flex" class="wf-b">
+      <div style="padding:5px 13px;background:var(--color-accent-100);border-right:1px solid var(--color-divider)">Dictation</div>
+      <div style="padding:5px 13px">Speaking</div>
+    </div>
+    <div class="wf-cap" style="flex:1">French · A2 · Weather · 4 of 10</div>
+    <div class="wf-cap">voice: Amélie ▾ · speed 0.8× ▾</div>
+    <div class="wf-btn">Leave</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 290px;flex:1">
+    <div style="padding:28px 30px;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div class="wf-cap">Listen, then write what you hear</div>
+      <div class="wf-b" style="width:100%;max-width:560px;padding:22px;display:flex;flex-direction:column;gap:15px;border-left:3px solid var(--color-accent)">
+        <div style="display:flex;align-items:center;gap:13px">
+          <div class="wf-b" style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px">♪</div>
+          <div style="flex:1;height:26px;display:flex;align-items:center;gap:3px">
+            <div style="flex:1;height:40%;background:var(--color-neutral-300)"></div><div style="flex:1;height:78%;background:var(--color-neutral-400)"></div><div style="flex:1;height:55%;background:var(--color-neutral-300)"></div><div style="flex:1;height:92%;background:var(--color-neutral-400)"></div><div style="flex:1;height:35%;background:var(--color-neutral-300)"></div><div style="flex:1;height:64%;background:var(--color-neutral-300)"></div><div style="flex:1;height:22%;background:var(--color-neutral-300)"></div><div style="flex:1;height:70%;background:var(--color-neutral-400)"></div><div style="flex:1;height:44%;background:var(--color-neutral-300)"></div><div style="flex:1;height:30%;background:var(--color-neutral-300)"></div>
+          </div>
+          <div class="wf-cap">played 2×</div>
+        </div>
+        <div class="wf-b" style="padding:11px 13px;background:var(--color-bg)">Il fait très froid aujourdui</div>
+        <div style="display:flex;gap:9px;align-items:center">
+          <div class="wf-btn wf-btn-p" style="flex:1">Check</div>
+          <div class="wf-btn">Hear again</div>
+          <div class="wf-btn">Slower</div>
+        </div>
+      </div>
+      <div class="wf-b" style="width:100%;max-width:560px;padding:15px;background:var(--color-accent-100)">
+        <div class="wf-cap">Almost — one letter</div>
+        <div style="font-size:14px;margin-top:6px">Il fait très froid <span style="border-bottom:1px solid var(--color-accent)">aujourd'hui</span>.</div>
+        <div class="wf-cap" style="margin-top:5px">You wrote aujourdui · the apostrophe is part of the word. Accents and apostrophes are checked; capitals are not.</div>
+      </div>
+      <div class="wf-cap">enter = check · space = replay · shift+space = slower</div>
+    </div>
+
+    <div style="border-left:1px solid var(--color-divider);padding:16px 15px;background:var(--color-neutral-100);display:flex;flex-direction:column;gap:13px">
+      <div>
+        <div class="wf-h" style="font-size:16px;margin-bottom:7px">This set</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between"><span>la pluie</span><span class="wf-cap">first try</span></div>
+          <div style="display:flex;justify-content:space-between"><span>le nuage</span><span class="wf-cap">first try</span></div>
+          <div style="display:flex;justify-content:space-between"><span>le brouillard</span><span class="wf-cap">2 tries</span></div>
+          <div style="display:flex;justify-content:space-between;color:var(--color-accent-700)"><span>aujourd'hui</span><span class="wf-cap" style="color:var(--color-accent-700)">answering</span></div>
+          <div class="wf-cap">6 to go</div>
+        </div>
+      </div>
+      <div style="border-top:1px dashed var(--color-neutral-300);padding-top:11px">
+        <div class="wf-h" style="font-size:16px;margin-bottom:6px">Speaking mode</div>
+        <div class="wf-cap">Same frame, three swaps: the input becomes a hold-to-speak button, the waveform records instead of plays, and the result marks each word of the target sentence heard / missed / unclear. Target text is shown, not hidden.</div>
+      </div>
+      <div style="border-top:1px dashed var(--color-neutral-300);padding-top:11px">
+        <div class="wf-h" style="font-size:16px;margin-bottom:6px">If audio is unavailable</div>
+        <div class="wf-cap">No browser voice: the mode is offered but marked unavailable, with the reason, instead of failing silently on play.</div>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note" style="margin:0 20px 16px">Merges dictation, dictationDone, speaking and speakingDone into one persistent frame: feedback lands under the card, the set ledger replaces the done screens.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2d">
+<div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a>Sentence stage — build the sentence, with the word's card open beside it</div>
+<div class="dv-card wf" style="width:880px">
+<div style="min-height:520px;display:grid;grid-template-columns:1fr 268px">
+  <div style="padding:24px 26px;display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="wf-cap" style="flex:1">FR · A2 · Weather · sentence stage · 8 of 10</div>
+      <div class="wf-cap">3 in a row</div>
+    </div>
+    <div class="wf-b" style="padding:22px;border-left:3px solid var(--color-accent);display:flex;flex-direction:column;gap:15px">
+      <div>
+        <div class="wf-cap">Say this in French</div>
+        <div class="wf-h" style="font-size:22px;margin-top:5px">It's very cold today.</div>
+      </div>
+      <div style="min-height:46px;display:flex;flex-wrap:wrap;gap:7px;align-items:flex-start;padding:11px;border-bottom:1px solid var(--color-divider)">
+        <div class="wf-b" style="padding:6px 11px;background:var(--color-neutral-100)">Il</div>
+        <div class="wf-b" style="padding:6px 11px;background:var(--color-neutral-100)">fait</div>
+        <div class="wf-b" style="padding:6px 11px;background:var(--color-neutral-100)">très</div>
+        <div class="wf-d" style="padding:6px 26px">&nbsp;</div>
+      </div>
+      <div>
+        <div class="wf-cap" style="margin-bottom:7px">Word bank</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px">
+          <div class="wf-b" style="padding:6px 11px">froid</div>
+          <div class="wf-b" style="padding:6px 11px">aujourd'hui</div>
+          <div class="wf-b" style="padding:6px 11px">chaud</div>
+          <div class="wf-b" style="padding:6px 11px">est</div>
+          <div class="wf-b" style="padding:6px 11px">beaucoup</div>
+          <div class="wf-b" style="padding:6px 11px">le temps</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:center">
+        <div class="wf-btn wf-btn-p" style="flex:1">Check</div>
+        <div class="wf-btn">Type it instead</div>
+        <div class="wf-btn">Reveal</div>
+      </div>
+      <div class="wf-cap">Bank holds two distractors and one near-miss (est). Typing accepts the same answer with accents required.</div>
+    </div>
+    <div class="wf-b wf-cap" style="padding:13px;border-style:dashed">
+      After Check: the full sentence sets in place with the target word underlined, its English underneath, and a ♪ to hear it — no separate result screen, Continue appears in the same card.
+    </div>
+  </div>
+
+  <div style="border-left:1px solid var(--color-divider);padding:18px 16px;background:var(--color-neutral-100);display:flex;flex-direction:column;gap:13px">
+    <div>
+      <div class="wf-cap">The word being practised</div>
+      <div class="wf-h" style="font-size:21px;margin:4px 0 2px">froid</div>
+      <div>cold</div>
+      <div class="wf-cap">adjective · A2 · Weather</div>
+      <div class="wf-btn" style="margin-top:9px;display:inline-block">♪ hear word</div>
+    </div>
+    <div style="border-top:1px dashed var(--color-neutral-300);padding-top:11px">
+      <div class="wf-cap">Seen this batch</div>
+      <div style="margin-top:5px">learn · match · choose · type ✓</div>
+      <div class="wf-cap" style="margin-top:4px">Sentence is the last stage before the word is scheduled.</div>
+    </div>
+    <div style="border-top:1px dashed var(--color-neutral-300);padding-top:11px">
+      <div class="wf-cap">Note</div>
+      <div class="wf-cap" style="margin-top:4px">Weather in French takes <em>il fait</em> + adjective, not <em>il est</em>. That is why <em>est</em> sits in the bank.</div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="wf-cap">German: the same frame, with the gender tag shown on nouns.</div>
+  </div>
+</div>
+<sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+  <div class="wf-note" style="margin:0 26px 16px">Today the sentence stage is a bare cloze. The width pays for a word bank, the word's own card, and the one grammar note that explains the distractor.</div>
+</sc-if>
+</div>
+</div>
+
+<div class="dv-opt" id="2e">
+<div class="dv-olabel"><a class="dv-oid" href="#2e">2e</a>Import — text library, reader and lookup panel in one frame</div>
+<div class="dv-card wf" style="width:940px">
+<div style="min-height:600px;display:grid;grid-template-columns:186px 1fr 292px">
+  <div style="border-right:1px solid var(--color-divider);padding:16px 14px;background:var(--color-neutral-100);display:flex;flex-direction:column;gap:9px">
+    <div class="wf-h" style="font-size:16px">Your texts</div>
+    <div class="wf-b" style="padding:8px 10px;background:var(--color-accent-100)">Le Monde — climat<div class="wf-cap">read 2d ago · 4 saved</div></div>
+    <div style="padding:8px 10px">DW Top-Thema<div class="wf-cap">read 5d ago · 7 saved</div></div>
+    <div style="padding:8px 10px">Chanson — Barbara<div class="wf-cap">not read</div></div>
+    <div class="wf-btn" style="margin-top:6px">+ Paste a new text</div>
+    <div class="wf-d wf-cap" style="padding:10px;margin-top:4px">Paste opens here as an editable panel, not a separate screen — title field, textarea, language, "Read this".</div>
+    <div style="flex:1"></div>
+    <div class="wf-cap">Words you save land in My Words, tagged with the text they came from.</div>
+  </div>
+
+  <div style="padding:20px 22px;display:flex;flex-direction:column;gap:13px">
+    <div style="display:flex;align-items:baseline;gap:10px">
+      <div class="wf-h" style="font-size:20px;flex:1">Le Monde — climat</div>
+      <div class="wf-cap">Edit</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center">
+      <span class="wf-cap"><span style="display:inline-block;width:9px;height:9px;background:var(--color-neutral-500);border-radius:2px;margin-right:5px"></span>in your deck</span>
+      <span class="wf-cap"><span style="display:inline-block;width:9px;height:9px;border-bottom:2px solid var(--color-accent);margin-right:5px"></span>click to look up</span>
+      <span class="wf-cap">grey = no gloss found</span>
+    </div>
+    <div style="text-align:justify;line-height:1.95;font-size:12.5px;max-width:52ch">
+      La <span style="border-bottom:2px solid var(--color-accent)">sécheresse</span> a <span style="border-bottom:2px solid var(--color-accent)">frappé</span> le sud du pays pour la troisième année <span style="font-weight:500">consécutive</span>. Les <span style="border-bottom:2px solid var(--color-accent)">agriculteurs</span> <span style="border-bottom:2px solid var(--color-accent)">réclament</span> des mesures <span style="color:var(--color-neutral-500)">immédiates</span>, tandis que le gouvernement <span style="border-bottom:2px solid var(--color-accent)">évoque</span> un plan sur cinq ans. « Nous avons <span style="border-bottom:2px solid var(--color-accent)">franchi</span> un <span style="font-weight:500">seuil</span> », a déclaré une chercheuse du <span style="color:var(--color-neutral-500)">CNRS</span>.
+    </div>
+    <div class="wf-cap">Click any word. The sentence it sits in is what gets translated — not the whole text at once.</div>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid var(--color-divider);padding-top:11px;display:flex;align-items:center;gap:12px">
+      <div class="wf-cap" style="flex:1">4 words saved from this text · 11 lookups</div>
+      <div class="wf-btn">Study these 4 →</div>
+    </div>
+  </div>
+
+  <div style="border-left:1px solid var(--color-divider);padding:18px 16px;display:flex;flex-direction:column;gap:12px">
+    <div class="wf-b" style="padding:15px;border-left:3px solid var(--color-accent)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="wf-h" style="font-size:21px">franchir</div>
+        <div class="wf-cap">✕</div>
+      </div>
+      <div class="wf-cap">appears here as "franchi"</div>
+      <div style="margin-top:9px">to cross, to pass (a threshold)</div>
+      <div class="wf-cap">verb · transitive</div>
+      <div style="border-top:1px dashed var(--color-neutral-300);margin-top:11px;padding-top:9px">
+        <div style="font-size:12px">« Nous avons franchi un seuil »</div>
+        <div class="wf-cap" style="margin-top:3px">"We have crossed a threshold"</div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <div class="wf-btn">♪</div>
+        <div class="wf-btn wf-btn-p" style="flex:1">Add to deck</div>
+      </div>
+    </div>
+    <div>
+      <div class="wf-h" style="font-size:16px;margin-bottom:7px">Saved from this text</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div>sécheresse <span class="wf-cap">the drought</span></div>
+        <div>agriculteur <span class="wf-cap">the farmer</span></div>
+        <div>réclamer <span class="wf-cap">to demand</span></div>
+        <div>le seuil <span class="wf-cap">the threshold</span></div>
+      </div>
+    </div>
+    <div class="wf-d wf-cap" style="padding:11px">Lookup failures say so here ("no gloss found — add it by hand") rather than leaving the word unclickable.</div>
+  </div>
+</div>
+<sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+  <div class="wf-note" style="margin:0 22px 16px">importPaste → importReader → importLibrary become one three-column frame: library rail, reading measure held at 52ch, lookup panel always in the same place instead of pushing the text down.</div>
+</sc-if>
+</div>
+</div>
+
+<div class="dv-opt" id="2f">
+<div class="dv-olabel"><a class="dv-oid" href="#2f">2f</a>Progress — maturity band across the top, drawers and forecast below</div>
+<div class="dv-card wf" style="width:940px">
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:16px;min-height:620px">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <div class="wf-h" style="font-size:23px">Progress</div>
+    <div class="wf-cap">French · all levels · 698 words</div>
+    <div style="flex:1"></div>
+    <div style="display:flex" class="wf-b">
+      <div style="padding:5px 13px;background:var(--color-accent-100);border-right:1px solid var(--color-divider)">French</div>
+      <div style="padding:5px 13px">German</div>
+    </div>
+  </div>
+
+  <div class="wf-b" style="padding:16px 18px">
+    <div class="wf-cap" style="margin-bottom:9px">Deck maturity</div>
+    <div style="display:flex;height:11px;overflow:hidden;border-radius:2px;background:var(--color-neutral-200)">
+      <div style="width:9%;background:var(--color-neutral-600)"></div>
+      <div style="width:7%;background:var(--color-neutral-400)"></div>
+      <div style="width:5%;background:var(--color-accent-400)"></div>
+      <div style="flex:1;background:var(--color-neutral-200)"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:13px">
+      <div><div class="wf-h" style="font-size:20px">550</div><div class="wf-cap">Not started</div></div>
+      <div><div class="wf-h" style="font-size:20px">63</div><div class="wf-cap">Learning</div></div>
+      <div><div class="wf-h" style="font-size:20px">51</div><div class="wf-cap">Young</div></div>
+      <div><div class="wf-h" style="font-size:20px">34</div><div class="wf-cap">Mature</div></div>
+    </div>
+    <div class="wf-cap" style="margin-top:10px">"Mature" means the interval has stretched past three weeks — the word is sticking.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:20px;flex:1">
+    <div class="wf-b" style="padding:16px 18px">
+      <div class="wf-cap" style="margin-bottom:11px">Mastery by drawer</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px"><span class="wf-h" style="font-size:16px">A1</span><span class="wf-cap">98/140</span></div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px">
+        <div style="display:grid;grid-template-columns:40% 1fr 34px;gap:9px;align-items:center"><span class="wf-cap">Greetings &amp; Courtesy</span><div class="wf-l"><div style="width:100%;height:5px;background:var(--color-accent-400);border-radius:2px"></div></div><span class="wf-cap" style="text-align:right">100%</span></div>
+        <div style="display:grid;grid-template-columns:40% 1fr 34px;gap:9px;align-items:center"><span class="wf-cap">Family &amp; People</span><div class="wf-l"><div style="width:80%;height:5px;background:var(--color-accent-400);border-radius:2px"></div></div><span class="wf-cap" style="text-align:right">80%</span></div>
+        <div style="display:grid;grid-template-columns:40% 1fr 34px;gap:9px;align-items:center"><span class="wf-cap">Animals</span><div class="wf-l"><div style="width:40%;height:5px;background:var(--color-accent-400);border-radius:2px"></div></div><span class="wf-cap" style="text-align:right">40%</span></div>
+        <div class="wf-cap">…11 more A1 drawers</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px"><span class="wf-h" style="font-size:16px">A2</span><span class="wf-cap">50/140</span></div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px">
+        <div style="display:grid;grid-template-columns:40% 1fr 34px;gap:9px;align-items:center"><span class="wf-cap">Time Expressions</span><div class="wf-l"><div style="width:70%;height:5px;background:var(--color-accent-400);border-radius:2px"></div></div><span class="wf-cap" style="text-align:right">70%</span></div>
+        <div style="display:grid;grid-template-columns:40% 1fr 34px;gap:9px;align-items:center"><span class="wf-cap">Weather</span><div class="wf-l"><div style="width:20%;height:5px;background:var(--color-accent-400);border-radius:2px"></div></div><span class="wf-cap" style="text-align:right">20%</span></div>
+        <div style="display:grid;grid-template-columns:40% 1fr 34px;gap:9px;align-items:center"><span class="wf-cap">Work &amp; Routine</span><div class="wf-l"><div style="width:40%;height:5px;background:var(--color-accent-400);border-radius:2px"></div></div><span class="wf-cap" style="text-align:right">40%</span></div>
+        <div class="wf-cap">…11 more A2 drawers</div>
+      </div>
+      <div class="wf-cap" style="margin-bottom:11px">B1 · B2 · C1 collapsed until opened — 5 levels at once is the reason this screen scrolls forever today.</div>
+      <div style="border-top:1px solid var(--color-divider);padding-top:11px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px"><span class="wf-h" style="font-size:16px">My Words</span><span class="wf-cap">29/34</span></div>
+        <div style="display:grid;grid-template-columns:40% 1fr 34px;gap:9px;align-items:center"><span class="wf-cap">your own vocabulary</span><div class="wf-l"><div style="width:85%;height:5px;background:var(--color-accent-400);border-radius:2px"></div></div><span class="wf-cap" style="text-align:right">85%</span></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="wf-b" style="padding:15px">
+        <div class="wf-cap">Habit</div>
+        <div style="display:flex;gap:18px;margin-top:8px">
+          <div><div class="wf-h" style="font-size:22px">7</div><div class="wf-cap">day streak</div></div>
+          <div><div class="wf-h" style="font-size:22px">23</div><div class="wf-cap">answered today</div></div>
+          <div><div class="wf-h" style="font-size:22px">86%</div><div class="wf-cap">first try, 30d</div></div>
+        </div>
+      </div>
+      <div class="wf-b" style="padding:15px">
+        <div class="wf-cap" style="margin-bottom:9px">Coming due</div>
+        <div style="display:flex;align-items:flex-end;gap:5px;height:66px">
+          <div style="flex:1;height:36%;background:var(--color-neutral-400)"></div><div style="flex:1;height:58%;background:var(--color-neutral-300)"></div><div style="flex:1;height:22%;background:var(--color-neutral-300)"></div><div style="flex:1;height:74%;background:var(--color-neutral-300)"></div><div style="flex:1;height:44%;background:var(--color-neutral-300)"></div><div style="flex:1;height:30%;background:var(--color-neutral-300)"></div><div style="flex:1;height:52%;background:var(--color-neutral-300)"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:5px"><span class="wf-cap">today 12</span><span class="wf-cap">next 7 days</span></div>
+      </div>
+      <div class="wf-b" style="padding:15px">
+        <div class="wf-cap" style="margin-bottom:8px">Beyond vocabulary</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between"><span>Verbs &amp; tenses</span><span class="wf-cap">18 of 128 cells</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Idioms</span><span class="wf-cap">9 of 24 paired</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Passages</span><span class="wf-cap">2 of 4 read</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Dictation</span><span class="wf-cap">31 lines</span></div>
+        </div>
+      </div>
+      <div class="wf-b wf-cap" style="padding:13px;border-style:dashed">Export or reset progress lives at the bottom of this rail, not on the home screen.</div>
+    </div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Adds what the phone version had no room for: a due forecast and the non-vocabulary tracks. Levels below the current one collapse so the drawer list stays readable.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: “fold these into the <a class="dv-oid" href="#1a">1a</a> rail shell so all twelve screens share one frame” · “<a class="dv-oid" href="#2c">2c</a> but speaking mode drawn out, not described” · “refresh the Claude Code handoff with turn 2 included”</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Desktop restructures — Home, study pipeline, My Words, Grammar &amp; Verbs</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Home — persistent left rail, level demoted to a segmented strip</div>
+<div class="dv-card wf" style="width:940px">
+<div style="display:grid;grid-template-columns:212px 1fr;min-height:600px">
+  <div style="border-right:1px solid var(--color-divider);padding:18px 16px;display:flex;flex-direction:column;gap:8px;background:var(--color-neutral-100)">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+      <div class="wf-b" style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading)">V</div>
+      <div class="wf-h" style="font-size:19px">Vocab Drawer</div>
+    </div>
+    <div class="wf-b" style="padding:7px 10px;background:var(--color-accent-100);display:flex;justify-content:space-between"><span>Study</span><span class="wf-cap">A2</span></div>
+    <div style="padding:7px 10px">My Words <span class="wf-cap">· 34</span></div>
+    <div style="padding:7px 10px">Grammar &amp; Verbs <span class="wf-cap">· 6 due</span></div>
+    <div style="padding:7px 10px">Reading Corner</div>
+    <div style="padding:7px 10px">Phrase Match</div>
+    <div style="padding:7px 10px">Listening &amp; Speaking</div>
+    <div style="padding:7px 10px">Import a text</div>
+    <div style="padding:7px 10px">Progress</div>
+    <div style="flex:1"></div>
+    <div style="display:flex;gap:6px">
+      <div class="wf-b" style="flex:1;padding:6px;text-align:center;background:var(--color-neutral-200)">French</div>
+      <div class="wf-b" style="flex:1;padding:6px;text-align:center">German</div>
+    </div>
+    <div class="wf-cap" style="margin-top:6px">Progress saving: on</div>
+  </div>
+
+  <div style="padding:22px 26px;display:flex;flex-direction:column;gap:18px">
+    <div class="wf-b" style="border-left:3px solid var(--color-accent);padding:16px 18px;display:flex;align-items:center;gap:22px">
+      <div style="flex:1">
+        <div class="wf-h" style="font-size:26px">12 due</div>
+        <div class="wf-cap">148 of 698 French words started</div>
+      </div>
+      <div style="text-align:center"><div class="wf-h" style="font-size:20px">7</div><div class="wf-cap">streak</div></div>
+      <div style="text-align:center"><div class="wf-h" style="font-size:20px">23</div><div class="wf-cap">today</div></div>
+      <div class="wf-btn wf-btn-p">Review 12 due words →</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="display:flex;gap:0" class="wf-b">
+        <div style="padding:6px 13px;background:var(--color-neutral-200);border-right:1px solid var(--color-divider)">A1</div>
+        <div style="padding:6px 13px;background:var(--color-accent-100);border-right:1px solid var(--color-divider)">A2</div>
+        <div style="padding:6px 13px;border-right:1px solid var(--color-divider)">B1</div>
+        <div style="padding:6px 13px;border-right:1px solid var(--color-divider)">B2</div>
+        <div style="padding:6px 13px">C1</div>
+      </div>
+      <div class="wf-cap" style="flex:1;min-width:220px">Elementary. Everyday exchanges — 140 words across 14 drawers.</div>
+      <div style="display:flex;gap:0" class="wf-b">
+        <div style="padding:6px 12px;background:var(--color-accent-100);border-right:1px solid var(--color-divider)">By theme</div>
+        <div style="padding:6px 12px">Mixed batches</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px">
+      <div class="wf-b" style="padding:11px 12px"><div>Time Expressions</div><div class="wf-cap">10 words · 7 mastered</div><div class="wf-l" style="margin-top:7px"><div style="width:70%;height:5px;background:var(--color-accent-400);border-radius:4px"></div></div></div>
+      <div class="wf-b" style="padding:11px 12px"><div>Weather</div><div class="wf-cap">10 words · 2 mastered</div><div class="wf-l" style="margin-top:7px"><div style="width:20%;height:5px;background:var(--color-accent-400);border-radius:4px"></div></div></div>
+      <div class="wf-b" style="padding:11px 12px"><div>Shopping &amp; Money</div><div class="wf-cap">10 words · not started</div><div class="wf-l" style="margin-top:7px"></div></div>
+      <div class="wf-b" style="padding:11px 12px"><div>Feelings &amp; Emotions</div><div class="wf-cap">10 words · not started</div><div class="wf-l" style="margin-top:7px"></div></div>
+      <div class="wf-b" style="padding:11px 12px"><div>Work &amp; Routine</div><div class="wf-cap">10 words · 4 mastered</div><div class="wf-l" style="margin-top:7px"><div style="width:40%;height:5px;background:var(--color-accent-400);border-radius:4px"></div></div></div>
+      <div class="wf-b" style="padding:11px 12px"><div>Travel &amp; Transport</div><div class="wf-cap">10 words · not started</div><div class="wf-l" style="margin-top:7px"></div></div>
+      <div class="wf-b" style="padding:11px 12px"><div>Directions &amp; Home</div><div class="wf-cap">10 words</div><div class="wf-l" style="margin-top:7px"></div></div>
+      <div class="wf-b" style="padding:11px 12px"><div>Common Verbs</div><div class="wf-cap">10 words</div><div class="wf-l" style="margin-top:7px"></div></div>
+      <div class="wf-d wf-cap" style="padding:11px 12px;display:flex;align-items:center;justify-content:center">+ 6 more drawers</div>
+    </div>
+    <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+      <div class="wf-note">Level is one strip, not a panel: lang moves to the rail, mode to a toggle, description to one line. Everything else on the old home page becomes rail nav.</div>
+    </sc-if>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Home — two columns: “today” on the left, catalog table on the right</div>
+<div class="dv-card wf" style="width:940px">
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div class="wf-b" style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading)">V</div>
+      <div class="wf-h" style="font-size:19px">Vocab Drawer</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="wf-b" style="padding:5px 11px">French ▾</div>
+      <div class="wf-b" style="padding:5px 11px">A2 ▾</div>
+      <div class="wf-cap">Progress saving: on</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:296px 1fr;gap:20px;min-height:520px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="wf-b" style="border-left:3px solid var(--color-accent);padding:15px">
+        <div class="wf-h" style="font-size:24px">12 due today</div>
+        <div class="wf-cap" style="margin-bottom:10px">7-day streak · 23 answered today</div>
+        <div class="wf-btn wf-btn-p">Review 12 due words</div>
+        <div class="wf-cap" style="margin-top:9px">Mixes A1–C1 and My Words.</div>
+      </div>
+      <div class="wf-b" style="padding:15px">
+        <div class="wf-h" style="font-size:17px">Pick up where you left off</div>
+        <div class="wf-cap" style="margin:4px 0 10px">A2 · Weather · card 4 of 10 · typing stage</div>
+        <div class="wf-btn">Resume drawer</div>
+      </div>
+      <div class="wf-b" style="padding:15px">
+        <div class="wf-h" style="font-size:17px">Maturity</div>
+        <div style="display:flex;align-items:flex-end;gap:5px;height:74px;margin-top:10px">
+          <div style="flex:1;height:60%;background:var(--color-neutral-300)"></div><div style="flex:1;height:38%;background:var(--color-neutral-300)"></div><div style="flex:1;height:74%;background:var(--color-neutral-400)"></div><div style="flex:1;height:26%;background:var(--color-neutral-300)"></div><div style="flex:1;height:50%;background:var(--color-neutral-300)"></div><div style="flex:1;height:18%;background:var(--color-neutral-300)"></div>
+        </div>
+        <div class="wf-cap" style="margin-top:6px">new · learning · young · mature</div>
+        <div class="wf-cap" style="margin-top:8px"><a href="#1b">View full progress →</a></div>
+      </div>
+      <div class="wf-d wf-cap" style="padding:12px">Other practice: Reading Corner · Phrase Match · Listening &amp; Speaking · Grammar &amp; Verbs · My Words · Import a text</div>
+    </div>
+
+    <div class="wf-b" style="padding:0;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--color-divider)">
+        <div class="wf-h" style="font-size:18px;flex:1">A2 drawers</div>
+        <div class="wf-b" style="padding:5px 10px">By theme</div>
+        <div class="wf-b" style="padding:5px 10px">Mixed</div>
+        <div class="wf-d wf-cap" style="padding:5px 10px">search drawers</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;gap:0;font-family:var(--font-heading);font-size:14px;color:#6d6d6d;padding:8px 14px;border-bottom:1px solid var(--color-divider)">
+        <div>Drawer</div><div>Words</div><div>Mastery</div><div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;align-items:center;gap:0;padding:10px 14px;border-bottom:1px solid var(--color-neutral-200)"><div>Time Expressions</div><div>10</div><div><div class="wf-l"><div style="width:70%;height:5px;background:var(--color-accent-400);border-radius:4px"></div></div></div><div class="wf-btn" style="padding:4px 10px;font-size:14px">Study</div></div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;align-items:center;gap:0;padding:10px 14px;border-bottom:1px solid var(--color-neutral-200)"><div>Weather</div><div>10</div><div><div class="wf-l"><div style="width:20%;height:5px;background:var(--color-accent-400);border-radius:4px"></div></div></div><div class="wf-btn" style="padding:4px 10px;font-size:14px">Study</div></div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;align-items:center;gap:0;padding:10px 14px;border-bottom:1px solid var(--color-neutral-200)"><div>Shopping &amp; Money</div><div>10</div><div><div class="wf-l"></div></div><div class="wf-btn" style="padding:4px 10px;font-size:14px">Study</div></div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;align-items:center;gap:0;padding:10px 14px;border-bottom:1px solid var(--color-neutral-200)"><div>Feelings &amp; Emotions</div><div>10</div><div><div class="wf-l"></div></div><div class="wf-btn" style="padding:4px 10px;font-size:14px">Study</div></div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;align-items:center;gap:0;padding:10px 14px;border-bottom:1px solid var(--color-neutral-200)"><div>Work &amp; Routine</div><div>10</div><div><div class="wf-l"><div style="width:40%;height:5px;background:var(--color-accent-400);border-radius:4px"></div></div></div><div class="wf-btn" style="padding:4px 10px;font-size:14px">Study</div></div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;align-items:center;gap:0;padding:10px 14px;border-bottom:1px solid var(--color-neutral-200)"><div>Travel &amp; Transport</div><div>10</div><div><div class="wf-l"></div></div><div class="wf-btn" style="padding:4px 10px;font-size:14px">Study</div></div>
+      <div style="display:grid;grid-template-columns:1fr 70px 120px 90px;align-items:center;gap:0;padding:10px 14px"><div class="wf-cap">…8 more drawers</div><div></div><div></div><div></div></div>
+    </div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Language and level collapse into two dropdowns in the header; the catalog becomes a scannable table with mastery per drawer.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Home — one “continue” hero, everything else as a flat mode grid</div>
+<div class="dv-card wf" style="width:940px">
+<div style="padding:22px 26px;display:flex;flex-direction:column;gap:18px;min-height:560px">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <div class="wf-h" style="font-size:19px">Vocab Drawer</div>
+    <div style="display:flex;gap:8px"><div class="wf-b" style="padding:5px 12px">FR · A2 ▾</div><div class="wf-b" style="padding:5px 12px">Progress</div></div>
+  </div>
+
+  <div class="wf-b" style="border-left:3px solid var(--color-accent);padding:26px;display:flex;align-items:center;gap:26px">
+    <div style="flex:1">
+      <div class="wf-cap">Up next</div>
+      <div class="wf-h" style="font-size:34px">Review 12 due words</div>
+      <div class="wf-cap">then Weather, card 4 of 10 · 7-day streak</div>
+    </div>
+    <div class="wf-btn wf-btn-p" style="font-size:19px;padding:11px 22px">Start →</div>
+  </div>
+
+  <div class="wf-cap">Or choose something else</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div class="wf-b" style="padding:14px;min-height:96px"><div class="wf-h" style="font-size:17px">Drawers</div><div class="wf-cap">14 A2 drawers by theme</div></div>
+    <div class="wf-b" style="padding:14px"><div class="wf-h" style="font-size:17px">Mixed batches</div><div class="wf-cap">10 words at a time</div></div>
+    <div class="wf-b" style="padding:14px"><div class="wf-h" style="font-size:17px">My Words</div><div class="wf-cap">34 saved · 3 unchecked</div></div>
+    <div class="wf-b" style="padding:14px"><div class="wf-h" style="font-size:17px">Grammar &amp; Verbs</div><div class="wf-cap">6 due</div></div>
+    <div class="wf-b" style="padding:14px"><div class="wf-h" style="font-size:17px">Reading Corner</div><div class="wf-cap">Public-domain passages</div></div>
+    <div class="wf-b" style="padding:14px"><div class="wf-h" style="font-size:17px">Phrase Match</div><div class="wf-cap">Idioms by level</div></div>
+    <div class="wf-b" style="padding:14px"><div class="wf-h" style="font-size:17px">Listening &amp; Speaking</div><div class="wf-cap">Dictation · microphone</div></div>
+    <div class="wf-b" style="padding:14px"><div class="wf-h" style="font-size:17px">Import a text</div><div class="wf-cap">Article, lyrics, a chapter</div></div>
+  </div>
+
+  <div class="wf-d" style="padding:14px;display:flex;align-items:center;gap:16px">
+    <div class="wf-cap" style="flex:1">Level popover (opens from “FR · A2”): language toggle, A1–C1 tabs, level description, words-per-batch slider.</div>
+    <div class="wf-b" style="padding:8px 12px;background:var(--color-neutral-100)">FR / DE · A1 A2 B1 B2 C1 · batch 10</div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Level settings leave the page entirely — they live in a popover behind the “FR · A2” pill. The home screen becomes one decision plus a menu.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Study — centered stage, stage rail on top, batch ledger at the side</div>
+<div class="dv-card wf" style="width:940px">
+<div style="padding:0;min-height:560px;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid var(--color-divider)">
+    <div class="wf-cap" style="flex:1">FR · A2 · Weather · batch 1 of 2</div>
+    <div style="display:flex;align-items:center;gap:7px">
+      <span class="wf-b" style="padding:3px 9px;background:var(--color-neutral-200)">Learn</span>
+      <span class="wf-b" style="padding:3px 9px;background:var(--color-neutral-200)">Match</span>
+      <span class="wf-b" style="padding:3px 9px;background:var(--color-accent-100)">Choose</span>
+      <span class="wf-b" style="padding:3px 9px">Type</span>
+      <span class="wf-b" style="padding:3px 9px">Sentence</span>
+      <span class="wf-b" style="padding:3px 9px">Done</span>
+    </div>
+    <div class="wf-btn" style="padding:4px 12px;font-size:14px">Leave</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 244px;flex:1">
+    <div style="padding:26px 30px;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div style="width:100%;max-width:620px">
+        <div style="display:flex;justify-content:space-between" class="wf-cap"><span>4/10 cleared</span><span>3 in a row</span></div>
+        <div class="wf-l" style="margin-top:5px"><div style="width:40%;height:5px;background:var(--color-accent-400);border-radius:4px"></div></div>
+      </div>
+      <div class="wf-b" style="width:100%;max-width:620px;border-left:3px solid var(--color-accent);padding:24px">
+        <div class="wf-cap">Choose the French</div>
+        <div class="wf-h" style="font-size:26px;margin:6px 0 18px">the rain</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div class="wf-b" style="padding:11px 14px;background:var(--color-neutral-100)">la pluie</div>
+          <div class="wf-b" style="padding:11px 14px;background:var(--color-neutral-100)">le nuage</div>
+          <div class="wf-b" style="padding:11px 14px;background:var(--color-neutral-100)">le vent</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+          <div class="wf-btn" style="padding:5px 12px;font-size:14px">♪ Hear word</div>
+          <div class="wf-btn wf-btn-p">Continue →</div>
+        </div>
+      </div>
+      <div class="wf-cap">enter = check · 1–3 = pick an option · s = skip ahead to typing</div>
+    </div>
+
+    <div style="border-left:1px solid var(--color-divider);padding:16px 14px;background:var(--color-neutral-100)">
+      <div class="wf-h" style="font-size:17px;margin-bottom:8px">This batch</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="display:flex;justify-content:space-between"><span>la pluie</span><span class="wf-cap">typed ✓</span></div>
+        <div style="display:flex;justify-content:space-between"><span>le nuage</span><span class="wf-cap">chosen</span></div>
+        <div style="display:flex;justify-content:space-between"><span>le vent</span><span class="wf-cap">chosen</span></div>
+        <div style="display:flex;justify-content:space-between"><span>la neige</span><span class="wf-cap">matched</span></div>
+        <div style="display:flex;justify-content:space-between"><span>le soleil</span><span class="wf-cap">matched</span></div>
+        <div style="display:flex;justify-content:space-between;color:var(--color-accent-700)"><span>l'orage</span><span class="wf-cap" style="color:var(--color-accent-700)">missed ×2</span></div>
+        <div style="display:flex;justify-content:space-between"><span>le brouillard</span><span class="wf-cap">seen</span></div>
+        <div style="display:flex;justify-content:space-between"><span>chaud</span><span class="wf-cap">seen</span></div>
+        <div style="display:flex;justify-content:space-between"><span>froid</span><span class="wf-cap">seen</span></div>
+        <div style="display:flex;justify-content:space-between"><span>humide</span><span class="wf-cap">seen</span></div>
+      </div>
+      <div class="wf-d wf-cap" style="margin-top:12px;padding:9px">Click any word to see its card again.</div>
+    </div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note" style="padding:0 20px 16px">The five stages become a fixed rail so the learner always knows what's left; the ledger replaces the “what did I get wrong” suspense of the summary screen.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1e">
+<div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Study — full-bleed focus mode, chrome only on hover</div>
+<div class="dv-card wf" style="width:600px">
+<div style="min-height:560px;display:flex;flex-direction:column;background:var(--color-neutral-100)">
+  <div style="height:5px;background:var(--color-neutral-300)"><div style="width:38%;height:4px;background:var(--color-accent)"></div></div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:34px">
+    <div class="wf-cap">Fill in the missing word</div>
+    <div class="wf-h" style="font-size:28px;text-align:center;max-width:420px">Il fait très _____ aujourd'hui.</div>
+    <div class="wf-cap" style="text-align:center">It's very cold today.</div>
+    <div class="wf-b" style="width:340px;padding:12px 14px;background:var(--color-bg)">type your answer</div>
+    <div class="wf-btn wf-btn-p" style="width:180px">Check</div>
+    <div class="wf-cap">♪ hear it &nbsp;·&nbsp; enter to check</div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-top:1px dashed var(--color-neutral-300)">
+    <div class="wf-cap">Weather · type stage · 4/10</div>
+    <div class="wf-cap">esc = leave · tab = show batch ledger</div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note" style="padding:0 18px 14px">Same pipeline, no furniture: one hairline of progress, a centered prompt, all navigation on keys. Narrow frame on purpose — the card never widens past reading measure.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1f">
+<div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Study — summary folded into the ledger, no separate results screen</div>
+<div class="dv-card wf" style="width:700px">
+<div style="padding:22px 24px;display:flex;flex-direction:column;gap:16px;min-height:520px">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <div class="wf-h" style="font-size:24px">Weather — done</div>
+    <div class="wf-cap">80% first try · 10/10 mastered · 24 answers</div>
+  </div>
+  <div class="wf-b" style="padding:0;overflow:hidden">
+    <div style="display:grid;grid-template-columns:1fr 1fr 90px 100px;padding:9px 13px;border-bottom:1px solid var(--color-divider)" class="wf-cap"><div>Word</div><div>Meaning</div><div>First try</div><div>Next due</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 90px 100px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200)"><div>la pluie</div><div>the rain</div><div>✓</div><div class="wf-cap">in 3d</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 90px 100px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200);background:var(--color-accent-100)"><div>l'orage</div><div>the storm</div><div style="color:var(--color-accent-700)">×2</div><div class="wf-cap">tomorrow</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 90px 100px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200)"><div>le nuage</div><div>the cloud</div><div>✓</div><div class="wf-cap">in 3d</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 90px 100px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200);background:var(--color-accent-100)"><div>le brouillard</div><div>the fog</div><div style="color:var(--color-accent-700)">×1</div><div class="wf-cap">tomorrow</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 90px 100px;padding:9px 13px"><div class="wf-cap">…6 more, all clean</div><div></div><div></div><div></div></div>
+  </div>
+  <div style="display:flex;gap:10px">
+    <div class="wf-btn wf-btn-p" style="flex:1">Next drawer: Shopping &amp; Money →</div>
+    <div class="wf-btn" style="flex:1">Practise the 2 misses</div>
+    <div class="wf-btn">Home</div>
+  </div>
+  <div class="wf-d wf-cap" style="padding:12px">Scheduling shown per word, so “mastered” means something concrete instead of a percentage.</div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Alternative to <a class="wf-note" href="#1d">1d</a>'s side ledger: keep the results screen, but make it the per-word record rather than a score card.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1g">
+<div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>My Words — one workspace: library table, add panel on the right</div>
+<div class="dv-card wf" style="width:940px">
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:14px;min-height:560px">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <div class="wf-h" style="font-size:24px">My Words</div>
+    <div class="wf-cap">French · 34 saved · 3 unchecked</div>
+    <div style="flex:1"></div>
+    <div class="wf-btn" style="padding:5px 12px;font-size:14px">French</div>
+    <div class="wf-btn" style="padding:5px 12px;font-size:14px">German</div>
+    <div class="wf-btn wf-btn-p">Study my words →</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:18px;flex:1">
+    <div class="wf-b" style="padding:0;overflow:hidden">
+      <div style="display:flex;gap:9px;align-items:center;padding:10px 13px;border-bottom:1px solid var(--color-divider)">
+        <div class="wf-d wf-cap" style="padding:5px 10px;flex:1">filter words</div>
+        <div class="wf-b" style="padding:4px 10px;background:var(--color-accent-100);font-size:12px">unchecked (3)</div>
+        <div class="wf-b" style="padding:4px 10px;font-size:12px">due (5)</div>
+        <div class="wf-cap">sort: added ▾</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.1fr 1.1fr 88px 1fr 92px 30px;padding:8px 13px;border-bottom:1px solid var(--color-divider)" class="wf-cap"><div>Term</div><div>Meaning</div><div>Check</div><div>Source</div><div>Due</div><div></div></div>
+      <div style="display:grid;grid-template-columns:1.1fr 1.1fr 88px 1fr 92px 30px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200);align-items:center"><div>épanouir</div><div>to blossom</div><div class="wf-b" style="padding:2px 7px;text-align:center;font-size:11px">ok</div><div class="wf-cap">pasted list</div><div class="wf-cap">in 4d</div><div class="wf-cap">🗑</div></div>
+      <div style="display:grid;grid-template-columns:1.1fr 1.1fr 88px 1fr 92px 30px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200);align-items:center;background:var(--color-accent-100)"><div>revendiquer</div><div>to claim</div><div class="wf-b" style="padding:2px 7px;text-align:center;font-size:11px;border-color:var(--color-accent-700)">sense</div><div class="wf-cap">DW Top-Thema</div><div class="wf-cap">due now</div><div class="wf-cap">🗑</div></div>
+      <div style="display:grid;grid-template-columns:1.1fr 1.1fr 88px 1fr 92px 30px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200);align-items:center"><div>le seuil</div><div>the threshold</div><div class="wf-b" style="padding:2px 7px;text-align:center;font-size:11px">ok</div><div class="wf-cap">Lexique 2k–6k</div><div class="wf-cap">in 11d</div><div class="wf-cap">🗑</div></div>
+      <div style="display:grid;grid-template-columns:1.1fr 1.1fr 88px 1fr 92px 30px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200);align-items:center;background:var(--color-accent-100)"><div>entamer</div><div>—</div><div class="wf-d" style="padding:2px 7px;text-align:center;font-size:11px">unchecked</div><div class="wf-cap">typed by hand</div><div class="wf-cap">not studied</div><div class="wf-cap">🗑</div></div>
+      <div style="display:grid;grid-template-columns:1.1fr 1.1fr 88px 1fr 92px 30px;padding:9px 13px;border-bottom:1px solid var(--color-neutral-200);align-items:center"><div>la démarche</div><div>the approach</div><div class="wf-b" style="padding:2px 7px;text-align:center;font-size:11px">fixed</div><div class="wf-cap">pasted list</div><div class="wf-cap">in 2d</div><div class="wf-cap">🗑</div></div>
+      <div style="padding:9px 13px" class="wf-cap">…29 more</div>
+      <div style="padding:11px 13px;border-top:1px solid var(--color-divider);display:flex;gap:9px;align-items:center"><div class="wf-btn" style="padding:4px 11px;font-size:14px">Check 3 unchecked</div><div class="wf-cap">selected: none</div></div>
+    </div>
+
+    <div class="wf-b" style="padding:15px;background:var(--color-neutral-100);display:flex;flex-direction:column;gap:11px">
+      <div class="wf-h" style="font-size:18px">Add words</div>
+      <div style="display:flex;gap:0" class="wf-b">
+        <div style="padding:5px 10px;background:var(--color-accent-100);border-right:1px solid var(--color-divider);font-size:12px">Paste</div>
+        <div style="padding:5px 10px;border-right:1px solid var(--color-divider);font-size:12px">File</div>
+        <div style="padding:5px 10px;font-size:12px">One</div>
+      </div>
+      <div class="wf-d wf-hatch" style="height:150px;padding:10px" class="wf-cap">One per line — term, term/translation, tab-separated or “word 4213”.</div>
+      <div class="wf-d wf-cap" style="padding:6px 9px">Where these came from (optional)</div>
+      <div class="wf-cap">Read as: detect automatically ▾</div>
+      <div class="wf-btn">Read this list</div>
+      <div style="border-top:1px dashed var(--color-neutral-300);padding-top:10px">
+        <div class="wf-cap">Staged: 12 rows · 2 duplicates dropped</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin:7px 0">
+          <div>☑ franchir <span class="wf-cap">to cross</span></div>
+          <div>☑ le constat <span class="wf-cap">—</span></div>
+          <div class="wf-cap">☐ le seuil — already in your deck</div>
+        </div>
+        <div class="wf-btn wf-btn-p">Check 11 words</div>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Hub, input and library become one screen: the table is the hub, the right panel is the whole paste → stage → check path. Review still opens as its own step (<a class="wf-note" href="#1h">1h</a>).</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1h">
+<div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a>My Words — fact-check review as a yours/proposed diff table</div>
+<div class="dv-card wf" style="width:880px">
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:14px;min-height:520px">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <div class="wf-h" style="font-size:23px">Check the translations</div>
+    <div class="wf-cap">4 of 11 came back with something to look at · nothing changes until you save</div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div class="wf-b" style="padding:4px 11px;background:var(--color-accent-100);font-size:12px">Needs a look (4)</div>
+    <div class="wf-b" style="padding:4px 11px;font-size:12px">Clean (7)</div>
+    <div style="flex:1"></div>
+    <div class="wf-btn" style="padding:4px 11px;font-size:14px">Accept all fixes</div>
+    <div class="wf-btn" style="padding:4px 11px;font-size:14px">Keep all mine</div>
+  </div>
+
+  <div class="wf-b" style="padding:0;overflow:hidden">
+    <div style="display:grid;grid-template-columns:142px 1fr 1fr 210px;padding:9px 13px;border-bottom:1px solid var(--color-divider)" class="wf-cap"><div>Term</div><div>Yours</div><div>Proposed</div><div>Decision</div></div>
+
+    <div style="display:grid;grid-template-columns:142px 1fr 1fr 210px;padding:12px 13px;border-bottom:1px solid var(--color-neutral-200);background:var(--color-accent-100)">
+      <div><div>revendiquer</div><div class="wf-cap">sense-dependent</div></div>
+      <div>to claim<div class="wf-cap">no example</div></div>
+      <div>to claim / to assert (a right)<div class="wf-cap">Le syndicat revendique une hausse.</div></div>
+      <div style="display:flex;gap:6px;align-items:flex-start"><div class="wf-btn" style="padding:3px 9px;font-size:13px;background:var(--color-accent-100)">Take it</div><div class="wf-btn" style="padding:3px 9px;font-size:13px">Keep mine</div><div class="wf-btn" style="padding:3px 9px;font-size:13px">Skip</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:142px 1fr 1fr 210px;padding:12px 13px;border-bottom:1px solid var(--color-neutral-200);background:var(--color-accent-100)">
+      <div><div>entamer</div><div class="wf-cap">needs a fix</div></div>
+      <div class="wf-cap">(blank)</div>
+      <div>to begin, to start into<div class="wf-cap">Il a entamé la discussion.</div></div>
+      <div style="display:flex;gap:6px;align-items:flex-start"><div class="wf-btn" style="padding:3px 9px;font-size:13px;background:var(--color-accent-100)">Take it</div><div class="wf-btn" style="padding:3px 9px;font-size:13px">Keep mine</div><div class="wf-btn" style="padding:3px 9px;font-size:13px">Skip</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:142px 1fr 1fr 210px;padding:12px 13px;border-bottom:1px solid var(--color-neutral-200)">
+      <div><div>le seuil</div><div class="wf-cap">ok</div></div>
+      <div>the threshold</div>
+      <div class="wf-cap">agrees · example added</div>
+      <div class="wf-cap">will save as yours</div>
+    </div>
+    <div style="padding:10px 13px" class="wf-cap">…8 more rows</div>
+  </div>
+
+  <div class="wf-d" style="padding:11px;display:flex;align-items:center;gap:14px">
+    <div class="wf-cap" style="flex:1">2 words could not be checked (no key / service down) — they save marked unchecked and can be checked later from the library.</div>
+  </div>
+
+  <div style="display:flex;gap:10px;align-items:center">
+    <div class="wf-cap" style="flex:1">Saving 11 words · 2 fixes accepted · 1 skipped</div>
+    <div class="wf-btn">Back to input</div>
+    <div class="wf-btn wf-btn-p">Save 11 words to my deck</div>
+  </div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Desktop width lets yours and proposed sit side by side per row, with bulk accept/keep at the top and a persistent save bar stating exactly what will happen.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1i">
+<div class="dv-olabel"><a class="dv-oid" href="#1i">1i</a>Grammar — verb workbench: verb list, live table, drill in place</div>
+<div class="dv-card wf" style="width:940px">
+<div style="min-height:560px;display:grid;grid-template-columns:210px 1fr 236px">
+  <div style="border-right:1px solid var(--color-divider);padding:16px 14px;background:var(--color-neutral-100)">
+    <div class="wf-h" style="font-size:18px;margin-bottom:9px">Verbs</div>
+    <div class="wf-d wf-cap" style="padding:5px 9px;margin-bottom:10px">filter 32 core verbs</div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="wf-b" style="padding:6px 9px;background:var(--color-accent-100)">être <span class="wf-cap">· 2 due</span></div>
+      <div style="padding:6px 9px">avoir <span class="wf-cap">· 1 due</span></div>
+      <div style="padding:6px 9px">aller</div>
+      <div style="padding:6px 9px">faire</div>
+      <div style="padding:6px 9px">pouvoir <span class="wf-cap">· 3 due</span></div>
+      <div style="padding:6px 9px">vouloir</div>
+      <div style="padding:6px 9px">devoir</div>
+      <div style="padding:6px 9px">venir</div>
+      <div class="wf-cap" style="padding:4px 9px">…24 more</div>
+    </div>
+    <div class="wf-btn" style="margin-top:12px;padding:5px 10px;font-size:14px">Random 5</div>
+  </div>
+
+  <div style="padding:20px 22px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="display:flex;gap:0" class="wf-b">
+        <div style="padding:5px 11px;background:var(--color-accent-100);border-right:1px solid var(--color-divider)">Present</div>
+        <div style="padding:5px 11px;border-right:1px solid var(--color-divider)">Passé composé</div>
+        <div style="padding:5px 11px;border-right:1px solid var(--color-divider)">Imparfait</div>
+        <div style="padding:5px 11px">Futur</div>
+      </div>
+      <div class="wf-cap">6 due on the verb track</div>
+    </div>
+
+    <div class="wf-b" style="padding:0;overflow:hidden">
+      <div style="display:flex;align-items:baseline;gap:10px;padding:11px 14px;border-bottom:1px solid var(--color-divider)"><div class="wf-h" style="font-size:20px">être</div><div class="wf-cap">to be · irregular · present</div><div style="flex:1"></div><div class="wf-cap">♪ hear all</div></div>
+      <div style="display:grid;grid-template-columns:110px 1fr 1fr">
+        <div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">je</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">suis</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)" class="wf-cap">I am</div>
+        <div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">tu</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">es</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)" class="wf-cap">you are</div>
+        <div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">il / elle</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200);background:var(--color-accent-100)"><span class="wf-d" style="padding:3px 26px">&nbsp;</span> <span class="wf-cap">← type it</span></div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)" class="wf-cap">he / she is</div>
+        <div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">nous</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">sommes</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)" class="wf-cap">we are</div>
+        <div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)">vous</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200) wf-cap">êtes</div><div style="padding:9px 14px;border-bottom:1px solid var(--color-neutral-200)" class="wf-cap">you are</div>
+        <div style="padding:9px 14px">ils / elles</div><div style="padding:9px 14px" class="wf-cap">hidden until you answer</div><div style="padding:9px 14px" class="wf-cap">they are</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--color-divider)">
+        <div class="wf-cap" style="flex:1">Blank one cell at a time, in place — no separate table / match / choose / type screens.</div>
+        <div class="wf-btn" style="padding:4px 11px;font-size:14px">Reveal row</div>
+        <div class="wf-btn wf-btn-p">Check</div>
+      </div>
+    </div>
+
+    <div class="wf-cap">Then: matching, multiple choice and full-verb typing run in this same frame, table staying visible above.</div>
+  </div>
+
+  <div style="border-left:1px solid var(--color-divider);padding:16px 14px;background:var(--color-neutral-100);display:flex;flex-direction:column;gap:12px">
+    <div>
+      <div class="wf-h" style="font-size:17px">Note</div>
+      <div class="wf-cap">Present tense: -er verbs take -e, -es, -e, -ons, -ez, -ent. être, avoir, aller and faire are learned whole.</div>
+    </div>
+    <div style="border-top:1px dashed var(--color-neutral-300);padding-top:10px">
+      <div class="wf-h" style="font-size:17px">This session</div>
+      <div class="wf-cap">14 cells answered · 11 first try · 3 come back</div>
+    </div>
+    <div style="border-top:1px dashed var(--color-neutral-300);padding-top:10px">
+      <div class="wf-h" style="font-size:17px">Grammar notes</div>
+      <div class="wf-cap">9 short notes on the rules learners get stuck on →</div>
+    </div>
+  </div>
+</div>
+<sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+  <div class="wf-note" style="padding:0 22px 16px">One workbench replaces grammarHub → conjSetup → conjTable → conjMatch → conjChoose → conjugation: picking a verb and a tense is a selection, not a wizard.</div>
+</sc-if>
+</div>
+</div>
+
+<div class="dv-opt" id="1j">
+<div class="dv-olabel"><a class="dv-oid" href="#1j">1j</a>Grammar — coverage matrix: pick the gaps, then drill only those</div>
+<div class="dv-card wf" style="width:760px">
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:14px;min-height:520px">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <div class="wf-h" style="font-size:23px">Conjugation trainer</div>
+    <div class="wf-cap">French · 32 verbs × 4 tenses · 6 due</div>
+  </div>
+  <div class="wf-cap">Each cell is one verb in one tense. Shade shows how solid it is; click cells or a whole row/column to build a drill.</div>
+
+  <div class="wf-b" style="padding:14px;overflow:hidden">
+    <div style="display:grid;grid-template-columns:118px repeat(4,1fr);gap:7px;align-items:center">
+      <div></div><div class="wf-cap">Present</div><div class="wf-cap">Passé comp.</div><div class="wf-cap">Imparfait</div><div class="wf-cap">Futur</div>
+      <div>être</div><div style="height:30px;background:var(--color-neutral-600)"></div><div style="height:30px;background:var(--color-neutral-400)"></div><div style="height:30px;background:var(--color-neutral-200)"></div><div class="wf-d" style="height:30px"></div>
+      <div>avoir</div><div style="height:30px;background:var(--color-neutral-600)"></div><div style="height:30px;background:var(--color-neutral-400)"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div>
+      <div>aller</div><div style="height:30px;background:var(--color-neutral-400)"></div><div style="height:30px;background:var(--color-neutral-200);outline:1px solid var(--color-accent)"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div>
+      <div>faire</div><div style="height:30px;background:var(--color-neutral-400)"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div>
+      <div>pouvoir</div><div style="height:30px;background:var(--color-neutral-200);outline:1px solid var(--color-accent)"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div>
+      <div>vouloir</div><div style="height:30px;background:var(--color-neutral-400)"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div><div class="wf-d" style="height:30px"></div>
+      <div class="wf-cap">…26 more</div><div></div><div></div><div></div><div></div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:13px">
+      <div class="wf-cap">solid</div><div style="width:26px;height:12px;background:var(--color-neutral-600)"></div>
+      <div style="width:26px;height:12px;background:var(--color-neutral-400)"></div>
+      <div style="width:26px;height:12px;background:var(--color-neutral-200)"></div>
+      <div class="wf-d" style="width:26px;height:12px"></div><div class="wf-cap">never drilled</div>
+      <div style="flex:1"></div>
+      <div class="wf-cap" style="color:var(--color-accent-700)">outlined = due</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;align-items:center">
+    <div class="wf-cap" style="flex:1">Selected: 2 cells (aller · passé composé, pouvoir · present)</div>
+    <div class="wf-btn">Mix all tenses</div>
+    <div class="wf-btn wf-btn-p">Drill 2 selected →</div>
+  </div>
+  <div class="wf-d wf-cap" style="padding:12px">Drill format stays as today — table, matching, multiple choice, typing — but the set is chosen from the map instead of a three-step picker.</div>
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div class="wf-note">Companion to <a class="wf-note" href="#1i">1i</a>: this one is about deciding what to practise; the workbench is about practising it.</div>
+  </sc-if>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: “build out <a class="dv-oid" href="#1a">1a</a> as the home direction and show the study pipeline inside that shell” · “combine <a class="dv-oid" href="#1b">1b</a>'s table with <a class="dv-oid" href="#1c">1c</a>'s continue hero” · “wireframe Reading Corner and Listening in the <a class="dv-oid" href="#1a">1a</a> shell”</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Wireframe&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { showNotes: this.props.showNotes ?? true };
+  }
+}
+</script>
+</body>
+</html>

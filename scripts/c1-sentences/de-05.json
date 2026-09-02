@@ -1,0 +1,557 @@
+[
+{
+"t": "widersprüchlich",
+"s": "Die Aussagen der Zeugen sind in wesentlichen Punkten widersprüchlich.",
+"se": "The witnesses' statements are contradictory on essential points."
+},
+{
+"t": "fragwürdig",
+"s": "Die Auswahl der Vergleichsgruppe erscheint methodisch fragwürdig.",
+"se": "The choice of comparison group appears methodologically dubious."
+},
+{
+"t": "strittig",
+"s": "Strittig ist weniger der Befund als seine Deutung.",
+"se": "What is contested is less the finding than its interpretation."
+},
+{
+"t": "unstrittig",
+"s": "Unstrittig ist, dass die Zahlen seit 2015 fallen.",
+"se": "It is undisputed that the figures have been falling since 2015."
+},
+{
+"t": "maßgeblich",
+"s": "Die Kommission war maßgeblich an der Neufassung beteiligt.",
+"se": "The commission was decisively involved in the redraft."
+},
+{
+"t": "ausschlaggebend",
+"s": "Ausschlaggebend war am Ende der Preis, nicht die Qualität.",
+"se": "The deciding factor in the end was price, not quality."
+},
+{
+"t": "wesentlich",
+"s": "Die Kosten unterscheiden sich wesentlich von den ursprünglichen Angaben.",
+"se": "The costs differ substantially from the original figures."
+},
+{
+"t": "erheblich",
+"s": "Der Aufwand ist erheblich, der Nutzen ungewiss.",
+"se": "The effort is considerable, the benefit uncertain."
+},
+{
+"t": "beträchtlich",
+"s": "Die Unterschiede zwischen den Regionen sind beträchtlich.",
+"se": "The differences between the regions are considerable."
+},
+{
+"t": "geringfügig",
+"s": "Die Abweichung ist geringfügig und statistisch bedeutungslos.",
+"se": "The deviation is marginal and statistically meaningless."
+},
+{
+"t": "vernachlässigbar",
+"s": "Der Effekt ist bei dieser Dosis vernachlässigbar.",
+"se": "The effect is negligible at this dose."
+},
+{
+"t": "weitreichend",
+"s": "Das Urteil hat weitreichend Folgen für alle Vertragspartner.",
+"se": "The ruling has far-reaching consequences for all contracting parties."
+},
+{
+"t": "tiefgreifend",
+"s": "Die Branche steht vor einem tiefgreifend veränderten Markt.",
+"se": "The sector faces a profoundly changed market."
+},
+{
+"t": "durchgreifend",
+"s": "Nur eine durchgreifend andere Organisation könnte helfen.",
+"se": "Only a thoroughly different organisation could help."
+},
+{
+"t": "umfassend",
+"s": "Eine umfassend angelegte Studie fehlt bis heute.",
+"se": "A comprehensively designed study is still lacking."
+},
+{
+"t": "lückenhaft",
+"s": "Die Überlieferung ist für dieses Jahrzehnt sehr lückenhaft.",
+"se": "The surviving record is very patchy for this decade."
+},
+{
+"t": "oberflächlich",
+"s": "Die Prüfung blieb notgedrungen oberflächlich.",
+"se": "The examination necessarily remained superficial."
+},
+{
+"t": "eingehend",
+"s": "Der Fall verdient eine eingehend geführte Untersuchung.",
+"se": "The case deserves a thoroughly conducted investigation."
+},
+{
+"t": "differenziert",
+"s": "Das Kapitel argumentiert erfreulich differenziert.",
+"se": "The chapter argues pleasingly nuancedly."
+},
+{
+"t": "pauschal",
+"s": "Solche pauschal formulierten Vorwürfe helfen niemandem.",
+"se": "Such sweepingly worded accusations help nobody."
+},
+{
+"t": "zutreffend",
+"s": "Die Beschreibung ist zutreffend, die Bewertung nicht.",
+"se": "The description is accurate; the assessment is not."
+},
+{
+"t": "naheliegend",
+"s": "Die naheliegend erscheinende Erklärung erweist sich als falsch.",
+"se": "The explanation that seems obvious turns out to be wrong."
+},
+{
+"t": "offenkundig",
+"s": "Der Widerspruch ist offenkundig und bleibt dennoch unerwähnt.",
+"se": "The contradiction is manifest and nevertheless goes unmentioned."
+},
+{
+"t": "vermeintlich",
+"s": "Die vermeintlich neue Erkenntnis stand schon 1978 in einer Fußnote.",
+"se": "The supposedly new insight was already in a footnote in 1978."
+},
+{
+"t": "angeblich",
+"s": "Das angeblich vertrauliche Papier lag der Presse längst vor.",
+"se": "The allegedly confidential paper had long been available to the press."
+},
+{
+"t": "scheinbar",
+"s": "Der scheinbar klare Befund verschwindet bei genauerer Prüfung.",
+"se": "The seemingly clear finding vanishes on closer inspection."
+},
+{
+"t": "anscheinend",
+"s": "Die Daten wurden anscheinend nie unabhängig geprüft.",
+"se": "The data were apparently never independently checked."
+},
+{
+"t": "vordergründig",
+"s": "Vordergründig geht es um Kosten, tatsächlich um Zuständigkeiten.",
+"se": "On the face of it the issue is costs; in fact it is competences."
+},
+{
+"t": "hintergründig",
+"s": "Der Text ist hintergründig komisch, ohne je laut zu werden.",
+"se": "The text is subtly funny without ever becoming loud."
+},
+{
+"t": "grundlegend",
+"s": "Beide Ansätze unterscheiden sich grundlegend.",
+"se": "The two approaches differ fundamentally."
+},
+{
+"t": "weiterführend",
+"s": "Weiterführend wäre ein Vergleich mit dem Nachbarland.",
+"se": "A comparison with the neighbouring country would take things further."
+},
+{
+"t": "richtungweisend",
+"s": "Das Urteil gilt als richtungweisend für die gesamte Branche.",
+"se": "The ruling is regarded as pointing the way for the whole sector."
+},
+{
+"t": "schwerwiegend",
+"s": "Der Verstoß wiegt schwerwiegend genug für eine Untersagung.",
+"se": "The breach is serious enough to warrant a prohibition."
+},
+{
+"t": "gravierend",
+"s": "Die Mängel sind gravierend und seit Jahren bekannt.",
+"se": "The defects are severe and have been known for years."
+},
+{
+"t": "folgenreich",
+"s": "Kaum eine Entscheidung war so folgenreich wie diese.",
+"se": "Hardly any decision was as consequential as this one."
+},
+{
+"t": "aufschlussreich",
+"s": "Besonders aufschlussreich ist der Anhang.",
+"se": "The appendix is particularly revealing."
+},
+{
+"t": "wegweisend",
+"s": "Der Aufsatz von 1963 gilt bis heute als wegweisend.",
+"se": "The 1963 essay is still regarded as trailblazing."
+},
+{
+"t": "einleuchtend",
+"s": "Die Begründung ist einleuchtend, das Ergebnis trotzdem unbefriedigend.",
+"se": "The reasoning is convincing; the outcome is nonetheless unsatisfactory."
+},
+{
+"t": "allerdings",
+"s": "Die Zahlen sind gut; allerdings fehlt jeder Vergleichsmaßstab.",
+"se": "The figures are good; however, any benchmark is missing."
+},
+{
+"t": "indes",
+"s": "Die Erwartungen waren hoch; die Umsetzung blieb indes zurück.",
+"se": "Expectations were high; implementation, however, lagged behind."
+},
+{
+"t": "hingegen",
+"s": "Die Städte wachsen; das Umland schrumpft hingegen weiter.",
+"se": "The cities are growing; the surrounding areas, by contrast, keep shrinking."
+},
+{
+"t": "dagegen",
+"s": "Im Westen stagnieren die Zahlen, im Osten steigen sie dagegen.",
+"se": "In the west the figures are stagnating; in the east, by contrast, they are rising."
+},
+{
+"t": "demgegenüber",
+"s": "Die Kosten sanken; die Qualität blieb demgegenüber unverändert.",
+"se": "Costs fell; quality, in contrast, remained unchanged."
+},
+{
+"t": "gleichwohl",
+"s": "Der Einwand ist berechtigt; gleichwohl ändert er wenig.",
+"se": "The objection is valid; nevertheless it changes little."
+},
+{
+"t": "dennoch",
+"s": "Die Belege sind dünn, dennoch wird die These oft zitiert.",
+"se": "The evidence is thin; nevertheless the thesis is often cited."
+},
+{
+"t": "nichtsdestotrotz",
+"s": "Das Verfahren ist teuer; nichtsdestotrotz wird daran festgehalten.",
+"se": "The procedure is expensive; nonetheless it is being kept."
+},
+{
+"t": "dessen ungeachtet",
+"s": "Die Frist lief ab; dessen ungeachtet wurde der Antrag bearbeitet.",
+"se": "The deadline expired; notwithstanding this the application was processed."
+},
+{
+"t": "immerhin",
+"s": "Die Sanierung dauert lange; immerhin ist sie finanziert.",
+"se": "The renovation is taking a long time; at any rate it is funded."
+},
+{
+"t": "folglich",
+"s": "Die Voraussetzung fehlt; folglich greift die Ausnahme nicht.",
+"se": "The precondition is absent; consequently the exception does not apply."
+},
+{
+"t": "demzufolge",
+"s": "Der Bericht liegt vor; demzufolge kann der Ausschuss tagen.",
+"se": "The report is available; accordingly the committee can meet."
+},
+{
+"t": "infolgedessen",
+"s": "Die Lieferung verzögerte sich; infolgedessen stand die Produktion still.",
+"se": "The delivery was delayed; as a result production stood still."
+},
+{
+"t": "mithin",
+"s": "Die Frist war gewahrt; die Klage ist mithin zulässig.",
+"se": "The deadline was met; the claim is therefore admissible."
+},
+{
+"t": "somit",
+"s": "Alle Bedingungen sind erfüllt; somit steht der Auszahlung nichts entgegen.",
+"se": "All conditions are met; thus nothing stands in the way of payment."
+},
+{
+"t": "demnach",
+"s": "Demnach hätte die Behörde schon 2018 eingreifen müssen.",
+"se": "Accordingly the authority should have intervened as early as 2018."
+},
+{
+"t": "insofern",
+"s": "Der Vergleich hinkt insofern, als die Zeiträume verschieden sind.",
+"se": "The comparison is flawed in that the periods differ."
+},
+{
+"t": "inwiefern",
+"s": "Offen bleibt, inwiefern die Regel auch für Altverträge gilt.",
+"se": "It remains open to what extent the rule also applies to old contracts."
+},
+{
+"t": "zumal",
+"s": "Der Termin ist knapp, zumal die Gutachten noch fehlen.",
+"se": "The deadline is tight, particularly since the reports are still missing."
+},
+{
+"t": "überdies",
+"s": "Das Verfahren ist langsam und überdies teuer.",
+"se": "The procedure is slow and moreover expensive."
+},
+{
+"t": "ferner",
+"s": "Ferner ist auf die Fristen des Landesrechts hinzuweisen.",
+"se": "Furthermore, attention must be drawn to the deadlines under state law."
+},
+{
+"t": "des Weiteren",
+"s": "Des Weiteren fehlt eine Abschätzung der Folgekosten.",
+"se": "Furthermore, an estimate of the follow-up costs is missing."
+},
+{
+"t": "darüber hinaus",
+"s": "Darüber hinaus wurden zwei Standorte ganz geschlossen.",
+"se": "Beyond that, two sites were closed entirely."
+},
+{
+"t": "zudem",
+"s": "Der Antrag war unvollständig und zudem verspätet.",
+"se": "The application was incomplete and moreover late."
+},
+{
+"t": "obendrein",
+"s": "Die Software ist langsam und obendrein schlecht dokumentiert.",
+"se": "The software is slow and on top of that poorly documented."
+},
+{
+"t": "vielmehr",
+"s": "Es geht nicht um Technik, vielmehr um Vertrauen.",
+"se": "It is not about technology, but rather about trust."
+},
+{
+"t": "stattdessen",
+"s": "Man verzichtete auf ein Gutachten und befragte stattdessen die Beteiligten.",
+"se": "An expert report was dispensed with and those involved were questioned instead."
+},
+{
+"t": "ansonsten",
+"s": "Zwei Punkte sind zu ändern; ansonsten ist der Entwurf tragfähig.",
+"se": "Two points need changing; otherwise the draft is sound."
+},
+{
+"t": "andernfalls",
+"s": "Die Frist ist einzuhalten, andernfalls verfällt der Anspruch.",
+"se": "The deadline must be met, failing which the claim lapses."
+},
+{
+"t": "hierbei",
+"s": "Hierbei ist auf die unterschiedlichen Bezugsjahre zu achten.",
+"se": "In doing so, attention must be paid to the different base years."
+},
+{
+"t": "hierzu",
+"s": "Hierzu liegen bislang keine belastbaren Zahlen vor.",
+"se": "On this there are so far no reliable figures."
+},
+{
+"t": "diesbezüglich",
+"s": "Diesbezüglich hat sich die Rechtslage 2021 geändert.",
+"se": "In this regard the legal position changed in 2021."
+},
+{
+"t": "einerseits… andererseits",
+"s": "Das Muster einerseits… andererseits durchzieht das ganze Kapitel.",
+"se": "The \"on the one hand… on the other\" pattern runs through the whole chapter."
+},
+{
+"t": "zum einen… zum anderen",
+"s": "Die Gliederung folgt dem Schema zum einen… zum anderen.",
+"se": "The structure follows the \"for one thing… for another\" pattern."
+},
+{
+"t": "erstens, zweitens, drittens",
+"s": "Die Argumente werden mit erstens, zweitens, drittens sauber getrennt.",
+"se": "The arguments are cleanly separated with firstly, secondly, thirdly."
+},
+{
+"t": "schließlich",
+"s": "Schließlich blieb nur der Vergleich vor Gericht.",
+"se": "Finally only a court settlement remained."
+},
+{
+"t": "letztlich",
+"s": "Letztlich entscheidet der politische Wille, nicht die Statistik.",
+"se": "Ultimately political will decides, not statistics."
+},
+{
+"t": "letzten Endes",
+"s": "Letzten Endes ging es um die Zuständigkeit, nicht um die Sache.",
+"se": "In the final analysis it was about competence, not about the substance."
+},
+{
+"t": "im Endeffekt",
+"s": "Im Endeffekt zahlt die Allgemeinheit die Differenz.",
+"se": "In the end the public pays the difference."
+},
+{
+"t": "im Grunde",
+"s": "Im Grunde wiederholt der Bericht die Empfehlungen von 2016.",
+"se": "Basically the report repeats the 2016 recommendations."
+},
+{
+"t": "genau genommen",
+"s": "Genau genommen handelt es sich um zwei getrennte Verfahren.",
+"se": "Strictly speaking these are two separate procedures."
+},
+{
+"t": "streng genommen",
+"s": "Streng genommen fällt der Fall gar nicht unter die Verordnung.",
+"se": "Strictly speaking the case does not fall under the regulation at all."
+},
+{
+"t": "gewissermaßen",
+"s": "Der Anhang ist gewissermaßen das eigentliche Buch.",
+"se": "The appendix is to some extent the real book."
+},
+{
+"t": "sozusagen",
+"s": "Die Fußnote ist sozusagen der Kommentar zum Kommentar.",
+"se": "The footnote is, so to speak, the commentary on the commentary."
+},
+{
+"t": "beziehungsweise",
+"s": "Zuständig ist das Land beziehungsweise die Kommune.",
+"se": "The state or rather the municipality is responsible."
+},
+{
+"t": "und zwar",
+"s": "Ein Punkt bleibt offen, und zwar die Finanzierung.",
+"se": "One point remains open, namely the funding."
+},
+{
+"t": "obgleich",
+"s": "Obgleich die Belege dünn sind, wird die These weiter vertreten.",
+"se": "Although the evidence is thin, the thesis continues to be maintained."
+},
+{
+"t": "wenngleich",
+"s": "Der Trend hält an, wenngleich deutlich abgeschwächt.",
+"se": "The trend continues, even though much weakened."
+},
+{
+"t": "wohingegen",
+"s": "Die Städte gewinnen Einwohner, wohingegen das Umland verliert.",
+"se": "The cities are gaining inhabitants, whereas the surrounding areas are losing them."
+},
+{
+"t": "während",
+"s": "Während die Kosten stiegen, blieb die Leistung gleich.",
+"se": "While costs rose, output stayed the same."
+},
+{
+"t": "indem",
+"s": "Man senkte die Kosten, indem man auf externe Gutachten verzichtete.",
+"se": "Costs were cut by doing without external reports."
+},
+{
+"t": "sofern",
+"s": "Der Antrag wird bewilligt, sofern die Unterlagen vollständig sind.",
+"se": "The application is approved provided the documents are complete."
+},
+{
+"t": "soweit",
+"s": "Soweit ersichtlich, ist der Fall bislang einmalig.",
+"se": "As far as can be seen, the case is so far unique."
+},
+{
+"t": "falls",
+"s": "Falls die Frist verstreicht, entscheidet die Aufsicht selbst.",
+"se": "In case the deadline passes, the regulator decides itself."
+},
+{
+"t": "sobald",
+"s": "Sobald der Bescheid vorliegt, beginnt die Klagefrist.",
+"se": "As soon as the decision is issued, the period for appeal begins."
+},
+{
+"t": "solange",
+"s": "Solange die Daten fehlen, bleibt jede Aussage vorläufig.",
+"se": "As long as the data are missing, every statement remains provisional."
+},
+{
+"t": "seitdem",
+"s": "Seitdem die Regel gilt, sind die Zahlen deutlich gesunken.",
+"se": "Since the rule came into force the figures have fallen markedly."
+},
+{
+"t": "damit",
+"s": "Die Fristen wurden verkürzt, damit die Verfahren schneller enden.",
+"se": "The deadlines were shortened so that proceedings end faster."
+},
+{
+"t": "sodass",
+"s": "Die Belege fehlten, sodass die Klage abgewiesen wurde.",
+"se": "The evidence was missing, so that the claim was dismissed."
+},
+{
+"t": "als ob",
+"s": "Der Bericht liest sich, als ob es die Vorstudie nie gegeben hätte.",
+"se": "The report reads as if the preliminary study had never existed."
+},
+{
+"t": "anstatt dass",
+"s": "Anstatt dass man die Ursachen prüfte, wurden die Symptome behandelt.",
+"se": "Instead of examining the causes, the symptoms were treated."
+},
+{
+"t": "ohne dass",
+"s": "Die Regel wurde geändert, ohne dass jemand widersprochen hätte.",
+"se": "The rule was changed without anyone objecting."
+},
+{
+"t": "je… desto",
+"s": "Das Muster je… desto beschreibt den Zusammenhang recht gut.",
+"se": "The \"the… the\" pattern describes the relationship quite well."
+},
+{
+"t": "es sei denn",
+"s": "Die Frist läuft weiter, es sei denn das Gericht ordnet etwas anderes an.",
+"se": "The deadline continues to run unless the court orders otherwise."
+},
+{
+"t": "geschweige denn",
+"s": "Man kennt die Ursachen kaum, geschweige denn die Gegenmittel.",
+"se": "The causes are hardly known, let alone the remedies."
+},
+{
+"t": "angesichts",
+"s": "Angesichts der Datenlage wäre Zurückhaltung angebracht.",
+"se": "In view of the state of the data, restraint would be appropriate."
+},
+{
+"t": "anhand",
+"s": "Anhand von drei Fallstudien wird das Verfahren erprobt.",
+"se": "The procedure is tested on the basis of three case studies."
+},
+{
+"t": "aufgrund",
+"s": "Aufgrund fehlender Unterlagen wurde das Verfahren eingestellt.",
+"se": "Due to missing documents the proceedings were discontinued."
+},
+{
+"t": "hinsichtlich",
+"s": "Hinsichtlich der Kosten schweigt der Bericht.",
+"se": "With regard to the costs the report is silent."
+},
+{
+"t": "bezüglich",
+"s": "Bezüglich der Zuständigkeit gibt es keine Einigung.",
+"se": "Concerning competence there is no agreement."
+},
+{
+"t": "infolge",
+"s": "Infolge der Dürre fiel die Ernte um ein Drittel geringer aus.",
+"se": "As a result of the drought the harvest was a third smaller."
+},
+{
+"t": "mittels",
+"s": "Mittels einfacher Verfahren lässt sich das nachweisen.",
+"se": "By means of simple procedures this can be demonstrated."
+},
+{
+"t": "ungeachtet",
+"s": "Ungeachtet aller Warnungen wurde der Zeitplan beibehalten.",
+"se": "Regardless of all warnings the schedule was kept."
+}
+]

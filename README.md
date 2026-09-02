@@ -28,8 +28,8 @@ browser.
 |---|---|
 | `src/VocabDrawer.jsx` | The app — learn, match, choose, practice, conjugation, dictation, speaking, reading, progress, summary, plus the My Words hub / input / review screens |
 | `src/data/vocab.js` | 698 hand-curated words: FR/DE × A1–B2, in themed drawers |
-| `src/data/vocab-fr-c1.js` | French C1 — 362 words in 33 drawers, generated from a compiled B2+ list. `FR_C1_STAGED` holds a further 676 not yet wired in |
-| `src/data/vocab-de-c1.js` | German C1 — 583 words in 58 drawers, same treatment. `DE_C1_STAGED` holds a further 624 |
+| `src/data/vocab-fr-c1.js` | French C1 — 1,038 words in 98 drawers: the academic core (`FR_C1`) plus the thematic, register and false-friend sets (`FR_C1_STAGED`). Both are wired into `DATA` |
+| `src/data/vocab-de-c1.js` | German C1 — 1,207 words in 118 drawers, same two-part structure (`DE_C1` + `DE_C1_STAGED`) |
 | `src/data/content.js` | Reading passages, idioms, conjugation engine, grammar notes |
 | `src/lib/wordlist.js` | Parses pasted/uploaded word lists. Pure functions, no React — run it under node |
 | `src/lib/gloss.js` | Reading an English gloss — sense splitting, accepted answers |
@@ -152,9 +152,12 @@ calls Modalpartikeln (*doch*, *ja*, *wohl*) "listening work, not flashcard
 work", so they are parsed but excluded. Word-formation tables are reference
 material and excluded too.
 
-These entries have no example sentences yet, so they drill two question kinds
-instead of three — `buildPracticeQueue` skips fill-in-the-blank when a word has
-no cloze. Running the My Words check pass over them adds sentences.
+Every C1 entry now carries an example sentence, its cloze and an English
+rendering, so C1 drills the same three question kinds as every other level.
+Each sentence is written at C1 register — journalistic or academic — and uses
+the headword in the exact surface form the deck teaches, because
+fill-in-the-blank blanks by literal match: a sentence using an inflected form
+would produce a blank its own answer could not fill.
 
 ## My Words
 
@@ -397,9 +400,9 @@ than pretending to work.
 
 ## Moods and tenses
 
-Six per language. French adds the **conditionnel** and the **subjonctif**,
-German the **Konjunktiv II** — the moods a learner meets constantly and could
-not previously drill at all.
+Seven per language. French adds the **conditionnel**, the **subjonctif** and
+the **impératif**; German the **Konjunktiv II** and the **Imperativ** — the
+moods a learner meets constantly and could not previously drill at all.
 
 Most of it is derived rather than stored, because the shapes are regular:
 
@@ -413,10 +416,73 @@ The one class that defeats the rule is the mixed verbs — a weak `-te` past wit
 a changed stem (bringen → brächte, haben → hätte). They are named in
 `DE_MIXED_K2`, keyed by stem so prefixed forms inherit.
 
-**The imperative is deliberately absent.** It has three persons where every
-other tense has six, and the six-person shape is assumed by the pronoun list,
-the matching board, the multiple-choice distractors and the coverage map.
-Adding it is a structural change, not another table.
+### The imperative, and why it needed more than a table
+
+Every other tense has six persons. French commands only *tu*, *nous* and
+*vous*; German adds *Sie* but has no first-person singular and no third person
+at all — you cannot order someone to "he speaks". That flat 0–5 was assumed by
+the pronoun tiles, the matching board, the multiple-choice distractors, the
+coverage map and the reveal table, so the fact now lives on the tense and
+everything asks:
+
+```js
+personsFor("fr", "imperatif")   // [1, 3, 4]
+personsFor("de", "imperativ")   // [1, 3, 4, 5]
+hasTense("de", können, "imperativ")   // false — "kann!" is not a thing to say
+```
+
+`conjugate` still returns six slots, so `forms[personIdx]` keeps working
+everywhere; the persons a mood does not have hold `null`, which reads as absent
+rather than as an empty string that might be a bug. The coverage map draws
+those cells hatched — "no such form" and "never drilled" are different facts,
+and the map is worthless if they look the same.
+
+The forms themselves:
+
+| | How it is built |
+|---|---|
+| French tu | the present *tu* form, minus the -s for -er verbs and *aller* — "parle", not "parles". *finis* and *vends* keep theirs |
+| French nous / vous | the present forms unchanged |
+| German du | the present *du* form with its ending off, keeping an e→i change but undoing the a→ä umlaut: **sprich** but **fahr** |
+| German wir / Sie | the infinitive plus the pronoun — "gehen wir", "gehen Sie", which is also why they read as suggestions |
+
+Three things the rules could not reach, all caught by tests rather than
+assumed: être/avoir/savoir/vouloir take the subjunctive stem (*sois*, *aie*,
+*sache*, *veuillez*); *hast* and *wirst* are not usable stems, so **hab** and
+**werde** come off the infinitive instead; and French puts the reflexive
+pronoun *after* an affirmative command and stresses it — **lève-toi**, the one
+place in the language where it does not precede.
+
+The English is a command too. Rendering it through the pronoun table would give
+"you are" for *sois* — a statement, not the order the form actually is.
+
+### Choosing what a drill covers
+
+"Drill être" used to mean *every tense the verb has* — so a learner who had
+only ever opened the present was asked for the subjunctive, in a queue that was
+harder than anything they had studied and gave no way to say so. The scope is
+now a choice, shown next to the button:
+
+| Scope | Covers |
+|---|---|
+| **This tense** (default) | only the tense open in the table |
+| **Started** | tenses this verb already has a card in — i.e. ones you have answered at least once |
+| **All** | every tense the verb has |
+
+`started` is deliberately not *due*: you want to be able to drill something you
+have met and are not currently being asked for. A scope that empties — you
+switch to a verb you have never drilled while "Started" is selected — falls
+back to "This tense" rather than leaving a dead button, and the button always
+names what it will do ("Drill aller · 1 tense").
+
+The tense strip carries the same fact as a dot, so "which tenses do I actually
+know for this verb" is answerable without clicking through all seven. Tenses
+the verb does not have — a German modal has no imperative — are disabled there
+rather than silently missing.
+
+The logic lives in `drillScopeTenses`/`effectiveScope` in `src/lib/study.js`
+rather than in the component, so it is unit-tested; this was a logic bug, and
+the component is not where a logic bug should be fixed once.
 
 ## Models
 
@@ -470,17 +536,85 @@ node scripts/fix-false-friend-glosses.mjs    # move "NOT \"lecture\"" out of the
 node scripts/generate-c1-sentences.mjs --lang fr   # example sentences for C1 (needs a key)
 ```
 
-**The C1 words have no example sentences** — all 945 of them. That is not
-cosmetic: `buildPracticeQueue` skips fill-in-the-blank without a cloze,
-`goToSentence` skips the sentence stage, dictation has nothing to read, and
-Sentence Constructions cannot use them. C1 quietly drills two question kinds
-instead of three and nothing says why.
+All 2,245 C1 words now have sentences, so `generate-c1-sentences.mjs` has
+nothing left to do; it stays for words added later, and still needs
+`ANTHROPIC_API_KEY` plus the API server.
 
-`generate-c1-sentences.mjs` fixes that, and needs `ANTHROPIC_API_KEY` in `.env`
-plus the API server running. It is a dry run by default, refuses any sentence
-that does not contain the headword — a cloze that cannot find its own answer is
-worse than no sentence — never overwrites an existing one, and writes per batch
-so an interrupted run keeps what it earned.
+The sentences already in the deck were written by hand and applied through
+`apply-sentences.mjs`, which derives the cloze rather than taking one, and
+rejects a row rather than storing something the app cannot use:
+
+- **the sentence must contain the headword** in the deck's own surface form —
+  the check that matters, since a cloze that cannot find its answer is worse
+  than no sentence at all;
+- **at a word boundary** — `makeCloze` blanks the first literal match, and
+  "or" inside "encore" would blank three letters of the wrong word;
+- **case-insensitively at the front**, so a connector that naturally opens a
+  sentence ("En somme") still matches the lowercase headword the deck teaches.
+
+Those three rules caught every bad row in practice: French verbs whose "de"
+contracts to "des", German separable verbs where "zu" goes *inside* the word,
+plurals and participles standing in for a lemma. `--replace` overwrites an
+existing sentence, for correcting one that passed the mechanical checks but
+turned out to be poor language.
+
+## Desktop screens
+
+Every area now has a ≥1024px design. The first ten (home, study pipeline,
+summary, My Words, grammar) came from the original handoff; the six below were
+the ones it never covered, and each replaces two to four mobile screens with a
+single frame:
+
+| Screen | Replaces | What the width buys |
+|---|---|---|
+| `ReadingCorner` | readingSelect → readingQuiz → readingDone | The passage stays on screen while you answer, with the asked-about words underlined; the question card advances alone |
+| `PhraseMatch` | phraseSelect → phraseMatch → phraseDone | Facing columns instead of stacked ones, and the literal reading revealed on the pair rather than held for a results screen |
+| `ListeningStage` | dictation, dictationDone, speaking, speakingDone | One frame with a mode toggle; the live per-line ledger replaces both "done" screens |
+| `SentenceStage` | the bare cloze at the end of a batch | A word bank, so a wrong word order is visible as a grammar mistake rather than a vocabulary one, plus the word's own card beside it |
+| `ImportReader` | importPaste → importReader → importLibrary | A library rail (the app held exactly one text before), and a lookup panel with a fixed home so clicking a word no longer pushes the text down |
+| `ProgressBoard` | progress | Levels collapse, and the rail carries the two things the phone had no room for: a due forecast and the non-vocabulary tracks |
+
+Mobile keeps its own screens throughout — the split is a hard `isDesktop` JSX
+branch, not CSS, because these are content rewrites rather than reflows.
+
+### How width is handed out
+
+`src/lib/sections.js` owns the policy, because it is a fact about screens and
+that is where the other screen sets already live:
+
+- **`FULL_WIDTH_SCREENS`** — the areas with a desktop design. They lay
+  themselves out (grids, side rails, facing columns) and are given the whole
+  column.
+- **`COLUMN_WIDTH` (720px)** — everything still on the phone's single column.
+  Capped so it does not stretch, and **centred**, because a lone column pinned
+  against the rail with 900px of nothing beside it reads as a bug rather than a
+  deliberate measure.
+- **`CONTENT_MAX` (1600px)** — the widest the main column ever gets. Past that
+  the content centres instead of sprawling. Set generously: screens that would
+  suffer from the width already carry their own measure (a reading passage
+  stops at 56ch whatever the frame does), while the grids get more useful with
+  more columns.
+
+`DesktopShell`'s padding is `clamp(16px, 2.2vw, 40px) / clamp(18px, 2.6vw,
+56px)` rather than a constant, and the drawer grid is
+`repeat(auto-fill, minmax(224px, 1fr))` rather than three fixed columns — so it
+is three across at 1024, four at 1440 and five at 1920 with no breakpoint for
+each.
+
+**The bug this replaced** is worth naming, because the shape of it will recur:
+the home screen *has* a desktop design, but `HomeDesktop` renders inside the
+shared `screens` block rather than as its own branch of the routing chain, so
+the single-column fallback cap landed on it. At 1440px that left the content
+720px wide against a 1228px column — a third of the window empty. A screen
+having a desktop layout and a screen being *routed* as one are two different
+things.
+
+Two notes on what was *not* built. The 2f wireframe pairs "export progress"
+with "reset progress"; export is implemented because it only reads, and reset
+is not, because a one-click wipe of every card's schedule is not something to
+add on the strength of a layout note. And the desktop reading, phrase and
+listening areas open straight into their working frame rather than a picker,
+which is why `navigateToSection` routes those three differently at width.
 
 ## Known rough edges
 

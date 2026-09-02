@@ -91,13 +91,26 @@ export default function CoverageMatrix({
               return (
                 <button
                   key={cell.tenseKey}
-                  onClick={() => onToggleCell(row.key, cell.tenseKey)}
-                  aria-label={`${row.key}, ${cell.tenseKey}${cell.due ? ", due" : ""}${cell.drilled ? "" : ", never drilled"}`}
+                  onClick={() => !cell.absent && onToggleCell(row.key, cell.tenseKey)}
+                  disabled={cell.absent}
+                  aria-label={cell.absent
+                    ? `${row.key}, ${cell.tenseKey}, no such form`
+                    : `${row.key}, ${cell.tenseKey}${cell.due ? ", due" : ""}${cell.drilled ? "" : ", never drilled"}`}
+                  title={cell.absent ? `${row.key} has no ${cell.tenseKey}` : undefined}
                   style={{
                     height: 30,
                     borderRadius: 2,
-                    backgroundColor: cell.drilled ? STAGE_FILL[cell.stage] || STAGE_FILL.new : "transparent",
-                    border: isSel
+                    /* A cell that cannot exist is struck through rather than
+                     * left blank: an empty cell already means "never drilled",
+                     * and the map's whole job is keeping those two apart. */
+                    backgroundColor: cell.absent ? "transparent" : cell.drilled ? STAGE_FILL[cell.stage] || STAGE_FILL.new : "transparent",
+                    backgroundImage: cell.absent
+                      ? `repeating-linear-gradient(135deg, transparent 0 4px, ${C.line} 4px 5px)`
+                      : undefined,
+                    cursor: cell.absent ? "default" : "pointer",
+                    border: cell.absent
+                      ? `1px solid transparent`
+                      : isSel
                       ? `2px solid ${C.ink}`
                       : cell.due ? `1px solid ${C.gold}`
                       : cell.drilled ? "1px solid transparent" : `1px dashed ${C.line}`,
@@ -122,6 +135,8 @@ export default function CoverageMatrix({
           ))}
           <span style={{ width: 26, height: 12, borderRadius: 2, border: `1px dashed ${C.line}` }} />
           <span className="text-xs font-serif" style={{ color: C.muted }}>never drilled</span>
+          <span style={{ width: 26, height: 12, borderRadius: 2, backgroundImage: `repeating-linear-gradient(135deg, transparent 0 4px, ${C.line} 4px 5px)` }} />
+          <span className="text-xs font-serif" style={{ color: C.muted }}>no such form</span>
           <span className="flex-1" />
           <span className="text-xs font-serif" style={{ color: C.gold }}>outlined = due</span>
         </div>

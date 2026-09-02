@@ -32,7 +32,7 @@
     }
   ],
   "ignorePatterns": [
-    "design_handoff_vocab_drawer_desktop/**",
+    "design_handoff_vocab_drawer_desktop*/**",
     "dist/**"
   ]
 }

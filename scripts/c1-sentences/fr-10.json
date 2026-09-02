@@ -1,0 +1,672 @@
+[
+{
+"t": "édifiant",
+"s": "Le rapport est édifiant sur l'état réel des finances locales.",
+"se": "The report is eye-opening about the real state of local finances."
+},
+{
+"t": "savoureux",
+"s": "L'ouvrage est savoureux dès que l'auteur quitte les chiffres.",
+"se": "The book is delightful whenever the author leaves the figures behind."
+},
+{
+"t": "truculent",
+"s": "Le personnage truculent du maire porte tout le second acte.",
+"se": "The larger-than-life mayor carries the whole second act."
+},
+{
+"t": "désabusé",
+"s": "Il parle de son ancien métier d'un ton désabusé.",
+"se": "He speaks of his former job in a disillusioned tone."
+},
+{
+"t": "blasé",
+"s": "Le public, blasé, n'a pas réagi à l'annonce.",
+"se": "The audience, jaded, did not react to the announcement."
+},
+{
+"t": "velléitaire",
+"s": "Un gouvernement velléitaire annonce beaucoup et n'achève rien.",
+"se": "An irresolute government announces much and finishes nothing."
+},
+{
+"t": "pusillanime",
+"s": "Le conseil s'est montré pusillanime au moment de trancher.",
+"se": "The board proved faint-hearted when it came to deciding."
+},
+{
+"t": "intrépide",
+"s": "Une reporter intrépide a rapporté les seules images du siège.",
+"se": "A fearless reporter brought back the only footage of the siege."
+},
+{
+"t": "inflexible",
+"s": "Sur ce point le juge est resté inflexible.",
+"se": "On this point the judge remained unbending."
+},
+{
+"t": "intransigeant",
+"s": "Le syndicat se montre intransigeant sur la durée du travail.",
+"se": "The union is uncompromising on working hours."
+},
+{
+"t": "conciliant",
+"s": "Le ton conciliant du communiqué a surpris les négociateurs.",
+"se": "The conciliatory tone of the statement surprised the negotiators."
+},
+{
+"t": "complaisant",
+"s": "Le rapport est jugé trop complaisant envers la direction.",
+"se": "The report is considered too indulgent towards management."
+},
+{
+"t": "suffisant",
+"s": "Le délai accordé n'est pas suffisant pour instruire le dossier.",
+"se": "The time allowed is not sufficient to examine the file."
+},
+{
+"t": "présomptueux",
+"s": "Il serait présomptueux de conclure à partir d'un seul cas.",
+"se": "It would be presumptuous to conclude from a single case."
+},
+{
+"t": "hautain",
+"s": "Son silence hautain a été mal perçu par la commission.",
+"se": "His haughty silence went down badly with the committee."
+},
+{
+"t": "condescendant",
+"s": "Le ton condescendant de la réponse a été relevé par plusieurs élus.",
+"se": "The condescending tone of the reply was noted by several officials."
+},
+{
+"t": "affable",
+"s": "En privé, il est aussi affable qu'il paraît sévère en public.",
+"se": "In private he is as affable as he seems severe in public."
+},
+{
+"t": "avenant",
+"s": "L'accueil avenant du personnel compense l'austérité des lieux.",
+"se": "The pleasant welcome from staff makes up for the austerity of the premises."
+},
+{
+"t": "chaleureux",
+"s": "L'accueil chaleureux du public a surpris toute la troupe.",
+"se": "The warm reception from the audience surprised the whole company."
+},
+{
+"t": "cassant",
+"s": "Le ton cassant du courrier a été très mal reçu.",
+"se": "The curt tone of the letter went down very badly."
+},
+{
+"t": "abrupt",
+"s": "Le changement de ton est aussi abrupt qu'inexpliqué.",
+"se": "The change of tone is as abrupt as it is unexplained."
+},
+{
+"t": "fortuit",
+"s": "Le rapprochement n'a rien de fortuit.",
+"se": "The connection is in no way accidental."
+},
+{
+"t": "inopiné",
+"s": "Un contrôle inopiné a révélé plusieurs manquements.",
+"se": "An unannounced inspection revealed several breaches."
+},
+{
+"t": "imprévu",
+"s": "Un obstacle imprévu a repoussé le chantier de six mois.",
+"se": "An unforeseen obstacle set the works back six months."
+},
+{
+"t": "inéluctable",
+"s": "La fermeture du site paraissait inéluctable dès 2019.",
+"se": "The closure of the site looked inescapable as early as 2019."
+},
+{
+"t": "inexorable",
+"s": "Le recul du glacier est lent mais inexorable.",
+"se": "The glacier's retreat is slow but inexorable."
+},
+{
+"t": "implacable",
+"s": "La démonstration est implacable et ne laisse aucune échappatoire.",
+"se": "The demonstration is relentless and leaves no way out."
+},
+{
+"t": "tenace",
+"s": "Cette idée tenace résiste à tous les démentis.",
+"se": "This persistent idea survives every denial."
+},
+{
+"t": "rémanent",
+"s": "Un effet rémanent se mesure encore trois mois après l'arrêt.",
+"se": "A lingering effect is still measurable three months after stopping."
+},
+{
+"t": "éphémère",
+"s": "L'engouement fut éphémère et le service a fermé en un an.",
+"se": "The enthusiasm was short-lived and the service closed within a year."
+},
+{
+"t": "pérenne",
+"s": "Aucun financement pérenne n'a été prévu au-delà de 2026.",
+"se": "No lasting funding was provided for beyond 2026."
+},
+{
+"t": "durable",
+"s": "L'effet durable de la mesure reste à démontrer.",
+"se": "The lasting effect of the measure remains to be shown."
+},
+{
+"t": "anodin",
+"s": "Ce détail anodin s'est révélé décisif au procès.",
+"se": "This trivial detail proved decisive at the trial."
+},
+{
+"t": "dérisoire",
+"s": "Le montant de l'amende est dérisoire au regard du chiffre d'affaires.",
+"se": "The fine is derisory compared with the turnover."
+},
+{
+"t": "conséquent",
+"s": "Un budget conséquent a été dégagé pour la rénovation.",
+"se": "A sizeable budget was freed up for the renovation."
+},
+{
+"t": "substantiel",
+"s": "Un apport substantiel de fonds propres est exigé.",
+"se": "A substantial contribution of equity is required."
+},
+{
+"t": "acuité",
+"s": "La crise du logement se pose avec une acuité particulière ici.",
+"se": "The housing crisis arises with particular sharpness here."
+},
+{
+"t": "ampleur",
+"s": "L'ampleur du phénomène n'a été mesurée qu'en 2020.",
+"se": "The scale of the phenomenon was measured only in 2020."
+},
+{
+"t": "envergure",
+"s": "Le projet n'a plus l'envergure annoncée au départ.",
+"se": "The project no longer has the scope announced at the outset."
+},
+{
+"t": "emprise",
+"s": "L'emprise du groupe sur le marché local inquiète le régulateur.",
+"se": "The group's grip on the local market worries the regulator."
+},
+{
+"t": "mainmise",
+"s": "La mainmise de l'État sur le secteur remonte aux années cinquante.",
+"se": "The state's stranglehold on the sector dates from the 1950s."
+},
+{
+"t": "entrave",
+"s": "Cette formalité constitue une entrave injustifiée à la libre circulation.",
+"se": "This formality constitutes an unjustified obstacle to free movement."
+},
+{
+"t": "frein",
+"s": "Le coût du foncier reste le principal frein à la construction.",
+"se": "Land prices remain the main brake on construction."
+},
+{
+"t": "tremplin",
+"s": "Ce poste lui a servi de tremplin vers la direction générale.",
+"se": "That post served as a springboard to general management."
+},
+{
+"t": "exutoire",
+"s": "Le sport a longtemps servi d'exutoire à ces tensions.",
+"se": "Sport long served as an outlet for these tensions."
+},
+{
+"t": "palliatif",
+"s": "Cette aide n'est qu'un palliatif en attendant une vraie réforme.",
+"se": "This assistance is only a stopgap pending a real reform."
+},
+{
+"t": "pis-aller",
+"s": "La solution retenue est un pis-aller que personne ne défend.",
+"se": "The solution adopted is a makeshift nobody is defending."
+},
+{
+"t": "garde-fou",
+"s": "Aucun garde-fou n'a été prévu contre ce type d'abus.",
+"se": "No safeguard was provided against this kind of abuse."
+},
+{
+"t": "contrepoint",
+"s": "Le témoignage sert de contrepoint aux chiffres officiels.",
+"se": "The testimony serves as a counterpoint to the official figures."
+},
+{
+"t": "mise en garde",
+"s": "Une mise en garde figurait déjà dans le rapport de 2018.",
+"se": "A warning already appeared in the 2018 report."
+},
+{
+"t": "avertissement",
+"s": "Cet avertissement est resté sans effet pendant trois ans.",
+"se": "This warning went unheeded for three years."
+},
+{
+"t": "méprise",
+"s": "Une simple méprise sur les unités a faussé tout le calcul.",
+"se": "A simple mistake about the units skewed the whole calculation."
+},
+{
+"t": "engouement",
+"s": "L'engouement pour ces formations est retombé aussi vite qu'il était venu.",
+"se": "The craze for these courses subsided as fast as it arose."
+},
+{
+"t": "lubie",
+"s": "Le projet a d'abord été traité comme une lubie de directeur.",
+"se": "The project was at first treated as a director's whim."
+},
+{
+"t": "dérive",
+"s": "Le rapport dénonce une dérive autoritaire du dispositif.",
+"se": "The report denounces an authoritarian drift in the scheme."
+},
+{
+"t": "dévoiement",
+"s": "On assiste à un dévoiement complet du principe de précaution.",
+"se": "We are witnessing a complete perversion of the precautionary principle."
+},
+{
+"t": "surenchère",
+"s": "La surenchère sécuritaire a remplacé le débat de fond.",
+"se": "Security one-upmanship has replaced substantive debate."
+},
+{
+"t": "amalgame",
+"s": "L'amalgame entre immigration et délinquance fausse tout le débat.",
+"se": "Conflating immigration and crime distorts the whole debate."
+},
+{
+"t": "raccourci",
+"s": "Ce raccourci historique arrange bien ceux qui l'emploient.",
+"se": "This historical shortcut suits those who use it very well."
+},
+{
+"t": "caricature",
+"s": "La caricature qu'on en donne est plus commode que juste.",
+"se": "The caricature made of it is more convenient than fair."
+},
+{
+"t": "simulacre",
+"s": "La consultation n'a été qu'un simulacre de démocratie locale.",
+"se": "The consultation was only a sham of local democracy."
+},
+{
+"t": "semblant de",
+"s": "On maintient un semblant de concertation jusqu'au vote.",
+"se": "A semblance of consultation is maintained until the vote."
+},
+{
+"t": "posture",
+"s": "Cette posture radicale ne survit jamais à l'exercice du pouvoir.",
+"se": "This radical posturing never survives holding office."
+},
+{
+"t": "positionnement",
+"s": "Le positionnement du parti a changé trois fois en un an.",
+"se": "The party's positioning changed three times in a year."
+},
+{
+"t": "prise de position",
+"s": "Cette prise de position lui a coûté la présidence du groupe.",
+"se": "Taking that stand cost him the chairmanship of the group."
+},
+{
+"t": "revirement",
+"s": "Ce revirement complet n'a jamais été expliqué.",
+"se": "This complete U-turn was never explained."
+},
+{
+"t": "retournement",
+"s": "Le retournement du marché a pris tout le secteur de court.",
+"se": "The reversal of the market caught the whole sector off guard."
+},
+{
+"t": "volte-face",
+"s": "La volte-face du ministre a stupéfié sa propre majorité.",
+"se": "The minister's volte-face astonished his own majority."
+},
+{
+"t": "sciemment",
+"s": "Les données ont été sciemment tronquées avant publication.",
+"se": "The data were knowingly truncated before publication."
+},
+{
+"t": "délibérément",
+"s": "Le texte reste délibérément vague sur les sanctions.",
+"se": "The text remains deliberately vague about penalties."
+},
+{
+"t": "volontiers",
+"s": "Il cite volontiers des sources qu'il n'a pas lues.",
+"se": "He gladly cites sources he has not read."
+},
+{
+"t": "à dessein",
+"s": "L'ambiguïté a été maintenue à dessein.",
+"se": "The ambiguity was maintained on purpose."
+},
+{
+"t": "à contrecœur",
+"s": "Les élus ont voté à contrecœur un budget qu'ils jugent insincère.",
+"se": "Councillors reluctantly voted a budget they consider dishonest."
+},
+{
+"t": "de plein gré",
+"s": "Aucun témoin ne s'est présenté de plein gré.",
+"se": "No witness came forward of their own free will."
+},
+{
+"t": "de gré ou de force",
+"s": "La réforme passera de gré ou de force, prévient l'exécutif.",
+"se": "The reform will pass willingly or by force, the executive warns."
+},
+{
+"t": "manifestement",
+"s": "Le dossier a manifestement été monté à la hâte.",
+"se": "The file was evidently put together in haste."
+},
+{
+"t": "ostensiblement",
+"s": "Le représentant a ostensiblement quitté la salle.",
+"se": "The representative pointedly walked out of the room."
+},
+{
+"t": "subrepticement",
+"s": "La clause a été introduite subrepticement en commission.",
+"se": "The clause was introduced surreptitiously in committee."
+},
+{
+"t": "insidieusement",
+"s": "Le glissement s'est opéré insidieusement, sur une vingtaine d'années.",
+"se": "The shift happened insidiously, over some twenty years."
+},
+{
+"t": "progressivement",
+"s": "Le dispositif sera progressivement étendu à toute la région.",
+"se": "The scheme will be gradually extended to the whole region."
+},
+{
+"t": "inexorablement",
+"s": "La population active diminue inexorablement depuis 2012.",
+"se": "The working population has been shrinking inexorably since 2012."
+},
+{
+"t": "invariablement",
+"s": "Ces débats aboutissent invariablement au même compromis.",
+"se": "These debates invariably end in the same compromise."
+},
+{
+"t": "immanquablement",
+"s": "Une telle mesure produira immanquablement des effets d'aubaine.",
+"se": "Such a measure will inevitably produce windfall effects."
+},
+{
+"t": "fatalement",
+"s": "Une réforme aussi rapide devait fatalement laisser des angles morts.",
+"se": "A reform this rapid was inevitably going to leave blind spots."
+},
+{
+"t": "paradoxalement",
+"s": "Paradoxalement, la mesure a surtout profité aux plus aisés.",
+"se": "Paradoxically the measure chiefly benefited the better-off."
+},
+{
+"t": "curieusement",
+"s": "Curieusement, aucun de ces travaux n'est cité dans le rapport.",
+"se": "Oddly enough, none of this work is cited in the report."
+},
+{
+"t": "étonnamment",
+"s": "Le texte est étonnamment précis sur les modalités techniques.",
+"se": "The text is surprisingly precise about the technical arrangements."
+},
+{
+"t": "fort",
+"s": "La distinction est fort utile pour comprendre la suite.",
+"se": "The distinction is most useful for understanding what follows."
+},
+{
+"t": "maintes fois",
+"s": "La question a été posée maintes fois sans réponse claire.",
+"se": "The question has been asked many times without a clear answer."
+},
+{
+"t": "çà et là",
+"s": "On relève çà et là des initiatives isolées mais convergentes.",
+"se": "Here and there one finds isolated but convergent initiatives."
+},
+{
+"t": "de-ci de-là",
+"s": "Quelques ateliers subsistent de-ci de-là dans la vallée.",
+"se": "A few workshops survive here and there in the valley."
+},
+{
+"t": "au fil du temps",
+"s": "Au fil du temps, la formule a perdu tout son sens.",
+"se": "Over time the phrase lost all its meaning."
+},
+{
+"t": "de longue date",
+"s": "Cette alliance de longue date résiste à tous les changements de majorité.",
+"se": "This long-standing alliance survives every change of majority."
+},
+{
+"t": "de plus belle",
+"s": "La polémique est repartie de plus belle après l'interview.",
+"se": "The controversy flared up more than ever after the interview."
+},
+{
+"t": "à l'envi",
+"s": "L'argument est repris à l'envi par toute la presse.",
+"se": "The argument is repeated endlessly across the whole press."
+},
+{
+"t": "à l'unisson",
+"s": "Les syndicats ont réagi à l'unisson, ce qui est rare.",
+"se": "The unions reacted in unison, which is rare."
+},
+{
+"t": "de concert",
+"s": "Les deux ministères ont travaillé de concert pendant six mois.",
+"se": "The two ministries worked jointly for six months."
+},
+{
+"t": "à l'instar de",
+"s": "À l'instar de ses voisins, le pays a suspendu ses exportations.",
+"se": "Following its neighbours' example, the country suspended exports."
+},
+{
+"t": "au détriment de",
+"s": "La productivité a progressé au détriment de la qualité.",
+"se": "Productivity rose to the detriment of quality."
+},
+{
+"t": "à l'insu de",
+"s": "Les données ont été collectées à l'insu de la personne concernée.",
+"se": "The data were collected without the knowledge of the person concerned."
+},
+{
+"t": "au su et au vu de tous",
+"s": "Le trafic s'organisait au su et au vu de tous.",
+"se": "The trafficking was organised in full view of everyone."
+},
+{
+"t": "en filigrane",
+"s": "On lit en filigrane une critique de la hiérarchie.",
+"se": "A criticism of the hierarchy can be read between the lines."
+},
+{
+"t": "en creux",
+"s": "Le rapport dit en creux ce qu'il n'ose pas affirmer.",
+"se": "The report says by implication what it dares not assert."
+},
+{
+"t": "en toile de fond",
+"s": "La crise énergétique reste en toile de fond de toute la négociation.",
+"se": "The energy crisis remains the backdrop to the whole negotiation."
+},
+{
+"t": "au grand dam de",
+"s": "Le texte a été adopté au grand dam de ses promoteurs.",
+"se": "The text was adopted much to the displeasure of its own promoters."
+},
+{
+"t": "faute de mieux",
+"s": "On s'en tiendra faute de mieux à cette estimation grossière.",
+"se": "For want of anything better we shall stick to this rough estimate."
+},
+{
+"t": "à défaut",
+"s": "Un accord serait préférable ; à défaut, la loi tranchera.",
+"se": "An agreement would be preferable; failing that, the law will decide."
+},
+{
+"t": "prétendre",
+"s": "L'auteur ne saurait prétendre avoir épuisé le sujet.",
+"se": "The author cannot claim to have exhausted the subject."
+},
+{
+"t": "achever",
+"s": "Il reste à achever la dernière tranche des travaux.",
+"se": "The final phase of the works remains to be completed."
+},
+{
+"t": "éventuellement",
+"s": "Le comité pourra éventuellement demander une contre-expertise.",
+"se": "The committee may possibly request a second opinion."
+},
+{
+"t": "sensible",
+"s": "Ce dossier est trop sensible pour être traité en séance publique.",
+"se": "This file is too sensitive to be dealt with in open session."
+},
+{
+"t": "compréhensif",
+"s": "Son supérieur s'est montré compréhensif face à cette absence.",
+"se": "His manager was understanding about the absence."
+},
+{
+"t": "évidence",
+"s": "Rappeler cette évidence semble malheureusement nécessaire.",
+"se": "Restating this self-evident point unfortunately seems necessary."
+},
+{
+"t": "inconvénient",
+"s": "Le seul inconvénient de la méthode est son coût.",
+"se": "The only drawback of the method is its cost."
+},
+{
+"t": "délai",
+"s": "Le délai imparti est de quinze jours francs.",
+"se": "The time allowed is fifteen clear days."
+},
+{
+"t": "abus",
+"s": "Le rapport relève un abus manifeste de position dominante.",
+"se": "The report identifies a clear abuse of a dominant position."
+},
+{
+"t": "injure",
+"s": "L'injure publique est punie d'une amende.",
+"se": "Public insult is punishable by a fine."
+},
+{
+"t": "crayon",
+"s": "Le brouillon avait été rédigé au crayon.",
+"se": "The draft had been written in pencil."
+},
+{
+"t": "excité",
+"s": "Le public excité a envahi la pelouse.",
+"se": "The worked-up crowd invaded the pitch."
+},
+{
+"t": "rester",
+"s": "Il devrait rester à son poste jusqu'en juin.",
+"se": "He is expected to remain in post until June."
+},
+{
+"t": "hasard",
+"s": "Le hasard n'explique pas une coïncidence aussi précise.",
+"se": "Chance does not explain so precise a coincidence."
+},
+{
+"t": "large",
+"s": "Le fleuve est ici plus large que profond.",
+"se": "The river is wider than it is deep here."
+},
+{
+"t": "licence",
+"s": "Sa licence de droit lui a ouvert le concours.",
+"se": "His law degree opened the competitive exam to him."
+},
+{
+"t": "médecin",
+"s": "Le médecin traitant doit signer la demande.",
+"se": "The attending doctor must sign the request."
+},
+{
+"t": "physicien",
+"s": "Le physicien qui a signé l'article travaille au CERN.",
+"se": "The physicist who signed the article works at CERN."
+},
+{
+"t": "procès",
+"s": "Le procès s'ouvrira au printemps prochain.",
+"se": "The trial will open next spring."
+},
+{
+"t": "résumer",
+"s": "Il est impossible de résumer trente ans de travaux en une page.",
+"se": "It is impossible to summarise thirty years of work in one page."
+},
+{
+"t": "supporter",
+"s": "Les riverains devront supporter le bruit pendant deux ans.",
+"se": "Local residents will have to put up with the noise for two years."
+},
+{
+"t": "user",
+"s": "Les allers-retours quotidiens finissent par user les plus motivés.",
+"se": "The daily commute ends up wearing out even the most motivated."
+},
+{
+"t": "versatile",
+"s": "Une opinion aussi versatile rend tout sondage peu fiable.",
+"se": "Opinion this fickle makes any poll unreliable."
+},
+{
+"t": "rude",
+"s": "L'hiver a été rude pour les producteurs de la vallée.",
+"se": "The winter was harsh for producers in the valley."
+},
+{
+"t": "ignorer",
+"s": "Le tribunal ne pouvait ignorer l'existence de ce document.",
+"se": "The court could not have been unaware of this document."
+},
+{
+"t": "actualité",
+"s": "L'actualité internationale a éclipsé le débat budgétaire.",
+"se": "International current affairs eclipsed the budget debate."
+},
+{
+"t": "agenda",
+"s": "Son agenda était rempli six mois à l'avance.",
+"se": "Her diary was full six months in advance."
+}
+]

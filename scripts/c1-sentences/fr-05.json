@@ -1,0 +1,522 @@
+[
+{
+"t": "aussi convient-il de",
+"s": "Le dossier est incomplet ; aussi convient-il de suspendre l'examen.",
+"se": "The file is incomplete; therefore it is appropriate to suspend consideration."
+},
+{
+"t": "lever une ambiguïté",
+"s": "Un amendement est venu lever une ambiguïté qui durait depuis 2015.",
+"se": "An amendment resolved an ambiguity that had persisted since 2015."
+},
+{
+"t": "combler une lacune",
+"s": "Cette enquête vient combler une lacune ancienne de la recherche française.",
+"se": "This survey fills a long-standing gap in French research."
+},
+{
+"t": "pallier une carence",
+"s": "Aucun financement d'urgence ne saurait pallier une carence structurelle.",
+"se": "No emergency funding can make up for a structural shortcoming."
+},
+{
+"t": "nourrir un débat",
+"s": "Ces chiffres viennent nourrir un débat déjà très polarisé.",
+"se": "These figures feed a debate that is already highly polarised."
+},
+{
+"t": "alimenter une controverse",
+"s": "La publication n'a fait qu'alimenter une controverse vieille de dix ans.",
+"se": "Publication merely fuelled a controversy ten years old."
+},
+{
+"t": "susciter l'intérêt",
+"s": "Le sujet a mis longtemps à susciter l'intérêt des historiens.",
+"se": "The subject took a long time to arouse the interest of historians."
+},
+{
+"t": "appeler une réponse",
+"s": "Une accusation aussi grave vient appeler une réponse circonstanciée.",
+"se": "An accusation this serious calls for a detailed response."
+},
+{
+"t": "enjeu majeur",
+"s": "L'accès à l'eau est devenu un enjeu majeur pour toute la région.",
+"se": "Access to water has become a major issue for the whole region."
+},
+{
+"t": "question épineuse",
+"s": "Le financement reste la question épineuse que personne ne veut aborder.",
+"se": "Funding remains the thorny question nobody wants to address."
+},
+{
+"t": "débat houleux",
+"s": "L'amendement a été adopté au terme d'un débat houleux.",
+"se": "The amendment was passed after a heated debate."
+},
+{
+"t": "critique acerbe",
+"s": "L'ouvrage a essuyé une critique acerbe dans la presse spécialisée.",
+"se": "The book met with scathing criticism in the specialist press."
+},
+{
+"t": "argument massue",
+"s": "Il garde son argument massue pour la fin de la plaidoirie.",
+"se": "He keeps his knock-down argument for the end of the plea."
+},
+{
+"t": "preuve irréfutable",
+"s": "Le dossier ne contient aucune preuve irréfutable de la fraude alléguée.",
+"se": "The file contains no irrefutable proof of the alleged fraud."
+},
+{
+"t": "lien étroit",
+"s": "Les auteurs établissent un lien étroit entre chômage et santé mentale.",
+"se": "The authors establish a close link between unemployment and mental health."
+},
+{
+"t": "corrélation significative",
+"s": "L'étude ne trouve aucune corrélation significative entre les deux variables.",
+"se": "The study finds no significant correlation between the two variables."
+},
+{
+"t": "hypothèse plausible",
+"s": "Une hypothèse plausible reste que le changement est purement démographique.",
+"se": "A plausible hypothesis remains that the change is purely demographic."
+},
+{
+"t": "analyse fine",
+"s": "Le chapitre propose une analyse fine des usages régionaux.",
+"se": "The chapter offers a fine-grained analysis of regional usage."
+},
+{
+"t": "lecture attentive",
+"s": "Une lecture attentive du préambule suffit à lever le doute.",
+"se": "A close reading of the preamble is enough to dispel the doubt."
+},
+{
+"t": "examen approfondi",
+"s": "Le comité réclame un examen approfondi avant toute autorisation.",
+"se": "The committee is demanding an in-depth examination before any authorisation."
+},
+{
+"t": "étude exhaustive",
+"s": "Il n'existe encore aucune étude exhaustive sur cette période.",
+"se": "There is still no comprehensive study of this period."
+},
+{
+"t": "démarche rigoureuse",
+"s": "L'ouvrage se distingue par une démarche rigoureuse et transparente.",
+"se": "The book stands out for a rigorous and transparent approach."
+},
+{
+"t": "des résultats probants",
+"s": "Trois ans plus tard, le dispositif n'a produit aucun des résultats probants annoncés.",
+"se": "Three years on, the scheme has produced none of the convincing results announced."
+},
+{
+"t": "des données fiables",
+"s": "Sans des données fiables, la comparaison entre régions reste impossible.",
+"se": "Without reliable data, comparison between regions remains impossible."
+},
+{
+"t": "échantillon représentatif",
+"s": "Constituer un échantillon représentatif s'est avéré plus coûteux que prévu.",
+"se": "Assembling a representative sample proved costlier than expected."
+},
+{
+"t": "différence notable",
+"s": "On relève une différence notable entre les deux cohortes.",
+"se": "A notable difference can be seen between the two cohorts."
+},
+{
+"t": "écart considérable",
+"s": "Un écart considérable sépare les objectifs affichés des moyens engagés.",
+"se": "A considerable gap separates the stated objectives from the resources committed."
+},
+{
+"t": "tendance lourde",
+"s": "Le vieillissement est une tendance lourde qu'aucune politique n'inversera.",
+"se": "Ageing is a deep-seated trend that no policy will reverse."
+},
+{
+"t": "phénomène marginal",
+"s": "Longtemps tenu pour un phénomène marginal, le télétravail s'est généralisé.",
+"se": "Long regarded as a marginal phenomenon, remote work has become widespread."
+},
+{
+"t": "portée limitée",
+"s": "L'accord n'a qu'une portée limitée en l'absence de sanctions.",
+"se": "The agreement has only limited scope in the absence of sanctions."
+},
+{
+"t": "impact considérable",
+"s": "La sécheresse a eu un impact considérable sur les rendements céréaliers.",
+"se": "The drought had a considerable impact on cereal yields."
+},
+{
+"t": "des conséquences fâcheuses",
+"s": "Cette imprécision a eu des conséquences fâcheuses au moment du contrôle.",
+"se": "This vagueness had unfortunate consequences at the time of the audit."
+},
+{
+"t": "situation préoccupante",
+"s": "Le rapport décrit une situation préoccupante dans plusieurs départements.",
+"se": "The report describes a worrying situation in several departments."
+},
+{
+"t": "climat délétère",
+"s": "Un climat délétère s'est installé au sein de la rédaction.",
+"se": "A toxic atmosphere has taken hold within the newsroom."
+},
+{
+"t": "contexte tendu",
+"s": "La négociation s'ouvre dans un contexte tendu.",
+"se": "The negotiation opens in a tense context."
+},
+{
+"t": "Il convient de souligner que",
+"s": "Il convient de souligner que ces chiffres restent provisoires.",
+"se": "It is worth emphasising that these figures remain provisional."
+},
+{
+"t": "Il importe de préciser que",
+"s": "Il importe de préciser que l'enquête ne portait que sur les grandes villes.",
+"se": "It is important to clarify that the survey covered only large cities."
+},
+{
+"t": "On notera que",
+"s": "On notera que les deux séries ne couvrent pas la même période.",
+"se": "It should be noted that the two series do not cover the same period."
+},
+{
+"t": "Rappelons que",
+"s": "Rappelons que le dispositif avait été suspendu dès 2019.",
+"se": "Let us recall that the scheme had been suspended as early as 2019."
+},
+{
+"t": "Précisons d'emblée que",
+"s": "Précisons d'emblée que ce travail ne prétend pas à l'exhaustivité.",
+"se": "Let us clarify at the outset that this work makes no claim to be exhaustive."
+},
+{
+"t": "Nous nous proposons d'examiner",
+"s": "Nous nous proposons d'examiner trois cas contrastés.",
+"se": "We propose to examine three contrasting cases."
+},
+{
+"t": "présent article vise à",
+"s": "Le présent article vise à combler cette lacune documentaire.",
+"se": "This article aims to fill that documentary gap."
+},
+{
+"t": "Cette étude s'inscrit dans le prolongement de",
+"s": "Cette étude s'inscrit dans le prolongement de recherches menées à Lyon.",
+"se": "This study follows on from research carried out in Lyon."
+},
+{
+"t": "À la suite des travaux de",
+"s": "À la suite des travaux de Bourdieu, la notion a changé de statut.",
+"se": "Building on Bourdieu's work, the notion changed status."
+},
+{
+"t": "Contrairement à ce que l'on pourrait croire",
+"s": "Contrairement à ce que l'on pourrait croire, la mesure a peu coûté.",
+"se": "Contrary to what one might think, the measure cost little."
+},
+{
+"t": "Loin de se limiter à",
+"s": "Loin de se limiter à la capitale, le mouvement a gagné toute la région.",
+"se": "Far from being limited to the capital, the movement spread across the region."
+},
+{
+"t": "Il n'en va pas de même pour",
+"s": "Il n'en va pas de même pour les communes rurales.",
+"se": "The same does not hold for rural municipalities."
+},
+{
+"t": "Tout se passe comme si",
+"s": "Tout se passe comme si la réforme n'avait jamais été votée.",
+"se": "It is as though the reform had never been passed."
+},
+{
+"t": "Reste à savoir si",
+"s": "Reste à savoir si le financement suivra.",
+"se": "It remains to be seen whether the funding will follow."
+},
+{
+"t": "On ne saurait négliger",
+"s": "On ne saurait négliger le poids des habitudes administratives.",
+"se": "One cannot overlook the weight of administrative habit."
+},
+{
+"t": "Il serait réducteur de",
+"s": "Il serait réducteur de ramener ce conflit à une question de personnes.",
+"se": "It would be reductive to reduce this conflict to a matter of personalities."
+},
+{
+"t": "Sans préjuger de",
+"s": "Sans préjuger de la décision finale, le calendrier paraît intenable.",
+"se": "Without prejudging the final decision, the timetable looks unworkable."
+},
+{
+"t": "En dernière analyse",
+"s": "En dernière analyse, tout dépendra du taux de participation.",
+"se": "In the final analysis everything will depend on the turnout."
+},
+{
+"t": "Pour conclure sur ce point",
+"s": "Pour conclure sur ce point, la méthode mérite d'être reprise ailleurs.",
+"se": "To conclude on this point, the method deserves taking up elsewhere."
+},
+{
+"t": "scrutin",
+"s": "Le scrutin s'est déroulé sans incident notable.",
+"se": "The ballot took place without notable incident."
+},
+{
+"t": "suffrage",
+"s": "Le suffrage universel n'a été étendu aux femmes qu'en 1944.",
+"se": "Universal suffrage was not extended to women until 1944."
+},
+{
+"t": "circonscription",
+"s": "La circonscription a été redécoupée avant les dernières élections.",
+"se": "The constituency was redrawn before the last elections."
+},
+{
+"t": "mandat",
+"s": "Son mandat s'achève au printemps prochain.",
+"se": "His term of office ends next spring."
+},
+{
+"t": "législature",
+"s": "La réforme n'aboutira pas avant la prochaine législature.",
+"se": "The reform will not be completed before the next parliamentary term."
+},
+{
+"t": "remaniement",
+"s": "Un remaniement ministériel est attendu dans les jours qui viennent.",
+"se": "A cabinet reshuffle is expected in the coming days."
+},
+{
+"t": "motion de censure",
+"s": "La motion de censure a échoué à neuf voix près.",
+"se": "The no-confidence motion failed by nine votes."
+},
+{
+"t": "décret",
+"s": "Le décret d'application se fait attendre depuis deux ans.",
+"se": "The implementing decree has been awaited for two years."
+},
+{
+"t": "ordonnance",
+"s": "Le gouvernement a choisi de légiférer par ordonnance.",
+"se": "The government chose to legislate by executive order."
+},
+{
+"t": "projet de loi",
+"s": "Le projet de loi sera examiné en commission dès lundi.",
+"se": "The government bill will be examined in committee from Monday."
+},
+{
+"t": "proposition de loi",
+"s": "Une proposition de loi transpartisane a été déposée hier.",
+"se": "A cross-party private member's bill was tabled yesterday."
+},
+{
+"t": "amendement",
+"s": "L'amendement a été retiré avant le vote solennel.",
+"se": "The amendment was withdrawn before the formal vote."
+},
+{
+"t": "promulgation",
+"s": "La promulgation est intervenue huit jours après la décision du Conseil.",
+"se": "Enactment came eight days after the Council's decision."
+},
+{
+"t": "l'abstention",
+"s": "Dans les zones rurales, l'abstention a atteint un niveau record.",
+"se": "In rural areas abstention reached a record level."
+},
+{
+"t": "clientélisme",
+"s": "Le rapport dénonce un clientélisme bien installé dans certaines communes.",
+"se": "The report denounces patronage politics well entrenched in some municipalities."
+},
+{
+"t": "groupe de pression",
+"s": "Un groupe de pression très actif a obtenu le report du texte.",
+"se": "A highly active lobby obtained a postponement of the text."
+},
+{
+"t": "pouvoir régalien",
+"s": "La défense demeure un pouvoir régalien par excellence.",
+"se": "Defence remains a core sovereign power par excellence."
+},
+{
+"t": "souveraineté",
+"s": "La souveraineté monétaire a été déléguée dès 1999.",
+"se": "Monetary sovereignty was delegated as early as 1999."
+},
+{
+"t": "laïcité",
+"s": "La laïcité est régulièrement invoquée par des camps opposés.",
+"se": "Secularism is regularly invoked by opposing camps."
+},
+{
+"t": "citoyenneté",
+"s": "La citoyenneté ne se réduit pas au droit de vote.",
+"se": "Citizenship does not boil down to the right to vote."
+},
+{
+"t": "passation de pouvoir",
+"s": "La passation de pouvoir s'est déroulée sans cérémonie.",
+"se": "The handover of power took place without ceremony."
+},
+{
+"t": "collectivité territoriale",
+"s": "Chaque collectivité territoriale fixe elle-même ses priorités.",
+"se": "Each local authority sets its own priorities."
+},
+{
+"t": "élu",
+"s": "Un élu local a saisi la juridiction administrative.",
+"se": "A local elected representative referred the matter to the administrative court."
+},
+{
+"t": "contre-pouvoir",
+"s": "La presse joue ici son rôle de contre-pouvoir.",
+"se": "The press plays its role as a check on power here."
+},
+{
+"t": "l'ingérence",
+"s": "Le texte sanctionne l'ingérence étrangère dans les scrutins nationaux.",
+"se": "The text penalises foreign interference in national ballots."
+},
+{
+"t": "porte-parole",
+"s": "Le porte-parole a démenti toute négociation en cours.",
+"se": "The spokesperson denied any ongoing negotiation."
+},
+{
+"t": "consultation",
+"s": "La consultation citoyenne n'a réuni que quelques milliers de réponses.",
+"se": "The public consultation drew only a few thousand responses."
+},
+{
+"t": "sondage",
+"s": "Ce sondage repose sur un échantillon de mille personnes.",
+"se": "This poll rests on a sample of a thousand people."
+},
+{
+"t": "alternance",
+"s": "L'alternance politique n'a pas modifié la trajectoire budgétaire.",
+"se": "The change of governing party did not alter the budgetary path."
+},
+{
+"t": "coalition",
+"s": "La coalition s'est rompue au bout de quatorze mois.",
+"se": "The coalition broke up after fourteen months."
+},
+{
+"t": "scandale de mœurs",
+"s": "Un scandale de mœurs a écourté sa carrière ministérielle.",
+"se": "A scandal cut short his ministerial career."
+},
+{
+"t": "commission d'enquête",
+"s": "Une commission d'enquête parlementaire a été constituée en juin.",
+"se": "A parliamentary commission of inquiry was set up in June."
+},
+{
+"t": "rapporteur",
+"s": "Le rapporteur a rendu ses conclusions avec deux mois de retard.",
+"se": "The rapporteur delivered his conclusions two months late."
+},
+{
+"t": "reddition de comptes",
+"s": "La reddition de comptes reste le point faible du dispositif.",
+"se": "Accountability remains the weak point of the scheme."
+},
+{
+"t": "doléance",
+"s": "Chaque doléance consignée a fait l'objet d'une réponse écrite.",
+"se": "Each recorded grievance received a written reply."
+},
+{
+"t": "Ve République",
+"s": "La Ve République a profondément renforcé l'exécutif.",
+"se": "The Fifth Republic considerably strengthened the executive."
+},
+{
+"t": "pouvoir exécutif",
+"s": "Le pouvoir exécutif dispose ici d'une marge de manœuvre inhabituelle.",
+"se": "The executive has unusual room for manoeuvre here."
+},
+{
+"t": "mandat d'arrêt",
+"s": "Un mandat d'arrêt international a été délivré contre l'ancien ministre.",
+"se": "An international arrest warrant was issued against the former minister."
+},
+{
+"t": "conjoncture",
+"s": "La conjoncture s'est nettement dégradée au second semestre.",
+"se": "The economic climate deteriorated markedly in the second half."
+},
+{
+"t": "croissance",
+"s": "La croissance reste inférieure aux prévisions du gouvernement.",
+"se": "Growth remains below the government's forecasts."
+},
+{
+"t": "récession",
+"s": "Le pays est entré en récession pour la première fois depuis 2009.",
+"se": "The country entered recession for the first time since 2009."
+},
+{
+"t": "relance",
+"s": "Le plan de relance a été révisé à la baisse.",
+"se": "The stimulus plan was revised downwards."
+},
+{
+"t": "l'austérité",
+"s": "Le rapport impute ce recul à l'austérité imposée depuis dix ans.",
+"se": "The report blames this decline on the austerity imposed over ten years."
+},
+{
+"t": "l'endettement",
+"s": "Le rapport souligne que l'endettement des ménages progresse plus vite que leurs revenus.",
+"se": "The report notes that household indebtedness is rising faster than household income."
+},
+{
+"t": "dette souveraine",
+"s": "La dette souveraine a franchi le seuil symbolique des cent pour cent.",
+"se": "Sovereign debt crossed the symbolic hundred per cent threshold."
+},
+{
+"t": "déficit budgétaire",
+"s": "Le déficit budgétaire s'est creusé malgré la reprise.",
+"se": "The budget deficit widened despite the recovery."
+},
+{
+"t": "prélèvements obligatoires",
+"s": "Les prélèvements obligatoires atteignent ici un des taux les plus élevés d'Europe.",
+"se": "Compulsory taxes and contributions here reach one of the highest rates in Europe."
+},
+{
+"t": "fiscalité",
+"s": "La fiscalité du patrimoine a été profondément remaniée.",
+"se": "Wealth taxation was thoroughly overhauled."
+},
+{
+"t": "exonération",
+"s": "Une exonération temporaire a été accordée aux petites entreprises.",
+"se": "A temporary exemption was granted to small businesses."
+},
+{
+"t": "pouvoir d'achat",
+"s": "Le pouvoir d'achat a reculé pour la deuxième année consécutive.",
+"se": "Purchasing power fell for the second year running."
+}
+]

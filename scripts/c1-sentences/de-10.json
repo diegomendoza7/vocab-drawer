@@ -1,0 +1,687 @@
+[
+{
+"t": "verschwindend gering",
+"s": "Der Anteil ist verschwindend gering und statistisch bedeutungslos.",
+"se": "The share is vanishingly small and statistically meaningless."
+},
+{
+"t": "beachtlich",
+"s": "Die Zahl der Neuanmeldungen ist beachtlich.",
+"se": "The number of new registrations is considerable."
+},
+{
+"t": "bemerkenswert",
+"s": "Bemerkenswert ist vor allem der Zeitpunkt der Veröffentlichung.",
+"se": "What is noteworthy above all is the timing of publication."
+},
+{
+"t": "markant",
+"s": "Der Anstieg ist markant und beginnt genau im Jahr 2016.",
+"se": "The rise is striking and begins precisely in 2016."
+},
+{
+"t": "einprägsam",
+"s": "Der Titel ist einprägsam und erklärt trotzdem nichts.",
+"se": "The title is memorable and nevertheless explains nothing."
+},
+{
+"t": "verhalten",
+"s": "Die Reaktion der Märkte blieb verhalten.",
+"se": "The markets' reaction remained muted."
+},
+{
+"t": "behutsam",
+"s": "Die Restaurierung ging behutsam vor.",
+"se": "The restoration proceeded cautiously."
+},
+{
+"t": "rigoros",
+"s": "Die Auswahl war rigoros und ist es geblieben.",
+"se": "The selection was rigorous and has remained so."
+},
+{
+"t": "kompromisslos",
+"s": "Der Autor bleibt kompromisslos, auch wo es ihm schadet.",
+"se": "The author remains uncompromising even where it harms him."
+},
+{
+"t": "wohlwollend",
+"s": "Die Kritik fiel wohlwollend, aber nicht unkritisch aus.",
+"se": "The review was favourable but not uncritical."
+},
+{
+"t": "abschätzig",
+"s": "Über die Vorgängerstudie äußert er sich abschätzig.",
+"se": "He speaks disparagingly of the earlier study."
+},
+{
+"t": "Schärfe",
+"s": "Die Schärfe der Kritik überraschte selbst die Verfasser.",
+"se": "The severity of the criticism surprised even its authors."
+},
+{
+"t": "Spielraum",
+"s": "Der Spielraum für Verhandlungen war von Anfang an gering.",
+"se": "The room for negotiation was small from the outset."
+},
+{
+"t": "Handlungsspielraum",
+"s": "Der Handlungsspielraum der Kommunen schrumpft mit jeder Auflage.",
+"se": "Municipalities' scope for action shrinks with every requirement."
+},
+{
+"t": "Handhabe",
+"s": "Gegen solche Praktiken fehlt der Aufsicht jede Handhabe.",
+"se": "The regulator has no legal handle against such practices."
+},
+{
+"t": "Hebel",
+"s": "Die Vergabe öffentlicher Aufträge ist der wirksamste Hebel.",
+"se": "Public procurement is the most effective lever."
+},
+{
+"t": "Sprungbrett",
+"s": "Die Stelle diente ihr als Sprungbrett in die Wissenschaft.",
+"se": "The post served her as a springboard into research."
+},
+{
+"t": "Ventil",
+"s": "Der Sport war lange das einzige Ventil für diese Spannungen.",
+"se": "Sport was long the only outlet for these tensions."
+},
+{
+"t": "Notlösung",
+"s": "Die Notlösung von 2019 gilt bis heute.",
+"se": "The 2019 stopgap still applies today."
+},
+{
+"t": "Provisorium",
+"s": "Nichts hält länger als ein gutes Provisorium.",
+"se": "Nothing lasts longer than a good temporary arrangement."
+},
+{
+"t": "Absicherung",
+"s": "Eine rechtliche Absicherung fehlte in allen drei Fällen.",
+"se": "Legal cover was missing in all three cases."
+},
+{
+"t": "Korrektiv",
+"s": "Die Presse versteht sich hier als Korrektiv.",
+"se": "The press understands itself here as a corrective."
+},
+{
+"t": "Gegengewicht",
+"s": "Der Bundesrat bildet ein wirksames Gegengewicht.",
+"se": "The Federal Council forms an effective counterweight."
+},
+{
+"t": "Warnung",
+"s": "Die Warnung stand schon im Bericht von 2018.",
+"se": "The warning was already in the 2018 report."
+},
+{
+"t": "Missverständnis",
+"s": "Ein einfaches Missverständnis kostete zwei Monate.",
+"se": "A simple misunderstanding cost two months."
+},
+{
+"t": "Verwechslung",
+"s": "Die Verwechslung zweier Aktenzeichen blieb lange unentdeckt.",
+"se": "The mix-up of two file numbers went undetected for a long time."
+},
+{
+"t": "Fehlschluss",
+"s": "Der Fehlschluss steckt bereits in der Fragestellung.",
+"se": "The fallacy is already in the way the question is framed."
+},
+{
+"t": "Fehleinschätzung",
+"s": "Die Fehleinschätzung betraf vor allem das Tempo.",
+"se": "The misjudgement concerned above all the pace."
+},
+{
+"t": "Trugschluss",
+"s": "Es wäre ein Trugschluss, daraus auf Absicht zu schließen.",
+"se": "It would be a fallacy to infer intent from that."
+},
+{
+"t": "Panne",
+"s": "Die Panne bei der Auszählung war rein technisch.",
+"se": "The glitch in the count was purely technical."
+},
+{
+"t": "Fauxpas",
+"s": "Der Fauxpas des Ministers beschäftigte die Presse eine Woche.",
+"se": "The minister's faux pas occupied the press for a week."
+},
+{
+"t": "Rückschlag",
+"s": "Der Rückschlag kam kurz vor dem Abschluss.",
+"se": "The setback came shortly before completion."
+},
+{
+"t": "Risiko",
+"s": "Das Risiko wurde nie systematisch bewertet.",
+"se": "The risk was never systematically assessed."
+},
+{
+"t": "Zufall",
+"s": "Der Zufall spielte bei der Entdeckung die größere Rolle.",
+"se": "Chance played the greater role in the discovery."
+},
+{
+"t": "Glücksfall",
+"s": "Der Fund war ein Glücksfall für die ganze Disziplin.",
+"se": "The find was a stroke of luck for the whole discipline."
+},
+{
+"t": "Wendepunkt",
+"s": "Der Wendepunkt lässt sich rückblickend genau datieren.",
+"se": "The turning point can be dated precisely in retrospect."
+},
+{
+"t": "Trendwende",
+"s": "Von einer Trendwende zu sprechen wäre verfrüht.",
+"se": "To speak of a reversal of the trend would be premature."
+},
+{
+"t": "Welle",
+"s": "Die zweite Welle traf ein deutlich besser vorbereitetes System.",
+"se": "The second wave hit a much better prepared system."
+},
+{
+"t": "Begeisterung",
+"s": "Die anfängliche Begeisterung hielt keine zwei Jahre.",
+"se": "The initial enthusiasm did not last two years."
+},
+{
+"t": "Modeerscheinung",
+"s": "Was als Modeerscheinung galt, ist längst Standard.",
+"se": "What was regarded as a passing fad has long been standard."
+},
+{
+"t": "Marotte",
+"s": "Diese Marotte des Autors nervt spätestens im dritten Kapitel.",
+"se": "This quirk of the author's grates by the third chapter at the latest."
+},
+{
+"t": "Entgleisung",
+"s": "Die Entgleisung im Interview kostete ihn den Posten.",
+"se": "The gaffe in the interview cost him his post."
+},
+{
+"t": "Fehlentwicklung",
+"s": "Die Fehlentwicklung war seit Jahren dokumentiert.",
+"se": "The undesirable development had been documented for years."
+},
+{
+"t": "Zuspitzung",
+"s": "Die Zuspitzung diente eher der Aufmerksamkeit als der Sache.",
+"se": "The sharpening served attention rather than the substance."
+},
+{
+"t": "Eskalation",
+"s": "Die Eskalation ließ sich in beiden Fällen vermeiden.",
+"se": "The escalation could have been avoided in both cases."
+},
+{
+"t": "Gleichsetzung",
+"s": "Die Gleichsetzung beider Begriffe führt in die Irre.",
+"se": "Equating the two terms is misleading."
+},
+{
+"t": "Vereinfachung",
+"s": "Jede Vereinfachung hat hier einen hohen Preis.",
+"se": "Every simplification comes at a high price here."
+},
+{
+"t": "Verkürzung",
+"s": "Die Verkürzung auf eine Ursache verfehlt den Kern.",
+"se": "Reducing it to a single cause misses the point."
+},
+{
+"t": "Zerrbild",
+"s": "Das Zerrbild hält sich hartnäckiger als jede Korrektur.",
+"se": "The distorted picture persists more stubbornly than any correction."
+},
+{
+"t": "Anschein",
+"s": "Der Anschein von Unabhängigkeit ist hier bereits das Problem.",
+"se": "The appearance of independence is already the problem here."
+},
+{
+"t": "Fassade",
+"s": "Hinter der Fassade der Reform blieb alles beim Alten.",
+"se": "Behind the façade of reform everything stayed the same."
+},
+{
+"t": "Haltung",
+"s": "Seine Haltung hat sich in vierzig Jahren nicht verändert.",
+"se": "His stance has not changed in forty years."
+},
+{
+"t": "Positionierung",
+"s": "Die Positionierung des Verbandes wechselte mit der Regierung.",
+"se": "The association's positioning changed with the government."
+},
+{
+"t": "Kehrtwende",
+"s": "Die Kehrtwende kam ohne jede Erklärung.",
+"se": "The U-turn came without any explanation."
+},
+{
+"t": "Sinneswandel",
+"s": "Der Sinneswandel fiel mit einer Umfrage zusammen.",
+"se": "The change of heart coincided with a poll."
+},
+{
+"t": "Kurswechsel",
+"s": "Der Kurswechsel war innerparteilich nicht abgestimmt.",
+"se": "The change of course was not agreed within the party."
+},
+{
+"t": "wissentlich",
+"s": "Die Angaben wurden wissentlich unvollständig gemacht.",
+"se": "The information was knowingly given incomplete."
+},
+{
+"t": "absichtlich",
+"s": "Ob die Frist absichtlich versäumt wurde, ist offen.",
+"se": "Whether the deadline was deliberately missed is open."
+},
+{
+"t": "bereitwillig",
+"s": "Die Zeugen sagten bereitwillig aus.",
+"se": "The witnesses testified readily."
+},
+{
+"t": "widerwillig",
+"s": "Der Antrag wurde nur widerwillig bewilligt.",
+"se": "The application was approved only reluctantly."
+},
+{
+"t": "freiwillig",
+"s": "Die Teilnahme war freiwillig und blieb entsprechend gering.",
+"se": "Participation was voluntary and correspondingly low."
+},
+{
+"t": "notgedrungen",
+"s": "Man beschränkte sich notgedrungen auf zwei Standorte.",
+"se": "Of necessity, the work was limited to two sites."
+},
+{
+"t": "offensichtlich",
+"s": "Der Fehler ist offensichtlich und blieb dennoch stehen.",
+"se": "The error is evident and nevertheless remained."
+},
+{
+"t": "demonstrativ",
+"s": "Die Delegation verließ demonstrativ den Saal.",
+"se": "The delegation pointedly left the hall."
+},
+{
+"t": "klammheimlich",
+"s": "Die Klausel wurde klammheimlich gestrichen.",
+"se": "The clause was deleted on the quiet."
+},
+{
+"t": "schleichend",
+"s": "Der Verlust an Vertrauen verlief schleichend.",
+"se": "The loss of trust proceeded insidiously."
+},
+{
+"t": "allmählich",
+"s": "Die Zahlen erholen sich allmählich.",
+"se": "The figures are gradually recovering."
+},
+{
+"t": "zusehends",
+"s": "Die Lage verschärfte sich zusehends.",
+"se": "The situation deteriorated visibly."
+},
+{
+"t": "stetig",
+"s": "Der Anteil wächst stetig, wenn auch langsam.",
+"se": "The share is growing steadily, if slowly."
+},
+{
+"t": "ausnahmslos",
+"s": "Alle Beteiligten wurden ausnahmslos angehört.",
+"se": "All parties without exception were heard."
+},
+{
+"t": "durchweg",
+"s": "Die Rückmeldungen waren durchweg positiv.",
+"se": "The feedback was consistently positive."
+},
+{
+"t": "ausgerechnet",
+"s": "Ausgerechnet der schärfste Kritiker übernahm den Vorsitz.",
+"se": "Of all people the sharpest critic took the chair."
+},
+{
+"t": "paradoxerweise",
+"s": "Paradoxerweise sank die Nachfrage nach der Preissenkung.",
+"se": "Paradoxically demand fell after the price cut."
+},
+{
+"t": "merkwürdigerweise",
+"s": "Merkwürdigerweise fehlt jeder Hinweis auf die Vorstudie.",
+"se": "Oddly enough any reference to the preliminary study is missing."
+},
+{
+"t": "erstaunlicherweise",
+"s": "Erstaunlicherweise hielt der Vergleich auch im Ausland.",
+"se": "Surprisingly the comparison held abroad as well."
+},
+{
+"t": "bezeichnenderweise",
+"s": "Bezeichnenderweise wurde der Bericht an einem Freitag veröffentlicht.",
+"se": "Tellingly, the report was published on a Friday."
+},
+{
+"t": "verständlicherweise",
+"s": "Die Betroffenen reagierten verständlicherweise erbittert.",
+"se": "Those affected reacted understandably bitterly."
+},
+{
+"t": "fälschlicherweise",
+"s": "Der Begriff wird fälschlicherweise als Synonym verwendet.",
+"se": "The term is mistakenly used as a synonym."
+},
+{
+"t": "zu Recht",
+"s": "Die Kommission wurde zu Recht scharf kritisiert.",
+"se": "The commission was rightly criticised sharply."
+},
+{
+"t": "mit Recht",
+"s": "Mit Recht verweist der Autor auf ältere Arbeiten.",
+"se": "The author justifiably points to older work."
+},
+{
+"t": "seit jeher",
+"s": "Diese Zuständigkeit lag seit jeher bei den Ländern.",
+"se": "This competence has always lain with the states."
+},
+{
+"t": "von jeher",
+"s": "Von jeher galt die Region als strukturschwach.",
+"se": "The region has always been regarded as structurally weak."
+},
+{
+"t": "nach wie vor",
+"s": "Die Ursache ist nach wie vor unbekannt.",
+"se": "The cause is still unknown."
+},
+{
+"t": "von Grund auf",
+"s": "Das Verfahren müsste von Grund auf neu gedacht werden.",
+"se": "The procedure would have to be rethought from the ground up."
+},
+{
+"t": "im Wesentlichen",
+"s": "Der Entwurf entspricht im Wesentlichen der alten Fassung.",
+"se": "The draft essentially corresponds to the old version."
+},
+{
+"t": "im Großen und Ganzen",
+"s": "Im Großen und Ganzen hat sich das Modell bewährt.",
+"se": "By and large the model has proved itself."
+},
+{
+"t": "in aller Regel",
+"s": "In aller Regel entscheidet die Behörde binnen vier Wochen.",
+"se": "As a rule the authority decides within four weeks."
+},
+{
+"t": "in der Tat",
+"s": "Der Einwand trifft in der Tat einen wunden Punkt.",
+"se": "The objection indeed touches a sore point."
+},
+{
+"t": "in gewisser Weise",
+"s": "In gewisser Weise wiederholt sich hier die Debatte von 1998.",
+"se": "In a certain way the 1998 debate is repeating itself here."
+},
+{
+"t": "in mancherlei Hinsicht",
+"s": "In mancherlei Hinsicht ist der Fall untypisch.",
+"se": "In various respects the case is untypical."
+},
+{
+"t": "zu einem gewissen Grad",
+"s": "Der Vorwurf trifft zu einem gewissen Grad zu.",
+"se": "The accusation is true to a certain degree."
+},
+{
+"t": "auf Anhieb",
+"s": "Das Verfahren funktionierte nicht auf Anhieb.",
+"se": "The procedure did not work first time."
+},
+{
+"t": "im Nachhinein",
+"s": "Im Nachhinein war die Entscheidung leicht zu treffen.",
+"se": "In hindsight the decision was easy to take."
+},
+{
+"t": "im Vorfeld",
+"s": "Im Vorfeld der Wahl wurden alle Termine verschoben.",
+"se": "In the run-up to the election all appointments were moved."
+},
+{
+"t": "auf Dauer",
+"s": "Auf Dauer trägt sich das Modell nicht.",
+"se": "In the long run the model is not sustainable."
+},
+{
+"t": "zulasten von",
+"s": "Die Einsparung geht zulasten von Leistungen, die niemand vermisst.",
+"se": "The saving comes at the expense of services nobody misses."
+},
+{
+"t": "zugunsten von",
+"s": "Der Zweifel wirkt zugunsten von Angeklagten, nicht von Behörden.",
+"se": "Doubt operates in favour of defendants, not of authorities."
+},
+{
+"t": "hinter den Kulissen",
+"s": "Hinter den Kulissen war die Entscheidung längst gefallen.",
+"se": "Behind the scenes the decision had long been taken."
+},
+{
+"t": "im Zuge dessen",
+"s": "Im Zuge dessen wurden zwei Referate aufgelöst.",
+"se": "In the course of this two units were dissolved."
+},
+{
+"t": "vor diesem Hintergrund",
+"s": "Vor diesem Hintergrund wirkt die Kritik übertrieben.",
+"se": "Against this background the criticism seems exaggerated."
+},
+{
+"t": "in diesem Zusammenhang",
+"s": "In diesem Zusammenhang ist auf die Fußnote zu verweisen.",
+"se": "In this connection reference must be made to the footnote."
+},
+{
+"t": "entgegen den Erwartungen",
+"s": "Entgegen den Erwartungen stieg die Beteiligung deutlich.",
+"se": "Contrary to expectations participation rose markedly."
+},
+{
+"t": "wider Erwarten",
+"s": "Wider Erwarten hielt der Kompromiss die ganze Wahlperiode.",
+"se": "Against expectations the compromise lasted the whole term."
+},
+{
+"t": "nach eigenen Angaben",
+"s": "Nach eigenen Angaben wusste die Leitung von nichts.",
+"se": "According to its own account the management knew nothing."
+},
+{
+"t": "nach Einschätzung von",
+"s": "Nach Einschätzung von Fachleuten reicht die Frist nicht aus.",
+"se": "In the assessment of experts the deadline is insufficient."
+},
+{
+"t": "eventuell",
+"s": "Der Termin kann sich eventuell noch verschieben.",
+"se": "The date may possibly still shift."
+},
+{
+"t": "aktuell",
+"s": "Die aktuell geltende Fassung stammt von 2021.",
+"se": "The currently applicable version dates from 2021."
+},
+{
+"t": "sensibel",
+"s": "Es handelt sich um besonders sensibel zu behandelnde Daten.",
+"se": "These are data to be handled with particular sensitivity."
+},
+{
+"t": "konsequent",
+"s": "Die Linie wurde über Jahre konsequent verfolgt.",
+"se": "The line was pursued consistently over years."
+},
+{
+"t": "Konzept",
+"s": "Das Konzept lag zunächst nur handschriftlich vor.",
+"se": "The draft existed at first only in handwriting."
+},
+{
+"t": "Kritik",
+"s": "Seine Kritik der Aufführung füllte eine ganze Seite.",
+"se": "His review of the performance filled a whole page."
+},
+{
+"t": "Argument",
+"s": "Ein Argument ist kein Streit, auch wenn es scharf vorgetragen wird.",
+"se": "An argument in this sense is not a quarrel, even when sharply put."
+},
+{
+"t": "Fabrik",
+"s": "Die Fabrik wurde 1974 geschlossen und nie abgerissen.",
+"se": "The factory was closed in 1974 and never demolished."
+},
+{
+"t": "Rezept",
+"s": "Das Rezept gilt nur vier Wochen.",
+"se": "The prescription is valid for only four weeks."
+},
+{
+"t": "Chef",
+"s": "Der Chef entschied gegen den Rat der ganzen Abteilung.",
+"se": "The boss decided against the advice of the whole department."
+},
+{
+"t": "Direktor",
+"s": "Der Direktor leitet die Schule seit elf Jahren.",
+"se": "The headteacher has run the school for eleven years."
+},
+{
+"t": "Dose",
+"s": "Die Dose enthält dieselbe Menge wie zwei Flaschen.",
+"se": "The tin holds the same amount as two bottles."
+},
+{
+"t": "Kaution",
+"s": "Die Kaution beträgt drei Monatsmieten.",
+"se": "The deposit amounts to three months' rent."
+},
+{
+"t": "Provision",
+"s": "Die Provision wird erst bei Vertragsabschluss fällig.",
+"se": "The commission falls due only when the contract is signed."
+},
+{
+"t": "spenden",
+"s": "Der Verein konnte den Erlös vollständig spenden.",
+"se": "The association was able to donate the entire proceeds."
+},
+{
+"t": "bekommen",
+"s": "Wer den Zuschlag bekommen soll, ist noch offen.",
+"se": "Who is to receive the contract is still open."
+},
+{
+"t": "überhören",
+"s": "Diesen Einwand konnte man kaum überhören.",
+"se": "This objection could hardly be ignored."
+},
+{
+"t": "irritieren",
+"s": "Die widersprüchlichen Angaben mussten jeden Leser irritieren.",
+"se": "The contradictory information was bound to confuse every reader."
+},
+{
+"t": "blamieren",
+"s": "Mit dieser Rechnung konnte sich die Behörde nur blamieren.",
+"se": "With this calculation the authority could only disgrace itself."
+},
+{
+"t": "kontrollieren",
+"s": "Der Zoll darf jede Sendung stichprobenartig kontrollieren.",
+"se": "Customs may check any consignment on a spot basis."
+},
+{
+"t": "realisieren",
+"s": "Das Vorhaben ließ sich mit diesem Budget nicht realisieren.",
+"se": "The project could not be implemented on this budget."
+},
+{
+"t": "billig",
+"s": "Der Ersatz war billig und hielt entsprechend kurz.",
+"se": "The replacement was cheap and lasted accordingly briefly."
+},
+{
+"t": "Milliarde",
+"s": "Eine Milliarde ist im Deutschen tausend Millionen.",
+"se": "A Milliarde in German is a thousand million."
+},
+{
+"t": "genial",
+"s": "Die Lösung ist genial einfach.",
+"se": "The solution is ingeniously simple."
+},
+{
+"t": "sympathisch",
+"s": "Der Autor wirkt sympathisch, sein Argument bleibt trotzdem schwach.",
+"se": "The author comes across as likeable; his argument nevertheless stays weak."
+},
+{
+"t": "seriös",
+"s": "Eine seriös arbeitende Redaktion prüft jede Quelle doppelt.",
+"se": "A reputable newsroom checks every source twice."
+},
+{
+"t": "kurios",
+"s": "Der Fall ist kurios und juristisch dennoch bedeutsam.",
+"se": "The case is odd and legally significant nonetheless."
+},
+{
+"t": "Formular",
+"s": "Das Formular verlangt Angaben, die niemand prüfen kann.",
+"se": "The form demands details nobody can check."
+},
+{
+"t": "Notiz",
+"s": "Eine handschriftliche Notiz belegte den Ablauf.",
+"se": "A handwritten note documented the sequence of events."
+},
+{
+"t": "Meinung",
+"s": "Die Meinung der Fachwelt hat sich seither gedreht.",
+"se": "The profession's opinion has turned around since then."
+},
+{
+"t": "Ordnung",
+"s": "Die Ordnung in der Registratur war schon vor der Prüfung dahin.",
+"se": "Order in the registry was gone even before the audit."
+},
+{
+"t": "fatal",
+"s": "Die Verzögerung erwies sich für das Projekt als fatal.",
+"se": "The delay proved disastrous for the project."
+}
+]

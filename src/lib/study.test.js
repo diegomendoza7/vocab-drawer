@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildBatchLedger, buildSummaryRows, matrixCell, weakestCards } from "./study.js";
+import { buildBatchLedger, buildSummaryRows, matrixCell, weakestCards, drillScopeTenses, effectiveScope } from "./study.js";
 import { scheduleCard, gradeFromWrongCount, todayKey, addDays, cardId } from "./srs.js";
 
 const w = (t, extra = {}) => ({ t, e: `${t}-gloss`, ...extra });
@@ -182,5 +182,63 @@ describe("weakestCards", () => {
   it("honours the limit", () => {
     const cards = Object.fromEntries(list.map((e, i) => [id(e.word.t), card({ lapses: i + 1 })]));
     expect(weakestCards({ entries: list, lang: "fr", cards, limit: 2 })).toHaveLength(2);
+  });
+});
+
+
+describe("drillScopeTenses", () => {
+  /* The bug this exists to stop: "Drill être" built a queue across every tense
+   * the verb has, so a learner who had only ever opened the present was asked
+   * for the subjunctive. The scope is a choice now, and each option has to
+   * resolve to exactly what its label promises. */
+  const TENSES = [
+    { key: "present" }, { key: "passe" }, { key: "imparfait" },
+    { key: "futur" }, { key: "conditionnel" }, { key: "subjonctif" }, { key: "imperatif" },
+  ];
+  const base = {
+    verb: { inf: "être" },
+    tenseKey: "present",
+    tenses: TENSES,
+    cardIdFor: (k) => `fr:conj:être:${k}`,
+    hasTense: () => true,
+  };
+
+  it("scopes to the tense on screen by default", () => {
+    const out = drillScopeTenses({ ...base, cards: {} });
+    expect(out.tense).toEqual(["present"]);
+    expect(out.all).toHaveLength(7);
+  });
+
+  it("counts a tense as started once it has a card — not once it is due", () => {
+    const cards = { "fr:conj:être:present": { reps: 1 }, "fr:conj:être:passe": { reps: 3 } };
+    expect(drillScopeTenses({ ...base, cards }).started).toEqual(["present", "passe"]);
+  });
+
+  it("is empty for started until something has been answered", () => {
+    expect(drillScopeTenses({ ...base, cards: {} }).started).toEqual([]);
+  });
+
+  it("leaves out a tense the verb does not have", () => {
+    // A German modal has no imperative at all.
+    const out = drillScopeTenses({ ...base, cards: {}, hasTense: (k) => k !== "imperatif" });
+    expect(out.all).not.toContain("imperatif");
+    expect(out.all).toHaveLength(6);
+  });
+
+  it("gives no tense to drill when the open tense is one the verb lacks", () => {
+    const out = drillScopeTenses({ ...base, tenseKey: "imperatif", cards: {}, hasTense: (k) => k !== "imperatif" });
+    expect(out.tense).toEqual([]);
+  });
+});
+
+describe("effectiveScope", () => {
+  it("keeps a scope that has something in it", () => {
+    expect(effectiveScope("all", { tense: ["a"], started: [], all: ["a", "b"] })).toBe("all");
+  });
+
+  it("falls back when the chosen scope has emptied", () => {
+    /* Switching to a verb you have never drilled must not leave "Started"
+     * selected with a dead button and no explanation. */
+    expect(effectiveScope("started", { tense: ["a"], started: [], all: ["a"] })).toBe("tense");
   });
 });

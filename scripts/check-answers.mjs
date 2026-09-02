@@ -9,7 +9,7 @@
  * so a silent grammar regression would teach the mistake.
  */
 import { DATA } from "../src/data/vocab.js";
-import { FR_VERBS, DE_VERBS, FR_TENSES, DE_TENSES, conjugateEnglish } from "../src/data/content.js";
+import { FR_VERBS, DE_VERBS, FR_TENSES, DE_TENSES, conjugateEnglish, personsFor } from "../src/data/content.js";
 import { FR_C1_VERBS, DE_C1_VERBS } from "../src/data/verbs-c1.js";
 import { splitSenses, acceptableEnglish } from "../src/lib/gloss.js";
 import { buildDictionary, describe, segmentSentence, lookupKey, exactKey } from "../src/lib/dictionary.js";
@@ -45,22 +45,29 @@ console.log(`glosses: ${words} words, ${senses} senses`);
  */
 for (const lang of ["fr", "de"]) {
   const dict = buildDictionary(lang, DATA, VERBS[lang], TENSES[lang]);
-  let tokens = 0, resolved = 0;
+  let tokens = 0, resolved = 0, c1Tokens = 0, c1Resolved = 0;
   for (const lvl of Object.keys(DATA[lang]))
     for (const drawer of DATA[lang][lvl])
       for (const w of drawer.words) {
         if (!w.s) continue;
         for (const seg of segmentSentence(w.s)) {
           if (seg.type !== "word") continue;
-          tokens++;
-          if (describe(dict, seg.v)) resolved++;
+          if (lvl === "C1") { c1Tokens++; if (describe(dict, seg.v)) c1Resolved++; }
+          else { tokens++; if (describe(dict, seg.v)) resolved++; }
         }
         // Rendering must never lose or duplicate a character.
         check(segmentSentence(w.s).map((x) => x.v).join("") === w.s, `${lang}/${w.t}: segmentation is not lossless`);
       }
   const pct = Math.round((resolved / tokens) * 100);
-  console.log(`dictionary ${lang}: ${dict.size} entries, ${pct}% of sentence words resolve`);
-  check(pct >= 70, `${lang}: dictionary coverage fell to ${pct}% (floor is 70%)`);
+  const c1Pct = c1Tokens ? Math.round((c1Resolved / c1Tokens) * 100) : null;
+  console.log(`dictionary ${lang}: ${dict.size} entries, ${pct}% of A1–B2 sentence words resolve${c1Pct === null ? "" : `, ${c1Pct}% of C1`}`);
+  check(pct >= 70, `${lang}: A1–B2 dictionary coverage fell to ${pct}% (floor is 70%)`);
+  /* C1 is measured separately and against a lower floor on purpose. Its
+   * sentences are journalistic and academic by design, so they legitimately
+   * contain words the deck does not teach — a C1 example that only used deck
+   * vocabulary would not be a C1 example. The floor still catches a real
+   * regression, such as segmentation breaking. */
+  if (c1Pct !== null) check(c1Pct >= 45, `${lang}: C1 dictionary coverage fell to ${c1Pct}% (floor is 45%)`);
 }
 for (const [lang, word, want] of [
   ["fr", "sur", "on"],
@@ -88,7 +95,7 @@ let rendered = 0;
 for (const lang of ["fr", "de"])
   for (const verb of ALL_VERBS[lang])
     for (const t of TENSES[lang])
-      for (let p = 0; p < 6; p++) {
+      for (const p of personsFor(lang, t.key)) {
         const out = conjugateEnglish(lang, verb, t.key, p);
         rendered++;
         const at = `${lang}/${verb.label || verb.inf}/${t.key}/p${p}`;

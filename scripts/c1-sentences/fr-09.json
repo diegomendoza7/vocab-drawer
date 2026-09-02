@@ -1,0 +1,752 @@
+[
+{
+"t": "émotion refoulée",
+"s": "Une émotion refoulée finit toujours par ressurgir ailleurs.",
+"se": "A repressed emotion always ends up resurfacing elsewhere."
+},
+{
+"t": "l'estime de soi",
+"s": "L'estime de soi se construit bien avant l'entrée à l'école.",
+"se": "Self-esteem is built well before the start of school."
+},
+{
+"t": "l'amour-propre",
+"s": "Il a refusé pour préserver l'amour-propre de son équipe.",
+"se": "He refused in order to preserve his team's pride."
+},
+{
+"t": "susceptibilité",
+"s": "Sa susceptibilité rendait toute critique impossible.",
+"se": "His touchiness made any criticism impossible."
+},
+{
+"t": "pudeur",
+"s": "Une certaine pudeur l'empêchait de parler de son enfance.",
+"se": "A certain reticence stopped him talking about his childhood."
+},
+{
+"t": "retenue",
+"s": "Il a répondu avec une retenue que personne n'attendait.",
+"se": "He replied with a restraint nobody expected."
+},
+{
+"t": "l'aplomb",
+"s": "On admire l'aplomb avec lequel elle a soutenu son mensonge.",
+"se": "One admires the composure with which she maintained her lie."
+},
+{
+"t": "culot",
+"s": "Il a eu le culot de réclamer une prime.",
+"se": "He had the nerve to demand a bonus."
+},
+{
+"t": "l'entêtement",
+"s": "L'entêtement du directeur a fini par lasser toute l'équipe.",
+"se": "The director's stubbornness ended up wearing out the whole team."
+},
+{
+"t": "l'obstination",
+"s": "L'obstination des chercheurs a permis d'achever le projet.",
+"se": "The researchers' persistence made it possible to finish the project."
+},
+{
+"t": "ténacité",
+"s": "Sa ténacité impressionne autant qu'elle irrite.",
+"se": "Her tenacity impresses as much as it irritates."
+},
+{
+"t": "l'abnégation",
+"s": "Le rapport salue l'abnégation du personnel hospitalier.",
+"se": "The report praises the selflessness of hospital staff."
+},
+{
+"t": "bienveillance",
+"s": "La bienveillance affichée ne remplace pas des moyens.",
+"se": "Displayed kindness is no substitute for resources."
+},
+{
+"t": "malveillance",
+"s": "Rien ne permet de conclure à une malveillance délibérée.",
+"se": "Nothing supports a conclusion of deliberate ill will."
+},
+{
+"t": "mesquinerie",
+"s": "La mesquinerie du procédé a choqué jusque dans son camp.",
+"se": "The pettiness of the manoeuvre shocked even his own side."
+},
+{
+"t": "duplicité",
+"s": "Sa duplicité n'est apparue qu'au moment du vote.",
+"se": "His duplicity only became apparent at the moment of the vote."
+},
+{
+"t": "candeur",
+"s": "Il pose ses questions avec une candeur désarmante.",
+"se": "He asks his questions with a disarming ingenuousness."
+},
+{
+"t": "naïveté",
+"s": "Cette naïveté politique lui a coûté son poste.",
+"se": "That political naivety cost him his post."
+},
+{
+"t": "lucidité",
+"s": "Sa lucidité sur ses propres limites force le respect.",
+"se": "His clear-sightedness about his own limits commands respect."
+},
+{
+"t": "désarroi",
+"s": "Le désarroi des enseignants transparaît dans chaque témoignage.",
+"se": "The teachers' distress shows through in every account."
+},
+{
+"t": "l'accablement",
+"s": "On lit l'accablement sur le visage des rescapés.",
+"se": "You can read the dejection on the survivors' faces."
+},
+{
+"t": "lassitude",
+"s": "Une lassitude générale s'est installée après trois ans de négociations.",
+"se": "A general weariness set in after three years of negotiations."
+},
+{
+"t": "l'exaspération",
+"s": "L'exaspération des riverains a fini par éclater en réunion publique.",
+"se": "Local residents' exasperation finally erupted at a public meeting."
+},
+{
+"t": "dépit",
+"s": "Il a démissionné par dépit plutôt que par conviction.",
+"se": "He resigned out of pique rather than conviction."
+},
+{
+"t": "l'amertume",
+"s": "L'amertume perce sous la courtoisie de la lettre.",
+"se": "Bitterness shows through the letter's courtesy."
+},
+{
+"t": "ressentiment",
+"s": "Un ressentiment ancien explique en partie ce vote.",
+"se": "A long-standing resentment partly explains this vote."
+},
+{
+"t": "rancune",
+"s": "Il lui garde rancune de cette décision depuis vingt ans.",
+"se": "He has held a grudge over that decision for twenty years."
+},
+{
+"t": "l'appréhension",
+"s": "L'appréhension du jury était palpable avant le verdict.",
+"se": "The jury's apprehension was palpable before the verdict."
+},
+{
+"t": "l'angoisse",
+"s": "L'angoisse de la page blanche est un lieu commun tenace.",
+"se": "The anguish of the blank page is a stubborn cliché."
+},
+{
+"t": "soulagement",
+"s": "Le soulagement fut de courte durée.",
+"se": "The relief was short-lived."
+},
+{
+"t": "l'allégresse",
+"s": "L'allégresse du premier soir est vite retombée.",
+"se": "The elation of the first evening quickly subsided."
+},
+{
+"t": "sérénité",
+"s": "Il aborde la fin de son mandat avec une sérénité surprenante.",
+"se": "He approaches the end of his term with surprising serenity."
+},
+{
+"t": "l'assurance",
+"s": "L'assurance qu'il affiche en public contraste avec ses hésitations privées.",
+"se": "The self-assurance he displays in public contrasts with his private hesitancy."
+},
+{
+"t": "trouble",
+"s": "Un trouble profond s'empare de lui à la lecture du rapport.",
+"se": "A deep disturbance takes hold of him on reading the report."
+},
+{
+"t": "trouble anxieux",
+"s": "Un trouble anxieux généralisé touche près de trois pour cent des adultes.",
+"se": "Generalised anxiety disorder affects close to three per cent of adults."
+},
+{
+"t": "l'épuisement professionnel",
+"s": "L'épuisement professionnel n'est toujours pas reconnu comme maladie professionnelle.",
+"se": "Burnout is still not recognised as an occupational disease."
+},
+{
+"t": "surmenage",
+"s": "Le surmenage des internes fait l'objet d'un rapport accablant.",
+"se": "The overwork of junior doctors is the subject of a damning report."
+},
+{
+"t": "charge mentale",
+"s": "La charge mentale reste très inégalement répartie dans les couples.",
+"se": "The mental load remains very unevenly shared within couples."
+},
+{
+"t": "l'accompagnement psychologique",
+"s": "L'accompagnement psychologique des familles a été assuré pendant six mois.",
+"se": "Psychological support for the families was provided for six months."
+},
+{
+"t": "avancée",
+"s": "Cette avancée thérapeutique change le pronostic de milliers de patients.",
+"se": "This therapeutic advance changes the prognosis for thousands of patients."
+},
+{
+"t": "percée",
+"s": "La percée technologique était attendue depuis une décennie.",
+"se": "The technological breakthrough had been awaited for a decade."
+},
+{
+"t": "découverte fortuite",
+"s": "Une découverte fortuite est à l'origine de tout le programme.",
+"se": "A serendipitous discovery lies behind the whole programme."
+},
+{
+"t": "protocole expérimental",
+"s": "Le protocole expérimental n'a pas été enregistré à l'avance.",
+"se": "The experimental protocol was not pre-registered."
+},
+{
+"t": "essai",
+"s": "Un premier essai en laboratoire avait donné des résultats prometteurs.",
+"se": "An initial laboratory trial had given promising results."
+},
+{
+"t": "témoin",
+"s": "Le groupe témoin recevait un traitement standard.",
+"se": "The control group received standard treatment."
+},
+{
+"t": "variable",
+"s": "Une variable de confusion avait été oubliée dans le modèle.",
+"se": "A confounding variable had been left out of the model."
+},
+{
+"t": "biais",
+"s": "Un biais de sélection explique une bonne part de l'écart.",
+"se": "A selection bias explains a good part of the gap."
+},
+{
+"t": "reproductibilité",
+"s": "La reproductibilité des résultats reste le point aveugle de la discipline.",
+"se": "The reproducibility of results remains the discipline's blind spot."
+},
+{
+"t": "fiabilité",
+"s": "La fiabilité de la mesure décroît fortement au-delà de dix mètres.",
+"se": "The reliability of the measurement falls sharply beyond ten metres."
+},
+{
+"t": "validité",
+"s": "La validité externe de l'étude reste à démontrer.",
+"se": "The external validity of the study remains to be shown."
+},
+{
+"t": "marge d'erreur",
+"s": "La marge d'erreur est plus large que l'écart mesuré.",
+"se": "The margin of error is wider than the measured gap."
+},
+{
+"t": "ordre de grandeur",
+"s": "On raisonne ici à un ordre de grandeur près.",
+"se": "The reasoning here is accurate to within an order of magnitude."
+},
+{
+"t": "seuil",
+"s": "Le seuil de significativité avait été fixé après coup.",
+"se": "The significance threshold had been set after the fact."
+},
+{
+"t": "corrélation",
+"s": "Une corrélation forte ne dit rien du sens du lien.",
+"se": "A strong correlation says nothing about the direction of the link."
+},
+{
+"t": "lien de causalité",
+"s": "Aucun lien de causalité n'a pu être établi.",
+"se": "No causal link could be established."
+},
+{
+"t": "courbe",
+"s": "La courbe s'infléchit nettement à partir de 2015.",
+"se": "The curve bends noticeably from 2015 onwards."
+},
+{
+"t": "croissance exponentielle",
+"s": "Une croissance exponentielle ne dure jamais très longtemps.",
+"se": "Exponential growth never lasts very long."
+},
+{
+"t": "palier",
+"s": "La série atteint un palier qu'elle ne dépasse plus.",
+"se": "The series reaches a plateau it never exceeds again."
+},
+{
+"t": "régression",
+"s": "La régression linéaire explique à peine un tiers de la variance.",
+"se": "The linear regression explains barely a third of the variance."
+},
+{
+"t": "modèle prédictif",
+"s": "Le modèle prédictif échoue justement sur les cas extrêmes.",
+"se": "The predictive model fails precisely on the extreme cases."
+},
+{
+"t": "simulation",
+"s": "La simulation a tourné pendant six semaines sur le calculateur.",
+"se": "The simulation ran for six weeks on the supercomputer."
+},
+{
+"t": "itération",
+"s": "Chaque itération réduit l'erreur d'environ un ordre de grandeur.",
+"se": "Each iteration reduces the error by roughly an order of magnitude."
+},
+{
+"t": "traitement des données",
+"s": "Le traitement des données a pris plus de temps que leur collecte.",
+"se": "Processing the data took longer than collecting it."
+},
+{
+"t": "l'apprentissage automatique",
+"s": "L'apprentissage automatique reproduit fidèlement les biais de ses données.",
+"se": "Machine learning faithfully reproduces the biases of its data."
+},
+{
+"t": "réseau de neurones",
+"s": "Ce réseau de neurones compte plus de paramètres que d'exemples d'entraînement.",
+"se": "This neural network has more parameters than training examples."
+},
+{
+"t": "jeu de données",
+"s": "Le jeu de données n'a jamais été rendu public.",
+"se": "The dataset was never made public."
+},
+{
+"t": "l'informatique",
+"s": "L'informatique est entrée tardivement dans les programmes du secondaire.",
+"se": "Computer science entered the secondary curriculum late."
+},
+{
+"t": "logiciel",
+"s": "Le logiciel n'est plus maintenu depuis quatre ans.",
+"se": "The software has not been maintained for four years."
+},
+{
+"t": "matériel",
+"s": "Le matériel a été renouvelé, pas la formation des utilisateurs.",
+"se": "The hardware was renewed; the users' training was not."
+},
+{
+"t": "calcul intensif",
+"s": "Le calcul intensif consomme autant qu'une ville moyenne.",
+"se": "High-performance computing consumes as much as a medium-sized town."
+},
+{
+"t": "puissance de calcul",
+"s": "La puissance de calcul disponible a doublé en dix-huit mois.",
+"se": "Available computing power doubled in eighteen months."
+},
+{
+"t": "capteur",
+"s": "Un capteur défaillant fausse toute la série de mesures.",
+"se": "A faulty sensor distorts the whole measurement series."
+},
+{
+"t": "dispositif",
+"s": "Le dispositif expérimental tient dans une pièce de vingt mètres carrés.",
+"se": "The experimental set-up fits into a twenty-square-metre room."
+},
+{
+"t": "procédé",
+"s": "Ce procédé divise par trois la consommation d'eau.",
+"se": "This process cuts water consumption threefold."
+},
+{
+"t": "mise au point",
+"s": "La mise au point du prototype a demandé quatre ans.",
+"se": "Developing the prototype took four years."
+},
+{
+"t": "brevet",
+"s": "Le brevet a été déposé simultanément dans huit pays.",
+"se": "The patent was filed simultaneously in eight countries."
+},
+{
+"t": "propriété intellectuelle",
+"s": "La propriété intellectuelle appartient à l'établissement, non au chercheur.",
+"se": "Intellectual property belongs to the institution, not to the researcher."
+},
+{
+"t": "transfert de technologie",
+"s": "Le transfert de technologie vers l'industrie reste très lent.",
+"se": "Technology transfer to industry remains very slow."
+},
+{
+"t": "revue à comité de lecture",
+"s": "L'article a paru dans une revue à comité de lecture reconnue.",
+"se": "The article appeared in a recognised peer-reviewed journal."
+},
+{
+"t": "l'évaluation par les pairs",
+"s": "L'évaluation par les pairs reste bénévole et largement invisible.",
+"se": "Peer review remains unpaid and largely invisible."
+},
+{
+"t": "libre accès",
+"s": "Le libre accès a fait chuter le délai entre acceptation et lecture.",
+"se": "Open access has cut the delay between acceptance and readership."
+},
+{
+"t": "financement",
+"s": "Le financement du projet s'arrête en décembre.",
+"se": "Funding for the project stops in December."
+},
+{
+"t": "appel à projets",
+"s": "Un appel à projets européen sera publié à l'automne.",
+"se": "A European call for proposals will be published in the autumn."
+},
+{
+"t": "s'enquérir de",
+"s": "Personne n'a songé à s'enquérir de son état de santé.",
+"se": "It occurred to nobody to enquire about his health."
+},
+{
+"t": "s'abstenir de",
+"s": "Le comité a préféré s'abstenir de tout commentaire.",
+"se": "The committee preferred to refrain from any comment."
+},
+{
+"t": "se garder de",
+"s": "L'auteur prend soin de se garder de toute généralisation hâtive.",
+"se": "The author takes care not to make any hasty generalisation."
+},
+{
+"t": "s'employer à",
+"s": "Le ministère semble s'employer à repousser l'échéance.",
+"se": "The ministry appears to be devoting itself to postponing the deadline."
+},
+{
+"t": "s'attacher à",
+"s": "Le rapport vient s'attacher à distinguer les deux phénomènes.",
+"se": "The report makes a point of distinguishing the two phenomena."
+},
+{
+"t": "s'astreindre à",
+"s": "Il faut s'astreindre à relire chaque source dans son édition originale.",
+"se": "One must force oneself to reread each source in its original edition."
+},
+{
+"t": "s'adonner à",
+"s": "Il rêvait de s'adonner à la recherche archivistique à plein temps.",
+"se": "He dreamed of devoting himself to archival research full time."
+},
+{
+"t": "se targuer de",
+"s": "L'entreprise aime se targuer de résultats que personne ne peut vérifier.",
+"se": "The firm likes to boast of results nobody can verify."
+},
+{
+"t": "se prévaloir de",
+"s": "Nul ne saurait se prévaloir de sa propre turpitude.",
+"se": "No one may take advantage of their own wrongdoing."
+},
+{
+"t": "se soustraire à",
+"s": "Deux États ont tenté de se soustraire à leurs obligations.",
+"se": "Two states tried to evade their obligations."
+},
+{
+"t": "se dérober à",
+"s": "Le ministre a choisi de se dérober à la question.",
+"se": "The minister chose to shy away from the question."
+},
+{
+"t": "déroger à",
+"s": "Aucun décret ne peut déroger à une norme constitutionnelle.",
+"se": "No decree may depart from a constitutional rule."
+},
+{
+"t": "enfreindre",
+"s": "L'entreprise reconnaît avoir pu enfreindre plusieurs dispositions.",
+"se": "The firm admits it may have infringed several provisions."
+},
+{
+"t": "entériner",
+"s": "Le congrès n'a fait qu'entériner une décision déjà prise.",
+"se": "The congress merely ratified a decision already taken."
+},
+{
+"t": "avaliser",
+"s": "Le conseil a refusé d'avaliser le montage financier.",
+"se": "The board refused to endorse the financial arrangement."
+},
+{
+"t": "édicter",
+"s": "L'autorité peut édicter des règles contraignantes pour tout le secteur.",
+"se": "The authority may lay down binding rules for the whole sector."
+},
+{
+"t": "instaurer",
+"s": "La loi vient instaurer un contrôle indépendant des algorithmes.",
+"se": "The act establishes independent oversight of algorithms."
+},
+{
+"t": "pérenniser",
+"s": "Il reste à pérenniser un dispositif financé jusqu'ici par projet.",
+"se": "A scheme funded project by project until now still has to be made permanent."
+},
+{
+"t": "consacrer",
+"s": "L'arrêt vient consacrer un droit jusque-là seulement esquissé.",
+"se": "The ruling enshrines a right until now only sketched out."
+},
+{
+"t": "conférer",
+"s": "Ce statut vient conférer une immunité très large.",
+"se": "This status confers a very broad immunity."
+},
+{
+"t": "octroyer",
+"s": "L'État a fini par octroyer une aide exceptionnelle au secteur.",
+"se": "The state ended up granting exceptional aid to the sector."
+},
+{
+"t": "allouer",
+"s": "Il faudra allouer davantage de moyens à la maintenance.",
+"se": "More resources will have to be allocated to maintenance."
+},
+{
+"t": "impartir",
+"s": "Le juge peut impartir un nouveau délai aux parties.",
+"se": "The judge may allot the parties a fresh deadline."
+},
+{
+"t": "s'acquitter de",
+"s": "L'établissement doit s'acquitter de cette obligation avant décembre.",
+"se": "The institution must discharge this obligation before December."
+},
+{
+"t": "assumer",
+"s": "La direction a refusé d'assumer la moindre responsabilité.",
+"se": "Management refused to take on the slightest responsibility."
+},
+{
+"t": "endosser",
+"s": "Personne ne veut endosser la responsabilité de ce retard.",
+"se": "Nobody wants to take on responsibility for this delay."
+},
+{
+"t": "encourir",
+"s": "Le prévenu vient encourir jusqu'à cinq ans d'emprisonnement.",
+"se": "The defendant faces up to five years' imprisonment."
+},
+{
+"t": "essuyer",
+"s": "Le projet vient d'essuyer un troisième refus.",
+"se": "The project has just met with a third refusal."
+},
+{
+"t": "subir",
+"s": "Les riverains vont subir les travaux pendant deux ans.",
+"se": "Local residents will have to put up with the works for two years."
+},
+{
+"t": "pâtir de",
+"s": "Les petites communes vont pâtir de cette réforme plus que les autres.",
+"se": "Small municipalities will suffer from this reform more than others."
+},
+{
+"t": "peser sur",
+"s": "La dette continue de peser sur les marges de manœuvre budgétaires.",
+"se": "Debt continues to weigh on budgetary room for manoeuvre."
+},
+{
+"t": "grever",
+"s": "Ces engagements viennent grever le budget pour dix ans.",
+"se": "These commitments burden the budget for ten years."
+},
+{
+"t": "entraver",
+"s": "Rien ne doit entraver le travail de la commission.",
+"se": "Nothing must hinder the commission's work."
+},
+{
+"t": "enrayer",
+"s": "Aucune mesure n'a permis d'enrayer le phénomène.",
+"se": "No measure managed to halt the phenomenon."
+},
+{
+"t": "juguler",
+"s": "La banque centrale peine à juguler la hausse des prix.",
+"se": "The central bank is struggling to curb the rise in prices."
+},
+{
+"t": "endiguer",
+"s": "Il devient urgent d'endiguer la propagation du parasite.",
+"se": "Containing the spread of the parasite is becoming urgent."
+},
+{
+"t": "atténuer",
+"s": "Ces aides visent à atténuer le choc pour les ménages modestes.",
+"se": "This assistance aims to soften the shock for low-income households."
+},
+{
+"t": "amoindrir",
+"s": "Rien ne saurait amoindrir la portée de cette décision.",
+"se": "Nothing can diminish the significance of this decision."
+},
+{
+"t": "exacerber",
+"s": "La couverture médiatique n'a fait qu'exacerber les tensions.",
+"se": "Media coverage merely exacerbated the tensions."
+},
+{
+"t": "attiser",
+"s": "Ces déclarations viennent attiser un conflit déjà ancien.",
+"se": "These statements stoke an already long-standing conflict."
+},
+{
+"t": "envenimer",
+"s": "La maladresse du communiqué a fini par envenimer les relations.",
+"se": "The clumsiness of the statement ended up poisoning relations."
+},
+{
+"t": "conforter",
+"s": "Ces données viennent conforter l'hypothèse initiale.",
+"se": "These data bear out the initial hypothesis."
+},
+{
+"t": "asseoir",
+"s": "Il lui a fallu dix ans pour asseoir son autorité scientifique.",
+"se": "It took him ten years to establish his scientific authority."
+},
+{
+"t": "entraîner dans son sillage",
+"s": "La faillite du groupe risque d'entraîner dans son sillage tous ses sous-traitants.",
+"se": "The group's collapse risks dragging all its subcontractors down with it."
+},
+{
+"t": "s'ériger en",
+"s": "Le journal a tendance à s'ériger en tribunal moral.",
+"se": "The paper tends to set itself up as a moral tribunal."
+},
+{
+"t": "se muer en",
+"s": "La manifestation a fini par se muer en émeute.",
+"se": "The demonstration ended up turning into a riot."
+},
+{
+"t": "s'accommoder de",
+"s": "L'administration a appris à s'accommoder de cette ambiguïté.",
+"se": "The administration has learned to put up with this ambiguity."
+},
+{
+"t": "se résoudre à",
+"s": "Il a fallu se résoudre à reporter la publication.",
+"se": "Postponing publication had to be accepted."
+},
+{
+"t": "s'aviser de",
+"s": "Personne n'a cru bon de s'aviser de l'erreur avant l'impression.",
+"se": "Nobody saw fit to notice the mistake before printing."
+},
+{
+"t": "acerbe",
+"s": "Le ton acerbe de la réponse a surpris jusqu'à ses proches.",
+"se": "The caustic tone of the reply surprised even those close to him."
+},
+{
+"t": "cinglant",
+"s": "Le démenti fut aussi bref que cinglant.",
+"se": "The denial was as brief as it was scathing."
+},
+{
+"t": "mordant",
+"s": "Son humour mordant lui a valu autant d'amis que d'ennemis.",
+"se": "His biting humour won him as many friends as enemies."
+},
+{
+"t": "incisif",
+"s": "Le style est incisif sans jamais devenir blessant.",
+"se": "The style is incisive without ever becoming wounding."
+},
+{
+"t": "véhément",
+"s": "Le plaidoyer véhément du procureur a marqué l'audience.",
+"se": "The prosecutor's vehement plea marked the hearing."
+},
+{
+"t": "virulent",
+"s": "L'éditorial est plus virulent que d'ordinaire.",
+"se": "The editorial is more scathing than usual."
+},
+{
+"t": "feutré",
+"s": "Le débat s'est déroulé dans un climat feutré.",
+"se": "The debate unfolded in a muted atmosphere."
+},
+{
+"t": "mesuré",
+"s": "Le communiqué est délibérément mesuré.",
+"se": "The statement is deliberately measured."
+},
+{
+"t": "circonspect",
+"s": "L'expert reste circonspect sur la portée de ces résultats.",
+"se": "The expert remains circumspect about the significance of these results."
+},
+{
+"t": "réservé",
+"s": "Le ministère est resté très réservé sur le calendrier.",
+"se": "The ministry remained very guarded about the timetable."
+},
+{
+"t": "taciturne",
+"s": "Le témoin, taciturne, a répondu par monosyllabes.",
+"se": "The witness, taciturn, answered in monosyllables."
+},
+{
+"t": "volubile",
+"s": "Volubile en privé, il devient laconique devant les caméras.",
+"se": "Voluble in private, he becomes laconic in front of the cameras."
+},
+{
+"t": "prolixe",
+"s": "Le chapitre est prolixe là où il faudrait trancher.",
+"se": "The chapter is long-winded where it ought to decide."
+},
+{
+"t": "laconique",
+"s": "Sa réponse laconique a clos la discussion.",
+"se": "His laconic reply closed the discussion."
+},
+{
+"t": "lapidaire",
+"s": "Le jugement est lapidaire : trois lignes, aucune motivation.",
+"se": "The judgment is terse: three lines, no reasoning."
+},
+{
+"t": "alambiqué",
+"s": "Le raisonnement est si alambiqué qu'il en devient invérifiable.",
+"se": "The reasoning is so convoluted that it becomes unverifiable."
+},
+{
+"t": "abscons",
+"s": "Le jargon abscons de la note en décourage la lecture.",
+"se": "The abstruse jargon of the memo discourages reading it."
+},
+{
+"t": "limpide",
+"s": "La démonstration est limpide du début à la fin.",
+"se": "The proof is crystal-clear from beginning to end."
+}
+]

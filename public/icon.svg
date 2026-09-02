@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Vocab Drawer">
+  <!-- A card-catalogue drawer front, in the app's own ink and gold.
+       Content is kept inside the middle 80% so the maskable crop
+       Android applies cannot clip the pull or the label. -->
+  <rect width="512" height="512" rx="96" fill="#201f1d"/>
+  <rect x="96" y="128" width="320" height="256" rx="18" fill="none" stroke="#b68235" stroke-width="16"/>
+  <rect x="140" y="176" width="232" height="14" rx="7" fill="#b68235" opacity=".55"/>
+  <rect x="140" y="216" width="180" height="14" rx="7" fill="#b68235" opacity=".35"/>
+  <circle cx="256" cy="316" r="26" fill="none" stroke="#b68235" stroke-width="16"/>
+</svg>

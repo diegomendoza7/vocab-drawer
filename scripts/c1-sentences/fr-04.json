@@ -1,0 +1,497 @@
+[
+{
+"t": "loin s'en faut",
+"s": "Le dossier n'est pas clos, loin s'en faut.",
+"se": "The matter is not closed, far from it."
+},
+{
+"t": "a fortiori",
+"s": "La règle vaut pour les communes et, a fortiori, pour les régions.",
+"se": "The rule holds for municipalities and, all the more so, for regions."
+},
+{
+"t": "nonobstant",
+"s": "Le contrat reste applicable nonobstant toute clause contraire.",
+"se": "The contract remains applicable notwithstanding any clause to the contrary."
+},
+{
+"t": "quand bien même",
+"s": "Le calendrier tiendrait, quand bien même les crédits arriveraient en retard.",
+"se": "The timetable would hold even if the funds arrived late."
+},
+{
+"t": "encore que",
+"s": "La méthode est solide, encore que l'échantillon soit un peu mince.",
+"se": "The method is sound, albeit the sample is a little thin."
+},
+{
+"t": "si tant est que",
+"s": "Le dispositif sera efficace, si tant est que le contrôle suive.",
+"se": "The scheme will be effective, assuming enforcement follows."
+},
+{
+"t": "en tant que",
+"s": "Il s'exprimait en tant que président de la commission, non à titre personnel.",
+"se": "He was speaking as chair of the commission, not in a personal capacity."
+},
+{
+"t": "au regard de",
+"s": "La sanction paraît disproportionnée au regard de la faute commise.",
+"se": "The penalty looks disproportionate in light of the wrong committed."
+},
+{
+"t": "eu égard à",
+"s": "La peine a été réduite eu égard à l'ancienneté des faits.",
+"se": "The sentence was reduced in view of how long ago the events took place."
+},
+{
+"t": "compte tenu de",
+"s": "Compte tenu de l'inflation, la hausse réelle est presque nulle.",
+"se": "Given inflation, the real increase is close to zero."
+},
+{
+"t": "à l'aune de",
+"s": "Ces résultats doivent se lire à l'aune de ce que la réforme promettait.",
+"se": "These results have to be read against what the reform promised."
+},
+{
+"t": "au prisme de",
+"s": "L'auteur relit la période au prisme de la lutte des classes.",
+"se": "The author rereads the period through the lens of class struggle."
+},
+{
+"t": "à la lumière de",
+"s": "À la lumière de ce que révèlent les archives, le récit officiel s'effondre.",
+"se": "In the light of what the archives reveal, the official account collapses."
+},
+{
+"t": "s'agissant de",
+"s": "S'agissant de la réforme des retraites, le gouvernement reste évasif.",
+"se": "As regards pension reform, the government remains evasive."
+},
+{
+"t": "quant à",
+"s": "Quant à la question du financement, elle reste entière.",
+"se": "As for the funding question, it remains wide open."
+},
+{
+"t": "pour autant",
+"s": "Les chiffres s'améliorent ; rien n'est réglé pour autant.",
+"se": "The figures are improving; nothing is settled for all that."
+},
+{
+"t": "en somme",
+"s": "En somme, la réforme change moins qu'elle ne le prétend.",
+"se": "In short, the reform changes less than it claims to."
+},
+{
+"t": "en définitive",
+"s": "En définitive, c'est le calendrier qui aura eu raison du projet.",
+"se": "Ultimately it was the timetable that got the better of the project."
+},
+{
+"t": "en fin de compte",
+"s": "En fin de compte, la mesure aura surtout profité aux grandes entreprises.",
+"se": "In the end the measure chiefly benefited large firms."
+},
+{
+"t": "somme toute",
+"s": "L'ouvrage propose une thèse somme toute assez classique.",
+"se": "The book puts forward a thesis that is, all in all, fairly conventional."
+},
+{
+"t": "tout compte fait",
+"s": "Tout compte fait, la solution la plus simple était aussi la meilleure.",
+"se": "All things considered, the simplest solution was also the best."
+},
+{
+"t": "d'emblée",
+"s": "L'auteur écarte d'emblée toute lecture psychologisante.",
+"se": "The author rules out any psychologising reading from the outset."
+},
+{
+"t": "de prime abord",
+"s": "De prime abord, les deux séries paraissent incomparables.",
+"se": "At first sight the two series look incomparable."
+},
+{
+"t": "au fil de",
+"s": "Au fil de la décennie, le terme a changé plusieurs fois de sens.",
+"se": "Over the course of the decade the term changed meaning several times."
+},
+{
+"t": "à mesure que",
+"s": "Les écarts se creusent à mesure que la population vieillit.",
+"se": "The gaps widen as the population ages."
+},
+{
+"t": "au fur et à mesure",
+"s": "Les corrections sont apportées au fur et à mesure de la relecture.",
+"se": "Corrections are made progressively as the proofreading goes on."
+},
+{
+"t": "faute de",
+"s": "Le projet a été abandonné faute de financement pérenne.",
+"se": "The project was abandoned for want of lasting funding."
+},
+{
+"t": "à défaut de",
+"s": "À défaut de consensus, on s'en tiendra à une expérimentation locale.",
+"se": "Failing a consensus, we shall stick to a local trial."
+},
+{
+"t": "il semblerait que",
+"s": "Il semblerait que la tendance se soit inversée depuis deux ans.",
+"se": "It would appear that the trend has reversed over the last two years."
+},
+{
+"t": "il s'avère que",
+"s": "Après vérification, il s'avère que la source citée n'existe pas.",
+"se": "On checking, it turns out that the cited source does not exist."
+},
+{
+"t": "tout porte à croire que",
+"s": "Tout porte à croire que la décision était prise de longue date.",
+"se": "Everything suggests that the decision had been taken long before."
+},
+{
+"t": "rien n'indique que",
+"s": "À ce stade, rien n'indique que le phénomène soit durable.",
+"se": "At this stage nothing indicates that the phenomenon is lasting."
+},
+{
+"t": "il n'est pas exclu que",
+"s": "Il n'est pas exclu que ces données aient été mal saisies.",
+"se": "It cannot be ruled out that these data were entered incorrectly."
+},
+{
+"t": "il est permis de penser que",
+"s": "Il est permis de penser que l'effet a été largement surestimé.",
+"se": "One may reasonably think that the effect has been widely overestimated."
+},
+{
+"t": "on est en droit de se demander",
+"s": "On est en droit de se demander à qui profite réellement la réforme.",
+"se": "One may legitimately wonder who really benefits from the reform."
+},
+{
+"t": "sous réserve de",
+"s": "L'accord est conclu sous réserve de ratification par les deux parlements.",
+"se": "The agreement is concluded subject to ratification by both parliaments."
+},
+{
+"t": "dans une certaine mesure",
+"s": "Le reproche est fondé, dans une certaine mesure au moins.",
+"se": "The criticism is justified, to a certain extent at least."
+},
+{
+"t": "dans une large mesure",
+"s": "Le succès du dispositif tient dans une large mesure à sa simplicité.",
+"se": "The scheme's success is to a large extent down to its simplicity."
+},
+{
+"t": "peu ou prou",
+"s": "Tous les pays européens ont peu ou prou suivi le même chemin.",
+"se": "Every European country has more or less followed the same path."
+},
+{
+"t": "tant bien que mal",
+"s": "Le service a fonctionné tant bien que mal pendant toute la grève.",
+"se": "The service ran after a fashion throughout the strike."
+},
+{
+"t": "vraisemblablement",
+"s": "Le texte sera vraisemblablement amendé avant son adoption.",
+"se": "The text will in all likelihood be amended before adoption."
+},
+{
+"t": "prétendument",
+"s": "Ces documents, prétendument confidentiels, circulaient depuis des mois.",
+"se": "These allegedly confidential documents had been circulating for months."
+},
+{
+"t": "soi-disant",
+"s": "Cette soi-disant révolution n'a modifié aucun rapport de force.",
+"se": "This so-called revolution altered no balance of power."
+},
+{
+"t": "notoirement",
+"s": "Les données de cette période sont notoirement peu fiables.",
+"se": "The data for that period are notoriously unreliable."
+},
+{
+"t": "indubitablement",
+"s": "Le texte a indubitablement marqué la doctrine.",
+"se": "The text undoubtedly left its mark on legal doctrine."
+},
+{
+"t": "assurément",
+"s": "Il s'agit assurément du chapitre le plus abouti de l'ouvrage.",
+"se": "This is assuredly the most accomplished chapter of the book."
+},
+{
+"t": "sensiblement",
+"s": "Les délais se sont sensiblement allongés depuis la réforme.",
+"se": "Waiting times have lengthened appreciably since the reform."
+},
+{
+"t": "notablement",
+"s": "La production a notablement reculé au dernier trimestre.",
+"se": "Output fell markedly in the last quarter."
+},
+{
+"t": "singulièrement",
+"s": "L'argument est singulièrement absent des travaux ultérieurs.",
+"se": "The argument is remarkably absent from later work."
+},
+{
+"t": "voire",
+"s": "La réforme sera coûteuse, voire inapplicable en l'état.",
+"se": "The reform will be costly, or even unworkable as it stands."
+},
+{
+"t": "guère",
+"s": "Les crédits n'ont guère augmenté depuis cinq ans.",
+"se": "Funding has hardly increased in five years."
+},
+{
+"t": "naguère",
+"s": "Ce quartier, naguère industriel, s'est entièrement transformé.",
+"se": "This district, industrial not long ago, has been entirely transformed."
+},
+{
+"t": "jadis",
+"s": "La rivière servait jadis à transporter le bois de charpente.",
+"se": "The river was formerly used to carry timber."
+},
+{
+"t": "désormais",
+"s": "Toute demande devra désormais passer par le guichet numérique.",
+"se": "Every application will from now on have to go through the digital portal."
+},
+{
+"t": "dorénavant",
+"s": "Les contrôles seront dorénavant annoncés vingt-quatre heures à l'avance.",
+"se": "Inspections will henceforth be announced twenty-four hours in advance."
+},
+{
+"t": "certes… mais",
+"s": "Le schéma « certes… mais » structure presque tout le chapitre.",
+"se": "The \"admittedly… but\" pattern structures almost the whole chapter."
+},
+{
+"t": "à juste titre",
+"s": "Les auteurs insistent à juste titre sur la fragilité des sources.",
+"se": "The authors rightly insist on the fragility of the sources."
+},
+{
+"t": "à tort",
+"s": "On a longtemps cru, à tort, que le phénomène était marginal.",
+"se": "It was long wrongly believed that the phenomenon was marginal."
+},
+{
+"t": "à tort ou à raison",
+"s": "À tort ou à raison, le public tient l'institution pour responsable.",
+"se": "Rightly or wrongly, the public holds the institution responsible."
+},
+{
+"t": "de toute évidence",
+"s": "De toute évidence, les deux services ne se parlaient plus.",
+"se": "Quite obviously the two departments had stopped speaking to each other."
+},
+{
+"t": "selon toute vraisemblance",
+"s": "Selon toute vraisemblance, le rapport ne sera pas publié avant l'automne.",
+"se": "In all probability the report will not be published before the autumn."
+},
+{
+"t": "émettre une hypothèse",
+"s": "Les chercheurs se gardent d'émettre une hypothèse que les données ne soutiennent pas.",
+"se": "The researchers refrain from putting forward a hypothesis the data do not support."
+},
+{
+"t": "formuler une hypothèse",
+"s": "Il est trop tôt pour formuler une hypothèse solide sur les causes.",
+"se": "It is too early to formulate a solid hypothesis about the causes."
+},
+{
+"t": "soulever une question",
+"s": "Ce résultat vient soulever une question que personne n'avait anticipée.",
+"se": "This result raises a question nobody had anticipated."
+},
+{
+"t": "poser un problème",
+"s": "La définition retenue continue de poser un problème méthodologique sérieux.",
+"se": "The definition adopted continues to pose a serious methodological problem."
+},
+{
+"t": "aborder une question",
+"s": "Le chapitre choisit d'aborder une question longtemps laissée de côté.",
+"se": "The chapter chooses to address an issue long left aside."
+},
+{
+"t": "traiter une question",
+"s": "Il est impossible de traiter une question pareille en dix pages.",
+"se": "It is impossible to deal with a question like that in ten pages."
+},
+{
+"t": "trancher une question",
+"s": "Les données disponibles ne permettent pas de trancher une question aussi vaste.",
+"se": "The available data cannot settle a question that broad."
+},
+{
+"t": "dresser un bilan",
+"s": "Il est encore tôt pour dresser un bilan de la décennie écoulée.",
+"se": "It is still early to draw up an assessment of the past decade."
+},
+{
+"t": "dresser un état des lieux",
+"s": "La mission a commencé par dresser un état des lieux sans concession.",
+"se": "The mission began by taking stock of the situation without concessions."
+},
+{
+"t": "établir un constat",
+"s": "Les deux rapports finissent par établir un constat identique.",
+"se": "The two reports end up establishing an identical finding."
+},
+{
+"t": "tirer une conclusion",
+"s": "Il serait imprudent de tirer une conclusion générale de deux cas.",
+"se": "It would be unwise to draw a general conclusion from two cases."
+},
+{
+"t": "tirer parti de",
+"s": "Les régions ont su tirer parti de ce nouveau cadre juridique.",
+"se": "The regions managed to take advantage of this new legal framework."
+},
+{
+"t": "tirer profit de",
+"s": "Peu d'entreprises ont réellement su tirer profit de la mesure.",
+"se": "Few firms genuinely managed to profit from the measure."
+},
+{
+"t": "prendre en compte",
+"s": "Le modèle omet de prendre en compte les mobilités transfrontalières.",
+"se": "The model fails to take cross-border movement into account."
+},
+{
+"t": "tenir compte de",
+"s": "Il faudrait tenir compte de la structure d'âge avant de comparer.",
+"se": "Age structure would need to be taken into account before comparing."
+},
+{
+"t": "faire abstraction de",
+"s": "On ne peut faire abstraction de l'inflation dans une série aussi longue.",
+"se": "Inflation cannot be disregarded in a series this long."
+},
+{
+"t": "faire fi de",
+"s": "Le décret semble faire fi de toute prudence budgétaire.",
+"se": "The decree appears to disregard all budgetary caution."
+},
+{
+"t": "faire l'objet de",
+"s": "Ce classement vient de faire l'objet de plusieurs recours.",
+"se": "This ranking has just been the subject of several appeals."
+},
+{
+"t": "faire preuve de",
+"s": "Les négociateurs ont su faire preuve de patience.",
+"se": "The negotiators showed patience."
+},
+{
+"t": "mettre en œuvre",
+"s": "Il reste à mettre en œuvre une réforme votée il y a trois ans.",
+"se": "A reform passed three years ago has yet to be implemented."
+},
+{
+"t": "mettre en cause",
+"s": "Le rapport vient mettre en cause la chaîne de commandement tout entière.",
+"se": "The report calls the entire chain of command into question."
+},
+{
+"t": "mettre en exergue",
+"s": "L'éditorial choisit de mettre en exergue une phrase isolée du discours.",
+"se": "The editorial chooses to highlight one isolated sentence of the speech."
+},
+{
+"t": "mettre l'accent sur",
+"s": "Le plan préfère mettre l'accent sur la prévention plutôt que sur la sanction.",
+"se": "The plan prefers to place emphasis on prevention rather than punishment."
+},
+{
+"t": "mettre en balance",
+"s": "Il faut mettre en balance le coût budgétaire et le bénéfice social.",
+"se": "The budgetary cost and the social benefit have to be weighed against each other."
+},
+{
+"t": "remettre en question",
+"s": "Ces découvertes viennent remettre en question un consensus ancien.",
+"se": "These findings call a long-standing consensus into question."
+},
+{
+"t": "porter un jugement",
+"s": "Il est trop tôt pour porter un jugement définitif sur la réforme.",
+"se": "It is too early to pass a definitive judgement on the reform."
+},
+{
+"t": "porter atteinte à",
+"s": "La mesure risque de porter atteinte à la liberté d'informer.",
+"se": "The measure risks undermining the freedom to report."
+},
+{
+"t": "porter préjudice à",
+"s": "Une publication prématurée pourrait porter préjudice à l'enquête.",
+"se": "Premature publication could harm the investigation."
+},
+{
+"t": "jeter les bases de",
+"s": "Cet accord vient jeter les bases de la coopération à venir.",
+"se": "This agreement lays the foundations for the cooperation to come."
+},
+{
+"t": "ouvrir la voie à",
+"s": "L'arrêt pourrait ouvrir la voie à des centaines de recours similaires.",
+"se": "The ruling could pave the way for hundreds of similar appeals."
+},
+{
+"t": "donner lieu à",
+"s": "Cette ambiguïté n'a pas manqué de donner lieu à des interprétations opposées.",
+"se": "This ambiguity duly gave rise to opposing interpretations."
+},
+{
+"t": "prêter attention à",
+"s": "Les auteurs auraient gagné à prêter attention à la littérature allemande.",
+"se": "The authors would have gained by paying attention to the German literature."
+},
+{
+"t": "prêter le flanc à",
+"s": "Une formulation aussi vague vient prêter le flanc à toutes les critiques.",
+"se": "Wording that vague lays itself open to every criticism."
+},
+{
+"t": "avoir trait à",
+"s": "Les articles suivants viennent avoir trait à la procédure d'appel.",
+"se": "The following articles relate to the appeal procedure."
+},
+{
+"t": "avoir cours",
+"s": "Cette pratique continue d'avoir cours dans plusieurs administrations.",
+"se": "This practice continues to prevail in several administrations."
+},
+{
+"t": "revêtir une importance",
+"s": "Le détail vient revêtir une importance décisive au moment du vote.",
+"se": "The detail takes on decisive importance at the moment of the vote."
+},
+{
+"t": "présenter un intérêt",
+"s": "Ces archives continuent de présenter un intérêt considérable pour les historiens.",
+"se": "These archives continue to be of considerable interest to historians."
+},
+{
+"t": "soulever des objections",
+"s": "Le texte n'a pas manqué de soulever des objections dès la première lecture.",
+"se": "The text duly raised objections from the very first reading."
+}
+]

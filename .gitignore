@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Secrets — never commit. .env holds ANTHROPIC_API_KEY.
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +27,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw Wiktionary wikitext, ~8MB. Re-fetchable with
+# `node scripts/fetch-wiktionary.mjs --lang fr|de`; the parsed JSON the audit
+# actually reads is small and is kept.
+scripts/c1-cache/wiktionary-*.json
