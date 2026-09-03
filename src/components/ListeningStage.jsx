@@ -174,14 +174,33 @@ export default function ListeningStage({
                     {result.ok ? <Check size={15} /> : <X size={15} />}
                     {result.ok ? "Exact match" : `${Math.round(result.overlap * 100)}% of the words caught`}
                   </div>
-                  <div className="font-serif text-base leading-relaxed mb-1" style={{ color: C.ink }}>
+                  {/* The diff marks the misses. It is feedback, not language —
+                    * a line of wavy underlines is hard to read back as a
+                    * sentence — so the sentence and its meaning are set out
+                    * plainly below it, with the audio one click away. That is
+                    * the part that teaches anyone who got it wrong. */}
+                  <div className="font-serif text-base leading-relaxed mb-3" style={{ color: C.ink }}>
                     {result.diff.map((d, i) => (
                       <span key={i} style={{ color: d.ok ? C.ink : C.red, textDecoration: d.ok ? "none" : "underline", textDecorationStyle: "wavy" }}>
                         {d.tok}{" "}
                       </span>
                     ))}
                   </div>
-                  <div className="font-serif italic text-xs" style={{ color: C.muted }}>{item.word.se}</div>
+                  <div className="rounded-md px-3 py-2" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
+                    <div className="flex items-baseline gap-2 flex-wrap">
+                      <span className="font-serif text-[17px]" style={{ color: C.ink }}>{item.word.s}</span>
+                      {audioReady && (
+                        <button onClick={onPlay} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px]"
+                          style={{ backgroundColor: C.paper, color: C.ink, border: `1px solid ${C.line}` }}>
+                          <Volume2 size={11} /> hear
+                        </button>
+                      )}
+                    </div>
+                    <div className="font-serif text-sm mt-0.5" style={{ color: C.muted }}>{item.word.se}</div>
+                    <div className="font-serif text-xs mt-1.5" style={{ color: C.muted }}>
+                      the word: <span className="font-type" style={{ color: C.ink }}>{item.word.t}</span> — {item.word.e}
+                    </div>
+                  </div>
                   <div className="font-serif text-xs mt-2" style={{ color: C.muted }}>
                     Accents and apostrophes are checked; capitals are not.
                   </div>

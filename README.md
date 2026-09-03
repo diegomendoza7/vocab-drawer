@@ -616,6 +616,101 @@ add on the strength of a layout note. And the desktop reading, phrase and
 listening areas open straight into their working frame rather than a picker,
 which is why `navigateToSection` routes those three differently at width.
 
+## Listening
+
+Dictation was pinned to `CORE_LEVELS` — A1 to B2 — alongside reading and idioms,
+which was right when C1 had no example sentences. It has **1,038 in French and
+1,207 in German** now, all hand-written with translations, and none of them were
+reachable: finishing B2 meant the section simply stopped. `audioLevelsFor(lang)`
+returns every level whose words carry a sentence *and* a translation, so C1 is in
+and a future level joins automatically.
+
+Answering used to leave you with a diff — the target sentence with the misses
+underlined. That is feedback, not language: a line of wavy red is hard to read
+back as a sentence, and on desktop the panel was scrolled below the fold. Both
+now spell it out plainly under the diff — the sentence with its own **hear**
+button, the translation, and the word the sentence was chosen for.
+
+## Enter, everywhere
+
+Enter had been wired screen by screen as each was built, which is the worst
+possible pattern: the screens that take the keyboard teach you to expect it, and
+then one doesn't. It now presses whatever the screen's primary button is —
+learn, matching, speaking, reading, the sentence-construction word list, both
+Word Roots drills, and every end-of-round screen.
+
+## Hearing words, not just sentences
+
+Audio lived only on the screens built around listening, which left the places
+where a learner *meets* a word silent. Seeing `widersprechen` written and never
+hearing it is how a word ends up known on paper and unusable aloud. `SpeakButton`
+now appears on every word in a root's family, on the affix examples, on the
+quiz options and answers, on the French and German cells of the sound-law tables,
+and on the living words at the tips of the ancestry tree.
+
+The tree needed something the app did not have: **speaking in a language other
+than the one being studied**. It puts French, German and English side by side, so
+"read this aloud" has to mean "in the language of that column" — reading *father*
+with a French voice would be worse than silence. `sayIn(lang, text)` picks a
+voice per language and returns nothing for Latin or the reconstructions, so those
+rungs get no button at all rather than a mispronunciation.
+
+## Sentence Constructions: what a verb may take
+
+Each verb has a pool of objects it may build a sentence with, and the round of
+eight picks from it at random. A thin pool is invisible as a bug and obvious as
+an experience: `faire` allowed exactly **two** objects, so eight sentences were
+all about *le travail* and *la tâche*, and the words screen that opens the round
+listed two words.
+
+| verb | objects before | after |
+|---|---|---|
+| `faire` | 2 | 11 |
+| `machen` | 2 | 10 |
+| `finir` | 4 | 13 |
+| `geben` | 9 | 14 |
+| `essen` | 8 | **5** |
+
+`essen` went **down**, and that is the fix. Its rule was the whole Food & Drink
+drawer — which contains drinks — so the engine was happily generating *"Ich esse
+das Wasser"*. Drinks are now excluded from eating verbs, the same way people and
+places were already excluded from owning verbs ("They have the airport" was
+guarded against; "I eat the water" was not). Five is what remains, because five
+edible nouns is what the decks hold.
+
+A rule may now carry `topics` and `words` together, and an explicit word list is
+searched at every level — a curated headword has already passed the judgement
+the level gate exists to make.
+
+### The object chooses the English verb
+
+Expanding `faire` exposed a second problem. It is glossed "to do / make" and the
+generator takes the first sense, so every new object produced *"We have done the
+bed."* The French is one verb; the English is several, and the object is what
+decides which. So a word entry may be `["lit", "to make"]`:
+
+| | |
+|---|---|
+| nous avons fait le lit | We have **made** the bed. |
+| nous avons fait la valise | We have **packed** the suitcase. |
+| nous avons fait la réunion | We have **held** the meeting. |
+| nous avons fait la réforme | We have **carried out** the reform. |
+
+The first attempt at this rendered *"we have maked the bed"*: `EN_IRREGULAR` held
+only four verbs, and anything missing gets a regular `-ed`. It now holds the
+verbs the generator can actually reach for.
+
+`cuisine` is deliberately **not** in `faire`'s list. *Faire la cuisine* is to do
+the *cooking*, but the noun's own gloss is "kitchen", so the prompt would read
+"we have done the kitchen". An idiom the object gloss cannot carry is better left
+out than mistranslated.
+
+`scripts/check-sentences.mjs` runs offline in `npm run check` and guards all of
+it: no pool smaller than the round (bar `essen`, whose cap is declared with its
+reason), no word list naming a headword that is in no deck — a typo there
+silently removes an object and nothing errors — no eating verb able to take a
+drink, and every generated English prompt free of invented past tenses.
+
 ## Word building
 
 The sibling of the etymology section, answering the more immediately useful

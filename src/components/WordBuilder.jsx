@@ -3,6 +3,7 @@ import { C, TINT } from "../theme.js";
 import { ENGLISH_DEMO } from "../data/morphology.js";
 import { familyWords, affixesUsed } from "../lib/morphology.js";
 import WordParts from "./WordParts.jsx";
+import SpeakButton from "./SpeakButton.jsx";
 
 /* Word building: one root, and everything the language makes out of it.
  *
@@ -17,7 +18,7 @@ import WordParts from "./WordParts.jsx";
  * shortest way to say "now do that to German".
  */
 
-function Affixes({ affixes, onOpen, openId }) {
+function Affixes({ affixes, onOpen, openId, onSay, canSpeak }) {
   if (!affixes.length) return null;
   return (
     <div className="mt-5 pt-4" style={{ borderTop: `1px solid ${C.line}` }}>
@@ -41,11 +42,12 @@ function Affixes({ affixes, onOpen, openId }) {
               {open && (
                 <div className="px-3 py-2 rounded-b-md" style={{ backgroundColor: C.paper, border: `1px solid ${C.line}`, borderTop: "none" }}>
                   {a.ex.map(([from, to, gloss]) => (
-                    <div key={to} className="font-serif text-sm py-0.5" style={{ color: C.ink }}>
+                    <div key={to} className="font-serif text-sm py-0.5 flex items-baseline gap-1.5" style={{ color: C.ink }}>
                       <span style={{ color: C.muted }}>{from}</span>
-                      <span style={{ color: C.muted }}> → </span>
+                      <span style={{ color: C.muted }}>→</span>
                       <span className="font-type">{to}</span>
-                      <span style={{ color: C.muted }}> — {gloss}</span>
+                      <SpeakButton ready={canSpeak} onSay={() => onSay(to)} title={`Hear ${to}`} />
+                      <span style={{ color: C.muted }}>— {gloss}</span>
                     </div>
                   ))}
                 </div>
@@ -58,7 +60,7 @@ function Affixes({ affixes, onOpen, openId }) {
   );
 }
 
-function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix }) {
+function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix, onSay, canSpeak }) {
   const words = familyWords(family);
   const affixes = affixesUsed(family, lang);
   return (
@@ -67,6 +69,7 @@ function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix }) {
       <div className="flex items-baseline gap-3 flex-wrap mb-1">
         <h2 className="font-type text-3xl" style={{ color: C.ink }}>{family.root}</h2>
         <span className="font-serif text-[17px]" style={{ color: C.muted }}>“{family.gloss}”</span>
+        <SpeakButton ready={canSpeak} onSay={() => onSay(family.base.w)} size="md" label="hear the root" />
       </div>
       <p className="font-serif text-[15px] mb-4" style={{ color: C.muted }}>
         {words.length} words in this family. Learn the root once and the rest are the root plus a part you already know.
@@ -83,6 +86,7 @@ function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix }) {
           <div key={w.w} className="flex items-baseline gap-3 flex-wrap px-3 py-2 rounded-md"
             style={{ backgroundColor: w.base ? TINT : C.card, border: `1px solid ${w.base ? C.gold : C.line}` }}>
             <WordParts notation={w.p} size={16} />
+            <SpeakButton ready={canSpeak} onSay={() => onSay(w.w)} title={`Hear ${w.w}`} />
             <span className="font-serif text-[15px]" style={{ color: C.ink }}>
               {w.g && <span style={{ color: C.muted }}>{w.g} </span>}
               {w.e}
@@ -102,12 +106,12 @@ function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix }) {
         Practise this family <ArrowRight size={14} />
       </button>
 
-      <Affixes affixes={affixes} onOpen={onOpenAffix} openId={openAffix} />
+      <Affixes affixes={affixes} onOpen={onOpenAffix} openId={openAffix} onSay={onSay} canSpeak={canSpeak} />
     </div>
   );
 }
 
-function Quiz({ quiz, picked, onPick, onNext, onBack, stats }) {
+function Quiz({ quiz, picked, onPick, onNext, onBack, stats, onSay, canSpeak }) {
   return (
     <div>
       <button onClick={onBack} className="font-serif text-xs mb-3" style={{ color: C.muted }}>← back to the family</button>
@@ -130,6 +134,7 @@ function Quiz({ quiz, picked, onPick, onNext, onBack, stats }) {
                 className="px-3 py-2 rounded-md text-left flex items-baseline gap-3"
                 style={{ backgroundColor: chosen ? TINT : C.paper, border: `1px solid ${border}` }}>
                 <WordParts notation={o.p} size={15} />
+                {picked && <SpeakButton ready={canSpeak} onSay={() => onSay(o.w)} title={`Hear ${o.w}`} />}
                 {picked && (
                   <span className="font-serif text-sm" style={{ color: right ? C.green : C.muted }}>{o.e}</span>
                 )}
@@ -191,15 +196,15 @@ export function BuilderList({ families, selectedFamily, onSelectFamily }) {
 export default function WordBuilder({
   lang, families, selectedFamily,
   quiz, picked, onPick, onNextQuiz, onPractise, onEndQuiz, quizStats,
-  openAffix, onOpenAffix,
+  openAffix, onOpenAffix, onSay, canSpeak,
 }) {
   const family = families.find((f) => f.id === selectedFamily) || null;
   if (quiz) {
-    return <Quiz quiz={quiz} picked={picked} onPick={onPick} onNext={onNextQuiz} onBack={onEndQuiz} stats={quizStats} />;
+    return <Quiz quiz={quiz} picked={picked} onPick={onPick} onNext={onNextQuiz} onBack={onEndQuiz} stats={quizStats} onSay={onSay} canSpeak={canSpeak} />;
   }
   if (family) {
     return <FamilyDetail family={family} lang={lang} onPractise={onPractise}
-      openAffix={openAffix} onOpenAffix={onOpenAffix} />;
+      openAffix={openAffix} onOpenAffix={onOpenAffix} onSay={onSay} canSpeak={canSpeak} />;
   }
   return (
     <div>

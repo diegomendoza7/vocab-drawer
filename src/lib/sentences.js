@@ -96,6 +96,18 @@ const VOWEL = /^[aeiouyàâäéèêëîïôöùûüh]/i;
  * "faire le café" would read "do the coffee", and a prompt the learner cannot
  * translate back is worse than one verb fewer.
  */
+/* What each verb may take as its object.
+ *
+ * `topics` is a broad net cast over whole drawers; `words` is a curated list of
+ * headwords. A rule may carry both, and the pool is the union — which is how a
+ * verb like `finir` gets every food in the deck *plus* the handful of work
+ * nouns that also make sense.
+ *
+ * The lists matter more than they look. The object phrase is always a definite
+ * article plus the noun, so a word only belongs here if "faire **le** X" is
+ * something a French speaker says: `faire le lit` yes, `faire le progrès` no —
+ * that one needs a plural. Every entry below was chosen against that test.
+ */
 const OBJECT_TOPICS = {
   fr: {
     avoir:   { topics: ["Animals", "Food & Drink", "Home & Objects", "Shopping & Money", "Travel & Transport"] },
@@ -103,17 +115,36 @@ const OBJECT_TOPICS = {
     vouloir: { topics: ["Animals", "Food & Drink", "Home & Objects", "Travel & Transport"] },
     prendre: { topics: ["Food & Drink", "Home & Objects", "Shopping & Money", "Travel & Transport"] },
     voir:    { topics: ["Family & People", "Animals", "Home & Objects", "Directions & Home", "Travel & Transport", "Weather"], animate: true, place: true },
-    faire:   { words: ["travail", "tâche"] },
-    finir:   { words: ["travail", "tâche", "pain", "café"] },
+    /* faire is fussy about its object but takes a lot of them once you go
+     * looking: half of these are set phrases a learner needs anyway. */
+    /* An entry may be [headword, englishVerb]. faire is glossed "to do / make"
+     * and the generator takes the first sense, so without this every object
+     * gets "done" — and "we have done the bed" is not English. The French is
+     * one verb; the English is several, and the object decides which. */
+    faire:   { words: ["travail", "tâche", "formation",
+                       ["lit", "to make"], ["valise", "to pack"], ["café", "to make"],
+                       ["pain", "to make"], ["jardin", "to do"], ["réunion", "to hold"],
+                       ["pause", "to take"], ["réforme", "to carry out"]] },
+    /* `cuisine` is deliberately absent: "faire la cuisine" is to do the
+     * *cooking*, and the noun's own gloss is "kitchen", so the prompt would
+     * read "we have done the kitchen". An idiom the object gloss cannot carry
+     * is better left out than mistranslated. */
+    finir:   { topics: ["Food & Drink"],
+               words: ["travail", "tâche", "livre", "réunion", "formation", "recherche"] },
   },
   de: {
     haben:   { topics: ["Animals", "Food & Drink", "Home & Objects", "Shopping & Money", "Travel & Transport"] },
-    geben:   { words: ["Buch", "Brot", "Milch", "Kaffee", "Apfel", "Käse", "Ei", "Geld", "Fahrkarte"] },
+    geben:   { topics: ["Food & Drink"],
+               words: ["Buch", "Geld", "Fahrkarte", "Reisepass", "Koffer", "Adresse"] },
     nehmen:  { topics: ["Food & Drink", "Home & Objects", "Shopping & Money", "Travel & Transport"] },
     wollen:  { topics: ["Animals", "Food & Drink", "Home & Objects", "Travel & Transport"] },
     sehen:   { topics: ["Family & People", "Animals", "Home & Objects", "Directions & Home", "Travel & Transport", "Weather"], animate: true, place: true },
-    essen:   { topics: ["Food & Drink"] },
-    machen:  { words: ["Arbeit", "Aufgabe"] },
+    /* Drinks are in the Food & Drink drawer and you cannot eat them. */
+    essen:   { topics: ["Food & Drink"], drink: false },
+    machen:  { words: ["Arbeit", "Aufgabe", "Ausbildung",
+                       ["Bett", "to make"], ["Kaffee", "to make"], ["Reise", "to take"],
+                       ["Erfahrung", "to have"], ["Besprechung", "to hold"],
+                       ["Pause", "to take"], ["Reform", "to carry out"]] },
   },
 };
 
@@ -139,6 +170,16 @@ const PLACE_WORDS = new Set([
 
 function isPlace(word) {
   return PLACE_WORDS.has(word.t);
+}
+
+/* Drinks, which share the Food & Drink drawer with things you chew. Most verbs
+ * do not care — you can have, want, sell or finish a coffee — so unlike the
+ * animate and place rules this one is opt-*out*, and only eating verbs set it.
+ * Without it the engine happily built "Ich esse das Wasser". */
+const DRINK_WORDS = new Set(["eau", "café", "Wasser", "Milch", "Kaffee"]);
+
+function isDrink(word) {
+  return DRINK_WORDS.has(word.t);
 }
 
 /** The drawers this verb may take an object from, or null if it takes none. */
@@ -167,16 +208,34 @@ export function isUsableNoun(lang, word) {
 export function nounPoolFor(lang, verb, data, levels = ["A1", "A2"]) {
   const rule = objectTopicsFor(lang, verb);
   if (!rule) return [];
+  /* A `topics` rule is a broad net and needs the level gate to stay concrete.
+   * A `words` rule is already curated one headword at a time, so gating it by
+   * level would only hide entries that were chosen deliberately — which is why
+   * every level is searched for those. */
+  /* Entries are a headword, or [headword, englishVerb]. */
+  const wordOf = (e) => (Array.isArray(e) ? e[0] : e);
+  const enVerbFor = (t) => {
+    const hit = (rule.words || []).find((e) => wordOf(e) === t);
+    return Array.isArray(hit) ? hit[1] : null;
+  };
+  const wordList = (rule.words || []).map(wordOf);
+  const wordLevels = rule.words ? Object.keys(data[lang]) : levels;
+  const seen = new Set();
   const out = [];
-  for (const lvl of levels)
+  for (const lvl of new Set([...levels, ...wordLevels]))
     for (const drawer of data[lang][lvl] || [])
       for (const w of drawer.words) {
         if (!isUsableNoun(lang, w)) continue;
-        const allowed = rule.words ? rule.words.includes(w.t) : rule.topics.includes(drawer.topic);
-        if (!allowed) continue;
+        const byWord = wordList.includes(w.t);
+        const byTopic = levels.includes(lvl) && (rule.topics?.includes(drawer.topic) ?? false);
+        if (!byWord && !byTopic) continue;
         if (isAnimate(drawer.topic, w) && !rule.animate) continue;
         if (isPlace(w) && !rule.place) continue;
-        out.push({ topic: drawer.topic, word: w });
+        /* Only an explicit `drink: false` excludes them; see DRINK_WORDS. */
+        if (isDrink(w) && rule.drink === false) continue;
+        if (seen.has(w.t)) continue;
+        seen.add(w.t);
+        out.push({ topic: drawer.topic, word: w, enVerb: enVerbFor(w.t) });
       }
   return out;
 }
@@ -275,7 +334,7 @@ function capitalize(s) {
  * time phrase, and rejecting a learner's grammatical sentence because it
  * wasn't the one we happened to generate teaches nothing.
  */
-export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null }) {
+export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null, enVerb = null }) {
   const p = subject.p;
   const { finite, after, tail } = verbParts(lang, verb, tenseKey, p);
   const obj = objectTiles(lang, noun);
@@ -326,7 +385,7 @@ export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null
   }
 
   const tokens = toks(parts);
-  const english = englishFor({ lang, verb, tenseKey, subject, noun, time });
+  const english = englishFor({ lang, verb, tenseKey, subject, noun, time, enVerb });
   return {
     tokens,
     /* Parallel to `tokens`. Tiles pick their gloss up by index at creation, so
@@ -344,13 +403,17 @@ export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null
 /* Adverbs that pin the event to finished past time. */
 const PAST_ADVERBS = new Set(["hier", "gestern"]);
 
-function englishFor({ lang, verb, tenseKey, subject, noun, time }) {
+function englishFor({ lang, verb, tenseKey, subject, noun, time, enVerb }) {
   /* French and German use the perfect where English cannot: "hier tu as fait"
    * is right, but "yesterday you have done" is not — English demands the
    * simple past once the time is fixed. The prompt has to be natural English,
    * so it switches; the target sentence is unaffected. */
   const enTense = time && PAST_ADVERBS.has(time.tok) && PERFECT_TENSES.has(tenseKey) ? "praeteritum" : tenseKey;
-  const phrase = conjugateEnglish(lang, verb, enTense, subject.p, subject.en);
+  /* Dropping enPast/enPP matters: they belong to the verb's own gloss, so
+   * keeping faire's "did/done" while swapping the base to "make" would render
+   * "we have done". Cleared, the irregular table supplies made/made. */
+  const enSubject = enVerb ? { ...verb, en: enVerb, enPast: undefined, enPP: undefined } : verb;
+  const phrase = conjugateEnglish(lang, enSubject, enTense, subject.p, subject.en);
   const object = `the ${firstSense(noun.e)}`;
   const body = `${phrase} ${object}`;
   const s = time ? `${capitalize(time.en)} ${body}` : capitalize(body);

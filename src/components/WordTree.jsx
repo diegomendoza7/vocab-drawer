@@ -1,5 +1,6 @@
 import { C, TINT } from "../theme.js";
 import { LAYERS } from "../data/etymology.js";
+import SpeakButton from "./SpeakButton.jsx";
 
 /* The descent of a word, drawn as a trunk that forks — as many times as it has to.
  *
@@ -18,7 +19,7 @@ import { LAYERS } from "../data/etymology.js";
 const LANG_NAME = { fr: "French", de: "German", en: "English" };
 const NODE_WIDTH = 108;
 
-function Rung({ node, word, highlight }) {
+function Rung({ node, word, highlight, onSay, canSpeak }) {
   const meta = LAYERS[node.layer] || {};
   const isLeaf = node.leaf;
   const text = isLeaf ? word : node.form;
@@ -43,6 +44,13 @@ function Rung({ node, word, highlight }) {
         {node.reconstructed && !isLeaf && <span style={{ color: C.muted }}>*</span>}
         {text || "—"}
       </div>
+      {/* Only the leaves. A device has no voice for Old High German, and
+        * reading a reconstruction aloud in a modern accent would be a lie. */}
+      {isLeaf && text && (
+        <div className="mt-0.5">
+          <SpeakButton ready={canSpeak && Boolean(onSay)} onSay={() => onSay(node.layer, text)} title={`Hear ${text}`} />
+        </div>
+      )}
     </div>
   );
 }
@@ -62,16 +70,16 @@ function Fork({ count }) {
   );
 }
 
-function Node({ node, words, isRoot }) {
+function Node({ node, words, isRoot, onSay, canSpeak }) {
   const kids = node.children || [];
   const forking = kids.length > 1;
   return (
     <div className="flex flex-col items-center min-w-0" style={{ flex: 1 }}>
-      {node.layer && <Rung node={node} word={words[node.layer]} highlight={isRoot || forking} />}
+      {node.layer && <Rung node={node} word={words[node.layer]} highlight={isRoot || forking} onSay={onSay} canSpeak={canSpeak} />}
       {kids.length === 1 && (
         <>
           <div style={{ width: 1, height: 11, backgroundColor: C.line }} />
-          <Node node={kids[0]} words={words} />
+          <Node node={kids[0]} words={words} onSay={onSay} canSpeak={canSpeak} />
         </>
       )}
       {forking && (
@@ -85,7 +93,7 @@ function Node({ node, words, isRoot }) {
                 <div className="text-[10px] uppercase tracking-wide font-semibold mb-1 text-center" style={{ color: C.gold }}>
                   {k.langs.map((l) => LANG_NAME[l] || l).join(" · ")}
                 </div>
-                <Node node={k} words={words} />
+                <Node node={k} words={words} onSay={onSay} canSpeak={canSpeak} />
               </div>
             ))}
           </div>
@@ -95,7 +103,7 @@ function Node({ node, words, isRoot }) {
   );
 }
 
-export default function WordTree({ tree, words, forkNote }) {
+export default function WordTree({ tree, words, forkNote, onSay, canSpeak }) {
   if (!tree) return null;
   return (
     <div className="w-full">
@@ -105,7 +113,7 @@ export default function WordTree({ tree, words, forkNote }) {
         </p>
       ) : (
         <div className="flex justify-center">
-          <Node node={tree} words={words} isRoot />
+          <Node node={tree} words={words} isRoot onSay={onSay} canSpeak={canSpeak} />
         </div>
       )}
       {forkNote && <p className="font-serif text-xs mt-3 text-center" style={{ color: C.muted }}>{forkNote}</p>}
