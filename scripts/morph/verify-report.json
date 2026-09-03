@@ -1,0 +1,2487 @@
+[
+  {
+    "where": "de-sprech",
+    "word": "sprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to speak"
+  },
+  {
+    "where": "de-sprech",
+    "word": "ansprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to address someone"
+  },
+  {
+    "where": "de-sprech",
+    "word": "aussprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to pronounce"
+  },
+  {
+    "where": "de-sprech",
+    "word": "besprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to discuss something"
+  },
+  {
+    "where": "de-sprech",
+    "word": "entsprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to correspond to"
+  },
+  {
+    "where": "de-sprech",
+    "word": "versprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to promise"
+  },
+  {
+    "where": "de-sprech",
+    "word": "widersprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to contradict"
+  },
+  {
+    "where": "de-sprech",
+    "word": "Sprache",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "language"
+  },
+  {
+    "where": "de-sprech",
+    "word": "Sprecher",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "speaker"
+  },
+  {
+    "where": "de-sprech",
+    "word": "Gespräch",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "conversation"
+  },
+  {
+    "where": "de-sprech",
+    "word": "sprachlos",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "speechless"
+  },
+  {
+    "where": "de-komm",
+    "word": "kommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to come"
+  },
+  {
+    "where": "de-komm",
+    "word": "ankommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to arrive"
+  },
+  {
+    "where": "de-komm",
+    "word": "bekommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to receive, to get"
+  },
+  {
+    "where": "de-komm",
+    "word": "mitkommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to come along"
+  },
+  {
+    "where": "de-komm",
+    "word": "vorkommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to occur, to seem"
+  },
+  {
+    "where": "de-komm",
+    "word": "entkommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to escape"
+  },
+  {
+    "where": "de-komm",
+    "word": "umkommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to perish"
+  },
+  {
+    "where": "de-komm",
+    "word": "Ankunft",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "arrival"
+  },
+  {
+    "where": "de-komm",
+    "word": "Zukunft",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "future"
+  },
+  {
+    "where": "de-komm",
+    "word": "Herkunft",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "origin"
+  },
+  {
+    "where": "de-steh",
+    "word": "stehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to stand"
+  },
+  {
+    "where": "de-steh",
+    "word": "verstehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to understand"
+  },
+  {
+    "where": "de-steh",
+    "word": "bestehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to pass (an exam); to consist of"
+  },
+  {
+    "where": "de-steh",
+    "word": "entstehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to come into being"
+  },
+  {
+    "where": "de-steh",
+    "word": "aufstehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to get up"
+  },
+  {
+    "where": "de-steh",
+    "word": "gestehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to confess"
+  },
+  {
+    "where": "de-steh",
+    "word": "Verstand",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "intellect, reason"
+  },
+  {
+    "where": "de-steh",
+    "word": "Zustand",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "condition, state"
+  },
+  {
+    "where": "de-steh",
+    "word": "Umstand",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "circumstance"
+  },
+  {
+    "where": "de-steh",
+    "word": "verständlich",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "understandable"
+  },
+  {
+    "where": "de-zieh",
+    "word": "ziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to pull"
+  },
+  {
+    "where": "de-zieh",
+    "word": "anziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to put on (clothes); to attract"
+  },
+  {
+    "where": "de-zieh",
+    "word": "ausziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to take off; to move out"
+  },
+  {
+    "where": "de-zieh",
+    "word": "umziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to move house"
+  },
+  {
+    "where": "de-zieh",
+    "word": "beziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to obtain; to refer to"
+  },
+  {
+    "where": "de-zieh",
+    "word": "erziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to bring up, to educate"
+  },
+  {
+    "where": "de-zieh",
+    "word": "Zug",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "train; pull, draught"
+  },
+  {
+    "where": "de-zieh",
+    "word": "Erziehung",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "upbringing, education"
+  },
+  {
+    "where": "de-zieh",
+    "word": "Bezug",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "reference; cover"
+  },
+  {
+    "where": "de-halt",
+    "word": "halten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to hold; to stop"
+  },
+  {
+    "where": "de-halt",
+    "word": "behalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to keep"
+  },
+  {
+    "where": "de-halt",
+    "word": "erhalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to receive; to preserve"
+  },
+  {
+    "where": "de-halt",
+    "word": "unterhalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to entertain; to converse"
+  },
+  {
+    "where": "de-halt",
+    "word": "verhalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to behave"
+  },
+  {
+    "where": "de-halt",
+    "word": "enthalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to contain"
+  },
+  {
+    "where": "de-halt",
+    "word": "aufhalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to delay, to hold up"
+  },
+  {
+    "where": "de-halt",
+    "word": "Haltung",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "posture; attitude"
+  },
+  {
+    "where": "de-halt",
+    "word": "Verhalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "behaviour"
+  },
+  {
+    "where": "de-nehm",
+    "word": "nehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to take"
+  },
+  {
+    "where": "de-nehm",
+    "word": "annehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to accept; to assume"
+  },
+  {
+    "where": "de-nehm",
+    "word": "aufnehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to record; to take in"
+  },
+  {
+    "where": "de-nehm",
+    "word": "teilnehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to take part"
+  },
+  {
+    "where": "de-nehm",
+    "word": "unternehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to undertake"
+  },
+  {
+    "where": "de-nehm",
+    "word": "abnehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to lose weight; to take off"
+  },
+  {
+    "where": "de-nehm",
+    "word": "zunehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to increase, to gain weight"
+  },
+  {
+    "where": "de-nehm",
+    "word": "Aufnahme",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "recording; admission"
+  },
+  {
+    "where": "de-nehm",
+    "word": "Unternehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "company; undertaking"
+  },
+  {
+    "where": "de-geb",
+    "word": "geben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to give"
+  },
+  {
+    "where": "de-geb",
+    "word": "angeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to state; to show off"
+  },
+  {
+    "where": "de-geb",
+    "word": "aufgeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to give up; to post"
+  },
+  {
+    "where": "de-geb",
+    "word": "ausgeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to spend; to hand out"
+  },
+  {
+    "where": "de-geb",
+    "word": "vergeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to forgive; to award"
+  },
+  {
+    "where": "de-geb",
+    "word": "ergeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to result in; to yield"
+  },
+  {
+    "where": "de-geb",
+    "word": "übergeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to hand over"
+  },
+  {
+    "where": "de-geb",
+    "word": "Aufgabe",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "task; giving up"
+  },
+  {
+    "where": "de-geb",
+    "word": "Ausgabe",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "expense; edition"
+  },
+  {
+    "where": "de-fahr",
+    "word": "fahren",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to drive, to travel"
+  },
+  {
+    "where": "de-fahr",
+    "word": "abfahren",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to depart"
+  },
+  {
+    "where": "de-fahr",
+    "word": "erfahren",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to find out; to experience"
+  },
+  {
+    "where": "de-fahr",
+    "word": "verfahren",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to proceed"
+  },
+  {
+    "where": "de-fahr",
+    "word": "Erfahrung",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "experience"
+  },
+  {
+    "where": "de-fahr",
+    "word": "Abfahrt",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "departure"
+  },
+  {
+    "where": "de-fahr",
+    "word": "Einfahrt",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "entrance, driveway"
+  },
+  {
+    "where": "de-fahr",
+    "word": "Fahrer",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "driver"
+  },
+  {
+    "where": "fr-port",
+    "word": "porter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to carry, to wear"
+  },
+  {
+    "where": "fr-port",
+    "word": "apporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to bring"
+  },
+  {
+    "where": "fr-port",
+    "word": "emporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to carry away"
+  },
+  {
+    "where": "fr-port",
+    "word": "exporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to export"
+  },
+  {
+    "where": "fr-port",
+    "word": "importer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to import; to matter"
+  },
+  {
+    "where": "fr-port",
+    "word": "reporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to postpone; to carry over"
+  },
+  {
+    "where": "fr-port",
+    "word": "supporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to put up with, to bear"
+  },
+  {
+    "where": "fr-port",
+    "word": "transporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to transport"
+  },
+  {
+    "where": "fr-port",
+    "word": "portable",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "portable; mobile phone"
+  },
+  {
+    "where": "fr-port",
+    "word": "transport",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "transport"
+  },
+  {
+    "where": "fr-ven",
+    "word": "venir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to come"
+  },
+  {
+    "where": "fr-ven",
+    "word": "devenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to become"
+  },
+  {
+    "where": "fr-ven",
+    "word": "revenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to come back"
+  },
+  {
+    "where": "fr-ven",
+    "word": "prévenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to warn; to prevent"
+  },
+  {
+    "where": "fr-ven",
+    "word": "convenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to suit; to agree"
+  },
+  {
+    "where": "fr-ven",
+    "word": "intervenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to intervene"
+  },
+  {
+    "where": "fr-ven",
+    "word": "parvenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to reach, to manage to"
+  },
+  {
+    "where": "fr-ven",
+    "word": "survenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to occur unexpectedly"
+  },
+  {
+    "where": "fr-ven",
+    "word": "souvenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "memory; to remember"
+  },
+  {
+    "where": "fr-ven",
+    "word": "avenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "future"
+  },
+  {
+    "where": "fr-met",
+    "word": "mettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to put"
+  },
+  {
+    "where": "fr-met",
+    "word": "admettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to admit"
+  },
+  {
+    "where": "fr-met",
+    "word": "permettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to allow"
+  },
+  {
+    "where": "fr-met",
+    "word": "promettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to promise"
+  },
+  {
+    "where": "fr-met",
+    "word": "remettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to hand over; to postpone"
+  },
+  {
+    "where": "fr-met",
+    "word": "soumettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to submit"
+  },
+  {
+    "where": "fr-met",
+    "word": "transmettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to transmit"
+  },
+  {
+    "where": "fr-met",
+    "word": "compromettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to compromise"
+  },
+  {
+    "where": "fr-met",
+    "word": "permission",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "permission"
+  },
+  {
+    "where": "fr-ten",
+    "word": "tenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to hold"
+  },
+  {
+    "where": "fr-ten",
+    "word": "obtenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to obtain"
+  },
+  {
+    "where": "fr-ten",
+    "word": "contenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to contain"
+  },
+  {
+    "where": "fr-ten",
+    "word": "maintenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to maintain"
+  },
+  {
+    "where": "fr-ten",
+    "word": "retenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to retain, to hold back"
+  },
+  {
+    "where": "fr-ten",
+    "word": "soutenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to support"
+  },
+  {
+    "where": "fr-ten",
+    "word": "appartenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to belong"
+  },
+  {
+    "where": "fr-ten",
+    "word": "entretenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to maintain, to keep up"
+  },
+  {
+    "where": "fr-ten",
+    "word": "contenu",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "content"
+  },
+  {
+    "where": "fr-duire",
+    "word": "conduire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to drive; to lead"
+  },
+  {
+    "where": "fr-duire",
+    "word": "produire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to produce"
+  },
+  {
+    "where": "fr-duire",
+    "word": "réduire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to reduce"
+  },
+  {
+    "where": "fr-duire",
+    "word": "traduire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to translate"
+  },
+  {
+    "where": "fr-duire",
+    "word": "introduire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to introduce, to insert"
+  },
+  {
+    "where": "fr-duire",
+    "word": "séduire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to seduce, to charm"
+  },
+  {
+    "where": "fr-duire",
+    "word": "déduire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to deduce; to deduct"
+  },
+  {
+    "where": "fr-duire",
+    "word": "production",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "production"
+  },
+  {
+    "where": "fr-duire",
+    "word": "traduction",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "translation"
+  },
+  {
+    "where": "fr-pos",
+    "word": "poser",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to put down, to place"
+  },
+  {
+    "where": "fr-pos",
+    "word": "composer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to compose; to dial"
+  },
+  {
+    "where": "fr-pos",
+    "word": "déposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to put down, to deposit"
+  },
+  {
+    "where": "fr-pos",
+    "word": "exposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to display, to expose"
+  },
+  {
+    "where": "fr-pos",
+    "word": "imposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to impose"
+  },
+  {
+    "where": "fr-pos",
+    "word": "proposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to propose, to offer"
+  },
+  {
+    "where": "fr-pos",
+    "word": "supposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to suppose"
+  },
+  {
+    "where": "fr-pos",
+    "word": "disposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to arrange; to have at one's disposal"
+  },
+  {
+    "where": "fr-pos",
+    "word": "proposition",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "proposal; clause"
+  },
+  {
+    "where": "fr-voir",
+    "word": "voir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to see"
+  },
+  {
+    "where": "fr-voir",
+    "word": "revoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to see again"
+  },
+  {
+    "where": "fr-voir",
+    "word": "prévoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to foresee, to plan for"
+  },
+  {
+    "where": "fr-voir",
+    "word": "entrevoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to glimpse"
+  },
+  {
+    "where": "fr-voir",
+    "word": "pourvoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to provide, to fill (a post)"
+  },
+  {
+    "where": "fr-voir",
+    "word": "prévision",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "forecast"
+  },
+  {
+    "where": "fr-voir",
+    "word": "vision",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "vision, sight"
+  },
+  {
+    "where": "fr-dire",
+    "word": "dire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to say"
+  },
+  {
+    "where": "fr-dire",
+    "word": "contredire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to contradict"
+  },
+  {
+    "where": "fr-dire",
+    "word": "interdire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to forbid"
+  },
+  {
+    "where": "fr-dire",
+    "word": "prédire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to predict"
+  },
+  {
+    "where": "fr-dire",
+    "word": "redire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to say again"
+  },
+  {
+    "where": "fr-dire",
+    "word": "médire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to speak ill of"
+  },
+  {
+    "where": "fr-dire",
+    "word": "contradiction",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "contradiction"
+  },
+  {
+    "where": "de-schreib",
+    "word": "schreiben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to write"
+  },
+  {
+    "where": "de-schreib",
+    "word": "aufschreiben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to write down"
+  },
+  {
+    "where": "de-schreib",
+    "word": "beschreiben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to describe"
+  },
+  {
+    "where": "de-schreib",
+    "word": "unterschreiben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to sign"
+  },
+  {
+    "where": "de-schreib",
+    "word": "verschreiben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to prescribe"
+  },
+  {
+    "where": "de-schreib",
+    "word": "abschreiben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to copy; to write off"
+  },
+  {
+    "where": "de-schreib",
+    "word": "vorschreiben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to prescribe, to dictate"
+  },
+  {
+    "where": "de-schreib",
+    "word": "Schrift",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "writing, script"
+  },
+  {
+    "where": "de-schreib",
+    "word": "Beschreibung",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "description"
+  },
+  {
+    "where": "de-schreib",
+    "word": "Schreiber",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "writer, scribe"
+  },
+  {
+    "where": "de-such",
+    "word": "suchen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to search, to look for"
+  },
+  {
+    "where": "de-such",
+    "word": "besuchen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to visit"
+  },
+  {
+    "where": "de-such",
+    "word": "versuchen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to try, to attempt"
+  },
+  {
+    "where": "de-such",
+    "word": "untersuchen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to examine, to investigate"
+  },
+  {
+    "where": "de-such",
+    "word": "aufsuchen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to go and see, to call on"
+  },
+  {
+    "where": "de-such",
+    "word": "durchsuchen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to search through"
+  },
+  {
+    "where": "de-such",
+    "word": "Besuch",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "visit"
+  },
+  {
+    "where": "de-such",
+    "word": "Versuch",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "attempt; experiment"
+  },
+  {
+    "where": "de-such",
+    "word": "Untersuchung",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "examination, investigation"
+  },
+  {
+    "where": "de-schlag",
+    "word": "schlagen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to hit, to beat"
+  },
+  {
+    "where": "de-schlag",
+    "word": "vorschlagen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to suggest, to propose"
+  },
+  {
+    "where": "de-schlag",
+    "word": "erschlagen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to slay, to strike dead"
+  },
+  {
+    "where": "de-schlag",
+    "word": "einschlagen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to smash in; to take (a route)"
+  },
+  {
+    "where": "de-schlag",
+    "word": "nachschlagen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to look up (in a book)"
+  },
+  {
+    "where": "de-schlag",
+    "word": "Vorschlag",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "suggestion, proposal"
+  },
+  {
+    "where": "de-schlag",
+    "word": "Schlag",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "blow, stroke"
+  },
+  {
+    "where": "de-schlag",
+    "word": "Anschlag",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "attack; notice"
+  },
+  {
+    "where": "de-fall",
+    "word": "fallen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to fall"
+  },
+  {
+    "where": "de-fall",
+    "word": "gefallen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to please, to be liked"
+  },
+  {
+    "where": "de-fall",
+    "word": "auffallen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to stand out, to be noticeable"
+  },
+  {
+    "where": "de-fall",
+    "word": "einfallen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to occur to someone; to collapse"
+  },
+  {
+    "where": "de-fall",
+    "word": "ausfallen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to be cancelled; to turn out"
+  },
+  {
+    "where": "de-fall",
+    "word": "zufallen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to fall shut; to fall to someone"
+  },
+  {
+    "where": "de-fall",
+    "word": "Fall",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "case; fall"
+  },
+  {
+    "where": "de-fall",
+    "word": "Unfall",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "accident"
+  },
+  {
+    "where": "de-fall",
+    "word": "Einfall",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "idea; invasion"
+  },
+  {
+    "where": "de-fall",
+    "word": "Zufall",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "coincidence, chance"
+  },
+  {
+    "where": "de-trag",
+    "word": "tragen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to carry; to wear"
+  },
+  {
+    "where": "de-trag",
+    "word": "beitragen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to contribute"
+  },
+  {
+    "where": "de-trag",
+    "word": "übertragen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to transfer, to broadcast"
+  },
+  {
+    "where": "de-trag",
+    "word": "vertragen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to tolerate, to bear"
+  },
+  {
+    "where": "de-trag",
+    "word": "eintragen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to enter, to register"
+  },
+  {
+    "where": "de-trag",
+    "word": "vortragen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to present, to recite"
+  },
+  {
+    "where": "de-trag",
+    "word": "Vertrag",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "contract, treaty"
+  },
+  {
+    "where": "de-trag",
+    "word": "Auftrag",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "order, assignment"
+  },
+  {
+    "where": "de-trag",
+    "word": "Beitrag",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "contribution"
+  },
+  {
+    "where": "de-denk",
+    "word": "denken",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to think"
+  },
+  {
+    "where": "de-denk",
+    "word": "nachdenken",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to think over, to reflect"
+  },
+  {
+    "where": "de-denk",
+    "word": "bedenken",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to consider"
+  },
+  {
+    "where": "de-denk",
+    "word": "erdenken",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to think up, to devise"
+  },
+  {
+    "where": "de-denk",
+    "word": "gedenken",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to commemorate"
+  },
+  {
+    "where": "de-denk",
+    "word": "Gedanke",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "thought"
+  },
+  {
+    "where": "de-denk",
+    "word": "Dank",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "thanks"
+  },
+  {
+    "where": "de-denk",
+    "word": "denkbar",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "thinkable, conceivable"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "recevoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to receive"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "apercevoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to catch sight of, to perceive"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "concevoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to conceive, to design"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "décevoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to disappoint"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "percevoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to perceive; to collect (a tax)"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "réception",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "reception"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "déception",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "disappointment"
+  },
+  {
+    "where": "fr-cevoir",
+    "word": "conception",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "design, conception"
+  },
+  {
+    "where": "fr-sent",
+    "word": "sentir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to feel; to smell"
+  },
+  {
+    "where": "fr-sent",
+    "word": "ressentir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to feel (an emotion)"
+  },
+  {
+    "where": "fr-sent",
+    "word": "consentir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to consent"
+  },
+  {
+    "where": "fr-sent",
+    "word": "pressentir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to have a premonition of"
+  },
+  {
+    "where": "fr-sent",
+    "word": "sentiment",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "feeling"
+  },
+  {
+    "where": "fr-sent",
+    "word": "sensible",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "sensitive"
+  },
+  {
+    "where": "fr-sent",
+    "word": "sensation",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "sensation, feeling"
+  },
+  {
+    "where": "fr-cour",
+    "word": "courir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to run"
+  },
+  {
+    "where": "fr-cour",
+    "word": "parcourir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to travel through, to skim"
+  },
+  {
+    "where": "fr-cour",
+    "word": "accourir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to come running, to rush up"
+  },
+  {
+    "where": "fr-cour",
+    "word": "secourir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to help out, to rescue"
+  },
+  {
+    "where": "fr-cour",
+    "word": "concourir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to compete; to contribute"
+  },
+  {
+    "where": "fr-cour",
+    "word": "cours",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "course, class; flow"
+  },
+  {
+    "where": "fr-cour",
+    "word": "discours",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "speech, discourse"
+  },
+  {
+    "where": "fr-cour",
+    "word": "concours",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "competition, contest"
+  },
+  {
+    "where": "fr-cour",
+    "word": "secours",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "help, rescue"
+  },
+  {
+    "where": "fr-fer",
+    "word": "offrir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to offer, to give"
+  },
+  {
+    "where": "fr-fer",
+    "word": "souffrir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to suffer"
+  },
+  {
+    "where": "fr-fer",
+    "word": "transférer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to transfer"
+  },
+  {
+    "where": "fr-fer",
+    "word": "référer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to refer"
+  },
+  {
+    "where": "fr-fer",
+    "word": "préférer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to prefer"
+  },
+  {
+    "where": "fr-fer",
+    "word": "différer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to differ; to postpone"
+  },
+  {
+    "where": "fr-fer",
+    "word": "offre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "offer"
+  },
+  {
+    "where": "fr-fer",
+    "word": "différence",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "difference"
+  },
+  {
+    "where": "fr-part",
+    "word": "partir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to leave, to depart"
+  },
+  {
+    "where": "fr-part",
+    "word": "partager",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to share"
+  },
+  {
+    "where": "fr-part",
+    "word": "répartir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to distribute"
+  },
+  {
+    "where": "fr-part",
+    "word": "départir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to divest oneself of; to distribute"
+  },
+  {
+    "where": "fr-part",
+    "word": "participer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to take part"
+  },
+  {
+    "where": "fr-part",
+    "word": "partie",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "part; game"
+  },
+  {
+    "where": "fr-part",
+    "word": "départ",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "departure"
+  },
+  {
+    "where": "fr-part",
+    "word": "parti",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "party (political); decision"
+  },
+  {
+    "where": "fr-form",
+    "word": "former",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to form, to train"
+  },
+  {
+    "where": "fr-form",
+    "word": "transformer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to transform"
+  },
+  {
+    "where": "fr-form",
+    "word": "informer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to inform"
+  },
+  {
+    "where": "fr-form",
+    "word": "réformer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to reform"
+  },
+  {
+    "where": "fr-form",
+    "word": "conformer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to conform, to adapt"
+  },
+  {
+    "where": "fr-form",
+    "word": "déformer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to distort, to deform"
+  },
+  {
+    "where": "fr-form",
+    "word": "formation",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "training; formation"
+  },
+  {
+    "where": "fr-form",
+    "word": "information",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "information"
+  },
+  {
+    "where": "fr-form",
+    "word": "formel",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "formal; definite"
+  },
+  {
+    "where": "de-be",
+    "word": "besprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to discuss (something)"
+  },
+  {
+    "where": "de-be",
+    "word": "bekommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to receive"
+  },
+  {
+    "where": "de-be",
+    "word": "bestehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to pass (an exam); to insist"
+  },
+  {
+    "where": "de-ver",
+    "word": "versprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to promise"
+  },
+  {
+    "where": "de-ver",
+    "word": "verstehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to understand"
+  },
+  {
+    "where": "de-ver",
+    "word": "vergeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to forgive"
+  },
+  {
+    "where": "de-ent",
+    "word": "entkommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to escape"
+  },
+  {
+    "where": "de-ent",
+    "word": "entsprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to correspond to"
+  },
+  {
+    "where": "de-ent",
+    "word": "entstehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to come into being"
+  },
+  {
+    "where": "de-er",
+    "word": "erhalten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to receive, to preserve"
+  },
+  {
+    "where": "de-er",
+    "word": "erziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to bring up, educate"
+  },
+  {
+    "where": "de-er",
+    "word": "ergeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to yield, to result in"
+  },
+  {
+    "where": "de-zer",
+    "word": "zerbrechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to shatter"
+  },
+  {
+    "where": "de-zer",
+    "word": "zerstören",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to destroy"
+  },
+  {
+    "where": "de-miss",
+    "word": "missverstehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to misunderstand"
+  },
+  {
+    "where": "de-miss",
+    "word": "misstrauen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to distrust"
+  },
+  {
+    "where": "de-an",
+    "word": "ansprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to address someone"
+  },
+  {
+    "where": "de-an",
+    "word": "ankommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to arrive"
+  },
+  {
+    "where": "de-an",
+    "word": "anziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to put on (clothes); to attract"
+  },
+  {
+    "where": "de-auf",
+    "word": "aufstehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to get up"
+  },
+  {
+    "where": "de-auf",
+    "word": "aufnehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to take up, record"
+  },
+  {
+    "where": "de-auf",
+    "word": "aufgeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to give up"
+  },
+  {
+    "where": "de-aus",
+    "word": "aussprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to pronounce"
+  },
+  {
+    "where": "de-aus",
+    "word": "ausziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to take off; to move out"
+  },
+  {
+    "where": "de-aus",
+    "word": "ausgeben",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to spend; to hand out"
+  },
+  {
+    "where": "de-ein",
+    "word": "einsteigen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to get in"
+  },
+  {
+    "where": "de-ein",
+    "word": "einsetzen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to insert, deploy"
+  },
+  {
+    "where": "de-ein",
+    "word": "einladen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to invite"
+  },
+  {
+    "where": "de-mit",
+    "word": "mitkommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to come along"
+  },
+  {
+    "where": "de-mit",
+    "word": "mitnehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to take along"
+  },
+  {
+    "where": "de-mit",
+    "word": "mitbringen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to bring along"
+  },
+  {
+    "where": "de-nach",
+    "word": "nachsprechen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to repeat after"
+  },
+  {
+    "where": "de-nach",
+    "word": "nachdenken",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to think over"
+  },
+  {
+    "where": "de-vor",
+    "word": "vorstellen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to introduce; to imagine"
+  },
+  {
+    "where": "de-vor",
+    "word": "vorkommen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to occur"
+  },
+  {
+    "where": "de-vor",
+    "word": "vorbereiten",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to prepare"
+  },
+  {
+    "where": "de-zu",
+    "word": "zuhören",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to listen to"
+  },
+  {
+    "where": "de-zu",
+    "word": "zusehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to watch"
+  },
+  {
+    "where": "de-zu",
+    "word": "zunehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to increase, gain weight"
+  },
+  {
+    "where": "de-um",
+    "word": "umziehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to move house"
+  },
+  {
+    "where": "de-um",
+    "word": "umsteigen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to change trains"
+  },
+  {
+    "where": "de-um",
+    "word": "umdrehen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to turn around"
+  },
+  {
+    "where": "de-ab",
+    "word": "abfahren",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to depart"
+  },
+  {
+    "where": "de-ab",
+    "word": "abholen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to fetch, pick up"
+  },
+  {
+    "where": "de-ab",
+    "word": "abnehmen",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "to lose weight; to take off"
+  },
+  {
+    "where": "de-lich",
+    "word": "freundlich",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "friendly"
+  },
+  {
+    "where": "de-lich",
+    "word": "täglich",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "daily"
+  },
+  {
+    "where": "de-lich",
+    "word": "natürlich",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "natural, of course"
+  },
+  {
+    "where": "de-bar",
+    "word": "essbar",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "edible"
+  },
+  {
+    "where": "de-bar",
+    "word": "sichtbar",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "visible"
+  },
+  {
+    "where": "de-bar",
+    "word": "denkbar",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "thinkable, conceivable"
+  },
+  {
+    "where": "de-los",
+    "word": "arbeitslos",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "unemployed"
+  },
+  {
+    "where": "de-los",
+    "word": "sprachlos",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "speechless"
+  },
+  {
+    "where": "de-los",
+    "word": "sinnlos",
+    "lang": "de",
+    "verdict": "ok",
+    "gloss": "pointless"
+  },
+  {
+    "where": "fr-re",
+    "word": "revenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to come back"
+  },
+  {
+    "where": "fr-re",
+    "word": "revoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to see again"
+  },
+  {
+    "where": "fr-re",
+    "word": "reprendre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to take back, resume"
+  },
+  {
+    "where": "fr-de",
+    "word": "défaire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to undo"
+  },
+  {
+    "where": "fr-de",
+    "word": "devenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to become"
+  },
+  {
+    "where": "fr-de",
+    "word": "déposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to put down, deposit"
+  },
+  {
+    "where": "fr-in",
+    "word": "impossible",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "impossible"
+  },
+  {
+    "where": "fr-in",
+    "word": "importer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to import"
+  },
+  {
+    "where": "fr-in",
+    "word": "imposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to impose"
+  },
+  {
+    "where": "fr-pre",
+    "word": "prévoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to foresee"
+  },
+  {
+    "where": "fr-pre",
+    "word": "prévenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to warn, prevent"
+  },
+  {
+    "where": "fr-pre",
+    "word": "prédire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to predict"
+  },
+  {
+    "where": "fr-con",
+    "word": "contenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to contain"
+  },
+  {
+    "where": "fr-con",
+    "word": "composer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to compose"
+  },
+  {
+    "where": "fr-con",
+    "word": "convenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to suit, to agree"
+  },
+  {
+    "where": "fr-ex",
+    "word": "exporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to export"
+  },
+  {
+    "where": "fr-ex",
+    "word": "exposer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to display, expose"
+  },
+  {
+    "where": "fr-ex",
+    "word": "exprimer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to express"
+  },
+  {
+    "where": "fr-trans",
+    "word": "transporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to transport"
+  },
+  {
+    "where": "fr-trans",
+    "word": "transmettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to transmit"
+  },
+  {
+    "where": "fr-trans",
+    "word": "transformer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to transform"
+  },
+  {
+    "where": "fr-sur",
+    "word": "survivre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to survive"
+  },
+  {
+    "where": "fr-sur",
+    "word": "surprendre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to surprise"
+  },
+  {
+    "where": "fr-sur",
+    "word": "surcharger",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to overload"
+  },
+  {
+    "where": "fr-sous",
+    "word": "sous-estimer",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to underestimate"
+  },
+  {
+    "where": "fr-sous",
+    "word": "soutenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to support"
+  },
+  {
+    "where": "fr-sous",
+    "word": "soumettre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to submit"
+  },
+  {
+    "where": "fr-par",
+    "word": "parvenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to reach, manage"
+  },
+  {
+    "where": "fr-par",
+    "word": "parcourir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to travel through"
+  },
+  {
+    "where": "fr-entre",
+    "word": "entrevoir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to glimpse"
+  },
+  {
+    "where": "fr-entre",
+    "word": "entretenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to maintain"
+  },
+  {
+    "where": "fr-entre",
+    "word": "entrecouper",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to intersperse"
+  },
+  {
+    "where": "fr-inter",
+    "word": "intervenir",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to intervene"
+  },
+  {
+    "where": "fr-inter",
+    "word": "interdire",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to forbid"
+  },
+  {
+    "where": "fr-inter",
+    "word": "international",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "international"
+  },
+  {
+    "where": "fr-mal",
+    "word": "malheureux",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "unhappy"
+  },
+  {
+    "where": "fr-mal",
+    "word": "malhonnête",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "dishonest"
+  },
+  {
+    "where": "fr-mal",
+    "word": "méprendre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to mistake"
+  },
+  {
+    "where": "fr-a",
+    "word": "apporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to bring"
+  },
+  {
+    "where": "fr-a",
+    "word": "apprendre",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to learn"
+  },
+  {
+    "where": "fr-a",
+    "word": "apparaître",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to appear"
+  },
+  {
+    "where": "fr-em",
+    "word": "emporter",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to carry away"
+  },
+  {
+    "where": "fr-em",
+    "word": "emmener",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to take (someone) away"
+  },
+  {
+    "where": "fr-em",
+    "word": "encourager",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "to encourage"
+  },
+  {
+    "where": "fr-ment-adv",
+    "word": "lentement",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "slowly"
+  },
+  {
+    "where": "fr-ment-adv",
+    "word": "heureusement",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "fortunately"
+  },
+  {
+    "where": "fr-ment-adv",
+    "word": "vraiment",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "really"
+  },
+  {
+    "where": "fr-able",
+    "word": "portable",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "portable"
+  },
+  {
+    "where": "fr-able",
+    "word": "mangeable",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "edible"
+  },
+  {
+    "where": "fr-able",
+    "word": "lisible",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "legible"
+  },
+  {
+    "where": "fr-eux",
+    "word": "nerveux",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "nervous"
+  },
+  {
+    "where": "fr-eux",
+    "word": "dangereux",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "dangerous"
+  },
+  {
+    "where": "fr-eux",
+    "word": "heureux",
+    "lang": "fr",
+    "verdict": "ok",
+    "gloss": "happy"
+  }
+]

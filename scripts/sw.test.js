@@ -18,25 +18,31 @@ const describeIfBuilt = built ? describe : describe.skip;
 describeIfBuilt("generated service worker", () => {
   let scope, source;
 
+  const ORIGIN = "https://example.test";
+
   /** A minimal ServiceWorkerGlobalScope, enough to run the worker's handlers. */
   function makeScope() {
     const stores = new Map();
     const handlers = {};
+    /* The real Cache API keys on the absolute request URL, so `addAll("/x.js")`
+     * and a later request for `https://origin/x.js` are the same entry. The
+     * mock has to normalise the same way or every precache hit would miss. */
+    const keyOf = (req) => new URL(req?.url ?? req, ORIGIN).href;
     const cacheApi = {
       _stores: stores,
       open: async (name) => {
         if (!stores.has(name)) stores.set(name, new Map());
         const store = stores.get(name);
         return {
-          addAll: async (urls) => urls.forEach((u) => store.set(u, { url: u, ok: true })),
-          put: async (req, res) => store.set(req.url || req, res),
+          addAll: async (urls) => urls.forEach((u) => store.set(keyOf(u), { url: u, ok: true })),
+          put: async (req, res) => store.set(keyOf(req), res),
           keys: async () => [...store.keys()],
         };
       },
       keys: async () => [...stores.keys()],
       delete: async (name) => stores.delete(name),
       match: async (req) => {
-        const key = req?.url || req;
+        const key = keyOf(req);
         for (const store of stores.values()) if (store.has(key)) return store.get(key);
         return undefined;
       },
@@ -44,7 +50,7 @@ describeIfBuilt("generated service worker", () => {
     return {
       handlers,
       caches: cacheApi,
-      location: { origin: "https://example.test" },
+      location: { origin: ORIGIN },
       addEventListener: (type, fn) => { handlers[type] = fn; },
       skipWaiting: () => {},
       clients: { claim: () => {} },
@@ -97,13 +103,10 @@ describeIfBuilt("generated service worker", () => {
     const asset = list.find((f) => f.endsWith(".js"));
     const res = await runFetch(scope, {
       method: "GET", mode: "no-cors",
-      url: `https://example.test${asset}`,
-      /* `caches.match` in the real API normalises to the URL; the stub keys on
-       * whatever `url` says, so the request carries the path it was cached
-       * under. */
-      toString: () => asset,
+      url: `${ORIGIN}${asset}`,
     }, () => Promise.reject(new Error("network should not have been used")));
     expect(res).toBeDefined();
+    expect(res.url).toBe(asset);
   });
 
   it("falls back to the cached shell when a navigation cannot reach the network", async () => {

@@ -1,4 +1,4 @@
-import { writeFileSync, readdirSync, statSync } from "node:fs";
+import { writeFileSync, readdirSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, posix } from "node:path";
 import { defineConfig } from "vite";

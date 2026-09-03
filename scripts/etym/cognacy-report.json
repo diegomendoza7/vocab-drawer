@@ -1,0 +1,808 @@
+[
+  {
+    "law": "grimm-p-f",
+    "group": "grimm",
+    "gloss": "father",
+    "verdict": "cognate",
+    "claim": "la:pater ~ de:Vater",
+    "root": "ph₂ter"
+  },
+  {
+    "law": "grimm-p-f",
+    "group": "grimm",
+    "gloss": "foot",
+    "verdict": "unproven",
+    "claim": "la:pedem ~ de:Fuß",
+    "root": null,
+    "saw": {
+      "la": [],
+      "de": [
+        "pods"
+      ]
+    }
+  },
+  {
+    "law": "grimm-p-f",
+    "group": "grimm",
+    "gloss": "fish",
+    "verdict": "unproven",
+    "claim": "la:piscis ~ de:Fisch",
+    "root": null,
+    "saw": {
+      "la": [],
+      "de": []
+    }
+  },
+  {
+    "law": "grimm-p-f",
+    "group": "grimm",
+    "gloss": "full",
+    "verdict": "cognate",
+    "claim": "la:plēnus ~ de:voll",
+    "root": "plh₁nos"
+  },
+  {
+    "law": "grimm-p-f",
+    "group": "grimm",
+    "gloss": "for",
+    "verdict": "unproven",
+    "claim": "la:prō ~ de:für",
+    "root": null,
+    "saw": {
+      "la": [
+        "pro"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "grimm-p-f",
+    "group": "grimm",
+    "gloss": "few",
+    "verdict": "unproven",
+    "claim": "la:paucus ~ en:few",
+    "root": null,
+    "saw": {
+      "la": [],
+      "en": [
+        "peh₂w"
+      ]
+    }
+  },
+  {
+    "law": "grimm-k-h",
+    "group": "grimm",
+    "gloss": "hundred",
+    "verdict": "cognate",
+    "claim": "la:centum ~ de:hundert",
+    "root": "kmtom"
+  },
+  {
+    "law": "grimm-k-h",
+    "group": "grimm",
+    "gloss": "horn",
+    "verdict": "unproven",
+    "claim": "la:cornū ~ de:Horn",
+    "root": null,
+    "saw": {
+      "la": [],
+      "de": [
+        "ker"
+      ]
+    }
+  },
+  {
+    "law": "grimm-k-h",
+    "group": "grimm",
+    "gloss": "hound / dog",
+    "verdict": "unproven",
+    "claim": "la:canis ~ de:Hund",
+    "root": null,
+    "saw": {
+      "la": [
+        "kwo"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "grimm-k-h",
+    "group": "grimm",
+    "gloss": "heart",
+    "verdict": "cognate",
+    "claim": "la:cor ~ de:Herz",
+    "root": "ker"
+  },
+  {
+    "law": "grimm-k-h",
+    "group": "grimm",
+    "gloss": "head",
+    "verdict": "cognate",
+    "claim": "la:caput ~ de:Haupt",
+    "root": "kaput"
+  },
+  {
+    "law": "grimm-d-t",
+    "group": "grimm",
+    "gloss": "ten",
+    "verdict": "cognate",
+    "claim": "la:decem ~ de:zehn",
+    "root": "dekm"
+  },
+  {
+    "law": "grimm-d-t",
+    "group": "grimm",
+    "gloss": "two",
+    "verdict": "unproven",
+    "claim": "la:duo ~ de:zwei",
+    "root": null,
+    "saw": {
+      "la": [
+        "dwoh₁"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "grimm-d-t",
+    "group": "grimm",
+    "gloss": "tooth",
+    "verdict": "unproven",
+    "claim": "la:dentem ~ de:Zahn",
+    "root": null,
+    "saw": {
+      "la": [],
+      "de": []
+    }
+  },
+  {
+    "law": "grimm-d-t",
+    "group": "grimm",
+    "gloss": "tame",
+    "verdict": "unproven",
+    "claim": "la:domāre ~ de:zähmen",
+    "root": null,
+    "saw": {
+      "la": [],
+      "de": []
+    }
+  },
+  {
+    "law": "grimm-bh-b",
+    "group": "grimm",
+    "gloss": "brother",
+    "verdict": "unproven",
+    "claim": "la:frāter ~ de:Bruder",
+    "root": null,
+    "saw": {
+      "la": [],
+      "de": [
+        "bʰreh₂ter"
+      ]
+    }
+  },
+  {
+    "law": "grimm-bh-b",
+    "group": "grimm",
+    "gloss": "bear / carry",
+    "verdict": "unproven",
+    "claim": "la:ferre ~ de:gebären",
+    "root": null,
+    "saw": {
+      "la": [],
+      "de": []
+    }
+  },
+  {
+    "law": "grimm-bh-b",
+    "group": "grimm",
+    "gloss": "beech",
+    "verdict": "unproven",
+    "claim": "la:fāgus ~ de:Buche",
+    "root": null,
+    "saw": {
+      "la": [
+        "bʰeh₂gos"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "ten",
+    "verdict": "cognate",
+    "claim": "en:ten ~ de:zehn",
+    "root": "tehun"
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "to",
+    "verdict": "unproven",
+    "claim": "en:to ~ de:zu",
+    "root": null,
+    "saw": {
+      "en": [],
+      "de": [
+        "ta",
+        "to"
+      ]
+    }
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "tongue",
+    "verdict": "cognate",
+    "claim": "en:tongue ~ de:Zunge",
+    "root": "tungo"
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "water",
+    "verdict": "cognate",
+    "claim": "en:water ~ de:Wasser",
+    "root": "wator"
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "eat",
+    "verdict": "cognate",
+    "claim": "en:eat ~ de:essen",
+    "root": "etana"
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "foot",
+    "verdict": "cognate",
+    "claim": "en:foot ~ de:Fuß",
+    "root": "fots"
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "out",
+    "verdict": "unproven",
+    "claim": "en:out ~ de:aus",
+    "root": null,
+    "saw": {
+      "en": [
+        "ut",
+        "utai"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-t-z",
+    "group": "hg",
+    "gloss": "that",
+    "verdict": "cognate",
+    "claim": "en:that ~ de:das",
+    "root": "þat"
+  },
+  {
+    "law": "hg-p-pf",
+    "group": "hg",
+    "gloss": "apple",
+    "verdict": "cognate",
+    "claim": "en:apple ~ de:Apfel",
+    "root": "aplaz"
+  },
+  {
+    "law": "hg-p-pf",
+    "group": "hg",
+    "gloss": "path",
+    "verdict": "unproven",
+    "claim": "en:path ~ de:Pfad",
+    "root": null,
+    "saw": {
+      "en": [
+        "paþaz"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-p-pf",
+    "group": "hg",
+    "gloss": "pepper",
+    "verdict": "unproven",
+    "claim": "en:pepper ~ de:Pfeffer",
+    "root": null,
+    "saw": {
+      "en": [],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-p-pf",
+    "group": "hg",
+    "gloss": "ship",
+    "verdict": "cognate",
+    "claim": "en:ship ~ de:Schiff",
+    "root": "skipa"
+  },
+  {
+    "law": "hg-p-pf",
+    "group": "hg",
+    "gloss": "sleep",
+    "verdict": "unproven",
+    "claim": "en:sleep ~ de:schlafen",
+    "root": null,
+    "saw": {
+      "en": [
+        "slepana",
+        "slepaz"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-p-pf",
+    "group": "hg",
+    "gloss": "open",
+    "verdict": "unproven",
+    "claim": "en:open ~ de:offen",
+    "root": null,
+    "saw": {
+      "en": [
+        "upanaz",
+        "upanona"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-k-ch",
+    "group": "hg",
+    "gloss": "make",
+    "verdict": "unproven",
+    "claim": "en:make ~ de:machen",
+    "root": null,
+    "saw": {
+      "en": [
+        "makaz",
+        "gamako"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-k-ch",
+    "group": "hg",
+    "gloss": "book",
+    "verdict": "cognate",
+    "claim": "en:book ~ de:Buch",
+    "root": "boks"
+  },
+  {
+    "law": "hg-k-ch",
+    "group": "hg",
+    "gloss": "milk",
+    "verdict": "cognate",
+    "claim": "en:milk ~ de:Milch",
+    "root": "meluks"
+  },
+  {
+    "law": "hg-k-ch",
+    "group": "hg",
+    "gloss": "seek",
+    "verdict": "cognate",
+    "claim": "en:seek ~ de:suchen",
+    "root": "sokijana"
+  },
+  {
+    "law": "hg-k-ch",
+    "group": "hg",
+    "gloss": "break",
+    "verdict": "cognate",
+    "claim": "en:break ~ de:brechen",
+    "root": "brekana"
+  },
+  {
+    "law": "hg-k-ch",
+    "group": "hg",
+    "gloss": "I",
+    "verdict": "cognate",
+    "claim": "en:I ~ de:ich",
+    "root": "ek"
+  },
+  {
+    "law": "hg-th-d",
+    "group": "hg",
+    "gloss": "thing",
+    "verdict": "unproven",
+    "claim": "en:thing ~ de:Ding",
+    "root": null,
+    "saw": {
+      "en": [
+        "þinga"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-th-d",
+    "group": "hg",
+    "gloss": "three",
+    "verdict": "cognate",
+    "claim": "en:three ~ de:drei",
+    "root": "þriz"
+  },
+  {
+    "law": "hg-th-d",
+    "group": "hg",
+    "gloss": "thou / you",
+    "verdict": "cognate",
+    "claim": "en:thou ~ de:du",
+    "root": "þu"
+  },
+  {
+    "law": "hg-th-d",
+    "group": "hg",
+    "gloss": "thank",
+    "verdict": "unproven",
+    "claim": "en:thank ~ de:danken",
+    "root": null,
+    "saw": {
+      "en": [
+        "þankaz",
+        "þankona"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-th-d",
+    "group": "hg",
+    "gloss": "thick",
+    "verdict": "unproven",
+    "claim": "en:thick ~ de:dick",
+    "root": null,
+    "saw": {
+      "en": [
+        "þekuz"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-th-d",
+    "group": "hg",
+    "gloss": "thirst",
+    "verdict": "cognate",
+    "claim": "en:thirst ~ de:Durst",
+    "root": "þurstuz"
+  },
+  {
+    "law": "hg-d-t",
+    "group": "hg",
+    "gloss": "day",
+    "verdict": "unproven",
+    "claim": "en:day ~ de:Tag",
+    "root": null,
+    "saw": {
+      "en": [
+        "dagaz"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-d-t",
+    "group": "hg",
+    "gloss": "do",
+    "verdict": "cognate",
+    "claim": "en:do ~ de:tun",
+    "root": "dona"
+  },
+  {
+    "law": "hg-d-t",
+    "group": "hg",
+    "gloss": "deep",
+    "verdict": "cognate",
+    "claim": "en:deep ~ de:tief",
+    "root": "deupaz"
+  },
+  {
+    "law": "hg-d-t",
+    "group": "hg",
+    "gloss": "daughter",
+    "verdict": "unproven",
+    "claim": "en:daughter ~ de:Tochter",
+    "root": null,
+    "saw": {
+      "en": [
+        "duhter"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "hg-d-t",
+    "group": "hg",
+    "gloss": "red",
+    "verdict": "unproven",
+    "claim": "en:red ~ de:rot",
+    "root": null,
+    "saw": {
+      "en": [],
+      "de": [
+        "raudaz"
+      ]
+    }
+  },
+  {
+    "law": "hg-d-t",
+    "group": "hg",
+    "gloss": "door",
+    "verdict": "unproven",
+    "claim": "en:door ~ de:Tür",
+    "root": null,
+    "saw": {
+      "en": [
+        "durz"
+      ],
+      "de": []
+    }
+  },
+  {
+    "law": "fr-ca-cha",
+    "group": "gallo",
+    "gloss": "to sing",
+    "verdict": "descends",
+    "claim": "fr:chanter < la:cantāre",
+    "saw": [
+      "canto"
+    ]
+  },
+  {
+    "law": "fr-ca-cha",
+    "group": "gallo",
+    "gloss": "field",
+    "verdict": "descends",
+    "claim": "fr:champ < la:campus",
+    "saw": [
+      "campus"
+    ]
+  },
+  {
+    "law": "fr-ca-cha",
+    "group": "gallo",
+    "gloss": "horse",
+    "verdict": "descends",
+    "claim": "fr:cheval < la:caballus",
+    "saw": [
+      "caballus"
+    ]
+  },
+  {
+    "law": "fr-ca-cha",
+    "group": "gallo",
+    "gloss": "castle",
+    "verdict": "descends",
+    "claim": "fr:château < la:castellum",
+    "saw": [
+      "castellum"
+    ]
+  },
+  {
+    "law": "fr-ca-cha",
+    "group": "gallo",
+    "gloss": "cat",
+    "verdict": "descends",
+    "claim": "fr:chat < la:cattus",
+    "saw": [
+      "cattus"
+    ]
+  },
+  {
+    "law": "fr-ca-cha",
+    "group": "gallo",
+    "gloss": "hot",
+    "verdict": "descends",
+    "claim": "fr:chaud < la:calidus",
+    "saw": [
+      "calidus"
+    ]
+  },
+  {
+    "law": "fr-ca-cha",
+    "group": "gallo",
+    "gloss": "room",
+    "verdict": "descends",
+    "claim": "fr:chambre < la:camera",
+    "saw": [
+      "cambra",
+      "camera"
+    ]
+  },
+  {
+    "law": "fr-ct-it",
+    "group": "gallo",
+    "gloss": "deed / fact",
+    "verdict": "descends",
+    "claim": "fr:fait < la:factum",
+    "saw": [
+      "factum",
+      "factus"
+    ]
+  },
+  {
+    "law": "fr-ct-it",
+    "group": "gallo",
+    "gloss": "milk",
+    "verdict": "descends",
+    "claim": "fr:lait < la:lactem",
+    "saw": [
+      "lactis",
+      "lac"
+    ]
+  },
+  {
+    "law": "fr-ct-it",
+    "group": "gallo",
+    "gloss": "night",
+    "verdict": "DOES NOT DESCEND",
+    "claim": "fr:nuit < la:noctem",
+    "saw": []
+  },
+  {
+    "law": "fr-ct-it",
+    "group": "gallo",
+    "gloss": "eight",
+    "verdict": "descends",
+    "claim": "fr:huit < la:octō",
+    "saw": [
+      "octo"
+    ]
+  },
+  {
+    "law": "fr-ct-it",
+    "group": "gallo",
+    "gloss": "roof",
+    "verdict": "descends",
+    "claim": "fr:toit < la:tēctum",
+    "saw": [
+      "tectum"
+    ]
+  },
+  {
+    "law": "fr-ct-it",
+    "group": "gallo",
+    "gloss": "bed",
+    "verdict": "descends",
+    "claim": "fr:lit < la:lectum",
+    "saw": [
+      "lectus"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "school",
+    "verdict": "descends",
+    "claim": "fr:école < la:schola",
+    "saw": [
+      "schola"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "star",
+    "verdict": "descends",
+    "claim": "fr:étoile < la:stēlla",
+    "saw": [
+      "stela",
+      "stella"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "sword",
+    "verdict": "descends",
+    "claim": "fr:épée < la:spatha",
+    "saw": [
+      "spatha"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "state",
+    "verdict": "descends",
+    "claim": "fr:état < la:status",
+    "saw": [
+      "status"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "study",
+    "verdict": "descends",
+    "claim": "fr:étude < la:studium",
+    "saw": [
+      "studium"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "to write",
+    "verdict": "descends",
+    "claim": "fr:écrire < la:scrībere",
+    "saw": [
+      "scribo"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "narrow / strict",
+    "verdict": "descends",
+    "claim": "fr:étroit < la:strictus",
+    "saw": [
+      "strictus"
+    ]
+  },
+  {
+    "law": "fr-s-e",
+    "group": "gallo",
+    "gloss": "sponge",
+    "verdict": "descends",
+    "claim": "fr:éponge < la:spongia",
+    "saw": [
+      "sponga",
+      "spongia"
+    ]
+  },
+  {
+    "law": "fr-p-v",
+    "group": "gallo",
+    "gloss": "to know",
+    "verdict": "descends",
+    "claim": "fr:savoir < la:sapere",
+    "saw": [
+      "sapere",
+      "sapio"
+    ]
+  },
+  {
+    "law": "fr-p-v",
+    "group": "gallo",
+    "gloss": "bank / shore",
+    "verdict": "descends",
+    "claim": "fr:rive < la:rīpa",
+    "saw": [
+      "ripa"
+    ]
+  },
+  {
+    "law": "fr-p-v",
+    "group": "gallo",
+    "gloss": "goat",
+    "verdict": "descends",
+    "claim": "fr:chèvre < la:capra",
+    "saw": [
+      "capra"
+    ]
+  },
+  {
+    "law": "fr-p-v",
+    "group": "gallo",
+    "gloss": "April",
+    "verdict": "descends",
+    "claim": "fr:avril < la:Aprīlis",
+    "saw": [
+      "aprilis"
+    ]
+  }
+]

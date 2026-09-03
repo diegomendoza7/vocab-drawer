@@ -616,17 +616,379 @@ add on the strength of a layout note. And the desktop reading, phrase and
 listening areas open straight into their working frame rather than a picker,
 which is why `navigateToSection` routes those three differently at width.
 
+## Word building
+
+The sibling of the etymology section, answering the more immediately useful
+question. Etymology says where a word came from — a fact about the past.
+This says how it is assembled *now*, which is a fact you can spend: knowing
+that `sprechen` is "speak" and `wider-` is "against" hands you
+`widersprechen` without anyone teaching it.
+
+It opens in English, because everyone already does this in the language they
+think in and has stopped noticing:
+
+```
+  un  |  becom  |  ing        not fitting, not appropriate
+prefix   root     suffix
+```
+
+Strip the parts and you get `become` — and then `forthcoming`, `income`,
+`outcome` and `overcome` stop being separate words to memorise. The section
+exists to say: now do that to French and German.
+
+**28 roots, 248 words.** Every word is drawn as its parts, with the root the
+only piece in full ink on a tinted ground. That ranking is the lesson — scanning
+a family, the same shape recurs in the middle of nine different words:
+
+| | |
+|---|---|
+| `ap·port·er` | to bring |
+| `ex·port·er` | to export |
+| `im·port·er` | to import; **to matter** |
+| `sup·port·er` | to put up with — **not** "to support" |
+| `trans·port·er` | to transport |
+
+German is where this pays most: its verbs take about sixteen productive
+prefixes, so one root reliably yields nine or ten words. French runs on Latin
+prefixes instead — and those are the ones English borrowed too, so every French
+family is also a free English one.
+
+**47 affixes** are documented beneath each family, but only the ones that
+family actually uses, so the rule is reachable from the word rather than the
+other way round. Each gives its sense, its English parallel where an honest one
+exists, and three worked examples.
+
+The drill asks you to *produce*: "You know `porter` — to carry. Which word means
+'to bring'?" Every option is built on the same root, so the prefix is the only
+thing telling them apart, and answering reveals all four glosses — a wrong
+answer still teaches the other three.
+
+### Segmentation notation
+
+Segmentations live in the data as `"<ver =sprech .en"` — `<` prefix, `=` root,
+`>` suffix, `.` grammatical ending. An array of `{text, kind}` objects would
+have buried 145 words in punctuation; the notation stays readable in source and
+is parsed in one tested place.
+
+`scripts/check-morphology.mjs` runs offline in `npm run check` and asserts that
+**every segmentation actually spells its word** — get that wrong and the parts
+still render happily while teaching a word that does not exist. All 248 pass.
+Two things legitimately break the rule and have to declare it: roots whose vowel
+moves (`nehm`/`nahm`, `komm`/`kunft`), and French joins that double a consonant
+to protect its sound (`re` + `sentir` → *ressentir*, so the /s/ does not soften
+to /z/ between vowels). The check caught both of those doublings when the
+families were expanded.
+
+`scripts/morph/verify.mjs` is the online half, run by hand: **355 of 355 words
+verified** against Wiktionary. The form check is hard — the word exists in that
+language or it does not. The gloss check is deliberately loose, requiring only
+that one content word overlaps, because a gloss is a judgement and the mistake
+worth catching is a gloss attached to the wrong headword, not legitimate
+rewording. Everything it has flagged so far has been correct but worded differently from
+the source; aligning those made several of them more complete.
+
+It has also produced one false alarm worth recording. An earlier run reported
+`übertragen`, `täglich` and `natürlich` as having no Wiktionary entry, which is
+plainly wrong. The cause was mine: I had two harvesters hitting Wiktionary at
+once and rate-limited myself, and a throttled response was cached as "no entry".
+Re-run alone, all three pass. **Do not run two of these scripts concurrently.**
+
+The offline checks have caught three real errors of my own: a collision where
+`er-` the prefix and `-er` the suffix had both been given the id `de-er`; two
+French joins that double a consonant (`re` + `sentir` → *ressentir*); and
+`vorschlag` written lowercase, which a German noun never is. That last one now
+has its own rule — any German word carrying a gender must be capitalised —
+because it rendered perfectly and looked right until the online check
+questioned it.
+
+## Word Roots
+
+An English speaker learning French and German already knows thousands of words
+in both languages and cannot see it, because each ran the shared inheritance
+through a different set of regular sound changes. This section teaches the
+changes, which turns a vocabulary list into a generator: once "Latin p ↔
+Germanic f" is in place, *père* / *Vater* / *father* stops being three words.
+
+Two ways in, answering different questions.
+
+**Ancestry** starts from a word you know. 20 roots have a descendant in *both*
+decks, 16 of them with an English limb too, and each draws a tree that forks — as many times as it has to:
+
+```
+                    PIE *ph₂tḗr
+              ┌───────────┴────────────┐
+           FRENCH              GERMAN · ENGLISH
+        Italic *patēr             P-Gmc *fadēr
+        Latin  pater              W-Gmc *fader
+        Old Fr. pedre          ┌────────┴────────┐
+        Mid Fr. pere        GERMAN           ENGLISH
+        French  père        OHG fater        OE fæder
+                            MHG vater        English father
+                            German Vater
+```
+
+The fork is the whole point, so the shared trunk is drawn once rather than
+twice. Reconstructed forms are italic and keep their asterisk on every showing,
+because a form nobody ever wrote down should not be presented as if someone had.
+
+English earns its place by making the *nesting* matter. It is German's sibling
+— the two part at West Germanic, long after both left Latin — so three equal
+columns would flatten exactly the relationship worth seeing. The tree is
+therefore built by merging chains rather than by a hard two-way split, and it
+would take a fourth language without changing.
+
+That also lets it tell two different stories with the same machinery. For
+inherited vocabulary English groups with German. For a **borrowing** it does
+not: Latin *problēma* draws **French · English** together — English took it via
+Middle French — with German taking it straight from Latin. Nobody had to
+special-case that; merging the real chains produces it.
+
+**Sound laws** starts from the change. 13 rules in three groups — Grimm's Law,
+the High German shift, and Latin into French — each stated so you can run it
+forwards on a word you have never seen:
+
+| | Rule |
+|---|---|
+| Grimm | Where French has p, English and German usually have f. |
+| High German | English t becomes German z at the start of a word, ss or ß in the middle. |
+| Gallo-Romance | An English word starting sp-, st- or sc- often has a French cousin starting ép-, ét- or éc-. |
+
+The drill is transfer, not recall. It hides the whole column you are being
+asked for and leaves the worked examples on screen, so the exercise is running
+the rule on a new word rather than remembering which words were on the list.
+
+### Two different claims, two different columns
+
+A pairs table prints one meaning per row with the language columns under it,
+which asserts that **every cell in the row means that thing**. For an inherited
+set — *pater / père / Vater / father* — it does. But several rows originally
+reached for an English word that merely *descends from* the Latin: **cauldron**
+under a row headed "hot". Cauldron comes from *calidus*; it does not mean hot.
+The layout was making a claim the content could not support.
+
+Those words are still worth showing — for the `-ct- → -it-` rule especially,
+where an English word like *nocturnal* is the evidence that the `ct` survived
+into English unchanged. So they were not deleted; they were moved into their own
+column, **same root, different meaning**, and each carries its own gloss:
+
+| meaning | Latin | French | German | English | same root, different meaning |
+|---|---|---|---|---|---|
+| hot | calidus | chaud | — | — | **cauldron** a pot for boiling · **scald** to burn with hot liquid |
+| night | noctem | nuit | Nacht | night | **nocturnal** happening at night |
+| eight | octō | huit | acht | eight | **octave** a span of eight notes |
+
+Splitting them also improved the true-cognate column. *night* and *eight* had
+been showing *nocturnal* and *octave*; the real English cognates were available
+all along and are now where they belong, with the Latinate relatives still
+making the point about `ct`.
+
+14 rows were corrected. Two other kinds of error surfaced in the same pass:
+German **Spaten** was sitting under "sword" when it means *spade*, and French
+**chef** under "head" when it means *chief* — so `kin` entries carry an optional
+language, and both are now labelled as what they are.
+
+`scripts/etym/audit-glosses.mjs` is the check for this class of mistake: it
+fetches every cell and asks whether the entry's definitions share a content word
+with the row's stated meaning. It would have caught cauldron/hot on its own.
+
+Getting it to a trustworthy signal took three passes, and the wrong turns are
+worth recording because each produced confident nonsense:
+
+- **30 flags.** Most were Latin cited the way a dictionary cites it — the
+  accusative `dentem`, the infinitive `cantāre` — where Wiktionary's page says
+  only "inflection of *dēns*" and the meaning is one page further on. The audit
+  was reading the wrong page and calling every Latin cell a mismatch.
+- **22 flags,** after following those lemmas — but three were *new and wrong*.
+  Latin `canis` is both the noun "dog" and a case form of `cānus` "white", so
+  following the inflection from a page that also has the real definition threw
+  the real one away, and "hound" got reported as meaning "hoary". Lemma-following
+  now fires only when a page is nothing but inflections.
+- **4 flags,** after the second real fix: a gloss that reduces to no content
+  word — "I", "to", "do", "for", "out" — has nothing to search for, so the test
+  cannot run on it. Those were being reported as failures rather than as
+  unrunnable, which was most of the remaining noise.
+
+The four that survive are all the checker meeting an ambiguous page, not content
+errors: *seek* is defined as "to try to find", *April* as "the fourth month",
+German *das* leads with its article sense. The fourth was worth acting on —
+Latin `forēs` is simultaneously the plural of *foris* "door" and a form of *sum*
+"to be", so the row now cites the unambiguous singular lemma.
+
+One regression it caught was mine. Tightening the `strictus` row's gloss to
+"drawn tight" made it accurate for the Latin and wrong for the French *étroit*,
+which is simply "narrow". A row's meaning has to be true of every cell in it —
+which is the same lesson that started this.
+
+### Where the content comes from
+
+Every chain is harvested from English Wiktionary, which states ancestry as
+machine-readable templates (`{{inh|de|goh|fater}}`) rather than prose — so a
+claim can be tested instead of trusted. 427 chains across the core decks.
+
+Verification runs in two layers, and the split matters:
+
+- **`npm run check` runs `scripts/check-etymology.mjs`, which is offline.** It
+  checks what rots as the data is edited: a law with too few examples to
+  generalise from, a quiz that cannot be built, a family pointing at a word no
+  longer in the decks, a layer code with no label. A build must not fail
+  because Wiktionary is down.
+- **`scripts/etym/verify-*.mjs` hit the network and are run by hand.** They
+  check the claims are *true*.
+
+The online check tests each law group differently, because the three groups
+claim different things — and testing them the same way was my first mistake
+here. Grimm's pairs are cousins that must meet at the same Proto-Indo-European
+root; the High German pairs are English and German meeting at Proto-Germanic,
+with no Latin involved at all; the Latin→French pairs are **ancestor and
+descendant**, where the test is that the French word's own chain contains that
+Latin word.
+
+Current state: **48 of 75 pairs machine-verified**, 26 unproven, 0 contradicted.
+"Unproven" means Wiktionary states the etymology in a form the parser cannot
+read on that page, not that it disagrees.
+
+The one row previously recorded here as unresolved — `nuit < noctem` — is now
+confirmed. `scripts/etym/walk.mjs` follows a chain page by page instead of
+parsing a single page, which is what `{{etymon|…|tree=1}}` requires, and it
+resolves `nuit ← Old French noit ← Latin nox`. That family now draws its own
+tree: **nuit / Nacht / night**.
+
+It has already earned its keep twice, catching two real errors in my own
+content: *fau* as the French for beech (French kept **no** descendant of
+*fāgus* — its beech is *hêtre*, from Frankish) and *aprīlis* for the Latin
+April (capitalised, `Aprīlis`).
+
+## Typing the word bank
+
+The desktop sentence stage lays the sentence out as chips. Clicking each one
+makes a six-word sentence six round trips to the mouse, so the chips are also
+typeable: type a word's opening letters and it drops into place.
+
+| Keys | What happens |
+|---|---|
+| A letter | Narrows the bank. The moment one chip is left it is placed — a distinctive word costs one keystroke. |
+| More letters | While several chips still fit, each one shows the letters you have typed **in green**, so it is clear *why* one letter was not enough. The chips that no longer fit dim. |
+| Space | Settles a tie no letter can. With "de" and "des" both in the bank, "de" is fully typed and still ambiguous; space takes the completed word, or failing that the leftmost chip still in the running. |
+| Backspace | Walks back through the buffer, then through the sentence, taking the last word off. |
+| Enter | Checks, once something is placed. |
+| A letter that fits nothing | Refused, and the bank says so. Adding it to the buffer would make every later keystroke fail too, with nothing on screen to explain it. |
+
+Matching ignores case and accents — the chip is already spelled for you, and
+having to find `â` to select `bâtiment` would be slower than the mouse. `ß`,
+`œ` and `æ` are matched by the letters they are typed with, so `heis` reaches
+the `ß` in *heißen*. "Type it instead" is unchanged: there you write the whole
+sentence and accents are required.
+
+Two cases are easy to get wrong and are covered by tests: a bank holding the
+**same word twice** (a sentence with a repeated word) places one of them rather
+than waiting for a keystroke that can never distinguish them, and one word
+being the **whole start of another** is what the space bar exists for.
+
+A focused button keeps Enter and Space — that is how a button is pressed —
+so those go to the button rather than the bank. Letters still type.
+
+## Offline and installing
+
+The app is a PWA. `vite build` emits `dist/sw.js` from `offlinePlugin` in
+`vite.config.js`, which reads the finished bundle and writes a precache list —
+so the worker always knows the hashed filenames, and no dependency decides the
+caching policy for us.
+
+| | Behaviour |
+|---|---|
+| Everything in the build | Precached on install: markup, code, vocabulary, word images, icons. A cold start with no network works. |
+| Navigations | Network first, cached shell as fallback — a deploy is picked up when there is a network, and the app opens when there is not. |
+| `/api` | **Never cached.** Word lookup and fact-checking are honestly unavailable offline; a stale gloss is worse than the failure the app already reports. |
+| Other origins, and any non-GET | Not intercepted. |
+
+The cache name is a hash of the file list, so a new build evicts the old one.
+Registration is **production only** — in dev the worker would serve a cached
+bundle over the top of HMR and every edit would appear not to have happened.
+
+`scripts/sw.test.js` runs the generated worker against a mock
+`ServiceWorkerGlobalScope` and asserts each row of that table, which is why
+`npm run check` builds *before* it tests. Registration itself needs a real
+browser and is not covered.
+
+## Habit and adaptivity
+
+Four changes that use data the app already had and was discarding:
+
+- **A daily goal.** `progress.dailyGoal` had been in the saved object since the
+  port and read nowhere. A streak says *whether* you showed up; the goal ring
+  says whether you have done enough today.
+- **Question kind by card strength.** `buildPracticeQueue` used to hand every
+  word all three kinds, so a word met a minute ago and a word known for a month
+  were asked identically — and a ten-word drawer became thirty typed questions.
+  Now a new word is only asked to recognise, production is earned, a cloze
+  waits for a few days' interval, and `kindsForCard` walks a leech back to
+  recognition rather than demanding production of a word already failed eight
+  times.
+- **A next action.** With nothing due the home screen said "study something
+  new" and stopped, at the one moment a learner needs the app to have an
+  opinion. `nextAction` orders due work, then stuck words, then weak ones, then
+  new material, then untouched tenses.
+- **Accuracy over time.** `progress.history` has held reviews and correct
+  answers per day since the port and fed only the streak and a heatmap. A day
+  with no reviews is drawn as missing rather than as zero — a weekend off is
+  not a collapse in accuracy.
+
+## Leeches and interval fuzz
+
+A card that has lapsed eight times is a **leech**: the word is not sticking and
+a ninth trip round the same loop will not change that. `isLeech` marks it, and
+the queue drops it back to recognition.
+
+Due dates carry ±5% of jitter past the first week. Reviews studied together
+come due together, so one heavy sitting used to recreate itself as one heavy
+day every interval, forever. Only the *landing date* moves — the interval
+itself is never fuzzed, so the drift cannot compound — and the offset is seeded
+from the card id, so replaying the same answer cannot produce two different due
+dates.
+
+## Import, and what merging means
+
+Export existed without import, which made it a backup rather than a transfer.
+`mergeProgress` merges, never replaces: importing a phone's progress into a
+laptop means *add what I did there*, never *delete what I did here*.
+
+Where the same card exists on both sides, **whichever was reviewed more
+recently wins**. A card's schedule is a claim about a specific moment of
+recall, so the newer claim is the true one; taking the longer interval instead
+would let a stale device push real reviews away. Day history sums, because two
+devices on one day genuinely did both. Your own words keep the local copy on a
+clash — it may carry a fact-check verdict the other device never ran.
+
+## Notes: grammar and culture
+
+Notes come in two kinds and the distinction is the point. `grammar` teaches
+form; `culture` teaches use — when a form is appropriate, what it signals about
+you, and where a word has no English equivalent because the thing it names is
+not an English thing.
+
+The deck was entirely the first kind, which is the difference between reading a
+language and being competent in it. Six culture notes now cover *tu*/*vous* and
+*du*/*Sie* (including the offer ritual and where the workplace rule is
+shifting), how politeness lives in the verb rather than in extra words, German
+directness and *doch*, and the words that carry a country inside them —
+*laïcité*, *terroir*, *Feierabend*, *Ordnung*, *Vergangenheitsbewältigung*.
+
 ## Known rough edges
 
 - `apiLookupBatch` still returns `[]` on failure to avoid throwing into the UI.
   Failures now log to the console, but nothing surfaces in the interface yet.
-- Four `exhaustive-deps` warnings remain, on two conjugation memos. They are
-  correct as written — the omitted values are stable for the lifetime of the
-  memo — and adding them changes what recomputes, so they were left alone
-  rather than silenced.
+- Six `exhaustive-deps` warnings remain, all the same case: a memo that calls
+  `conjCardId`, which is a plain function declaration inside the component and
+  so has a new identity on every render. Adding it to the dependency array
+  would make the memo recompute every render and defeat its purpose; the only
+  value it closes over is `lang`, which *is* in the array. Correct as written,
+  so left alone rather than silenced.
 - The bundle is split three ways (vendor / vocabulary / app) so the parts cache
   independently, but first-paint bytes are unchanged. Loading the C1 sets on
   demand needs `src/data/vocab.js` to stop building `DATA` eagerly; lazy-loading
   whole areas needs component boundaries that one 5,900-line screen component
   does not have.
 - No tests for the React screens. The pure layers are covered; see **Checks**.
+- Service worker *registration* is untested. The policy is covered by
+  `scripts/sw.test.js`, but registering a worker needs a real browser, and the
+  embedded preview used during development refuses it.

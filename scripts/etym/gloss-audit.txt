@@ -1,0 +1,6 @@
+4 cells do not carry the row's stated meaning:
+
+  hg-t-z       "that"  de:das          means something else  — # {{inflection of|de|der||nom//acc|n|s}}: [[the]] # {{inflection of|de|der||nom//acc|n|s}}
+  hg-k-ch      "seek"  en:seek         means something else  — # {{lb|en|ambitransitive}} to [[try]] to [[find]]; to [[look for]]; to [[search for]]. # {
+  hg-d-t       "door"  la:forēs        means something else  — # {{lb|la|copulative}} to [[be]], [[exist]] # {{lb|la|[[existential]]}} [[there be]] # {{l
+  fr-p-v       "April"  en:April        means something else  — # {{senseid|en|q118}}the fourth [[month]] of the [[gregorian calendar]], following [[march

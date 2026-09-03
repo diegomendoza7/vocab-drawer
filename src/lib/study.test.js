@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildBatchLedger, buildSummaryRows, matrixCell, weakestCards, drillScopeTenses, effectiveScope } from "./study.js";
+import { buildBatchLedger, buildSummaryRows, matrixCell, weakestCards, drillScopeTenses, effectiveScope, kindsForCard, nextAction, accuracyTrend, mergeProgress, estimateMinutes, prefixReach, typeAhead, commitTypeAhead } from "./study.js";
 import { scheduleCard, gradeFromWrongCount, todayKey, addDays, cardId } from "./srs.js";
 
 const w = (t, extra = {}) => ({ t, e: `${t}-gloss`, ...extra });
@@ -240,5 +240,217 @@ describe("effectiveScope", () => {
     /* Switching to a verb you have never drilled must not leave "Started"
      * selected with a dead button and no explanation. */
     expect(effectiveScope("started", { tense: ["a"], started: [], all: ["a"] })).toBe("tense");
+  });
+});
+
+
+describe("kindsForCard", () => {
+  /* The queue used to hand every word all three kinds, so a word met a minute
+   * ago and a word known for a month were asked identically — and a ten-word
+   * drawer became thirty typed questions. */
+  const withCloze = { hasCloze: () => true };
+  const noCloze = { hasCloze: () => false };
+  const word = { t: "chat" };
+
+  it("asks a brand-new word only to recognise", () => {
+    expect(kindsForCard(word, undefined, withCloze)).toEqual(["toEnglish"]);
+  });
+
+  it("adds production once the word has come back once", () => {
+    expect(kindsForCard(word, { reps: 1, interval: 1 }, withCloze)).toEqual(["toEnglish", "toTarget"]);
+  });
+
+  it("only asks for a cloze once the word has stuck for a few days", () => {
+    expect(kindsForCard(word, { reps: 3, interval: 2 }, withCloze)).not.toContain("fillBlank");
+    expect(kindsForCard(word, { reps: 3, interval: 3 }, withCloze)).toContain("fillBlank");
+  });
+
+  it("never asks for a cloze the entry cannot supply", () => {
+    expect(kindsForCard(word, { reps: 5, interval: 30 }, noCloze)).not.toContain("fillBlank");
+  });
+
+  it("walks a leech back to recognition", () => {
+    /* Asking someone to produce a word they have failed eight times is how a
+     * card stays stuck. */
+    expect(kindsForCard(word, { reps: 4, interval: 10, lapses: 8 }, withCloze)).toEqual(["toEnglish"]);
+  });
+});
+
+describe("nextAction", () => {
+  const none = { dueCount: 0, weakCount: 0, leechCount: 0, unstartedDrawer: null, untouchedTense: null, dueToday: 0, goal: 20 };
+
+  it("puts scheduled work first — that is what the intervals are for", () => {
+    expect(nextAction({ ...none, dueCount: 7, weakCount: 3, unstartedDrawer: "Animals" }).kind).toBe("due");
+  });
+
+  it("prefers stuck words over merely weak ones", () => {
+    expect(nextAction({ ...none, leechCount: 2, weakCount: 9 }).label).toMatch(/stuck/);
+  });
+
+  it("suggests new material only when nothing needs revisiting", () => {
+    expect(nextAction({ ...none, unstartedDrawer: "Animals" }).label).toBe("Start Animals");
+  });
+
+  it("names the tense before falling through to a shrug", () => {
+    expect(nextAction({ ...none, untouchedTense: "Subjonctif" }).label).toBe("Try Subjonctif");
+  });
+
+  it("says you are finished once the goal is met and nothing is scheduled", () => {
+    expect(nextAction({ ...none, dueToday: 20, goal: 20 }).kind).toBe("done");
+  });
+
+  it("always returns something actionable", () => {
+    expect(nextAction({ ...none }).label).toBeTruthy();
+  });
+});
+
+describe("accuracyTrend", () => {
+  const addDaysFn = (key, n) => {
+    const d = new Date(key + "T00:00:00");
+    d.setDate(d.getDate() + n);
+    return d.toISOString().slice(0, 10);
+  };
+
+  it("returns one entry per day asked for, oldest first", () => {
+    const out = accuracyTrend({}, 7, "2026-09-01", addDaysFn);
+    expect(out).toHaveLength(7);
+    expect(out[0].date).toBe("2026-08-26");
+    expect(out[6].date).toBe("2026-09-01");
+  });
+
+  it("reports a day you did not study as missing, not as zero", () => {
+    /* Drawing an unstudied day as 0% would misreport a weekend off as a
+     * collapse in accuracy. */
+    const out = accuracyTrend({ "2026-09-01": { reviews: 10, correct: 8 } }, 2, "2026-09-01", addDaysFn);
+    expect(out[0].pct).toBeNull();
+    expect(out[1].pct).toBe(80);
+  });
+});
+
+describe("mergeProgress", () => {
+  const base = { cards: {}, history: {}, imported: { fr: {}, de: {} }, streak: 3, longest: 5 };
+
+  it("refuses a file that is not a progress export", () => {
+    expect(() => mergeProgress(base, null)).toThrow(/not a progress export/);
+    expect(() => mergeProgress(base, { hello: 1 })).toThrow(/no cards/);
+  });
+
+  it("adds cards this device has never seen", () => {
+    const { progress, stats } = mergeProgress(base, { cards: { "fr:A1:chat": { reps: 2, lastSeen: "2026-08-01" } } });
+    expect(progress.cards["fr:A1:chat"].reps).toBe(2);
+    expect(stats.added).toBe(1);
+  });
+
+  it("keeps whichever side was reviewed more recently", () => {
+    /* A card's schedule is a claim about a moment of recall, so the newer
+     * claim wins — taking the longer interval instead would let a stale
+     * device push real reviews away. */
+    const mine = { ...base, cards: { x: { reps: 9, interval: 40, lastSeen: "2026-08-30" } } };
+    const older = mergeProgress(mine, { cards: { x: { reps: 1, interval: 1, lastSeen: "2026-08-01" } } });
+    expect(older.progress.cards.x.reps).toBe(9);
+    expect(older.stats.kept).toBe(1);
+
+    const newer = mergeProgress(mine, { cards: { x: { reps: 1, interval: 1, lastSeen: "2026-09-01" } } });
+    expect(newer.progress.cards.x.reps).toBe(1);
+    expect(newer.stats.updated).toBe(1);
+  });
+
+  it("sums a day both devices studied", () => {
+    const mine = { ...base, history: { "2026-09-01": { reviews: 10, correct: 8 } } };
+    const { progress } = mergeProgress(mine, { cards: {}, history: { "2026-09-01": { reviews: 5, correct: 5 } } });
+    expect(progress.history["2026-09-01"]).toEqual({ reviews: 15, correct: 13 });
+  });
+
+  it("never deletes anything the local device had", () => {
+    const mine = { ...base, cards: { keep: { reps: 1, lastSeen: "2026-01-01" } } };
+    const { progress } = mergeProgress(mine, { cards: {} });
+    expect(progress.cards.keep).toBeDefined();
+  });
+
+  it("keeps the local copy of a word saved on both sides", () => {
+    // The local one may carry a fact-check verdict the other device never ran.
+    const mine = { ...base, imported: { fr: { chat: { t: "chat", ver: { st: "ok" } } }, de: {} } };
+    const { progress } = mergeProgress(mine, { cards: {}, imported: { fr: { chat: { t: "chat" } } } });
+    expect(progress.imported.fr.chat.ver).toEqual({ st: "ok" });
+  });
+});
+
+describe("estimateMinutes", () => {
+  it("never claims a session takes zero minutes", () => {
+    expect(estimateMinutes(0)).toBe(1);
+    expect(estimateMinutes(1)).toBe(1);
+  });
+  it("scales with the queue", () => {
+    expect(estimateMinutes(60)).toBeGreaterThan(estimateMinutes(20));
+  });
+});
+
+describe("prefixReach", () => {
+  it("counts characters of the word as displayed, not as folded", () => {
+    expect(prefixReach("Schule", "sch")).toBe(3);
+    expect(prefixReach("Schule", "")).toBe(0);
+  });
+  it("ignores case and accents, so the chip can be picked from a plain keyboard", () => {
+    expect(prefixReach("Schärfe", "scha")).toBe(4);
+    expect(prefixReach("être", "et")).toBe(2);
+    expect(prefixReach("Ärger", "ar")).toBe(2);
+  });
+  it("lets one letter reach a character that folds to two", () => {
+    /* "heis" has reached the ß — highlighting it only on the second s would
+     * mean a letter that lights up one keystroke late. */
+    expect(prefixReach("heißen", "heis")).toBe(4);
+    expect(prefixReach("heißen", "heiss")).toBe(4);
+    expect(prefixReach("heißen", "heisse")).toBe(5);
+    /* Three keystrokes, but two characters lit: "s" and the ligature. */
+    expect(prefixReach("sœur", "soe")).toBe(2);
+    expect(prefixReach("sœur", "sou")).toBe(-1);
+  });
+  it("rejects a prefix that does not match, or runs past the end", () => {
+    expect(prefixReach("Schule", "st")).toBe(-1);
+    expect(prefixReach("de", "des")).toBe(-1);
+    expect(prefixReach("heißen", "heit")).toBe(-1);
+  });
+});
+
+describe("typeAhead", () => {
+  const bank = ["des", "de", "Schärfe", "Schule", "heißen"];
+
+  it("places as soon as one word is left", () => {
+    expect(typeAhead(bank, "scha").place).toBe(2);
+    expect(typeAhead(bank, "h").place).toBe(4);
+  });
+  it("holds and reports what to highlight while more than one matches", () => {
+    const { place, candidates } = typeAhead(bank, "sch");
+    expect(place).toBe(null);
+    expect(candidates).toEqual([{ index: 2, reach: 3 }, { index: 3, reach: 3 }]);
+  });
+  it("refuses a keystroke that matches nothing", () => {
+    /* The buffer keeps its old value, so one stray letter cannot strand it in
+     * a state no further typing can rescue. */
+    expect(typeAhead(bank, "z")).toEqual({ ok: false, place: null, candidates: [] });
+  });
+  it("places one of two identical chips rather than waiting forever", () => {
+    /* A sentence with a repeated word gives the bank two of them. No keystroke
+     * can tell them apart, and either will do. */
+    expect(typeAhead(["de", "le", "de"], "d").place).toBe(0);
+  });
+  it("does nothing on an empty prefix", () => {
+    expect(typeAhead(bank, "")).toEqual({ ok: true, place: null, candidates: [] });
+  });
+});
+
+describe("commitTypeAhead", () => {
+  const bank = ["des", "de", "Schule"];
+
+  it("takes the completed word when one word starts another", () => {
+    // "de" is fully typed and still ambiguous against "des" — space settles it.
+    expect(commitTypeAhead(bank, "de")).toBe(1);
+  });
+  it("otherwise takes the leftmost chip still in the running", () => {
+    expect(commitTypeAhead(bank, "d")).toBe(0);
+  });
+  it("has nothing to commit when nothing matches", () => {
+    expect(commitTypeAhead(bank, "z")).toBe(null);
+    expect(commitTypeAhead(bank, "")).toBe(null);
   });
 });

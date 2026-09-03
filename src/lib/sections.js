@@ -28,6 +28,8 @@ export const SECTION_OF = {
 
   importPaste: "import", importReader: "import", importLibrary: "import",
 
+  etymology: "etymology", etymDrill: "etymology",
+
   progress: "progress",
 };
 
@@ -69,6 +71,9 @@ export const FULL_WIDTH_SCREENS = new Set([
   "listenSelect", "dictation", "dictationDone", "speaking", "speakingDone",
   "importPaste", "importReader", "importLibrary",
   "progress", "sentence",
+  /* The etymology tree forks into two columns and the law tables are four
+   * columns wide; both need the room. */
+  "etymology", "etymDrill",
 ]);
 
 /** The reading measure for screens that are still one phone-width column. */

@@ -1,6 +1,6 @@
 import {
   LayoutGrid, Sparkles, GraduationCap, Blocks, BookOpen, Quote,
-  Headphones, FileText, Activity, CalendarCheck, CloudOff,
+  Headphones, FileText, Activity, CalendarCheck, CloudOff, GitBranch,
 } from "lucide-react";
 import { C } from "../theme.js";
 import ThemeToggle from "./ThemeToggle.jsx";
@@ -23,6 +23,7 @@ const ITEMS = [
   { id: "reading", label: "Reading Corner", icon: BookOpen },
   { id: "phrases", label: "Phrase Match", icon: Quote },
   { id: "listening", label: "Listening & Speaking", icon: Headphones },
+  { id: "etymology", label: "Word Roots", icon: GitBranch },
   { id: "import", label: "Import a text", icon: FileText },
   { id: "progress", label: "Progress", icon: Activity },
 ];

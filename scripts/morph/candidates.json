@@ -1,0 +1,771 @@
+{
+ "de:sprechen": {
+  "lang": "de",
+  "root": "sprechen",
+  "base": "to speak (some language, the truth, etc.)",
+  "members": [
+   {
+    "w": "Sprache",
+    "e": "language (body of words, and set of methods of combining them)"
+   },
+   {
+    "w": "sprachlich",
+    "e": "language; linguistic"
+   },
+   {
+    "w": "sprachlos",
+    "e": "speechless, dumbfounded, tongue-tied"
+   },
+   {
+    "w": "Spruch",
+    "e": "short saying, expression or dictum that is remembered or is meaningful in itself"
+   }
+  ]
+ },
+ "de:kommen": {
+  "lang": "de",
+  "root": "kommen",
+  "base": "to come; to arrive",
+  "members": [
+   {
+    "w": "abhandenkommen",
+    "e": "to go missing, to lose"
+   },
+   {
+    "w": "abkommen",
+    "e": "to come from, to derive from"
+   },
+   {
+    "w": "ankommen",
+    "e": "to arrive"
+   },
+   {
+    "w": "aufkommen",
+    "e": "to arise, to appear"
+   },
+   {
+    "w": "auskommen",
+    "e": "to get along"
+   },
+   {
+    "w": "bekommen",
+    "e": "to receive; to get"
+   },
+   {
+    "w": "beikommen",
+    "e": "to come here"
+   },
+   {
+    "w": "dahinterkommen",
+    "e": "to find out, discover"
+   },
+   {
+    "w": "davonkommen",
+    "e": "to get off, to get away (To escape, usually with mild consequences.)"
+   },
+   {
+    "w": "dazwischenkommen",
+    "e": "to get in the way"
+   },
+   {
+    "w": "draufkommen",
+    "e": "to guess, find out"
+   },
+   {
+    "w": "durcheinanderkommen",
+    "e": "to get confused"
+   },
+   {
+    "w": "durchkommen",
+    "e": "to come through, to pass through"
+   },
+   {
+    "w": "entgegenkommen",
+    "e": "to come towards the face of something or someone"
+   },
+   {
+    "w": "entkommen",
+    "e": "to escape"
+   },
+   {
+    "w": "fortkommen",
+    "e": "to get away"
+   },
+   {
+    "w": "freikommen",
+    "e": "to be released (e.g., from prison), to get out"
+   },
+   {
+    "w": "heimkommen",
+    "e": "to come home"
+   },
+   {
+    "w": "herankommen",
+    "e": "to approach, to come close"
+   },
+   {
+    "w": "herkommen",
+    "e": "to come over, come here (towards the speaker)"
+   },
+   {
+    "w": "heraufkommen",
+    "e": "to come up"
+   },
+   {
+    "w": "herauskommen",
+    "e": "to come out (motion towards the speaker)"
+   },
+   {
+    "w": "hereinkommen",
+    "e": "to come in"
+   },
+   {
+    "w": "herüberkommen",
+    "e": "to come over"
+   },
+   {
+    "w": "herumkommen",
+    "e": "to move round something"
+   },
+   {
+    "w": "herunterkommen",
+    "e": "to come down, to descend"
+   },
+   {
+    "w": "hinkommen",
+    "e": "to go or travel somewhere and arrive"
+   },
+   {
+    "w": "hinauskommen",
+    "e": "to come out (motion away from the speaker)"
+   },
+   {
+    "w": "hineinkommen",
+    "e": "to come in"
+   },
+   {
+    "w": "hinwegkommen",
+    "e": "to get over"
+   },
+   {
+    "w": "hinzukommen",
+    "e": "to be added"
+   },
+   {
+    "w": "klarkommen",
+    "e": "to cope; to come to terms, to deal with, to manage, to get along, to get on, to get by"
+   },
+   {
+    "w": "mitkommen",
+    "e": "to come with, to join and come along with (another person)"
+   },
+   {
+    "w": "nachkommen",
+    "e": "to come later; to come when others already have"
+   },
+   {
+    "w": "nahekommen",
+    "e": "to approach or come close"
+   },
+   {
+    "w": "niederkommen",
+    "e": "to give birth"
+   },
+   {
+    "w": "rauskommen",
+    "e": "to come out"
+   },
+   {
+    "w": "rumkommen",
+    "e": "to move around"
+   },
+   {
+    "w": "runterkommen",
+    "e": "to calm down"
+   },
+   {
+    "w": "überkommen",
+    "e": "to overcome; to conquer; to seize"
+   },
+   {
+    "w": "umkommen",
+    "e": "to be killed; to perish; to die a (usually) violent death"
+   },
+   {
+    "w": "übereinkommen",
+    "e": "to come to terms; to reach an agreement"
+   },
+   {
+    "w": "unterkommen",
+    "e": "to find a place (e.g., a job, accommodation, etc.)"
+   },
+   {
+    "w": "vorankommen",
+    "e": "to move forward"
+   },
+   {
+    "w": "vorbeikommen",
+    "e": "to come over; to drop by"
+   },
+   {
+    "w": "verkommen",
+    "e": "to go bad, to decay"
+   }
+  ]
+ },
+ "de:stehen": {
+  "lang": "de",
+  "root": "stehen",
+  "base": "to stand",
+  "members": []
+ },
+ "de:ziehen": {
+  "lang": "de",
+  "root": "ziehen",
+  "base": "to pull; to drag",
+  "members": [
+   {
+    "w": "Zug",
+    "e": "procession"
+   }
+  ]
+ },
+ "de:setzen": {
+  "lang": "de",
+  "root": "setzen",
+  "base": ": to set; to put",
+  "members": [
+   {
+    "w": "Satz",
+    "e": "sentence"
+   }
+  ]
+ },
+ "de:halten": {
+  "lang": "de",
+  "root": "halten",
+  "base": "to hold",
+  "members": []
+ },
+ "de:nehmen": {
+  "lang": "de",
+  "root": "nehmen",
+  "base": "to take (something into one's possession or on one's body)",
+  "members": []
+ },
+ "de:geben": {
+  "lang": "de",
+  "root": "geben",
+  "base": "to give",
+  "members": [
+   {
+    "w": "Gabe",
+    "e": "gift, present, donation, alms"
+   },
+   {
+    "w": "Gift",
+    "e": "poison; toxin; venom"
+   }
+  ]
+ },
+ "de:fallen": {
+  "lang": "de",
+  "root": "fallen",
+  "base": "to fall, to drop",
+  "members": [
+   {
+    "w": "abfallen",
+    "e": "to fall off, to drop off"
+   },
+   {
+    "w": "anfallen",
+    "e": "}} to set upon, to attack suddenly"
+   },
+   {
+    "w": "auffallen",
+    "e": "to stand out, to be noticeable"
+   },
+   {
+    "w": "auseinanderfallen",
+    "e": "to fall apart"
+   },
+   {
+    "w": "ausfallen",
+    "e": "to sortie, to sally"
+   },
+   {
+    "w": "befallen",
+    "e": "to affect"
+   },
+   {
+    "w": "durchfallen",
+    "e": "to fall through"
+   },
+   {
+    "w": "einfallen",
+    "e": "to occur (to someone), to come (to someone); to come to mind   with the dative object as t"
+   },
+   {
+    "w": "entfallen",
+    "e": "to drop or be dropped"
+   },
+   {
+    "w": "fällen",
+    "e": "to cut down, to chop down, to fell (a tree)"
+   },
+   {
+    "w": "gefallen",
+    "e": "to please; to appeal to   with the dative object as the subject}}"
+   },
+   {
+    "w": "hereinfallen",
+    "e": "to fall for something/someone"
+   },
+   {
+    "w": "herfallen",
+    "e": "to attack suddenly"
+   },
+   {
+    "w": "herunterfallen",
+    "e": "to fall down"
+   },
+   {
+    "w": "hinfallen",
+    "e": "to fall down"
+   },
+   {
+    "w": "leichtfallen",
+    "e": "to come, be easy"
+   },
+   {
+    "w": "missfallen",
+    "e": "to displease, to dissatisfy"
+   },
+   {
+    "w": "niederfallen",
+    "e": "to fall to the ground"
+   },
+   {
+    "w": "reinfallen",
+    "e": "to fall into"
+   },
+   {
+    "w": "schwerfallen",
+    "e": "to be difficult"
+   },
+   {
+    "w": "überfallen",
+    "e": "to attack, to assault"
+   },
+   {
+    "w": "umfallen",
+    "e": "to topple, fall down"
+   },
+   {
+    "w": "verfallen",
+    "e": "to expire"
+   },
+   {
+    "w": "vorfallen",
+    "e": "to happen"
+   },
+   {
+    "w": "wegfallen",
+    "e": "to fall away, disappear"
+   },
+   {
+    "w": "zerfallen",
+    "e": "to disintegrate"
+   },
+   {
+    "w": "zufallen",
+    "e": "to close on its own"
+   },
+   {
+    "w": "zurückfallen",
+    "e": "to fall back; to fall backwards"
+   },
+   {
+    "w": "zusammenfallen",
+    "e": "to collapse"
+   },
+   {
+    "w": "Fallbeil",
+    "e": "guillotine (execution machine)"
+   },
+   {
+    "w": "Fallobst",
+    "e": "windfall"
+   },
+   {
+    "w": "Falltür",
+    "e": "trapdoor"
+   },
+   {
+    "w": "Fallgatter",
+    "e": "portcullis"
+   }
+  ]
+ },
+ "de:tragen": {
+  "lang": "de",
+  "root": "tragen",
+  "base": "to carry, to bear (something on one's person)",
+  "members": [
+   {
+    "w": "abtragen",
+    "e": "to carry off, to remove, denude"
+   },
+   {
+    "w": "antragen",
+    "e": "to offer"
+   },
+   {
+    "w": "auftragen",
+    "e": "to assign a task to someone"
+   },
+   {
+    "w": "austragen",
+    "e": "to (go from house to house and) deliver sth.,"
+   },
+   {
+    "w": "betragen",
+    "e": "to amount to, to be"
+   },
+   {
+    "w": "beitragen",
+    "e": "to contribute to (to give something, that is or becomes part of a larger whole)"
+   },
+   {
+    "w": "davontragen",
+    "e": "to carry away"
+   },
+   {
+    "w": "durchtragen",
+    "e": "to carry something or someone through somewhere"
+   },
+   {
+    "w": "eintragen",
+    "e": "to endorse"
+   },
+   {
+    "w": "emportragen",
+    "e": "to carry upwards"
+   },
+   {
+    "w": "entgegentragen",
+    "e": "to carry something or someone to someone who is comeing towards"
+   },
+   {
+    "w": "ertragen",
+    "e": "to bear, to stand, to endure, to take, to suffer, to tolerate, to handle"
+   },
+   {
+    "w": "forttragen",
+    "e": "to carry away"
+   },
+   {
+    "w": "hertragen",
+    "e": "to carry (in direction towards the speaker)"
+   },
+   {
+    "w": "herabtragen",
+    "e": "to carry down (in direction towards the speaker)"
+   },
+   {
+    "w": "herantragen",
+    "e": "to carry something or someone to a place, to bring (in direction towards the speaker)"
+   },
+   {
+    "w": "herauftragen",
+    "e": "to carry up (in direction towards the speaker)"
+   },
+   {
+    "w": "heraustragen",
+    "e": "to carry something out of something, to carry outside (in direction towards the speaker)"
+   },
+   {
+    "w": "herumtragen",
+    "e": "to carry something or someone around"
+   },
+   {
+    "w": "heruntertragen",
+    "e": "to carry down (in direction towards the speaker)"
+   },
+   {
+    "w": "hintragen",
+    "e": "to carry (in direction away from the speaker)"
+   },
+   {
+    "w": "hinabtragen",
+    "e": "to carry down (in direction away from the speaker)"
+   },
+   {
+    "w": "hinauftragen",
+    "e": "to carry up (in direction away from the speaker)"
+   },
+   {
+    "w": "hinaustragen",
+    "e": "to carry something out of something, to carry outside (in direction away from the speaker)"
+   },
+   {
+    "w": "hinterhertragen",
+    "e": "to carry something after someone else"
+   },
+   {
+    "w": "hinuntertragen",
+    "e": "to carry down (in direction away from the speaker)"
+   },
+   {
+    "w": "hinwegtragen",
+    "e": "to carry through, over, or away"
+   },
+   {
+    "w": "hochtragen",
+    "e": "to carry up (bring to a higher position by carrying)"
+   },
+   {
+    "w": "mittragen",
+    "e": "to carry along"
+   },
+   {
+    "w": "nachtragen",
+    "e": "to append, to supplement"
+   },
+   {
+    "w": "rauftragen",
+    "e": "to carry up (either in direction towards or away from the speaker)"
+   },
+   {
+    "w": "raustragen",
+    "e": "to carry something out of something, to carry outside (either in direction towards or away"
+   },
+   {
+    "w": "runtertragen",
+    "e": "to carry down (either in direction towards or away from the speaker)"
+   },
+   {
+    "w": "übertragen",
+    "e": "to transfer, transmit"
+   },
+   {
+    "w": "umtragen",
+    "e": "to change an entry in a register or registry"
+   },
+   {
+    "w": "vertragen",
+    "e": "to tolerate, bear"
+   },
+   {
+    "w": "vortragen",
+    "e": "to lecture; to give a report"
+   },
+   {
+    "w": "wegtragen",
+    "e": "to carry away"
+   },
+   {
+    "w": "zurücktragen",
+    "e": "to carry back, to bring back, to take back"
+   },
+   {
+    "w": "zusammentragen",
+    "e": "to gather, to collect, to compile"
+   },
+   {
+    "w": "zutragen",
+    "e": "to carry (something to someone)"
+   },
+   {
+    "w": "Tragbahre",
+    "e": "stretcher, gurney"
+   },
+   {
+    "w": "Tragblatt",
+    "e": "bract"
+   }
+  ]
+ },
+ "fr:porter": {
+  "lang": "fr",
+  "root": "porter",
+  "base": "to carry",
+  "members": [
+   {
+    "w": "apporter",
+    "e": "to bring (something)"
+   },
+   {
+    "w": "colporter",
+    "e": "to peddle; to hawk"
+   },
+   {
+    "w": "comporter",
+    "e": "to include"
+   },
+   {
+    "w": "déporter",
+    "e": "to deport (expel from a country)"
+   },
+   {
+    "w": "emporter",
+    "e": "to take"
+   },
+   {
+    "w": "portable",
+    "e": "portable"
+   },
+   {
+    "w": "radioreporter",
+    "e": "radio reporter"
+   },
+   {
+    "w": "rapporter",
+    "e": "to bring back (physically bring something back from where it came from)"
+   },
+   {
+    "w": "réimporter",
+    "e": "to reimport"
+   },
+   {
+    "w": "remporter",
+    "e": "to take back, take away (again)"
+   },
+   {
+    "w": "reporter",
+    "e": "to carry something back to where it was"
+   },
+   {
+    "w": "supporter",
+    "e": "to support"
+   },
+   {
+    "w": "téléporter",
+    "e": "to teleport, to beam up"
+   },
+   {
+    "w": "porteur",
+    "e": "carrier (one who carries)"
+   }
+  ]
+ },
+ "fr:venir": {
+  "lang": "fr",
+  "root": "venir",
+  "base": "to come (to move from one place to another that is nearer the speaker)",
+  "members": []
+ },
+ "fr:mettre": {
+  "lang": "fr",
+  "root": "mettre",
+  "base": "to put; to place",
+  "members": []
+ },
+ "fr:tenir": {
+  "lang": "fr",
+  "root": "tenir",
+  "base": "to have; to hold",
+  "members": []
+ },
+ "fr:conduire": {
+  "lang": "fr",
+  "root": "conduire",
+  "base": "to drive (a vehicle)",
+  "members": [
+   {
+    "w": "conducteur",
+    "e": "the driver of a vehicle or of a group of animated creatures"
+   },
+   {
+    "w": "conduite",
+    "e": "behavior, conduct"
+   }
+  ]
+ },
+ "fr:poser": {
+  "lang": "fr",
+  "root": "poser",
+  "base": "to stop carrying, to put down (something or somebody)",
+  "members": [
+   {
+    "w": "demander",
+    "e": "to ask"
+   },
+   {
+    "w": "perso",
+    "e": "personal"
+   }
+  ]
+ },
+ "fr:voir": {
+  "lang": "fr",
+  "root": "voir",
+  "base": "to see (visually)",
+  "members": []
+ },
+ "fr:dire": {
+  "lang": "fr",
+  "root": "dire",
+  "base": "to say, to tell (to express through speech)",
+  "members": [
+   {
+    "w": "diction",
+    "e": "diction (clarity of word choice)"
+   },
+   {
+    "w": "indicible",
+    "e": "indescribable"
+   },
+   {
+    "w": "ride",
+    "e": "wrinkle, line (on face etc.)"
+   }
+  ]
+ },
+ "fr:prendre": {
+  "lang": "fr",
+  "root": "prendre",
+  "base": "to take",
+  "members": [
+   {
+    "w": "apprendre",
+    "e": "to learn"
+   },
+   {
+    "w": "comprendre",
+    "e": "to understand, comprehend"
+   },
+   {
+    "w": "reprendre",
+    "e": "to take back, recover, regain"
+   }
+  ]
+ },
+ "fr:faire": {
+  "lang": "fr",
+  "root": "faire",
+  "base": "to do",
+  "members": [
+   {
+    "w": "fait-tout",
+    "e": "stewpot (large cooking pot with handles and a lid)"
+   },
+   {
+    "w": "facile",
+    "e": "easy, simple"
+   },
+   {
+    "w": "façon",
+    "e": "way; manner; fashion"
+   },
+   {
+    "w": "facture",
+    "e": "bill, invoice"
+   },
+   {
+    "w": "fait",
+    "e": "fact"
+   }
+  ]
+ }
+}

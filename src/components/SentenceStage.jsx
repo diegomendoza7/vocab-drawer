@@ -12,6 +12,12 @@ import { C, TINT } from "../theme.js";
  * grammar mistake you can see; typing is still one click away for anyone who
  * wants the harder version, and both go through the same grader.
  *
+ * The chips are also typeable. Reaching for the mouse for every word makes a
+ * six-word sentence six round trips, so typing a chip's opening letters places
+ * it, and the letters that still fit more than one chip are marked on each of
+ * them — the point being to show *why* one letter was not enough, rather than
+ * appearing to ignore the keystroke.
+ *
  * The right rail holds the card for the word being practised. It is the one
  * thing the phone never had room for, and the reason the stage felt like a
  * test rather than the end of a lesson.
@@ -21,6 +27,7 @@ export default function SentenceStage({
   english, word, gloss, meta, note,
   mode, onMode,
   bank, placed, onPlace, onUnplace, onClearPlaced,
+  typed, typeMiss, typeCandidates,
   input, onInput, inputRef,
   result, blankNudge, retry,
   onCheck, onRetry, onNext, onReveal, onSkipToSummary,
@@ -29,6 +36,8 @@ export default function SentenceStage({
 }) {
   const chips = mode === "chips";
   const answered = Boolean(result);
+  /* Bank index → how many of its characters the typed prefix has reached. */
+  const reachOf = new Map(typeCandidates.map((c) => [c.index, c.reach]));
 
   return (
     <div className="grid gap-0 items-stretch" style={{ gridTemplateColumns: "1fr 268px", minHeight: "60vh" }}>
@@ -69,15 +78,48 @@ export default function SentenceStage({
 
               {!answered && (
                 <>
-                  <div className="font-serif text-sm mb-1.5" style={{ color: C.muted }}>Word bank</div>
+                  <div className="flex items-baseline gap-2 mb-1.5">
+                    <span className="font-serif text-sm" style={{ color: C.muted }}>Word bank</span>
+                    {typed && (
+                      <span className="font-type text-sm" style={{ color: C.green }}>{typed}</span>
+                    )}
+                    {/* A refused letter has to say so even when the buffer is
+                      * empty, or the first wrong key looks like a dead
+                      * keyboard rather than a word that is not in the bank. */}
+                    <span className="font-serif text-xs" style={{ color: typeMiss ? C.red : C.muted }}>
+                      {typeMiss
+                        ? (typed ? "no word here carries on that way" : "no word in the bank starts with that")
+                        : typed
+                          ? `${typeCandidates.length} words — keep typing, or space for the first`
+                          : "or type a word's first letters"}
+                    </span>
+                  </div>
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {bank.map((tok, i) => (
-                      <button key={`${tok}-${i}`} onClick={() => onPlace(i)}
-                        className="px-2.5 py-1.5 rounded-md font-serif text-sm"
-                        style={{ backgroundColor: C.paper, border: `1px solid ${C.line}`, color: C.ink }}>
-                        {tok}
-                      </button>
-                    ))}
+                    {bank.map((tok, i) => {
+                      const reach = reachOf.get(i) ?? 0;
+                      const running = typed && reach > 0;
+                      /* While a prefix is live, the chips it cannot be are
+                       * dimmed. Marking only the matches would leave the rest
+                       * looking equally available. */
+                      const dim = typed && !running;
+                      return (
+                        <button key={`${tok}-${i}`} onClick={() => onPlace(i)}
+                          className="px-2.5 py-1.5 rounded-md font-serif text-sm"
+                          style={{
+                            backgroundColor: C.paper,
+                            border: `1px solid ${running ? C.green : C.line}`,
+                            color: C.ink,
+                            opacity: dim ? 0.4 : 1,
+                          }}>
+                          {running ? (
+                            <>
+                              <span style={{ color: C.green, fontWeight: 600 }}>{tok.slice(0, reach)}</span>
+                              {tok.slice(reach)}
+                            </>
+                          ) : tok}
+                        </button>
+                      );
+                    })}
                     {bank.length === 0 && (
                       <span className="font-serif text-sm" style={{ color: C.muted }}>All placed — check it.</span>
                     )}
@@ -169,7 +211,9 @@ export default function SentenceStage({
 
           {chips && !answered && (
             <p className="font-serif text-xs mt-3" style={{ color: C.muted }}>
-              The bank holds the sentence plus a few near-misses. Typing accepts the same answer, with accents required.
+              The bank holds the sentence plus a few near-misses. Type a word's opening letters to place it —
+              accents and capitals are ignored, space settles a tie, backspace takes the last word back.
+              "Type it instead" grades the same answer, but there accents are required.
             </p>
           )}
         </div>
