@@ -616,6 +616,62 @@ add on the strength of a layout note. And the desktop reading, phrase and
 listening areas open straight into their working frame rather than a picker,
 which is why `navigateToSection` routes those three differently at width.
 
+## Fluency
+
+The strand the app was missing. Everything else asks *do you know this?*;
+nothing asked *can you get it in under two seconds?* — and those are different
+abilities. A word retrieved in six seconds is known; a word retrieved in one is
+usable in speech, and only the second survives a conversation.
+
+One minute, three options, tap. The design follows Nation's four conditions for
+fluency work, and each one is a constraint the screen has to keep:
+
+| Condition | How it lands |
+|---|---|
+| The material must be **easy** — no unknown language | The pool is cards that have already held for a week, leeches excluded. Even the wrong options are drawn from words you know. |
+| Focus on **meaning**, not form | Three glosses, tap one. No spelling, no accents, nothing that measures typing speed instead of recall. |
+| **Pressure** to go faster than usual | A 60-second countdown that turns red in the last ten. |
+| **Quantity** of practice | The queue cycles rather than running out, so the clock is always what ends the round. |
+
+**It does not touch the scheduler.** A miss under a clock is nearly always a
+speed failure rather than a knowledge failure, and letting the timer damage a
+mature card would punish the learner for doing the exercise properly. Fluency
+rounds keep their own record and leave the SRS alone.
+
+Answers are **1, 2 and 3** on a keyboard, with the same number badges the
+choose and sentence screens use. That is not a convenience — the round measures
+how fast a meaning comes back, and asking the learner to aim a mouse at one of
+three moving targets measures their aim instead. Enter starts a round and takes
+the rematch. On a touch device the badges and the hint are hidden, the same way
+every other numbered screen handles it.
+
+The score is correct answers per minute, kept per language and per direction,
+with the last 30 rounds drawn as a bar chart — the whole claim of fluency work
+is that speed moves, and nobody can feel that without seeing it. Three options
+mean guessing scores about a third, so **a round under 80% accuracy is logged
+but cannot set a record**; those bars are drawn grey.
+
+### Where the gate sits, and why it moved
+
+A word joins the pool after **two correct reviews and an interval of three days**
+— normally the day after you first study it.
+
+The bar started at the scheduler's own "young" line, seven days, and that was
+wrong. Reaching interval 7 takes three correct reviews spread across four days,
+so a new learner met a locked door for most of their first week — exactly when a
+visible win matters most. Condition 1 asks for material that is *easy*, not
+material that is *old*: a word retrieved correctly twice is easy, and what has to
+stay out is material never successfully retrieved at all, plus leeches whatever
+their interval.
+
+Settled words (a week or more) are still better material, so the round says how
+many of the pool are settled rather than hiding the mix behind one total.
+
+Below eight words the section will not open — but it does not merely refuse. It
+reports how many are ready, how many are **one correct review away**, when that
+review is, and offers a button straight to a drawer. "Not yet" without a "when"
+is a dead end.
+
 ## Listening
 
 Dictation was pinned to `CORE_LEVELS` — A1 to B2 — alongside reading and idioms,

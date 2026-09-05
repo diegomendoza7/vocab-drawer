@@ -30,6 +30,8 @@ export const SECTION_OF = {
 
   etymology: "etymology", etymDrill: "etymology",
 
+  fluency: "fluency",
+
   progress: "progress",
 };
 
@@ -74,6 +76,7 @@ export const FULL_WIDTH_SCREENS = new Set([
   /* The etymology tree forks into two columns and the law tables are four
    * columns wide; both need the room. */
   "etymology", "etymDrill",
+  "fluency",
 ]);
 
 /** The reading measure for screens that are still one phone-width column. */
