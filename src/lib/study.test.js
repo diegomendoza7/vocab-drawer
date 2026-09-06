@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildBatchLedger, buildSummaryRows, matrixCell, weakestCards, drillScopeTenses, effectiveScope, kindsForCard, nextAction, accuracyTrend, mergeProgress, estimateMinutes, prefixReach, typeAhead, commitTypeAhead } from "./study.js";
+import { buildBatchLedger, buildSummaryRows, matrixCell, weakestCards, drillScopeTenses, effectiveScope, kindsForCard, nextAction, accuracyTrend, mergeProgress, estimateMinutes, prefixReach, typeAhead, commitTypeAhead, frequencyReach } from "./study.js";
 import { scheduleCard, gradeFromWrongCount, todayKey, addDays, cardId } from "./srs.js";
 
 const w = (t, extra = {}) => ({ t, e: `${t}-gloss`, ...extra });
@@ -452,5 +452,37 @@ describe("commitTypeAhead", () => {
   it("has nothing to commit when nothing matches", () => {
     expect(commitTypeAhead(bank, "z")).toBe(null);
     expect(commitTypeAhead(bank, "")).toBe(null);
+  });
+});
+
+describe("frequencyReach", () => {
+  const cardIdFor = (lang, level, t) => `${lang}:${level}:${t}`;
+  const list = [
+    { word: { t: "être" }, level: "A1" },
+    { word: { t: "maison" }, level: "A1" },
+    { word: { t: "obscur" }, level: "C1" },
+    { word: { t: "jamais" }, level: "A2" },
+  ];
+  const ranks = { être: 50, maison: 180, jamais: 1500 };   // obscur unranked
+  const rankOf = (_l, t) => ranks[t];
+
+  it("counts only words actually studied", () => {
+    /* A drawer you have never opened buys no coverage, however big it is. */
+    const cards = { "fr:A1:être": {}, "fr:A1:maison": {} };
+    const r = frequencyReach({ entries: list, lang: "fr", cards, cardIdFor, rankOf });
+    expect(r.studied).toBe(2);
+    expect(r.bands[1000]).toBe(2);
+  });
+  it("sorts studied words into their bands", () => {
+    const cards = Object.fromEntries(list.map((e) => [cardIdFor("fr", e.level, e.word.t), {}]));
+    const r = frequencyReach({ entries: list, lang: "fr", cards, cardIdFor, rankOf });
+    expect(r.bands).toMatchObject({ 1000: 2, 2000: 1, 5000: 0, beyond: 1 });
+  });
+  it("treats an unranked word as beyond, not as an error", () => {
+    const cards = { "fr:C1:obscur": {} };
+    expect(frequencyReach({ entries: list, lang: "fr", cards, cardIdFor, rankOf }).bands.beyond).toBe(1);
+  });
+  it("reports nothing for an untouched deck", () => {
+    expect(frequencyReach({ entries: list, lang: "fr", cards: {}, cardIdFor, rankOf }).studied).toBe(0);
   });
 });

@@ -14,6 +14,37 @@ import { C, TINT } from "../theme.js";
  * hidden. Everything else — the queue, the ledger, the level — is shared,
  * which is the argument for them being one screen rather than two.
  */
+/* The end of a round.
+ *
+ * Desktop routed `dictationDone` and `speakingDone` to this same component, so
+ * finishing a set re-rendered the live frame with the queue's last item still
+ * in `item` — the round never ended and the final sentence replayed forever.
+ * The state exists; it just had nothing to draw. */
+function Finished({ mode, score, total, langName, onAgain, onLeave }) {
+  const dict = mode === "dictation";
+  return (
+    <div className="rounded-lg p-6" style={{ maxWidth: 560, backgroundColor: C.card, border: `1px solid ${C.line}` }}>
+      <div className="font-serif text-xs uppercase tracking-wide mb-2" style={{ color: C.muted }}>
+        {dict ? "Dictation complete" : "Speaking complete"}
+      </div>
+      <div className="font-type text-4xl mb-1" style={{ color: C.ink }}>{score}/{total}</div>
+      <p className="font-serif text-sm mb-5" style={{ color: C.muted }}>
+        {dict
+          ? "transcribed exactly · these words are now scheduled for review"
+          : "read closely enough to be recognised · these words are now scheduled for review"}
+      </p>
+      <div className="flex gap-2">
+        <button onClick={onAgain} className="px-5 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2"
+          style={{ backgroundColor: C.gold, color: C.ink }}>
+          Another round in {langName} <ArrowRight size={14} />
+        </button>
+        <button onClick={onLeave} className="px-4 py-2.5 rounded-md font-semibold text-sm"
+          style={{ border: `1px solid ${C.line}`, color: C.ink }}>Done</button>
+      </div>
+    </div>
+  );
+}
+
 export default function ListeningStage({
   mode, onMode, langName, level, levels, onLevelChange,
   idx, total, item, onLeave,
@@ -23,9 +54,13 @@ export default function ListeningStage({
   // speaking
   listening, transcript, speakResult, speakError, onListen, onNextSpeak,
   log,
+  finished, score, onAgain,
 }) {
   const dict = mode === "dictation";
-  const done = idx >= total;
+  /* `idx >= total` never fired: the last answer switches the screen instead of
+   * advancing the index, so the index stops one short and this stayed false.
+   * `finished` is the screen actually saying so. */
+  const done = finished || idx >= total || !item;
 
   return (
     <div>
@@ -62,13 +97,9 @@ export default function ListeningStage({
       <div className="grid gap-6 items-start" style={{ gridTemplateColumns: "1fr 290px" }}>
         {/* ---------------- stage ---------------- */}
         <div className="min-w-0">
-          {done || !item ? (
-            <div className="rounded-lg p-6" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
-              <div className="font-type text-xl mb-1" style={{ color: C.ink }}>Set finished</div>
-              <p className="font-serif text-sm" style={{ color: C.muted }}>
-                Every line in this set is scheduled. Pick another level, or switch modes to say the same sentences aloud.
-              </p>
-            </div>
+          {done ? (
+            <Finished mode={mode} score={score ?? 0} total={total} langName={langName}
+              onAgain={onAgain} onLeave={onLeave} />
           ) : (
             <>
               <p className="font-serif text-sm mb-2" style={{ color: C.muted }}>

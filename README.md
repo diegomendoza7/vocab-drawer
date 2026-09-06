@@ -755,6 +755,54 @@ one whole mood.
 The mobile conjugation table already worked this way ("Tap any line to hear
 it"), which is why it was only the desktop workbench that needed it.
 
+## Collocations
+
+The layer between words and grammar. You can know every word in `une décision`
+and still say *faire* one, because English **makes** decisions and French
+**takes** them. Nothing in a dictionary warns you: the pairing is arbitrary,
+frequent, and invisible until you get it wrong out loud.
+
+40 pairs, 20 per language, drilled in the direction the error actually runs —
+**given the noun, produce the verb**. Asking the reverse would test
+comprehension, which was never the problem. The two wrong options are declared
+per entry rather than drawn at random, so the question cannot be answered by
+elimination: for `une décision` they are *faire* (the English calque) and
+*donner* (a near synonym).
+
+Every entry carries a `trap`, and the trap is the lesson — an arbitrary pairing
+only sticks once you are told what your own language does instead:
+
+| | |
+|---|---|
+| `treffen eine Entscheidung` | Never *machen*. German **meets** a decision. |
+| `stellen eine Frage` | You **place** a question. "Eine Frage fragen" is doubly wrong. |
+| `poser une question` | "Demander une question" is the classic beginner slip. |
+| `avoir raison` | French **has** reason where English **is** right. |
+
+## Frequency: high-yield or long tail
+
+A learner grinding C1 abstractions had no way to tell whether they were buying
+coverage or collecting rarities. Nation & Waring's figures are what make a rank
+worth showing: the first 1,000 word families give about **72%** of running text,
+2,000 about **80%**, 5,000 about **89%**.
+
+Ranks come from Wiktionary's own subtitle-frequency lists. Words carry a muted
+band tag when they are ranked, and Progress reports where your *studied* words
+sit — studied, not owned, because a drawer you have never opened buys no
+coverage.
+
+Two honesty constraints are built in. The German list runs to 2,000 words and
+the French to 5,000, so **"unranked" means something different in each** and is
+reported as "beyond 2,000" or "beyond 5,000" rather than a uniform "rare" — the
+list ended, which is a fact about the list. And the German table is parsed on
+its **lemma** column, not its surface forms: `ist` is rank 2, but the word a
+learner studies is `sein`, and ranking the surface form would score the wrong
+entry.
+
+Coverage is lopsided in a way that confirms the deck's own level design: French
+A1 is 77/86 ranked and C1 is 71/1038. The top of the deck *is* the top of the
+list.
+
 ## Sentence Constructions: the difficulty ladder
 
 Five rungs, easiest first. They are not tiers of "more words" — each one is a

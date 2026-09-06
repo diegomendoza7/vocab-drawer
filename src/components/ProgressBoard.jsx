@@ -17,6 +17,7 @@ export default function ProgressBoard({
   langName, lang, onLangChange, totalWords,
   maturity, levels, myWords, habit, forecast, beyond, trend,
   currentLevel, onExport, onImport, importReport,
+  reach,
 }) {
   const [open, setOpen] = useState({ [currentLevel]: true });
   const total = maturity.new + maturity.learning + maturity.young + maturity.mature || 1;
@@ -36,6 +37,31 @@ export default function ProgressBoard({
 
   return (
     <div>
+      {reach && reach.studied > 0 && (
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
+          <div className="font-serif text-xs uppercase tracking-wide mb-1" style={{ color: C.muted }}>
+            How far your words reach
+          </div>
+          <p className="font-serif text-sm mb-3" style={{ color: C.muted }}>
+            The first 1,000 words of a language carry about 72% of everything said or written;
+            2,000 gets you to 80%. Where your {reach.studied} studied words sit:
+          </p>
+          <div className="flex h-3 rounded-full overflow-hidden mb-2" style={{ border: `1px solid ${C.line}` }}>
+            {[["1000", C.gold], ["2000", C.green], ["5000", C.line], ["beyond", C.paper]].map(([k, col]) => (
+              reach.bands[k] > 0 ? (
+                <div key={k} title={`${reach.bands[k]} words`}
+                  style={{ width: `${(reach.bands[k] / reach.studied) * 100}%`, backgroundColor: col }} />
+              ) : null
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 font-serif text-xs" style={{ color: C.muted }}>
+            <span><b style={{ color: C.ink }}>{reach.bands[1000]}</b> in the top 1,000</span>
+            <span><b style={{ color: C.ink }}>{reach.bands[2000]}</b> in the next 1,000</span>
+            <span><b style={{ color: C.ink }}>{reach.bands[5000]}</b> to 5,000</span>
+            <span><b style={{ color: C.ink }}>{reach.bands.beyond}</b> beyond the list</span>
+          </div>
+        </div>
+      )}
       <div className="flex items-baseline gap-3 flex-wrap mb-4">
         <h2 className="font-type text-2xl" style={{ color: C.ink }}>Progress</h2>
         <span className="font-serif text-sm" style={{ color: C.muted }}>{langName} · all levels · {totalWords} words</span>
