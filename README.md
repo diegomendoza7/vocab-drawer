@@ -711,6 +711,130 @@ with a French voice would be worse than silence. `sayIn(lang, text)` picks a
 voice per language and returns nothing for Latin or the reconstructions, so those
 rungs get no button at all rather than a mispronunciation.
 
+## Speech rate
+
+System voices default to a native-speaker pace, which is the one thing a learner
+cannot follow — the words run together exactly where the joins are hardest. The
+normal rate is **0.78**, slow enough to hear a liaison or a final consonant and
+fast enough to still sound like speech. Dictation's "Slower" replay stays at
+**0.55**, well clear of it so the two are audibly different.
+
+Slowing the rate broke something non-obvious. `speakWith` cancels whatever is
+still speaking before it starts, so the "hear all" loops — which used a fixed
+gap between forms — began truncating the longer ones. The gap now scales with
+both the length of the phrase and the rate, and each item is scheduled from the
+end of the last rather than at `i × fixed`: `j'ai` gets about a second,
+`ils/elles sont` closer to two.
+
+## Hearing one form, not six
+
+The conjugation workbench had a single "hear all" that read the whole table in
+sequence — fine for a first pass, useless when the one you want is `vous êtes`
+and you have to sit through five others to reach it. Every visible form now
+carries its own speaker.
+
+It is gated on visibility, not on existence. The workbench deliberately hides
+the rows below the cell you are answering, and the blank row itself, so a
+speaker on those would read out the answer the row is hiding — the same class of
+leak as a tooltip. Before answering, `être` offers two buttons; after, six.
+
+Each one says the **whole phrase** — "je suis", not "suis". Nobody utters a bare
+conjugated form, and the phrase carries the liaison. `spokenForm` handles the
+three ways the written table differs from speech:
+
+| written | spoken | why |
+|---|---|---|
+| `je` + `ai` | **j'ai** | elision, joined with no space |
+| `il/elle est` | **il est** | the table lists the persons sharing a form; read aloud it becomes "il slash elle" |
+| `tu` + `sois` | **sois** | the imperative has no subject pronoun — "tu sois" is the *subjunctive* and means something else |
+
+That last one is the reason this needed a function rather than string
+concatenation: adding the pronoun everywhere would have taught the wrong form in
+one whole mood.
+
+The mobile conjugation table already worked this way ("Tap any line to hear
+it"), which is why it was only the desktop workbench that needed it.
+
+## Sentence Constructions: the difficulty ladder
+
+Five rungs, easiest first. They are not tiers of "more words" — each one is a
+specific thing word order does, and in three of the five **French and German do
+it differently**, which is the reason to drag tiles rather than read a rule:
+
+| | | |
+|---|---|---|
+| 1 | Simple | `Je vois le livre.` · `Ich sehe das Buch.` |
+| 2 | Time first | a filled front field, which moves the German subject behind the verb |
+| 3 | Negative | `Je **ne** vois **pas** le livre.` · `Ich sehe das Buch **nicht**.` |
+| 4 | With a modal | `Je veux **voir** le livre.` · `Ich will das Buch **sehen**.` |
+| 5 | Two clauses | `…que je **vois** le livre.` · `…dass ich das Buch **sehe**.` |
+
+Rungs 4 and 5 are the German verb bracket and verb-final subordinate clause —
+the two structures that most reliably defeat English speakers, and the two that
+tiles teach better than prose can. `scripts/check-sentences.mjs` asserts the
+German infinitive really is the last tile at rung 4, and the guard was verified
+by inverting it.
+
+Negation is not a word bolted on: French clamps the **auxiliary** in a compound
+tense (`je n'ai pas vu`, not `j'ai ne pas vu`), `ne` elides before a vowel, and
+German puts `nicht` before a final participle. Each of those is a separate test.
+
+The German comma in rung 5 rides on the opener's verb tile (`denke,`) rather
+than becoming a tile of its own — a floating comma is a puzzle about typography,
+not about word order.
+
+## Building by letter, not by number
+
+Tiles were chosen with the number keys 1–9. They are now chosen by **typing the
+word's opening letters**, the same way the desktop sentence stage works: type
+until one tile is left and it drops into place, with the matched letters marked
+green on every tile still in the running and the rest dimmed. Space settles a
+tie, backspace walks back through the buffer and then the sentence.
+
+`Ich denke, dass er die Fahrkarte gibt.` is nine keystrokes — `i d e d a e d f g`.
+Numbers meant reading a badge, finding the digit and pressing it: three steps for
+a tile whose first letter you were already looking at.
+
+Bank tiles carry **no tooltip until the answer is in**. Hovering one used to say
+"the — masculine", which hands over the gender decision that choosing between
+`le` and `la` *is*. Afterwards the gloss is help, so leftover tiles keep it and a
+wrong attempt can still be read back; before, it was simply the answer.
+
+## Pictures
+
+Coverage was **11%** and structurally lopsided — A1 and A2 were near 90%, and
+everything from B1 up was 4 words out of 2,744, because the original set was
+built for concrete beginner vocabulary and never extended.
+
+It is now **21%**, and the shape of the gain matters more than the number:
+
+| | before | after |
+|---|---|---|
+| B1 | 2 / 80 | **55 / 80** |
+| B2 | 0 / 80 | **~45 / 80** |
+| C1 | ~2 / 1,100 | **~42 / 1,100** |
+
+Two thirds of that came from a **parser bug**, not from new pictures. Glosses
+above B1 are synonym lists — "observation, finding", "approach, methodology;
+step taken" — and `conceptKey` split only on `/`, so the key became
+"observation finding" and could never match anything. Every C1 entry written
+that way was unreachable no matter how many images existed. Splitting on commas
+and semicolons, and trying **each** sense rather than only the first, multiplied
+C1 coverage fivefold on its own. A second bug surfaced from the new check: a
+gloss *beginning* with a parenthetical — "(health insurance) fund" — truncated
+to nothing.
+
+New mappings were added on one test: **does the picture actually evoke the
+word?** A ballot box for "election" earns its place. There is no honest image
+for "nevertheless", and a vague one is worse than blank — noise to look past, or
+a wrong association to unlearn. So discourse connectors and the abstract
+analytical verbs are deliberately left empty, which is most of the remaining gap
+and is not going to close.
+
+`scripts/check-images.mjs` runs offline and catches the silent failure: a
+codepoint with no SVG behind it does not throw — the browser just renders a
+broken image and the word looks illustrated when it is not.
+
 ## Sentence Constructions: what a verb may take
 
 Each verb has a pool of objects it may build a sentence with, and the round of

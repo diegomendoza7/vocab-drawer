@@ -17,8 +17,8 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "node_modules", "@twemoji", "svg");
 const dest = join(root, "public", "img", "emoji");
 
-const { EMOJI } = await import(join(root, "src", "data", "word-images.js"));
-const wanted = [...new Set(Object.values(EMOJI))];
+const { ALL_EMOJI } = await import(join(root, "src", "data", "word-images.js"));
+const wanted = [...new Set(Object.values(ALL_EMOJI))];
 
 await mkdir(dest, { recursive: true });
 

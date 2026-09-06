@@ -1,5 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { FR_VERBS, DE_VERBS, FR_TENSES, DE_TENSES, conjugate, conjugateEnglish, personsFor, hasTense, ALL_PERSONS } from "./content.js";
+import {
+  FR_VERBS, DE_VERBS, FR_TENSES, DE_TENSES, conjugate, conjugateEnglish,
+  personsFor, hasTense, ALL_PERSONS, spokenForm,
+} from "./content.js";
 import { FR_C1_VERBS, DE_C1_VERBS } from "./verbs-c1.js";
 
 const fr = (inf) => FR_VERBS.find((v) => v.inf === inf);
@@ -258,5 +261,36 @@ describe("the everyday verbs added for the vocabulary", () => {
     expect(forms("de", de("wissen"), "praesens")[0]).toBe("weiß");
     expect(forms("de", de("denken"), "konjunktiv2")[0]).toBe("dächte");   // mixed
     expect(forms("de", de("mögen"), "konjunktiv2")[0]).toBe("möchte");
+  });
+});
+
+describe("spokenForm", () => {
+  const sayFr = (inf, tense, i) => spokenForm("fr", i, conjugate("fr", fr(inf), tense)[i], tense);
+  const sayDe = (inf, tense, i) => spokenForm("de", i, conjugate("de", de(inf), tense)[i], tense);
+
+  it("says the whole phrase, not the bare form", () => {
+    /* Nobody utters "suis" on its own; the point of hearing it is the phrase. */
+    expect(sayFr("être", "present", 0)).toBe("je suis");
+    expect(sayDe("sein", "praesens", 0)).toBe("ich bin");
+  });
+  it("elides je before a vowel, with no space", () => {
+    expect(sayFr("avoir", "present", 0)).toBe("j'ai");
+  });
+  it("speaks one pronoun where the table lists several", () => {
+    /* The table writes "il/elle" and "er/sie/es" to show which persons share a
+     * form. Read aloud that becomes "il slash elle". */
+    expect(sayFr("être", "present", 2)).toBe("il est");
+    expect(sayDe("sein", "praesens", 2)).toBe("er ist");
+    expect(sayDe("sein", "praesens", 5)).toBe("sie sind");
+  });
+  it("gives the imperative no pronoun at all", () => {
+    /* "Sois!" is the imperative. "Tu sois" is the subjunctive and means
+     * something else, so adding the pronoun would teach the wrong form. */
+    expect(sayFr("être", "imperatif", 1)).toBe("sois");
+    expect(sayDe("sein", "imperativ", 1)).toBe("sei");
+  });
+  it("returns nothing for a person the tense does not have", () => {
+    expect(spokenForm("fr", 0, null, "imperatif")).toBe("");
+    expect(spokenForm("fr", 0, undefined, "present")).toBe("");
   });
 });

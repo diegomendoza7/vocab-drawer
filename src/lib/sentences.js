@@ -314,6 +314,70 @@ function objectTiles(lang, noun) {
 /* Tenses built with an auxiliary plus a non-finite form. */
 const PERFECT_TENSES = new Set(["passe", "perfekt"]);
 
+/* ---------------------------------------------------------------------- */
+/* Difficulty                                                              */
+/* ---------------------------------------------------------------------- */
+
+/**
+ * The ladder, easiest first.
+ *
+ * These are not arbitrary tiers of "more words". Each one is a specific thing
+ * word order does, chosen because tiles teach it better than a rule does — and
+ * because in three of the five, French and German behave *differently*, which
+ * is the whole reason to drag the pieces around rather than read about them:
+ *
+ *   plain        the neutral order, so everything after has a baseline
+ *   time         a filled front field, which in German pushes the subject
+ *                after the verb and in French does not
+ *   negative     French wraps the verb in ne … pas; German puts nicht at the end
+ *   modal        German sends the infinitive to the end of the clause; French
+ *                keeps it next to the modal
+ *   subordinate  German sends the *finite* verb to the end; French does not move
+ */
+export const SENTENCE_SHAPES = [
+  { id: "plain", label: "Simple", blurb: "Subject, verb, object. The neutral order." },
+  { id: "time", label: "Time first", blurb: "A time phrase in front — which moves the German subject behind the verb." },
+  { id: "negative", label: "Negative", blurb: "French wraps the verb in ne … pas; German puts nicht at the end." },
+  { id: "modal", label: "With a modal", blurb: "want / can / must — and German throws the second verb to the end." },
+  { id: "subordinate", label: "Two clauses", blurb: "A that-clause, where German sends the verb right to the end." },
+];
+
+/** One main clause to hang a two-clause sentence off. */
+export function pickOpener(lang, i = 0) {
+  const list = OPENERS[lang] || [];
+  return list.length ? list[((i % list.length) + list.length) % list.length] : null;
+}
+
+/** A modal, already conjugated for this subject. */
+export function pickModal(lang, verbs, personIdx, i = 0) {
+  const infs = MODAL_INFS[lang] || [];
+  const usable = infs.map((inf) => verbs.find((v) => v.inf === inf)).filter(Boolean);
+  if (!usable.length) return null;
+  const v = usable[((i % usable.length) + usable.length) % usable.length];
+  return { inf: v.inf, en: firstSense(v.en) || v.en, form: v.pres[personIdx] };
+}
+
+export function shapeInfo(id) {
+  return SENTENCE_SHAPES.find((x) => x.id === id) || SENTENCE_SHAPES[0];
+}
+
+/** The modal verbs each language can build a level-4 sentence with. */
+export const MODAL_INFS = { fr: ["vouloir", "pouvoir", "devoir"], de: ["wollen", "können", "müssen"] };
+
+/* The main clause a two-clause sentence hangs off. Kept to verbs of thinking
+ * so the subordinate clause is a statement rather than a question or a command,
+ * which would change its word order again. */
+const OPENERS = {
+  fr: [
+    { subj: "je", p: 0, en: "I think", verb: "pense", inf: "penser" },
+    { subj: "je", p: 0, en: "I believe", verb: "crois", inf: "croire" },
+  ],
+  de: [
+    { subj: "ich", p: 0, en: "I think", verb: "denke", inf: "denken" },
+    { subj: "ich", p: 0, en: "I believe", verb: "glaube", inf: "glauben" },
+  ],
+};
+
 /* How to name a tense in a tooltip. */
 const TENSE_NOTE = {
   present: "present", praesens: "present",
@@ -326,6 +390,100 @@ function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+/* ---------------------------------------------------------------------- */
+/* The harder shapes                                                       */
+/* ---------------------------------------------------------------------- */
+
+/**
+ * Negation, which the two languages do in genuinely different places.
+ *
+ * French clamps the verb between two words — `ne … pas` — and in a compound
+ * tense it is the *auxiliary* that gets clamped, not the participle: "je n'ai
+ * pas vu". German instead drops `nicht` after the object. A learner who has
+ * only ever seen one of these will put the other in the wrong place, which is
+ * exactly what the tiles make visible.
+ */
+function negatedParts({ lang, T, gSubject, gFinite, gAfter, obj, post, gTail, finite }) {
+  if (lang === "de") {
+    return {
+      parts: [gSubject, gFinite, ...obj, T("nicht", "the negator — after the object, before any verb at the end"), ...post, ...gTail],
+      alternates: [],
+    };
+  }
+  /* "ne" elides to "n'" before a vowel, and "je" fuses with the verb only when
+   * nothing sits between them — which negation does, so the merge is off here. */
+  const ne = VOWEL.test(finite) ? "n'" + finite : null;
+  const neTile = ne
+    ? T(ne, `ne + ${finite} — "ne" elides before a vowel`)
+    : T("ne", "the first half of the negation, before the verb");
+  const parts = ne
+    ? [gSubject, neTile, T("pas", "the second half — French negates with two words"), ...gAfter, ...obj, ...post]
+    : [gSubject, neTile, gFinite, T("pas", "the second half — French negates with two words"), ...gAfter, ...obj, ...post];
+  return { parts, alternates: [] };
+}
+
+/**
+ * A modal plus an infinitive — the clearest case of the German verb bracket.
+ *
+ * French keeps the two verbs together: "je veux voir l'avion". German splits
+ * them around everything else: "ich will das Flugzeug sehen". Same meaning,
+ * same two verbs, and the object ends up in a different place.
+ */
+function modalParts({ lang, T, gSubject, obj, post, modal, verb, label, vSense }) {
+  const modalTile = T(modal.form, `from ${modal.inf} — ${modal.en} (present)`);
+  const infTile = T(verb.inf, `${label} — ${vSense}, left as an infinitive because the modal is carrying the tense`);
+  if (lang === "de") {
+    return {
+      parts: [gSubject, modalTile, ...obj, ...post, infTile],
+      alternates: [],
+    };
+  }
+  return { parts: [gSubject, modalTile, infTile, ...obj, ...post], alternates: [] };
+}
+
+/**
+ * A that-clause. German sends the finite verb to the very end of it.
+ *
+ * The comma rides on the opener's verb tile rather than becoming a tile of its
+ * own: German punctuation requires it, but a floating comma tile is a puzzle
+ * about typography rather than about word order.
+ */
+function subordinateParts({ lang, T, gSubject, gFinite, gAfter, obj, post, gTail, opener }) {
+  const openSubj = T(opener.subj, opener.en.split(" ")[0]);
+  const openVerb = T(lang === "de" ? `${opener.verb},` : opener.verb,
+    `from ${opener.inf} — ${opener.en}${lang === "de" ? "; German puts a comma before the clause" : ""}`);
+  const conj = T(lang === "de" ? "dass" : "que", '"that" — it opens the clause');
+  if (lang === "de") {
+    /* Verb last, after the object and after anything the plain shape would
+     * have parked at the end. */
+    return {
+      parts: [openSubj, openVerb, conj, gSubject, ...obj, ...post, ...gTail, gFinite],
+      alternates: [],
+    };
+  }
+  return { parts: [openSubj, openVerb, conj, gSubject, gFinite, ...gAfter, ...obj, ...post], alternates: [] };
+}
+
+/** Shared tail end of every shape: tokens, glosses, display, English. */
+function finish({ parts, alternates = [] }, ctx) {
+  const tokens = parts.map((x) => x.tok);
+  return {
+    tokens,
+    glosses: parts.map((x) => x.gloss),
+    display: ctx.capitalize(tokens.join(" ")) + ".",
+    english: ctx.englishFor({
+      lang: ctx.lang, verb: ctx.verb, tenseKey: ctx.tenseKey, subject: ctx.subject,
+      noun: ctx.noun, time: ctx.time, enVerb: ctx.enVerb,
+      shape: ctx.shape, modal: ctx.modal, opener: ctx.opener,
+    }),
+    alternates,
+    verb: ctx.verb,
+    noun: ctx.noun,
+    tenseKey: ctx.tenseKey,
+    shape: ctx.shape,
+  };
+}
+
 /**
  * Build one item.
  *
@@ -334,7 +492,10 @@ function capitalize(s) {
  * time phrase, and rejecting a learner's grammatical sentence because it
  * wasn't the one we happened to generate teaches nothing.
  */
-export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null, enVerb = null }) {
+export function buildSentence({
+  lang, verb, tenseKey, subject, noun, time = null, enVerb = null,
+  shape = "plain", modal = null, opener = null,
+}) {
   const p = subject.p;
   const { finite, after, tail } = verbParts(lang, verb, tenseKey, p);
   const obj = objectTiles(lang, noun);
@@ -361,6 +522,25 @@ export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null
   let parts;
   const alternates = [];
   const toks = (a) => a.map((x) => x.tok);
+
+  /* ---- the harder shapes ----
+   *
+   * Each returns early with its own layout. They share verbParts and
+   * objectTiles with the plain shape, so a noun or tense fix reaches all of
+   * them, but the ORDER is the whole lesson and cannot be parameterised. */
+
+  if (shape === "negative") {
+    const negated = negatedParts({ lang, T, gSubject, gFinite, gAfter, obj, post, gTail, finite });
+    return finish(negated, { lang, verb, tenseKey, subject, noun, time: null, enVerb, shape, modal, opener, capitalize, englishFor });
+  }
+  if (shape === "modal" && modal) {
+    const built = modalParts({ lang, T, gSubject, obj, post, modal, verb, label, vSense });
+    return finish(built, { lang, verb, tenseKey, subject, noun, time: null, enVerb, shape, modal, opener, capitalize, englishFor });
+  }
+  if (shape === "subordinate" && opener) {
+    const built = subordinateParts({ lang, T, gSubject, gFinite, gAfter, obj, post, gTail, opener });
+    return finish(built, { lang, verb, tenseKey, subject, noun, time: null, enVerb, shape, modal, opener, capitalize, englishFor });
+  }
 
   if (lang === "de") {
     if (time) {
@@ -403,7 +583,11 @@ export function buildSentence({ lang, verb, tenseKey, subject, noun, time = null
 /* Adverbs that pin the event to finished past time. */
 const PAST_ADVERBS = new Set(["hier", "gestern"]);
 
-function englishFor({ lang, verb, tenseKey, subject, noun, time, enVerb }) {
+/* The bare English verb — "to see" → "see". content.js has this privately; one
+ * line is cheaper to repeat than a new export nothing else wants. */
+const bareEn = (en) => String(en || "").split(/[,/;(]/)[0].trim().replace(/^to\s+/i, "").trim();
+
+function englishFor({ lang, verb, tenseKey, subject, noun, time, enVerb, shape, modal, opener }) {
   /* French and German use the perfect where English cannot: "hier tu as fait"
    * is right, but "yesterday you have done" is not — English demands the
    * simple past once the time is fixed. The prompt has to be natural English,
@@ -415,6 +599,28 @@ function englishFor({ lang, verb, tenseKey, subject, noun, time, enVerb }) {
   const enSubject = enVerb ? { ...verb, en: enVerb, enPast: undefined, enPP: undefined } : verb;
   const phrase = conjugateEnglish(lang, enSubject, enTense, subject.p, subject.en);
   const object = `the ${firstSense(noun.e)}`;
+
+  /* The prompt is the only statement of what the tiles are meant to say, so it
+   * has to be English somebody would produce — not the plain sentence with a
+   * word bolted on. Each shape says it differently. */
+  if (shape === "negative") {
+    const third = subject.p === 2;
+    const negated = PERFECT_TENSES.has(tenseKey)
+      ? `${subject.en} ${third ? "has not" : "have not"} ${conjugateEnglish(lang, enSubject, "passe", subject.p, "").trim().split(/\s+/).slice(-1)[0]}`
+      : `${subject.en} ${third ? "does not" : "do not"} ${bareEn(enSubject.en)}`;
+    return capitalize(`${negated} ${object}`) + ".";
+  }
+  if (shape === "modal" && modal) {
+    const MODAL_EN = { vouloir: "want to", pouvoir: "can", devoir: "must", wollen: "want to", "können": "can", "müssen": "must" };
+    const m = MODAL_EN[modal.inf] || "want to";
+    /* "can" and "must" never take a third-person -s; "want to" does. */
+    const inflected = m === "want to" && subject.p === 2 ? "wants to" : m;
+    return capitalize(`${subject.en} ${inflected} ${bareEn(enSubject.en)} ${object}`) + ".";
+  }
+  if (shape === "subordinate" && opener) {
+    return capitalize(`${opener.en} that ${phrase} ${object}`) + ".";
+  }
+
   const body = `${phrase} ${object}`;
   const s = time ? `${capitalize(time.en)} ${body}` : capitalize(body);
   return s + ".";

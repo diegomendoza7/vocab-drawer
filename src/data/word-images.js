@@ -13,15 +13,37 @@
 
 /** Normalise an English gloss to a concept key: "to eat" → "eat", "woman / wife" → "woman". */
 export function conceptKey(gloss) {
-  if (!gloss) return "";
-  return gloss
-    .toLowerCase()
-    .split("/")[0]
-    .split("(")[0]
-    .replace(/^to\s+/, "")
-    .replace(/^the\s+/, "")
-    .replace(/[^a-zà-ÿ\s-]/g, "")
-    .trim();
+  return conceptKeys(gloss)[0] || "";
+}
+
+/**
+ * Every sense a gloss offers, best first.
+ *
+ * Glosses above B1 are synonym lists — "observation, finding", "approach,
+ * methodology; step taken" — and splitting only on "/" left the commas in, so
+ * the key became "observation finding" and matched nothing. Every C1 entry
+ * written that way was unreachable no matter how many pictures existed.
+ *
+ * Returning all the senses rather than only the first also means a word can be
+ * matched on its second sense when its first has no image, which costs nothing
+ * and finds a surprising amount.
+ */
+export function conceptKeys(gloss) {
+  if (!gloss) return [];
+  const out = [];
+  for (const piece of String(gloss).toLowerCase().split(/[/,;]/)) {
+    const key = piece
+      /* Remove parentheticals rather than truncating at the first "(" — a
+       * gloss can *begin* with one ("(health insurance) fund"), and cutting
+       * there threw the whole entry away. */
+      .replace(/\([^)]*\)/g, " ")
+      .replace(/^\s*to\s+/, "")
+      .replace(/^\s*the\s+/, "")
+      .replace(/[^a-zà-ÿ\s-]/g, "")
+      .trim();
+    if (key && !out.includes(key)) out.push(key);
+  }
+  return out;
 }
 
 /* Concepts with an original illustration in /img/words/. Kept as a Set so the
@@ -105,6 +127,70 @@ export const EMOJI = {
 };
 
 /** Colour swatches — a picture of "blue" is a colour, not an object. */
+/* B1 and above: the abstract half of the deck.
+ *
+ * Coverage above A2 was essentially zero — 4 words out of 2,744 — because the
+ * original set was built for concrete A1 vocabulary and nothing else was ever
+ * added. These are chosen on one test: does the picture actually *evoke* the
+ * word? A ballot box for "election" earns its place; there is no honest image
+ * for "nevertheless", and a vague one there would be noise a learner has to
+ * look past, or worse, a wrong association to unlearn. So connectors, most
+ * analytical verbs and the vaguer adjectives are deliberately left blank.
+ *
+ * Repeats are allowed where two concepts really do share an image — economy,
+ * career and progress are all a rising line, and pretending otherwise would
+ * mean picking a worse glyph for two of them.
+ */
+const ABSTRACT_EMOJI = {
+  // Society & politics
+  society: "1f465", government: "1f3db", environment: "1f30d", economy: "1f4c8",
+  law: "2696", citizen: "1f9d1", politics: "1f5f3", election: "1f5f3", vote: "1f5f3",
+  power: "26a1", reform: "1f527",
+  // Education & work
+  company: "1f3e2", research: "1f52c", education: "1f393", university: "1f3eb",
+  career: "1f4bc", skill: "1f6e0", employer: "1f454", training: "1f3cb",
+  // Health
+  health: "1fa7a", illness: "1f912", treatment: "1f48a", symptom: "1f927",
+  pain: "1f915", remedy: "1f9ea", patient: "1f3e5", heal: "1fa79",
+  // Problems, opinions, choices
+  problem: "2757", solution: "1f4a1", result: "1f4ca", reason: "1f914",
+  opinion: "1f4ac", choice: "1f500", goal: "1f3af", succeed: "2705", fail: "274c",
+  // Change and time
+  change: "1f504", develop: "1f331", create: "1f3a8", explain: "1f5e3",
+  future: "1f52e", generation: "1f46a", tradition: "1f3fa", evolution: "1f9ec",
+  era: "231b", value: "1f48e",
+  // Judgements that genuinely picture
+  important: "2b50", difficult: "1f9d7", necessary: "1f4cc", current: "23f1",
+  obvious: "1f441", useful: "1f9f0", useless: "1f6ab",
+  // Stakes and analysis
+  stake: "1f3b2", challenge: "1f9d7", asset: "1f4b0", obstacle: "1f6a7",
+  priority: "1f947", resource: "1f6e2", opportunity: "1f6aa",
+  advantage: "1f44d", disadvantage: "1f44e", difference: "2194", scale: "1f4cf",
+  hypothesis: "2753", observation: "1f50e", indicator: "1f9ee",
+  criterion: "1f4cb", context: "1f5fa", impact: "1f4a5",
+
+  // B2 and up: analysis, argument, and the verbs of academic writing.
+  analyze: "1f52c", evaluate: "2696", summarize: "1f4dd", highlight: "1f58d",
+  structure: "1f3d7", implement: "1f528", strengthen: "1f4aa", tackle: "1f93c",
+  optimize: "2699", require: "1f4cc", promote: "1f4e2", determine: "1f3af",
+  sustainable: "267b", effective: "2705", efficient: "26a1",
+  controversial: "26a1", considerable: "1f4cf", clear: "1f50d",
+  argument: "1f4ac", debate: "1f5e3", controversy: "26a1", convince: "1f91d",
+  consensus: "1f91d", globalization: "1f310", inequality: "2696",
+  growth: "1f4c8", investment: "1f4b5",
+  approach: "1f9ed", consequence: "27a1", trend: "1f4c8", analysis: "1f4ca",
+  correlation: "1f517", methodology: "1f4cb", assumption: "2753", insight: "1f4a1",
+  constraint: "1f517", gap: "2194",
+  // The concrete end of C1: the apparatus of research, which does picture.
+  data: "1f4be", sample: "1f9ea", corpus: "1f4da", framework: "1f3d7",
+  scope: "1f4d0", outcome: "1f3c1", link: "1f517", discrepancy: "2194",
+  question: "2753",
+};
+
+/* Everything the app may reference, for scripts/sync-emoji.mjs. Keeping the two
+ * maps separate above is editorial — this is the one the tooling walks. */
+export const ALL_EMOJI = { ...EMOJI, ...ABSTRACT_EMOJI };
+
 export const SWATCH = {
   red: "#E5352B", blue: "#1F6FD0", green: "#3E9B54", black: "#1A1A1A",
   white: "#FFFFFF", yellow: "#F2C230", orange: "#EE7B22", grey: "#9A9A9A",
@@ -126,13 +212,16 @@ const NUMBER_WORDS = {
  *   null                        nothing suitable — caller shows text only
  */
 export function imageFor(word) {
-  const key = conceptKey(word?.e);
-  if (!key) return null;
-  if (DRAWN.has(key)) return { kind: "drawn", src: `/img/words/${key}.svg`, key };
-  if (SWATCH[key]) return { kind: "swatch", color: SWATCH[key], key };
-  if (NUMBER_WORDS[key]) return { kind: "numeral", text: NUMBER_WORDS[key], key };
-  const cp = EMOJI[key];
-  if (cp) return { kind: "emoji", src: `/img/emoji/${cp}.svg`, key };
+  /* Each sense in turn, best first. A word whose primary sense has no picture
+   * is often perfectly picturable on its second — "gap, discrepancy, lag" has
+   * nothing for "lag" and an obvious arrow for "gap". */
+  for (const key of conceptKeys(word?.e)) {
+    if (DRAWN.has(key)) return { kind: "drawn", src: `/img/words/${key}.svg`, key };
+    if (SWATCH[key]) return { kind: "swatch", color: SWATCH[key], key };
+    if (NUMBER_WORDS[key]) return { kind: "numeral", text: NUMBER_WORDS[key], key };
+    const cp = EMOJI[key] ?? ABSTRACT_EMOJI[key];
+    if (cp) return { kind: "emoji", src: `/img/emoji/${cp}.svg`, key };
+  }
   return null;
 }
 

@@ -13,7 +13,10 @@
  */
 import { DATA } from "../src/data/vocab.js";
 import { FR_VERBS, DE_VERBS } from "../src/data/content.js";
-import { nounPoolFor, usableVerbs, objectTopicsFor, isUsableNoun, buildSentence } from "../src/lib/sentences.js";
+import {
+  nounPoolFor, usableVerbs, objectTopicsFor, isUsableNoun, buildSentence,
+  SENTENCE_SHAPES, SUBJECTS, pickModal, pickOpener, timePhrasesFor,
+} from "../src/lib/sentences.js";
 
 const ROUND = 8;                       // must match SENTC_ROUND in VocabDrawer
 const problems = [];
@@ -67,6 +70,30 @@ for (const [lang, verbs] of [["fr", FR_VERBS], ["de", DE_VERBS]]) {
       });
       if (/\b\w+(?:ed|d)ed\b|\bmaked\b|\btaked\b|\bgived\b|\bholded\b|\beated\b|\bseed\b|\bselled\b/.test(sentence.english)) {
         fail(`${key}/${pick.word.t}: "${sentence.english}" — the English past is wrong`);
+      }
+    }
+
+    /* Every rung of the difficulty ladder must build for every verb. A shape
+     * that silently produces nothing would leave a level that looks selectable
+     * and then deals an empty round. */
+    const tense = lang === "fr" ? "present" : "praesens";
+    for (const { id } of SENTENCE_SHAPES) {
+      const subj = SUBJECTS[lang][0];
+      const times = timePhrasesFor(lang, tense);
+      const built = buildSentence({
+        lang, verb: v, tenseKey: tense, subject: subj, noun: pool[0].word,
+        shape: id,
+        time: id === "time" ? times[0] || null : null,
+        modal: id === "modal" ? pickModal(lang, verbs, subj.p, 0) : null,
+        opener: id === "subordinate" ? pickOpener(lang, 0) : null,
+      });
+      if (!built || built.tokens.length < 3) fail(`${key}/${id}: builds only ${built?.tokens?.length ?? 0} tiles`);
+      else if (built.glosses.length !== built.tokens.length) fail(`${key}/${id}: ${built.tokens.length} tiles but ${built.glosses.length} glosses`);
+      else if (built.tokens.some((t) => !t || !t.trim())) fail(`${key}/${id}: produced an empty tile`);
+      /* The German shapes exist to move a verb to the end. If it is not there,
+       * the level is teaching the wrong thing. */
+      if (lang === "de" && id === "modal" && built.tokens[built.tokens.length - 1] !== v.inf) {
+        fail(`${key}/modal: German infinitive should be last, got "${built.tokens[built.tokens.length - 1]}"`);
       }
     }
 
