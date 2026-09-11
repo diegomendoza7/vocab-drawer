@@ -4,13 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -n api,web -c magenta,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node server/index.js",
+    "dev:web": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "vite build && vitest run && node scripts/check-answers.mjs && node scripts/check-verbs.mjs && node scripts/audit-c1.mjs && node scripts/check-etymology.mjs && node scripts/check-morphology.mjs && node scripts/check-sentences.mjs && node scripts/check-images.mjs && oxlint"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
+    "@twemoji/svg": "^15.0.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "lucide-react": "^1.28.0",
@@ -25,6 +31,7 @@
     "concurrently": "^9.2.4",
     "oxlint": "^1.75.0",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.2.0"
+    "vite": "^8.2.0",
+    "vitest": "^4.1.11"
   }
 }

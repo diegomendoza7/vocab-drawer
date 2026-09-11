@@ -1,6 +1,6 @@
 import {
   LayoutGrid, Sparkles, GraduationCap, Blocks, BookOpen, Quote,
-  Headphones, FileText, Activity, CalendarCheck, CloudOff, GitBranch, Zap, Link2,
+  Headphones, FileText, Activity, CalendarCheck, CloudOff, GitBranch, Zap, Link2, PenLine,
 } from "lucide-react";
 import { C } from "../theme.js";
 import ThemeToggle from "./ThemeToggle.jsx";

@@ -1315,3 +1315,123 @@ directness and *doch*, and the words that carry a country inside them —
 - Service worker *registration* is untested. The policy is covered by
   `scripts/sw.test.js`, but registering a worker needs a real browser, and the
   embedded preview used during development refuses it.
+
+## Reading Room and Writing Desk
+
+The old Reading Corner was one fairy tale — Perrault's *Petit Chaperon rouge*
+and the Grimms' *Rotkäppchen* — cut into four excerpts per language, with one
+word blanked per sentence and four options under it. That is recognition
+wearing a reading exercise's clothes: you can pick the right word without
+having understood the paragraph, and there was nothing to say back.
+
+It is replaced by two sections.
+
+**Reading Room** — 30 passages, 15 per language, three at each level A1–C1,
+all written for this app and none sharing a story. They run through the genres
+a reader actually meets: a shop dialogue, a pen-friend email, a flat-share ad,
+a sick note, a news feature, a letter to the editor, a short story, an argued
+essay, a satirical column. Length is part of the level (`LEVEL_WORDS` in
+`src/data/reading/index.js`): 60–150 words at A1, 300–600 at C1.
+
+Each passage asks three or four questions **answered in writing, in a full
+sentence**, and then sets a writing task that grows out of it. Every answer is
+checked, in this order:
+
+1. **Grammar and spelling** — the headline score.
+2. **The question's key ideas** — did the answer actually answer it.
+3. **Vocabulary** — described, never graded.
+
+The passage stays beside the questions at desktop width, and any word in it can
+be clicked: the deck's own gloss when it has one, English Wiktionary's
+definition API when it does not (it answers inflected forms usefully — "plural
+of Schwierigkeit"). Words can be kept and sent to My Words in a batch.
+
+**Writing Desk** — the same checking with no passage at all: 20 prompts, four
+per level in both languages, or a blank page. Saving a piece puts it in a
+journal with its scores, and the row of bars is the point over time. The draft
+survives a reload (localStorage, per language); saved pieces live in the
+progress record, so they travel with an export.
+
+### How the checking works without a model
+
+**LanguageTool** (languagetool.org) does the grammar and spelling. It is
+open-source and rule-based — no model in the loop — and its free public API
+sends CORS headers, so the browser calls it directly and the shared static
+build needs no server. Measured on typical learner errors (2026-09-11):
+
+| | caught | false alarms |
+|---|---|---|
+| French | 9 of 9 | 0 |
+| German | 2 of 9 | 0 |
+
+French is excellent. German is not: the free rules pass verb-second word order,
+the verb-final subordinate clause, case after a preposition, subject–verb
+agreement and adjective endings — which is most of what a German learner gets
+wrong. So German gets a second layer.
+
+**Drawer rules** (`germanIssues` in `src/lib/grammar.js`) are six rules for
+exactly those errors, run offline against the app's own verb tables and the
+deck's noun genders:
+
+- verb second after a fronted adverbial — *Gestern ich bin* → "bin ich"
+- the verb to the end of a subordinate clause — *weil ich muss arbeiten* →
+  "arbeiten muss", rejoining a separable prefix where one moved
+- pronoun–verb agreement — *du bin* → "bist"
+- case after a preposition — *mit das Auto* → "mit dem", *zum Schule* → "zur"
+- article gender on a sentence-initial subject — *Der Frau ist nett* → "Die"
+- adjective endings after a bare ein-word — *mein beste Freund* → "bester"
+
+They are narrow on purpose. A checker that cries wolf teaches the learner to
+ignore it, so every rule is held to **zero flags across every German sentence
+the app holds** — 1,760 of them, the deck's examples plus every passage,
+question, model answer and prompt — and a pattern that cannot be told apart
+from correct German is left to LanguageTool rather than guessed at. That
+discipline is what "Der Frau gebe ich das Buch", "Es sind drei Kinder",
+"Als Kind war ich oft krank" and "Weil wir essen gehen" are doing in
+`grammar.test.js`: each one broke a first draft of a rule.
+
+### The scores, and why they are these scores
+
+**Grammar: the share of sentences with no grammar or spelling error.**
+Error-free units are the standard accuracy measure in second-language writing
+research (Wolfe-Quintero, Inagaki & Kim, 1998), and "3 of 4 sentences clean"
+says exactly what happened — where errors per hundred words punishes a learner
+for writing more. Punctuation and typography are shown as tips and **not
+counted**: French typography wants a thin space before "?", and docking someone
+for that makes the score about typesetting.
+
+**Vocabulary: a frequency profile, kept secondary.** After Laufer & Nation's
+Lexical Frequency Profile (1995), the share of words beyond the most common
+2,000 is the part of vocabulary that grows with proficiency. It is reported
+beside the passage's own figure, never as a grade — a learner who reaches for a
+rare word and gets it wrong has not written better than one who used plain
+words correctly, and a score saying otherwise would push exactly the wrong
+habit. Misspellings are excluded from the profile, or a typo would count as a
+rare word.
+
+`src/data/frequency.js` ranks deck *headwords*; running text needs *forms*
+("allées", "Schwierigkeiten"). `scripts/freq/forms.mjs` writes the top 10,000
+forms per language into `src/data/freq/{fr,de}.js` from Hermit Dave's
+FrequencyWords (2018 OpenSubtitles lists, CC BY-SA 4.0). They load on demand
+the first time a piece of writing is checked — `manualChunks` deliberately
+keeps them out of the eager vocabulary chunk.
+
+### Limits worth knowing
+
+- LanguageTool's explanations come back **in the language being checked**, so
+  French errors are explained in French. Its free API allows 20 checks a
+  minute; the client keeps two in reserve and says how long to wait rather than
+  earning a refusal.
+- Checking sends the text to languagetool.org. Every screen that checks says
+  so and links there, which their terms require. Set `VITE_LT_URL` to point at
+  a self-hosted LanguageTool instead and nothing leaves the machine.
+- Grammar and word lookup need a connection. The offline layers — the German
+  rules, key ideas, the copied-text check, the vocabulary profile — still run,
+  and the panel says which layer was missing.
+- Key ideas are matched on stems, not meaning: "the train was *not* late" still
+  contains "late". It is a prompt to compare with the model answer, not a mark.
+
+`node scripts/check-reading.mjs` (in `npm run check`) guards the content: every
+passage inside its level's length band, every model answer satisfying its own
+key ideas *and* being a full sentence, no key idea given away by its own
+question, and the German rules silent on all 1,760 known-correct sentences.

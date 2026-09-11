@@ -108,6 +108,10 @@ export default defineConfig({
          * does not have. Both are follow-ups, not one-liners. */
         manualChunks(id) {
           if (id.includes("node_modules")) return "vendor";
+          /* The word-form frequency lists load on demand, the first time a
+           * piece of writing is checked — folding them into the eager
+           * vocabulary chunk would make every visitor download them. */
+          if (id.includes("/src/data/freq/")) return undefined;
           if (id.includes("/src/data/")) return "vocabulary";
           return undefined;
         },

@@ -19,7 +19,7 @@ export const SECTION_OF = {
   sentcSetup: "sentences", sentcWords: "sentences",
   sentcBuild: "sentences", sentcDone: "sentences",
 
-  readingSelect: "reading", readingQuiz: "reading", readingDone: "reading",
+  reading: "reading", writing: "writing",
 
   phraseSelect: "phrases", phraseMatch: "phrases", phraseDone: "phrases",
 
@@ -47,7 +47,7 @@ export function sectionOf(screen) {
 export const IN_DRILL = new Set([
   "learn", "matching", "choose", "practice", "sentence",
   "conjTable", "conjMatch", "conjChoose", "conjugation",
-  "sentcBuild", "readingQuiz", "phraseMatch", "dictation", "speaking",
+  "sentcBuild", "phraseMatch", "dictation", "speaking",
 ]);
 
 /* The stages that run inside the desktop study frame (stage rail + ledger).
