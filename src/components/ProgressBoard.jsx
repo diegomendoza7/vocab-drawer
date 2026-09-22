@@ -119,7 +119,7 @@ export default function ProgressBoard({
                         <div className="rounded-full" style={{ height: 5, backgroundColor: C.paper }}>
                           <div className="h-full rounded-full" style={{ width: `${d.pct}%`, backgroundColor: d.pct === 100 ? C.green : C.gold }} />
                         </div>
-                        <span className="font-serif text-[10px] tabular-nums text-right" style={{ color: C.muted }}>{d.pct}%</span>
+                        <span className="font-serif text-[0.625rem] tabular-nums text-right" style={{ color: C.muted }}>{d.pct}%</span>
                       </div>
                     ))}
                     {lv.drawers.length > 12 && (
@@ -150,7 +150,7 @@ export default function ProgressBoard({
                 <div className="rounded-full" style={{ height: 5, backgroundColor: C.paper }}>
                   <div className="h-full rounded-full" style={{ width: `${myWords.pct}%`, backgroundColor: C.gold }} />
                 </div>
-                <span className="font-serif text-[10px] tabular-nums text-right" style={{ color: C.muted }}>{myWords.pct}%</span>
+                <span className="font-serif text-[0.625rem] tabular-nums text-right" style={{ color: C.muted }}>{myWords.pct}%</span>
               </div>
             </div>
           )}

@@ -82,7 +82,7 @@ export default function PhraseMatch({
               if (!p) return null;
               return (
                 <div key={id}>
-                  <div className="font-serif text-[15px]" style={{ color: C.ink }}>{p.phrase}</div>
+                  <div className="font-serif text-[0.9375rem]" style={{ color: C.ink }}>{p.phrase}</div>
                   <div className="font-serif text-xs" style={{ color: C.muted }}>{p.meaning} · {p.literal}</div>
                 </div>
               );

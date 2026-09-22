@@ -24,7 +24,7 @@ export default function SpeakButton({ onSay, ready = true, size = "sm", label, t
         backgroundColor: "transparent",
         border: `1px solid ${C.line}`,
         color: C.muted,
-        fontSize: small ? 10 : 12,
+        fontSize: small ? "0.625rem" : "0.75rem",
         lineHeight: 1.4,
       }}
     >

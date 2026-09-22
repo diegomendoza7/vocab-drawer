@@ -33,7 +33,7 @@ function Affixes({ affixes, onOpen, openId, onSay, canSpeak }) {
               <button onClick={() => onOpen(open ? null : a.id)}
                 className="w-full text-left px-3 py-2 rounded-md flex items-baseline gap-2"
                 style={{ backgroundColor: open ? TINT : C.card, border: `1px solid ${C.line}` }}>
-                <span className="font-type text-[15px]" style={{ color: C.gold, minWidth: 74 }}>{a.form}</span>
+                <span className="font-type text-[0.9375rem]" style={{ color: C.gold, minWidth: 74 }}>{a.form}</span>
                 <span className="font-serif text-sm flex-1" style={{ color: C.ink }}>{a.sense}</span>
                 {a.en && a.en !== "—" && (
                   <span className="font-serif text-xs shrink-0" style={{ color: C.muted }}>≈ {a.en}</span>
@@ -68,10 +68,10 @@ function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix, onSay,
       <div className="font-serif text-xs uppercase tracking-wide mb-1" style={{ color: C.muted }}>Root</div>
       <div className="flex items-baseline gap-3 flex-wrap mb-1">
         <h2 className="font-type text-3xl" style={{ color: C.ink }}>{family.root}</h2>
-        <span className="font-serif text-[17px]" style={{ color: C.muted }}>“{family.gloss}”</span>
+        <span className="font-serif text-[1.0625rem]" style={{ color: C.muted }}>“{family.gloss}”</span>
         <SpeakButton ready={canSpeak} onSay={() => onSay(family.base.w)} size="md" label="hear the root" />
       </div>
-      <p className="font-serif text-[15px] mb-4" style={{ color: C.muted }}>
+      <p className="font-serif text-[0.9375rem] mb-4" style={{ color: C.muted }}>
         {words.length} words in this family. Learn the root once and the rest are the root plus a part you already know.
       </p>
 
@@ -87,7 +87,7 @@ function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix, onSay,
             style={{ backgroundColor: w.base ? TINT : C.card, border: `1px solid ${w.base ? C.gold : C.line}` }}>
             <WordParts notation={w.p} size={16} />
             <SpeakButton ready={canSpeak} onSay={() => onSay(w.w)} title={`Hear ${w.w}`} />
-            <span className="font-serif text-[15px]" style={{ color: C.ink }}>
+            <span className="font-serif text-[0.9375rem]" style={{ color: C.ink }}>
               {w.g && <span style={{ color: C.muted }}>{w.g} </span>}
               {w.e}
             </span>
@@ -120,7 +120,7 @@ function Quiz({ quiz, picked, onPick, onNext, onBack, stats, onSay, canSpeak }) 
         <div className="font-serif text-sm mb-2" style={{ color: C.muted }}>
           You know <span className="font-type" style={{ color: C.ink }}>{quiz.base.w}</span> — “{quiz.base.e}”.
         </div>
-        <div className="font-type text-[21px] mb-4" style={{ color: C.ink }}>
+        <div className="font-type text-[1.3125rem] mb-4" style={{ color: C.ink }}>
           Which word means “{quiz.ask}”?
         </div>
 
@@ -181,8 +181,8 @@ export function BuilderList({ families, selectedFamily, onSelectFamily }) {
             <button key={f.id} onClick={() => onSelectFamily(f.id)}
               className="px-2.5 py-1.5 rounded-md text-left"
               style={{ backgroundColor: active ? TINT : "transparent", border: `1px solid ${active ? C.line : "transparent"}` }}>
-              <div className="font-type text-[15px] leading-tight" style={{ color: C.ink }}>{f.root}-</div>
-              <div className="font-serif text-[11px] leading-tight" style={{ color: C.muted }}>
+              <div className="font-type text-[0.9375rem] leading-tight" style={{ color: C.ink }}>{f.root}-</div>
+              <div className="font-serif text-[0.6875rem] leading-tight" style={{ color: C.muted }}>
                 {f.gloss} · {f.members.length + 1} words
               </div>
             </button>
@@ -215,9 +215,9 @@ export default function WordBuilder({
         </div>
         <div className="flex items-baseline gap-3 flex-wrap mb-2">
           <WordParts notation={ENGLISH_DEMO.p} size={20} showKinds />
-          <span className="font-serif text-[15px]" style={{ color: C.muted }}>{ENGLISH_DEMO.gloss}</span>
+          <span className="font-serif text-[0.9375rem]" style={{ color: C.muted }}>{ENGLISH_DEMO.gloss}</span>
         </div>
-        <p className="font-serif text-[15px] mb-3" style={{ color: C.ink }}>{ENGLISH_DEMO.point}</p>
+        <p className="font-serif text-[0.9375rem] mb-3" style={{ color: C.ink }}>{ENGLISH_DEMO.point}</p>
         <div className="flex flex-wrap gap-x-4 gap-y-1.5">
           {ENGLISH_DEMO.family.map((w) => (
             <span key={w.w} className="flex items-baseline gap-1.5">

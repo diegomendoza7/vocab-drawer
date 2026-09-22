@@ -47,7 +47,7 @@ function Marked({ text, issues, active, onPick }) {
   });
   if (at < text.length) out.push(<span key="end">{text.slice(at)}</span>);
   return (
-    <p className="font-serif text-[15px] rounded-md p-3" style={{ color: C.ink, lineHeight: 1.85, whiteSpace: "pre-wrap", backgroundColor: C.paper, border: `1px solid ${C.line}` }}>
+    <p className="font-serif text-[0.9375rem] rounded-md p-3" style={{ color: C.ink, lineHeight: 1.85, whiteSpace: "pre-wrap", backgroundColor: C.paper, border: `1px solid ${C.line}` }}>
       {out}
     </p>
   );
@@ -104,7 +104,7 @@ export default function WritingFeedback({
       onMouseEnter={() => setActive(i)}
     >
       <div className="flex items-baseline gap-2 flex-wrap">
-        <span className="text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded" style={{ color: KIND_TONE[i.kind], border: `1px solid ${C.line}` }}>
+        <span className="text-[0.625rem] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded" style={{ color: KIND_TONE[i.kind], border: `1px solid ${C.line}` }}>
           {i.source === "drawer" ? i.short : KIND_LABEL[i.kind]}
         </span>
         <span className="font-serif text-sm" style={{ color: C.ink }}>{i.message}</span>
@@ -143,7 +143,7 @@ export default function WritingFeedback({
           {accuracyLabel(score.accuracy)}
         </span>
       </div>
-      <div className="text-[11px] font-serif" style={{ color: C.muted }}>
+      <div className="text-[0.6875rem] font-serif" style={{ color: C.muted }}>
         <Status status={status} waitMs={waitMs} lang={lang} />
       </div>
       {(stale || fixed > 0) && (
@@ -197,10 +197,10 @@ export default function WritingFeedback({
       {model && (
         <div className="rounded-md p-3" style={{ backgroundColor: TINT, border: `1px solid ${C.line}` }}>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: C.muted }}>A model answer</span>
+            <span className="text-[0.6875rem] font-semibold uppercase tracking-wide" style={{ color: C.muted }}>A model answer</span>
             <SpeakButton onSay={() => onSay(model)} ready={canSpeak} size={12} title="Hear the model answer" />
           </div>
-          <p className="font-serif text-[15px]" style={{ color: C.ink, lineHeight: 1.6 }}>{model}</p>
+          <p className="font-serif text-[0.9375rem]" style={{ color: C.ink, lineHeight: 1.6 }}>{model}</p>
         </div>
       )}
 
@@ -208,8 +208,8 @@ export default function WritingFeedback({
       {profile && profile.tokens > 0 && (
         <div className="pt-2" style={{ borderTop: `1px solid ${C.line}` }}>
           <div className="flex items-baseline gap-2 mb-1.5">
-            <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: C.muted }}>Vocabulary</span>
-            <span className="text-[11px] font-serif" style={{ color: C.muted }}>— described, not graded; grammar comes first</span>
+            <span className="text-[0.6875rem] font-semibold uppercase tracking-wide" style={{ color: C.muted }}>Vocabulary</span>
+            <span className="text-[0.6875rem] font-serif" style={{ color: C.muted }}>— described, not graded; grammar comes first</span>
           </div>
           <div className="flex h-2 rounded-full overflow-hidden mb-1.5" title="Your words by frequency band">
             {BANDS.map((b) => profile.bands[b.key] > 0 && (

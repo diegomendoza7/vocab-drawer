@@ -88,7 +88,7 @@ export default function DiffReviewTable({
                 <span className="font-type block truncate" style={{ color: C.ink }}>
                   {lang === "de" && (choice === "proposed" ? res?.g : row.gender) ? `${choice === "proposed" ? res.g : row.gender} ` : ""}{row.term}
                 </span>
-                <span className="text-[11px]" style={{ color: attention ? C.gold : C.muted }}>
+                <span className="text-[0.6875rem]" style={{ color: attention ? C.gold : C.muted }}>
                   {res ? VERDICT_TEXT[res.verdict] || res.verdict : "could not be checked"}
                 </span>
               </span>

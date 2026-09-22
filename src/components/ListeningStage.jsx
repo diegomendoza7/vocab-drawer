@@ -219,9 +219,9 @@ export default function ListeningStage({
                   </div>
                   <div className="rounded-md px-3 py-2" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
                     <div className="flex items-baseline gap-2 flex-wrap">
-                      <span className="font-serif text-[17px]" style={{ color: C.ink }}>{item.word.s}</span>
+                      <span className="font-serif text-[1.0625rem]" style={{ color: C.ink }}>{item.word.s}</span>
                       {audioReady && (
-                        <button onClick={onPlay} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px]"
+                        <button onClick={onPlay} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[0.6875rem]"
                           style={{ backgroundColor: C.paper, color: C.ink, border: `1px solid ${C.line}` }}>
                           <Volume2 size={11} /> hear
                         </button>

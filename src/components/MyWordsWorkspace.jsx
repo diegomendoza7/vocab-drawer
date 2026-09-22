@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, Sparkles, Trash2 } from "lucide-react";
-import { C } from "../theme.js";
+import { C, TINT } from "../theme.js";
 
 /* My Words as one surface: the library on the left, adding on the right.
  *
@@ -24,7 +24,7 @@ function dueLabel(days) {
 }
 
 export default function MyWordsWorkspace({
-  lang, langName, rows, uncheckedCount, onStudy, onRecheck, busy, pct, error,
+  langName, rows, uncheckedCount, onStudy, onRecheck, busy, pct, error,
   onDelete, addPanel,
 }) {
   const [filter, setFilter] = useState("");
@@ -105,11 +105,11 @@ export default function MyWordsWorkspace({
                       style={{
                         gridTemplateColumns: "1.1fr 1.1fr 96px 1fr 92px 30px",
                         borderTop: `1px solid ${C.line}`,
-                        backgroundColor: attention ? "rgba(182,130,53,.08)" : "transparent",
+                        backgroundColor: attention ? TINT : "transparent",
                       }}>
                       <span className="font-type truncate" style={{ color: C.ink }}>{r.display}</span>
                       <span className="truncate" style={{ color: C.muted }}>{r.meaning || "—"}</span>
-                      <span className="text-[11px] px-1.5 py-0.5 rounded justify-self-start"
+                      <span className="text-[0.6875rem] px-1.5 py-0.5 rounded justify-self-start"
                         style={{ border: `1px solid ${v.border}`, color: v.color }}>{v.label}</span>
                       <span className="truncate text-xs" style={{ color: C.muted }}>{r.src || "—"}</span>
                       <span className="text-xs" style={{ color: C.muted }}>{dueLabel(r.dueInDays)}</span>

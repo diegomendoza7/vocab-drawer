@@ -16,9 +16,9 @@ export default function Collocations({
 }) {
   if (phase === "idle") {
     return (
-      <div style={{ maxWidth: 620 }}>
+      <div style={{ maxWidth: "38.75rem" }}>
         <h2 className="font-type text-2xl mb-1" style={{ color: C.ink }}>Collocations</h2>
-        <p className="font-serif text-[15px] mb-4" style={{ color: C.muted }}>
+        <p className="font-serif text-[0.9375rem] mb-4" style={{ color: C.muted }}>
           Which verb a noun insists on. You can know every word in
           <span className="font-type" style={{ color: C.ink }}> une décision </span>
           and still say <em>faire</em> one, because English makes decisions and French takes them.
@@ -50,7 +50,7 @@ export default function Collocations({
           <div className="flex flex-col gap-1">
             {list.map((c) => (
               <div key={`${c.verb}-${c.noun}`} className="flex items-baseline gap-2 flex-wrap font-serif text-sm">
-                <span className="font-type text-[15px]" style={{ color: C.ink }}>{c.verb} {c.noun}</span>
+                <span className="font-type text-[0.9375rem]" style={{ color: C.ink }}>{c.verb} {c.noun}</span>
                 <SpeakButton ready={canSpeak} onSay={() => onSay(`${c.verb} ${c.noun}`)} title={`Hear ${c.verb} ${c.noun}`} />
                 <span style={{ color: C.muted }}>{c.en}</span>
               </div>
@@ -63,7 +63,7 @@ export default function Collocations({
 
   if (phase === "done") {
     return (
-      <div style={{ maxWidth: 620 }}>
+      <div style={{ maxWidth: "38.75rem" }}>
         <div className="rounded-lg p-6 mb-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
           <div className="font-serif text-xs uppercase tracking-wide mb-1" style={{ color: C.muted }}>Round complete</div>
           <div className="font-type text-4xl mb-1" style={{ color: C.ink }}>{stats.right}/{stats.asked}</div>
@@ -77,7 +77,7 @@ export default function Collocations({
             <div className="font-serif text-xs uppercase tracking-wide mb-2" style={{ color: C.muted }}>Worth a second look</div>
             {missed.map((m) => (
               <div key={`${m.verb}-${m.noun}`} className="mb-2">
-                <div className="font-type text-[15px]" style={{ color: C.ink }}>{m.verb} {m.noun}
+                <div className="font-type text-[0.9375rem]" style={{ color: C.ink }}>{m.verb} {m.noun}
                   <span className="font-serif text-sm ml-2" style={{ color: C.muted }}>{m.en}</span>
                 </div>
                 <div className="font-serif text-xs" style={{ color: C.muted }}>{m.trap}</div>
@@ -98,7 +98,7 @@ export default function Collocations({
   const right = picked && picked === quiz.answer;
 
   return (
-    <div style={{ maxWidth: 620 }}>
+    <div style={{ maxWidth: "38.75rem" }}>
       <div className="flex items-baseline gap-2 mb-3">
         <span className="font-serif text-sm" style={{ color: C.muted }}>{stats.asked + 1} of {list.length}</span>
         <span className="flex-1" />
@@ -107,7 +107,7 @@ export default function Collocations({
 
       <div className="rounded-lg p-5 mb-3" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.gold}` }}>
         <div className="font-serif text-sm mb-1" style={{ color: C.muted }}>Which verb goes with</div>
-        <div className="font-type text-[26px] mb-1" style={{ color: C.ink }}>{quiz.prompt}</div>
+        <div className="font-type text-[1.625rem] mb-1" style={{ color: C.ink }}>{quiz.prompt}</div>
         <div className="font-serif text-sm mb-4" style={{ color: C.muted }}>“{quiz.en}”</div>
 
         <div className="flex flex-col gap-2">
@@ -120,10 +120,10 @@ export default function Collocations({
                 className="px-3 py-2.5 rounded-md text-left flex items-center gap-2.5"
                 style={{ backgroundColor: chosen ? TINT : C.paper, border: `1px solid ${border}` }}>
                 {hasKeys && !picked && (
-                  <span className="inline-flex items-center justify-center rounded text-[11px] font-semibold shrink-0"
+                  <span className="inline-flex items-center justify-center rounded text-[0.6875rem] font-semibold shrink-0"
                     style={{ width: 18, height: 18, border: `1px solid ${C.line}`, color: C.muted }} aria-hidden="true">{i + 1}</span>
                 )}
-                <span className="font-type text-[17px]" style={{ color: C.ink }}>{o}</span>
+                <span className="font-type text-[1.0625rem]" style={{ color: C.ink }}>{o}</span>
                 {picked && isAnswer && <Check size={15} style={{ color: C.green }} />}
                 {picked && chosen && !isAnswer && <X size={15} style={{ color: C.red }} />}
               </button>
@@ -134,7 +134,7 @@ export default function Collocations({
         {picked && (
           <div className="mt-4">
             <div className="flex items-baseline gap-2 flex-wrap mb-1">
-              <span className="font-type text-[19px]" style={{ color: right ? C.green : C.ink }}>
+              <span className="font-type text-[1.1875rem]" style={{ color: right ? C.green : C.ink }}>
                 {quiz.answer} {quiz.prompt}
               </span>
               <SpeakButton ready={canSpeak} onSay={() => onSay(`${quiz.answer} ${quiz.prompt}`)} title="Hear it" />

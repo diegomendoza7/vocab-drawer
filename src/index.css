@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
 html,
@@ -7,7 +7,141 @@ body,
   height: 100%;
 }
 
+/* ---------------------------------------------------------------------- */
+/* Text size                                                               */
+/*                                                                         */
+/* The base is 100% — the reader's own browser setting — multiplied by the  */
+/* app's scale. Everything else is in rem, so this one declaration moves    */
+/* type, spacing and the text columns together instead of growing glyphs    */
+/* inside boxes that stay put. See src/hooks/useTypeScale.js.              */
+/* ---------------------------------------------------------------------- */
+html {
+  font-size: calc(100% * var(--vd-type-scale, 1));
+}
+
+:root[data-type-scale="s"] { --vd-type-scale: 0.9; }
+:root[data-type-scale="l"] { --vd-type-scale: 1.15; }
+:root[data-type-scale="xl"] { --vd-type-scale: 1.3; }
+
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
 }
+
+
+/* ---------------------------------------------------------------------- */
+/* Design tokens                                                           */
+/*                                                                         */
+/* The app styles through inline `style={{ color: C.ink }}`, so a palette   */
+/* cannot be swapped by adding a class — an inline hex always wins. Routing */
+/* the tokens through CSS variables makes them cascade instead, which is    */
+/* what lets the desktop shell carry a different theme from mobile without  */
+/* every screen needing to know which one it is in.                        */
+/* ---------------------------------------------------------------------- */
+:root {
+  --vd-ink: #1f2a44;
+  --vd-paper: #e7dcbe;
+  --vd-card: #fbf7ec;
+  --vd-line: #cbbf9e;
+  --vd-red: #ac3a2e;
+  --vd-green: #3e765a;
+  --vd-gold: #bd8a2e;
+  --vd-muted: #6b5d40;
+  --vd-heading: "Special Elite", monospace;
+  --vd-body: Inter, system-ui, sans-serif;
+  --vd-reading: "Lora", serif;
+
+  /* der/die/das, and the two washes used to mark a row as needing attention or
+     to shade the coverage map. All four have to move with the theme: an ink
+     wash is invisible on a dark ground, and the gender blues go muddy. */
+  --vd-der: #2e6ca6;
+  --vd-die: #b0396b;
+  --vd-das: #3e765a;
+  --vd-tint: rgb(189 138 46 / 10%);
+  --vd-shade: 32 31 29;
+}
+
+/* "Classical", from the design handoff (_ds/classical-*/
+/* styles.css). Scoped to the desktop shell: mobile keeps the palette above. */
+.vd-classical {
+  --vd-ink: #201f1d;
+  --vd-paper: #f3f2f2;
+  --vd-card: #f8f4f4;
+  --vd-line: color-mix(in srgb, #201f1d 16%, transparent);
+  --vd-gold: #b68235;
+  --vd-muted: #605d5d;
+  --vd-heading: "Cormorant Garamond", Georgia, serif;
+  --vd-body: "Lora", Georgia, serif;
+  --vd-tint: rgb(182 130 53 / 9%);
+  font-family: var(--vd-body);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Dark                                                                    */
+/*                                                                         */
+/* Two palettes have to be darkened, not one: the warm card-catalog below   */
+/* 1024px and Classical above it. Both are re-stated rather than inverted — */
+/* a flipped palette reads as a photographic negative, and the gold that    */
+/* carries meaning here would stop looking like gold.                       */
+/*                                                                         */
+/* `[data-theme]` wins over the media query, so an explicit choice always   */
+/* beats the system setting, in both directions.                           */
+/* ---------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --vd-ink: #ece2c8;
+    --vd-paper: #191610;
+    --vd-card: #241f18;
+    --vd-line: #443c2e;
+    --vd-red: #e08072;
+    --vd-green: #74bb94;
+    --vd-gold: #d7a445;
+    --vd-muted: #a2947a;
+    --vd-der: #6aa8dd;
+    --vd-die: #e0799f;
+    --vd-das: #74bb94;
+    --vd-tint: rgb(215 164 69 / 12%);
+    --vd-shade: 236 226 200;
+  }
+  :root:not([data-theme="light"]) .vd-classical {
+    --vd-ink: #eceae6;
+    --vd-paper: #141312;
+    --vd-card: #1d1c1a;
+    --vd-line: color-mix(in srgb, #eceae6 18%, transparent);
+    --vd-gold: #d2a054;
+    --vd-muted: #a09b95;
+    --vd-tint: rgb(210 160 84 / 12%);
+    --vd-shade: 236 234 230;
+  }
+}
+
+:root[data-theme="dark"] {
+  --vd-ink: #ece2c8;
+  --vd-paper: #191610;
+  --vd-card: #241f18;
+  --vd-line: #443c2e;
+  --vd-red: #e08072;
+  --vd-green: #74bb94;
+  --vd-gold: #d7a445;
+  --vd-muted: #a2947a;
+  --vd-der: #6aa8dd;
+  --vd-die: #e0799f;
+  --vd-das: #74bb94;
+  --vd-tint: rgb(215 164 69 / 12%);
+  --vd-shade: 236 226 200;
+}
+:root[data-theme="dark"] .vd-classical {
+  --vd-ink: #eceae6;
+  --vd-paper: #141312;
+  --vd-card: #1d1c1a;
+  --vd-line: color-mix(in srgb, #eceae6 18%, transparent);
+  --vd-gold: #d2a054;
+  --vd-muted: #a09b95;
+  --vd-tint: rgb(210 160 84 / 12%);
+  --vd-shade: 236 234 230;
+}
+
+/* The browser's own widgets — scrollbars, form controls — follow this. */
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }

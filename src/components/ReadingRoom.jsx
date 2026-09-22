@@ -257,7 +257,7 @@ export default function ReadingRoom({
                   className="text-left p-4 rounded-lg flex flex-col gap-1.5"
                   style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${rec ? C.green : C.gold}` }}
                 >
-                  <div className="flex items-center gap-1.5 flex-wrap text-[11px] font-semibold uppercase tracking-wide" style={{ color: C.muted }}>
+                  <div className="flex items-center gap-1.5 flex-wrap text-[0.6875rem] font-semibold uppercase tracking-wide" style={{ color: C.muted }}>
                     <span>{GENRES[p.genre]}</span><span>·</span>
                     <span>{wordCount(passageText(p))} words</span><span>·</span>
                     <span>~{readingMinutes(p)} min</span>
@@ -291,10 +291,10 @@ export default function ReadingRoom({
         </span>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(340px,440px)] items-start">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(21.25rem,27.5rem)] items-start">
         {/* ---------------- the passage ---------------- */}
         <article className="min-w-0 lg:sticky lg:top-4 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-2">
-          <h3 className="font-type text-[26px] leading-tight" style={{ color: C.ink }}>{passage.title}</h3>
+          <h3 className="font-type text-[1.625rem] leading-tight" style={{ color: C.ink }}>{passage.title}</h3>
           <p className="font-serif text-sm italic mb-3" style={{ color: C.muted }}>{passage.titleEn}</p>
           <div className="flex items-center gap-2 mb-4 flex-wrap">
             <button type="button" onClick={() => setShowEn((v) => !v)} className="px-3 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5" style={QUIET}>
@@ -310,7 +310,7 @@ export default function ReadingRoom({
 
           {passage.paras.map(([text, en], i) => (
             <div key={i} className="mb-4">
-              <p className="font-serif text-[16px]" style={{ color: C.ink, maxWidth: "62ch", lineHeight: 1.85, whiteSpace: "pre-line" }}>
+              <p className="font-serif text-[1rem]" style={{ color: C.ink, maxWidth: "62ch", lineHeight: 1.85, whiteSpace: "pre-line" }}>
                 {segmentSentence(text).map((seg, j) => (seg.type === "word" ? (
                   <span
                     key={j}
@@ -354,7 +354,7 @@ export default function ReadingRoom({
                       : <span style={{ color: C.muted }}>No entry found.</span>}
               </div>
               {gloss.source === "wiktionary" && (
-                <a href={wiktionaryUrl(stripElision(gloss.word), lang)} target="_blank" rel="noopener" className="text-[11px] inline-flex items-center gap-1 mt-1 underline" style={{ color: C.muted }}>
+                <a href={wiktionaryUrl(stripElision(gloss.word), lang)} target="_blank" rel="noopener" className="text-[0.6875rem] inline-flex items-center gap-1 mt-1 underline" style={{ color: C.muted }}>
                   Wiktionary (CC BY-SA) <ExternalLink size={10} />
                 </a>
               )}
@@ -408,7 +408,7 @@ export default function ReadingRoom({
               <div className="text-xs font-semibold mb-1" style={{ color: C.muted }}>
                 {task.kind === "q" ? `Question ${step + 1} of ${passage.questions.length}` : `Your turn to write · at least ${task.min} words`}
               </div>
-              <p className="font-serif text-[16px]" style={{ color: C.ink, lineHeight: 1.55 }}>{task.q}</p>
+              <p className="font-serif text-[1rem]" style={{ color: C.ink, lineHeight: 1.55 }}>{task.q}</p>
               <button type="button" onClick={() => setQEn((v) => !v)} className="text-xs mt-1 text-left" style={{ color: C.muted }}>
                 {qEn ? task.en : "Show in English"}
               </button>
@@ -422,7 +422,7 @@ export default function ReadingRoom({
                 lang={lang}
                 spellCheck={false}
                 placeholder={task.kind === "q" ? "Answer in a full sentence…" : "Write here…"}
-                className="w-full mt-3 p-3 rounded-md font-serif text-[15px]"
+                className="w-full mt-3 p-3 rounded-md font-serif text-[0.9375rem]"
                 style={{ border: `1px solid ${C.line}`, backgroundColor: C.paper, color: C.ink, lineHeight: 1.6, resize: "vertical" }}
               />
               <div className="flex items-center gap-2 mt-2 flex-wrap">
@@ -456,7 +456,7 @@ export default function ReadingRoom({
                   </>
                 )}
               </div>
-              <p className="text-[11px] mt-2 font-serif" style={{ color: C.muted }}>
+              <p className="text-[0.6875rem] mt-2 font-serif" style={{ color: C.muted }}>
                 {hasKeys ? (task.kind === "q" ? "Enter to check, then Enter to continue · Shift+Enter for a new line. " : "⌘/Ctrl+Enter to check. ") : ""}
                 Checking sends your answer to{" "}
                 <a href="https://languagetool.org" target="_blank" rel="noopener" className="underline">LanguageTool</a>.
@@ -502,7 +502,7 @@ export default function ReadingRoom({
                 <button type="button" onClick={() => jump(0)} className="px-4 py-2 rounded-md font-semibold text-sm" style={QUIET}>Review answers</button>
                 <button type="button" onClick={() => setOpenId(null)} className="px-4 py-2 rounded-md font-semibold text-sm" style={QUIET}>Library</button>
               </div>
-              {hasKeys && <p className="text-[11px] mt-2 font-serif" style={{ color: C.muted }}>Enter for the next passage.</p>}
+              {hasKeys && <p className="text-[0.6875rem] mt-2 font-serif" style={{ color: C.muted }}>Enter for the next passage.</p>}
             </div>
           )}
         </section>

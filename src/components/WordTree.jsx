@@ -34,10 +34,10 @@ function Rung({ node, word, highlight, onSay, canSpeak }) {
         maxWidth: 168,
       }}
     >
-      <div className="text-[10px] uppercase tracking-wide font-semibold leading-tight" style={{ color: C.muted }}>
+      <div className="text-[0.625rem] uppercase tracking-wide font-semibold leading-tight" style={{ color: C.muted }}>
         {meta.short || node.layer}
       </div>
-      <div className="font-type text-[14px] leading-snug break-words"
+      <div className="font-type text-[0.875rem] leading-snug break-words"
         style={{ color: C.ink, fontStyle: node.reconstructed ? "italic" : "normal" }}>
         {/* The asterisk is not decoration: it marks a form nobody ever wrote
           * down, which is worth being honest about on every showing. */}
@@ -90,7 +90,7 @@ function Node({ node, words, isRoot, onSay, canSpeak }) {
               <div key={`${k.layer}-${i}`} className="flex flex-col items-center min-w-0" style={{ flex: 1 }}>
                 {/* Name the limb before it splits again, so a subtree carrying
                   * two languages reads as one branch rather than as a mystery. */}
-                <div className="text-[10px] uppercase tracking-wide font-semibold mb-1 text-center" style={{ color: C.gold }}>
+                <div className="text-[0.625rem] uppercase tracking-wide font-semibold mb-1 text-center" style={{ color: C.gold }}>
                   {k.langs.map((l) => LANG_NAME[l] || l).join(" · ")}
                 </div>
                 <Node node={k} words={words} onSay={onSay} canSpeak={canSpeak} />

@@ -1435,3 +1435,109 @@ keeps them out of the eager vocabulary chunk.
 passage inside its level's length band, every model answer satisfying its own
 key ideas *and* being a full sentence, no key idea given away by its own
 question, and the German rules silent on all 1,760 known-correct sentences.
+
+## Text size
+
+Four sizes — 90%, 100%, 115%, 130% — in the rail on desktop and beside the
+theme toggle on the phone home screen. Stored per device in localStorage, like
+the theme, and for the same reason: it has to be readable before the first
+paint and it is not part of the deck.
+
+The mechanism is one declaration: `html { font-size: calc(100% * var(--vd-type-scale, 1)) }`.
+The base is `100%` — the reader's *own* browser setting — so someone who has
+already raised their default keeps it and this multiplies it, rather than
+overriding their choice with a pixel count.
+
+That only works if everything is sized in rem, so it now is: the 134
+hard-coded `text-[…px]` classes became rem, and so did the rail width, the
+reading column (`COLUMN_WIDTH`), two grid templates and the 620px measures.
+Type, spacing and the columns that hold text now scale together — the
+alternative, growing glyphs inside boxes that stay put, is how you get clipped
+buttons at the top setting.
+
+Two real overflows surfaced at 130% on a 375px screen, both now fixed: the
+home-screen greeting (capped with `clamp()` against the viewport, since it is
+decoration and is the one place where "as big as fits" beats "proportional"),
+and the phone column itself — `max-w-xl` is 36rem, which at 1.3× is 749px, so
+it is now `max-w-[min(36rem,100%)]`. The shell also stops horizontal scrolling
+outright, because the greeting's stamp animation starts at `scale(2.2)` and
+that transform briefly reached past the screen edge.
+
+## Your mistakes
+
+The app always remembered word recall — every answer moves an SM-2 card — and
+threw every other diagnosis away. The writing checker names the exact rule you
+broke (`de-verb-second`, `CAT_GRAMMAIRE`) and used to forget it the moment the
+feedback panel closed; a missed Präteritum form was graded as a card and never
+as a tense. So it could tell you that you were wrong, repeatedly, and never
+that you were wrong *in the same way*.
+
+`src/lib/errors.js` is the ledger that remembers. Every check in the Reading
+Room and the Writing Desk folds its issues into `progress.errors`, and a missed
+conjugation records its tense. Three rules keep it honest:
+
+- **One count per check, not per occurrence.** Three agreement slips in one
+  paragraph are one lesson; counting each would let a single bad night dominate
+  the list for weeks.
+- **LanguageTool's rule ids fold to their category.** There are thousands of
+  them and `FRENCH_AGREEMENT_1` and `_2` are the same lesson.
+- **A single slip is not a pattern.** Nothing appears until you have done it
+  twice, and weight decays with a three-week half-life, so a pattern leaves the
+  list when you stop making it.
+
+The screen shows each pattern with an explanation written for the moment of
+error, links to the grammar note that covers it, and — the point of the whole
+thing — **your own sentences**. "Fix these sentences" replays the sentences you
+actually wrote and re-checks your correction, so the drill is about your
+mistake rather than a textbook's. Finishing a drill does *not* reduce the
+count: the ledger records what you do when writing for real, and drilling a
+pattern is not evidence that you have stopped making it.
+
+`nextAction` now ranks an active mistake pattern above a shaky card, because it
+is evidence of an error being *made* rather than merely forgotten.
+
+## Real voices
+
+Speech synthesis is intelligible and unmistakably synthetic: the rhythm is
+wrong, the liaison is wrong, and a learner imitating it learns that. Wiktionary
+has recordings by real speakers for a large share of ordinary vocabulary —
+Lingua Libre's volunteers for French (`LL-Q150 (fra)-…`) and the German
+Wiktionary's own project (`De-….ogg`) — under CC BY-SA.
+
+`scripts/voices/harvest.mjs` collects them; `src/lib/voice.js` plays them.
+Every speak button in the app now prefers a recording and falls back to the
+synthesiser silently, so coverage grows one word at a time without any screen
+knowing the difference. Run it again to extend coverage — it is idempotent and
+resumable, and skips anything already in the manifest:
+
+```bash
+node scripts/voices/harvest.mjs --levels A1,A2      # the default
+node scripts/voices/harvest.mjs --levels B1 --lang de
+```
+
+Four things the script has to get right, each of which broke a first attempt:
+
+- **Language.** fr.wiktionary lists `En-us-argent.ogg` on the page for
+  *argent* — an English speaker saying an English word. Files must match the
+  language's own naming convention *and* name the headword, or the app ships
+  English audio for French words.
+- **Namespace.** fr.wiktionary says `Fichier:`, de.wiktionary says `Datei:`,
+  and Commons wants `File:`. Querying with the local alias matches nothing
+  silently — it found 79 French recordings and downloaded none of them.
+- **Query strings.** `imageinfo` returns the URL with `?utm_source=…`
+  attached, which corrupts both the transcode path and the file extension if
+  you derive them from the URL.
+- **Rate limits.** Commons and upload.wikimedia.org both answer 429 under a
+  fast loop. Both the API and the download path back off and retry.
+
+Sizes: a Lingua Libre `.wav` is ~125 KB, and Wikimedia's own MP3 transcode of
+it is ~16 KB, so no local transcoding and no ffmpeg. German `De-*.ogg` files
+are ~11–18 KB and are used as they are. Audio is *not* precached by the service
+worker — it is cached on first play by the existing runtime rule, so a word you
+have heard once works offline without a 6 MB install.
+
+The licence requires credit, so the manifest stores the speaker and source page
+per file, and the Listening & Speaking screen names them. `npm run check` runs
+`scripts/check-voices.mjs`, which fails on a missing file, a missing speaker or
+licence, a key that is not a deck headword, or a file too small to be audio —
+and prints coverage, so it is a number that moves rather than an intention.

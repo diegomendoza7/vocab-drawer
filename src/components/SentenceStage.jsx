@@ -54,7 +54,7 @@ export default function SentenceStage({
 
         <div className="rounded-lg p-5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.gold}` }}>
           <div className="font-serif text-sm mb-1" style={{ color: C.muted }}>Say this in {meta.langName}</div>
-          <div className="font-type text-[22px] mb-4" style={{ color: C.ink }}>{english}</div>
+          <div className="font-type text-[1.375rem] mb-4" style={{ color: C.ink }}>{english}</div>
 
           {chips ? (
             <>
@@ -226,8 +226,8 @@ export default function SentenceStage({
       {/* ---------------- the word's own card ---------------- */}
       <aside className="p-4" style={{ backgroundColor: TINT, borderLeft: `1px solid ${C.line}` }}>
         <div className="font-serif text-xs mb-1" style={{ color: C.muted }}>The word being practised</div>
-        <div className="font-type text-[21px]" style={{ color: C.ink }}>{word}</div>
-        <div className="font-serif text-[15px]" style={{ color: C.ink }}>{gloss}</div>
+        <div className="font-type text-[1.3125rem]" style={{ color: C.ink }}>{word}</div>
+        <div className="font-serif text-[0.9375rem]" style={{ color: C.ink }}>{gloss}</div>
         <div className="font-serif text-xs mb-3" style={{ color: C.muted }}>{meta.line}</div>
         {canSpeak && (
           <button onClick={onSayWord} className="px-3 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5"

@@ -31,7 +31,7 @@ export default function StudyLedger({ rows, onWordClick, peek, onClosePeek }) {
                 <span className="font-serif text-sm min-w-0 truncate" style={{ color: r.status === "unseen" ? C.muted : C.ink }}>
                   {r.display}
                 </span>
-                <span className="text-[11px] shrink-0" style={{ color: missed ? C.red : C.muted }}>
+                <span className="text-[0.6875rem] shrink-0" style={{ color: missed ? C.red : C.muted }}>
                   {missed ? `missed ×${r.misses}` : LABEL[r.status]}
                 </span>
               </button>
@@ -46,7 +46,7 @@ export default function StudyLedger({ rows, onWordClick, peek, onClosePeek }) {
         <div className="mt-3 pt-3 rounded-md p-3" style={{ borderTop: `1px dashed ${C.line}`, backgroundColor: C.paper }}>
           <div className="flex items-baseline justify-between gap-2 mb-1">
             <span className="font-type text-base" style={{ color: C.ink }}>{peek.display}</span>
-            <button onClick={onClosePeek} className="text-[11px] font-semibold" style={{ color: C.muted }}>close</button>
+            <button onClick={onClosePeek} className="text-[0.6875rem] font-semibold" style={{ color: C.muted }}>close</button>
           </div>
           <div className="font-serif text-sm mb-1" style={{ color: C.muted }}>{peek.word.e}</div>
           {peek.word.s && <div className="font-serif text-xs italic" style={{ color: C.ink }}>{peek.word.s}</div>}
@@ -55,7 +55,7 @@ export default function StudyLedger({ rows, onWordClick, peek, onClosePeek }) {
       )}
 
       {onWordClick && !peek && (
-        <p className="text-[11px] font-serif italic mt-3 pt-2" style={{ color: C.muted, borderTop: `1px dashed ${C.line}` }}>
+        <p className="text-[0.6875rem] font-serif italic mt-3 pt-2" style={{ color: C.muted, borderTop: `1px dashed ${C.line}` }}>
           Click any word to see its card again.
         </p>
       )}

@@ -34,7 +34,7 @@ function Bar({ runs, best }) {
  * learner who has met it once recognises it here. */
 function Cap({ n }) {
   return (
-    <span className="inline-flex items-center justify-center rounded text-[11px] font-semibold shrink-0"
+    <span className="inline-flex items-center justify-center rounded text-[0.6875rem] font-semibold shrink-0"
       style={{ width: 18, height: 18, lineHeight: 1, border: `1px solid ${C.line}`, color: C.muted, opacity: 0.85 }}
       aria-hidden="true">{n}</span>
   );
@@ -55,7 +55,7 @@ export default function FluencyRound({
     return (
       <div className="rounded-lg p-6" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, maxWidth: 560 }}>
         <h2 className="font-type text-2xl mb-2" style={{ color: C.ink }}>Almost</h2>
-        <p className="font-serif text-[15px] mb-3" style={{ color: C.ink }}>
+        <p className="font-serif text-[0.9375rem] mb-3" style={{ color: C.ink }}>
           Speed work only helps on words you already know — racing half-learned ones
           teaches you to guess quickly, which is the opposite of the point.
         </p>
@@ -115,7 +115,7 @@ export default function FluencyRound({
         </div>
 
         <div className="rounded-lg p-6 mb-3 text-center" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.gold}` }}>
-          <div className="font-type text-[30px] leading-tight" style={{ color: C.ink }}>{item.prompt}</div>
+          <div className="font-type text-[1.875rem] leading-tight" style={{ color: C.ink }}>{item.prompt}</div>
           {streak >= 3 && (
             <div className="font-serif text-xs mt-1" style={{ color: C.gold }}>{streak} in a row</div>
           )}
@@ -124,7 +124,7 @@ export default function FluencyRound({
         <div className="flex flex-col gap-2">
           {item.options.map((o, i) => (
             <button key={o} onClick={() => onAnswer(o)}
-              className="px-4 py-3 rounded-md font-serif text-[17px] text-left flex items-center gap-2.5"
+              className="px-4 py-3 rounded-md font-serif text-[1.0625rem] text-left flex items-center gap-2.5"
               style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, color: C.ink }}>
               {hasKeys && <Cap n={i + 1} />}
               {o}
@@ -159,7 +159,7 @@ export default function FluencyRound({
           <div className="font-serif text-sm mb-3" style={{ color: C.muted }}>
             {score.correct} right of {score.attempted} · {Math.round(score.accuracy * 100)}% accurate
           </div>
-          <p className="font-serif text-[15px]" style={{ color: C.ink }}>{verdict}</p>
+          <p className="font-serif text-[0.9375rem]" style={{ color: C.ink }}>{verdict}</p>
         </div>
 
         {record?.runs?.length > 1 && (
@@ -193,7 +193,7 @@ export default function FluencyRound({
   return (
     <div style={{ maxWidth: 560 }}>
       <h2 className="font-type text-2xl mb-1" style={{ color: C.ink }}>Fluency</h2>
-      <p className="font-serif text-[15px] mb-4" style={{ color: C.muted }}>
+      <p className="font-serif text-[0.9375rem] mb-4" style={{ color: C.muted }}>
         One minute, as fast as you can. Only words you already know — nothing here is new,
         and nothing you do counts against your review schedule.
       </p>

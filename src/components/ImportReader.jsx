@@ -169,7 +169,7 @@ export default function ImportReader({
 
             {gloss?.en ? (
               <>
-                <div className="font-serif text-[15px]" style={{ color: C.ink }}>{gloss.en}</div>
+                <div className="font-serif text-[0.9375rem]" style={{ color: C.ink }}>{gloss.en}</div>
                 {gloss.pos && <div className="font-serif text-xs" style={{ color: C.muted }}>{gloss.pos}</div>}
               </>
             ) : (

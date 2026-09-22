@@ -8,7 +8,8 @@ import { CONTENT_MAX } from "../lib/sections.js";
  * The rail is full-height and does not scroll with the content, so navigation
  * stays put while a long drawer list or progress chart scrolls past it. */
 export default function DesktopShell({
-  activeSection, onNavigate, lang, onLangChange, level, badges, storageOn, theme, onThemeChange, children,
+  activeSection, onNavigate, lang, onLangChange, level, badges, storageOn, theme, onThemeChange,
+  typeScale, onTypeScale, children,
 }) {
   return (
     /* `vd-classical` scopes the handoff's palette and type to the desktop tree.
@@ -26,6 +27,8 @@ export default function DesktopShell({
         storageOn={storageOn}
         theme={theme}
         onThemeChange={onThemeChange}
+        typeScale={typeScale}
+        onTypeScale={onTypeScale}
       />
       {/* The rail is fixed, so the main column carries all the flex. Its
         * padding scales with the viewport rather than sitting at a constant

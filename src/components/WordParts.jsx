@@ -35,7 +35,7 @@ export default function WordParts({ notation, size = 17, showKinds = false }) {
               {p.text}
             </span>
             {showKinds && (
-              <span className="text-[9px] uppercase tracking-wide leading-tight" style={{ color: C.muted }}>
+              <span className="text-[0.5625rem] uppercase tracking-wide leading-tight" style={{ color: C.muted }}>
                 {p.kind}
               </span>
             )}

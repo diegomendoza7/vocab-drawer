@@ -149,7 +149,7 @@ function GoalRing({ done, goal }) {
         <div className="text-sm font-semibold tabular-nums" style={{ color: met ? C.green : C.ink }}>
           {done}<span style={{ color: C.muted }}>/{goal}</span>
         </div>
-        <div className="text-[10px] uppercase tracking-wide" style={{ color: C.muted }}>
+        <div className="text-[0.625rem] uppercase tracking-wide" style={{ color: C.muted }}>
           {met ? "goal met" : "goal"}
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function HomeDesktop({
       {/* Due banner */}
       <div className="rounded-md flex items-center gap-6" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${dueCards.length ? C.gold : C.green}`, padding: "16px 18px" }}>
         <div className="flex-1 min-w-0">
-          <div className="font-type leading-none" style={{ color: C.ink, fontSize: 26 }}>{dueCards.length} due</div>
+          <div className="font-type leading-none" style={{ color: C.ink, fontSize: "1.625rem" }}>{dueCards.length} due</div>
           <div className="text-xs font-serif mt-1.5" style={{ color: C.muted }}>
             {studiedCount} of {totalWords} {langName} words started
           </div>
@@ -183,13 +183,13 @@ export default function HomeDesktop({
             <div className="flex items-center justify-center gap-1 font-semibold" style={{ color: streak ? C.gold : C.muted }}>
               <Flame size={15} /> {streak || 0}
             </div>
-            <div className="text-[10px] uppercase tracking-wide" style={{ color: C.muted }}>streak</div>
+            <div className="text-[0.625rem] uppercase tracking-wide" style={{ color: C.muted }}>streak</div>
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center gap-1 font-semibold" style={{ color: C.ink }}>
               <CalendarCheck size={15} /> {reviewedToday}
             </div>
-            <div className="text-[10px] uppercase tracking-wide" style={{ color: C.muted }}>today</div>
+            <div className="text-[0.625rem] uppercase tracking-wide" style={{ color: C.muted }}>today</div>
           </div>
 
           {/* The goal closes the loop the streak only half-builds: a streak

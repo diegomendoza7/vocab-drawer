@@ -163,7 +163,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
         accuracy change over time.
       </p>
 
-      <div className="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)_240px] items-start">
+      <div className="grid gap-6 lg:grid-cols-[13.75rem_minmax(0,1fr)_15rem] items-start">
         {/* ---------------- prompts ---------------- */}
         <aside className="flex flex-col gap-3">
           <LevelTabs levels={levels} level={level} onChange={setLevel} />
@@ -196,7 +196,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
             <div className="text-xs font-semibold mb-1" style={{ color: C.muted }}>
               {isFree ? "Your own topic" : `${prompt.level} · at least ${prompt.min} words`}
             </div>
-            <p className="font-serif text-[16px]" style={{ color: C.ink, lineHeight: 1.55 }}>
+            <p className="font-serif text-[1rem]" style={{ color: C.ink, lineHeight: 1.55 }}>
               {isFree ? "Write about anything you like." : prompt[lang]}
             </p>
             {!isFree && (
@@ -219,7 +219,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
               lang={lang}
               spellCheck={false}
               placeholder="Start writing…"
-              className="w-full mt-3 p-3 rounded-md font-serif text-[15px]"
+              className="w-full mt-3 p-3 rounded-md font-serif text-[0.9375rem]"
               style={{ border: `1px solid ${C.line}`, backgroundColor: C.paper, color: C.ink, lineHeight: 1.7, resize: "vertical" }}
             />
             <div className="flex items-center gap-2 mt-2 flex-wrap">
@@ -241,7 +241,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
                 <RotateCcw size={13} /> New page
               </button>
             </div>
-            <p className="text-[11px] mt-2 font-serif" style={{ color: C.muted }}>
+            <p className="text-[0.6875rem] mt-2 font-serif" style={{ color: C.muted }}>
               {hasKeys ? "⌘/Ctrl+Enter to check. " : ""}Checking sends your text to{" "}
               <a href="https://languagetool.org" target="_blank" rel="noopener" className="underline">LanguageTool</a>.
               {current?.fixed ? " Check again before saving, so the score matches the text." : ""}
@@ -282,7 +282,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
                         </span>
                       </div>
                       <div className="font-serif text-sm truncate" style={{ color: C.ink }}>{e.prompt}</div>
-                      <div className="text-[11px]" style={{ color: C.muted }}>
+                      <div className="text-[0.6875rem]" style={{ color: C.muted }}>
                         {e.words} words{e.beyond2k != null ? ` · ${e.beyond2k}% beyond the top 2,000` : ""}
                       </div>
                     </button>
