@@ -1,0 +1,548 @@
+{
+ "oiseau": {
+  "file": "oiseau.mp3",
+  "bytes": 18299,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-oiseau.wav"
+ },
+ "poisson": {
+  "file": "poisson.mp3",
+  "bytes": 15011,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-poisson.wav"
+ },
+ "content": {
+  "file": "content.wav",
+  "bytes": 83220,
+  "speaker": "Arthur Crbz ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Arthur%20Crbz-content.wav"
+ },
+ "neuf": {
+  "file": "neuf.mp3",
+  "bytes": 16578,
+  "speaker": "Arthur Crbz ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Arthur%20Crbz-neuf.wav"
+ },
+ "un": {
+  "file": "un.mp3",
+  "bytes": 14282,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-un.wav"
+ },
+ "deux": {
+  "file": "deux.wav",
+  "bytes": 75028,
+  "speaker": "Aemines1 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Aemines1-deux.wav"
+ },
+ "chat": {
+  "file": "chat.mp3",
+  "bytes": 20336,
+  "speaker": "Adem M. ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Adem%20M.%20(BiblioCanet66)-chat.wav"
+ },
+ "cheval": {
+  "file": "cheval.wav",
+  "bytes": 107796,
+  "speaker": "Aemines1 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Aemines1-cheval.wav"
+ },
+ "pomme": {
+  "file": "pomme.mp3",
+  "bytes": 9819,
+  "speaker": "5moufl ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-5moufl-pomme.wav"
+ },
+ "homme": {
+  "file": "homme.mp3",
+  "bytes": 25289,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-homme.wav"
+ },
+ "eau": {
+  "file": "eau.mp3",
+  "bytes": 14434,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-eau.wav"
+ },
+ "enfant": {
+  "file": "enfant.mp3",
+  "bytes": 16271,
+  "speaker": "Aemines1 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Aemines1-enfant.wav"
+ },
+ "dix": {
+  "file": "dix.mp3",
+  "bytes": 17989,
+  "speaker": "Aemines1 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Aemines1-dix.wav"
+ },
+ "blanc": {
+  "file": "blanc.mp3",
+  "bytes": 13968,
+  "speaker": "Abalg ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Abalg-blanc.wav"
+ },
+ "semaine": {
+  "file": "semaine.mp3",
+  "bytes": 17045,
+  "speaker": "DenisdeShawi ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DenisdeShawi-semaine.wav"
+ },
+ "nouveau": {
+  "file": "nouveau.mp3",
+  "bytes": 16471,
+  "speaker": "Ash Crow ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ash%20Crow-nouveau.wav"
+ },
+ "jour": {
+  "file": "jour.mp3",
+  "bytes": 17355,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-jour.wav"
+ },
+ "école": {
+  "file": "ecole.mp3",
+  "bytes": 18815,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-%C3%A9cole.wav"
+ },
+ "année": {
+  "file": "annee.mp3",
+  "bytes": 15325,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-ann%C3%A9e.wav"
+ },
+ "livre": {
+  "file": "livre.mp3",
+  "bytes": 17721,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-livre.wav"
+ },
+ "aimer": {
+  "file": "aimer.mp3",
+  "bytes": 18506,
+  "speaker": "GrandCelinien ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-GrandCelinien-aimer.wav"
+ },
+ "avoir": {
+  "file": "avoir.mp3",
+  "bytes": 11153,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-avoir.wav"
+ },
+ "mois": {
+  "file": "mois.mp3",
+  "bytes": 16472,
+  "speaker": "GrandCelinien ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-GrandCelinien-mois.wav"
+ },
+ "voiture": {
+  "file": "voiture.wav",
+  "bytes": 97324,
+  "speaker": "Althea81 ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Althea81-voiture.wav"
+ },
+ "grand": {
+  "file": "grand.mp3",
+  "bytes": 12820,
+  "speaker": "Ash Crow ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ash%20Crow-grand.wav"
+ },
+ "table": {
+  "file": "table.mp3",
+  "bytes": 12037,
+  "speaker": "Adem M. ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Adem%20M.%20(BiblioCanet66)-table.wav"
+ },
+ "faire": {
+  "file": "faire.mp3",
+  "bytes": 11464,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-faire.wav"
+ },
+ "petit": {
+  "file": "petit.wav",
+  "bytes": 83220,
+  "speaker": "Abalg ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Abalg-petit.wav"
+ },
+ "heure": {
+  "file": "heure.mp3",
+  "bytes": 17775,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-heure.wav"
+ },
+ "minute": {
+  "file": "minute.mp3",
+  "bytes": 20382,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-minute.wav"
+ },
+ "parler": {
+  "file": "parler.wav",
+  "bytes": 83220,
+  "speaker": "Arthur Crbz ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Arthur%20Crbz-parler.wav"
+ },
+ "temps": {
+  "file": "temps.mp3",
+  "bytes": 13681,
+  "speaker": "Benoît Prieur ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Beno%C3%AEt%20Prieur-temps.wav"
+ },
+ "vent": {
+  "file": "vent.mp3",
+  "bytes": 13185,
+  "speaker": "Ash Crow ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ash%20Crow-vent.wav"
+ },
+ "travail": {
+  "file": "travail.mp3",
+  "bytes": 20491,
+  "speaker": "Baidax ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Baidax-travail.wav"
+ },
+ "arriver": {
+  "file": "arriver.mp3",
+  "bytes": 15458,
+  "speaker": "Guilhelma ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Guilhelma-arriver.wav"
+ },
+ "marché": {
+  "file": "marche.mp3",
+  "bytes": 13395,
+  "speaker": "Fabricio Cardenas ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Fabricio%20Cardenas%20(Culex)-march%C3%A9.wav"
+ },
+ "finir": {
+  "file": "finir.mp3",
+  "bytes": 12407,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-finir.wav"
+ },
+ "prix": {
+  "file": "prix.mp3",
+  "bytes": 9330,
+  "speaker": "Helenou66 ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Helenou66-prix.wav"
+ },
+ "avion": {
+  "file": "avion.mp3",
+  "bytes": 14775,
+  "speaker": "Baidax ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Baidax-avion.wav"
+ },
+ "gauche": {
+  "file": "gauche.mp3",
+  "bytes": 15009,
+  "speaker": "Ash Crow ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ash%20Crow-gauche.wav"
+ },
+ "droite": {
+  "file": "droite.mp3",
+  "bytes": 14361,
+  "speaker": "Ash Crow ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ash%20Crow-droite.wav"
+ },
+ "salaire": {
+  "file": "salaire.mp3",
+  "bytes": 17469,
+  "speaker": "Eihel ",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Eihel-salaire.wav"
+ },
+ "argent": {
+  "file": "argent.mp3",
+  "bytes": 18896,
+  "speaker": "GrandCelinien ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-GrandCelinien-argent.wav"
+ },
+ "nerveux": {
+  "file": "nerveux.mp3",
+  "bytes": 13578,
+  "speaker": "Bananax47 ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Bananax47-nerveux.wav"
+ },
+ "aéroport": {
+  "file": "aeroport.mp3",
+  "bytes": 23305,
+  "speaker": "Jean-Claude B. ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Jean-Claude%20B.%20(BiblioCanet66)-a%C3%A9roport.wav"
+ },
+ "fier": {
+  "file": "fier.wav",
+  "bytes": 73772,
+  "speaker": "Gaëlle Melioneg ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ga%C3%ABlle%20Melioneg-fier.wav"
+ },
+ "partir": {
+  "file": "partir.mp3",
+  "bytes": 20799,
+  "speaker": "DenisdeShawi ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DenisdeShawi-partir.wav"
+ },
+ "bureau": {
+  "file": "bureau.mp3",
+  "bytes": 20176,
+  "speaker": "0x010C ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-bureau.wav"
+ },
+ "attendre": {
+  "file": "attendre.wav",
+  "bytes": 117548,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-attendre.wav"
+ },
+ "comprendre": {
+  "file": "comprendre.mp3",
+  "bytes": 24604,
+  "speaker": "DenisdeShawi ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DenisdeShawi-comprendre.wav"
+ },
+ "acheter": {
+  "file": "acheter.mp3",
+  "bytes": 19233,
+  "speaker": "Jérémy-Günther-Heinz Jähnick ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-J%C3%A9r%C3%A9my-G%C3%BCnther-Heinz%20J%C3%A4hnick-acheter.wav"
+ },
+ "ville": {
+  "file": "ville.wav",
+  "bytes": 109356,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-ville.wav"
+ },
+ "caisse": {
+  "file": "caisse.mp3",
+  "bytes": 15273,
+  "speaker": "Anonymât ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Anonym%C3%A2t%20(Kvardek%20du)-caisse.wav"
+ },
+ "malade": {
+  "file": "malade.mp3",
+  "bytes": 10733,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-malade.wav"
+ },
+ "surpris": {
+  "file": "surpris.mp3",
+  "bytes": 16008,
+  "speaker": "Sartus85 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Sartus85-surpris.wav"
+ },
+ "jardin": {
+  "file": "jardin.mp3",
+  "bytes": 19140,
+  "speaker": "Althea81 ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Althea81-jardin.wav"
+ },
+ "pause": {
+  "file": "pause.mp3",
+  "bytes": 12303,
+  "speaker": "Sartus85 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Sartus85-pause.wav"
+ },
+ "cher": {
+  "file": "cher.mp3",
+  "bytes": 14413,
+  "speaker": "Arthur Crbz ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Arthur%20Crbz-cher.wav"
+ },
+ "salon": {
+  "file": "salon.mp3",
+  "bytes": 18403,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-salon.wav"
+ },
+ "triste": {
+  "file": "triste.mp3",
+  "bytes": 9560,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-triste.wav"
+ },
+ "train": {
+  "file": "train.mp3",
+  "bytes": 17253,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-train.wav"
+ },
+ "payer": {
+  "file": "payer.mp3",
+  "bytes": 14538,
+  "speaker": "Jérémy-Günther-Heinz Jähnick ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-J%C3%A9r%C3%A9my-G%C3%BCnther-Heinz%20J%C3%A4hnick-payer.wav"
+ },
+ "adresse": {
+  "file": "adresse.mp3",
+  "bytes": 24613,
+  "speaker": "0x010C ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-adresse.wav"
+ },
+ "aider": {
+  "file": "aider.mp3",
+  "bytes": 9483,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-aider.wav"
+ },
+ "aussi": {
+  "file": "aussi.mp3",
+  "bytes": 15530,
+  "speaker": "Lepticed7 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Lepticed7-aussi.wav"
+ },
+ "savoir": {
+  "file": "savoir.mp3",
+  "bytes": 19264,
+  "speaker": "Ash Crow ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ash%20Crow-savoir.wav"
+ },
+ "déjà": {
+  "file": "deja.mp3",
+  "bytes": 16052,
+  "speaker": "Lepticed7 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Lepticed7-d%C3%A9j%C3%A0.wav"
+ },
+ "trop": {
+  "file": "trop.mp3",
+  "bytes": 8440,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-trop.wav"
+ },
+ "assez": {
+  "file": "assez.mp3",
+  "bytes": 17228,
+  "speaker": "DenisdeShawi ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DenisdeShawi-assez.wav"
+ },
+ "vite": {
+  "file": "vite.mp3",
+  "bytes": 11987,
+  "speaker": "DSwissK ",
+  "licence": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-vite.wav"
+ },
+ "vraiment": {
+  "file": "vraiment.mp3",
+  "bytes": 22214,
+  "speaker": "LoquaxFR ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-LoquaxFR-vraiment.wav"
+ },
+ "encore": {
+  "file": "encore.mp3",
+  "bytes": 12324,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-encore.wav"
+ },
+ "penser": {
+  "file": "penser.mp3",
+  "bytes": 17618,
+  "speaker": "Ash Crow ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Ash%20Crow-penser.wav"
+ },
+ "devoir": {
+  "file": "devoir.mp3",
+  "bytes": 22364,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-devoir.wav"
+ },
+ "peut-être": {
+  "file": "peut-etre.mp3",
+  "bytes": 10736,
+  "speaker": "DSwissK ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-DSwissK-peut-%C3%AAtre.wav"
+ },
+ "plutôt": {
+  "file": "plutot.mp3",
+  "bytes": 14440,
+  "speaker": "WikiLucas00 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-WikiLucas00-plut%C3%B4t.wav"
+ },
+ "seulement": {
+  "file": "seulement.mp3",
+  "bytes": 15980,
+  "speaker": "Sartus85 ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-Sartus85-seulement.wav"
+ },
+ "pouvoir": {
+  "file": "pouvoir.mp3",
+  "bytes": 21475,
+  "speaker": "0x010C ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q150%20(fra)-0x010C-pouvoir.wav"
+ }
+}

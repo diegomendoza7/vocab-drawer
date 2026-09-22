@@ -4,6 +4,7 @@ import { C, TINT } from "../theme.js";
 import AccentKeys from "./AccentKeys.jsx";
 import { insertAt } from "../lib/textbox.js";
 import { ruleInfo, ruleKeyOf } from "../lib/errors.js";
+import Emphasised from "./Emphasised.jsx";
 
 /* Your mistakes — the screen the app could not have shown before.
  *
@@ -24,16 +25,6 @@ const QUIET = { border: `1px solid ${C.line}`, color: C.ink };
 
 /* The explanations are written with **bold** around the part that matters,
  * because the part that matters is usually two words inside a long sentence. */
-function Emphasised({ text }) {
-  return (
-    <>
-      {String(text).split(/\*\*(.+?)\*\*/g).map((chunk, i) => (
-        i % 2 ? <b key={i} style={{ color: C.ink }}>{chunk}</b> : <span key={i}>{chunk}</span>
-      ))}
-    </>
-  );
-}
-
 function Drill({ mistake, lang, check, onDone, hasKeys }) {
   const items = (mistake.examples || []).filter((e) => e.text);
   const [idx, setIdx] = useState(0);

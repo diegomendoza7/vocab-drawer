@@ -161,7 +161,7 @@ export default function HomeDesktop({
   dueCards, studiedCount, totalWords, langName, streak, reviewedToday, onReviewDue,
   weakCount, onWeakSpots,
   levels, level, onLevelChange,
-  dailyGoal, suggestion, levelName, levelDesc, flatWordCount, totalThemes,
+  dailyGoal, suggestion, onNavigate, onPlace, placedAt, levelName, levelDesc, flatWordCount, totalThemes,
   mode, onModeChange,
   groups, drawerMastery, onStartTheme,
   batchSize, onBatchSize, totalBatches, onStartMixed,
@@ -214,10 +214,18 @@ export default function HomeDesktop({
             * opinion. It knows the weakest words, the untouched drawers and
             * the tenses never opened — so it says which, not "study
             * something new". */
-          <div className="shrink-0 max-w-[300px] text-right">
+          /* Clickable, because a recommendation you cannot act on is an
+            * observation. It used to be text: the app would tell you to try
+            * the subjunctive and leave you to find it. */
+          <button
+            onClick={() => suggestion.section && onNavigate(suggestion.section)}
+            disabled={!suggestion.section}
+            className="shrink-0 max-w-[300px] text-right rounded-md px-3 py-2 disabled:cursor-default"
+            style={{ border: `1px solid ${suggestion.section ? C.line : "transparent"}` }}
+          >
             <div className="text-sm font-semibold" style={{ color: C.ink }}>{suggestion.label}</div>
             <div className="text-xs font-serif mt-0.5" style={{ color: C.muted }}>{suggestion.why}</div>
-          </div>
+          </button>
         )}
       </div>
 
@@ -243,6 +251,17 @@ export default function HomeDesktop({
         <div className="flex-1 min-w-[240px] font-serif text-sm" style={{ color: C.muted }}>
           <span className="font-semibold" style={{ color: C.ink }}>{levelName}.</span>{" "}
           {levelDesc} — {flatWordCount} words across {totalThemes} drawers.
+          {/* Where the question is actually asked. Someone arriving with school
+            * French is looking at this strip wondering which button is theirs;
+            * burying the answer on the progress screen helps nobody. */}
+          {onPlace && (
+            <>
+              {" "}
+              <button onClick={onPlace} className="underline" style={{ color: C.ink }}>
+                {placedAt ? `Placed at ${placedAt}` : "Not sure? Find your level"}
+              </button>
+            </>
+          )}
         </div>
 
         <div className="flex shrink-0 rounded-md overflow-hidden" style={{ border: `1px solid ${C.line}` }}>

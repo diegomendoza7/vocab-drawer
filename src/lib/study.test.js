@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildBatchLedger, buildSummaryRows, matrixCell, weakestCards, drillScopeTenses, effectiveScope, kindsForCard, nextAction, accuracyTrend, mergeProgress, estimateMinutes, prefixReach, typeAhead, commitTypeAhead, frequencyReach } from "./study.js";
+import { scheduleResults, buildBatchLedger, buildSummaryRows, matrixCell, weakestCards, drillScopeTenses, effectiveScope, kindsForCard, nextAction, accuracyTrend, mergeProgress, estimateMinutes, prefixReach, typeAhead, commitTypeAhead, frequencyReach } from "./study.js";
 import { scheduleCard, gradeFromWrongCount, todayKey, addDays, cardId } from "./srs.js";
 
 const w = (t, extra = {}) => ({ t, e: `${t}-gloss`, ...extra });
@@ -276,6 +276,142 @@ describe("kindsForCard", () => {
   });
 });
 
+describe("scheduleResults: the two cards move independently", () => {
+  const REC = "de:A1:Haus";
+  const PROD = "de:A1:Haus::prod";
+  /* A word an existing learner knows well: one card, a month's interval. */
+  const known = { ease: 2.3, interval: 30, reps: 6, lapses: 0, due: "2026-09-01", lastSeen: "2026-08-02" };
+
+  it("seeds a first production answer from the card that covered both", () => {
+    /* The invariant the whole split rests on. Starting from nothing would
+     * give interval 1 and make every known word due again tomorrow. */
+    const { cards } = scheduleResults({ [REC]: known }, [[PROD, { wrongCount: 0 }]]);
+    expect(cards[PROD].reps).toBe(7);
+    expect(cards[PROD].interval).toBeGreaterThan(30);
+  });
+
+  it("leaves the recognition card untouched when only production was answered", () => {
+    const { cards } = scheduleResults({ [REC]: known }, [[PROD, { wrongCount: 2 }]]);
+    expect(cards[REC]).toEqual(known);
+  });
+
+  it("lets production lapse while recognition advances", () => {
+    const { cards } = scheduleResults(
+      { [REC]: known },
+      [[REC, { wrongCount: 0 }], [PROD, { wrongCount: 2 }]],
+    );
+    expect(cards[REC].interval).toBeGreaterThan(30);
+    expect(cards[REC].lapses).toBe(0);
+    expect(cards[PROD].interval).toBe(0);
+    expect(cards[PROD].lapses).toBe(1);
+  });
+
+  it("stops seeding once production has a card of its own", () => {
+    const prodCard = { ease: 1.9, interval: 4, reps: 2, lapses: 3, due: "2026-09-01", lastSeen: "2026-09-01" };
+    const { cards } = scheduleResults({ [REC]: known, [PROD]: prodCard }, [[PROD, { wrongCount: 0 }]]);
+    expect(cards[PROD].reps).toBe(3);        // continued its own history
+    expect(cards[PROD].lapses).toBe(3);      // not the recognition card's 0
+  });
+
+  it("schedules a recognition answer exactly as it always did", () => {
+    /* The no-regression check: nothing about an existing card's handling may
+     * change for a learner who never answers a production question. */
+    const { cards } = scheduleResults({ [REC]: known }, [[REC, { wrongCount: 1 }]]);
+    expect(cards[REC]).toEqual(scheduleCard(known, "hard", REC));
+  });
+
+  it("reports only the cards it touched", () => {
+    const other = { ease: 2.3, interval: 5, reps: 2, lapses: 0, due: "2026-09-30", lastSeen: null };
+    const { scheduled } = scheduleResults({ [REC]: known, "de:A1:Hund": other }, [[REC, { wrongCount: 0 }]]);
+    expect(Object.keys(scheduled)).toEqual([REC]);
+  });
+
+  it("does not mutate the cards it was handed", () => {
+    const cards = { [REC]: { ...known } };
+    scheduleResults(cards, [[REC, { wrongCount: 0 }], [PROD, { wrongCount: 0 }]]);
+    expect(cards[REC]).toEqual(known);
+    expect(cards[PROD]).toBeUndefined();
+  });
+});
+
+describe("weakestCards across both directions", () => {
+  const word = { t: "Haus", e: "house" };
+  const entries = [{ word, level: "A1" }];
+
+  it("finds a word that is only weak to produce", () => {
+    /* Read perfectly, produced badly — the case that used to average out to
+     * an unremarkable card and never surface as a weak spot at all. */
+    const cards = {
+      "de:A1:Haus": { reps: 6, interval: 30, lapses: 0, ease: 2.3 },
+      "de:A1:Haus::prod": { reps: 1, interval: 1, lapses: 4, ease: 1.6 },
+    };
+    const [top] = weakestCards({ entries, lang: "de", cards });
+    expect(top).toBeTruthy();
+    expect(top.direction).toBe("produce");
+    expect(top.lapses).toBe(4);
+  });
+
+  it("keeps the worse half when both are shaky", () => {
+    const cards = {
+      "de:A1:Haus": { reps: 2, interval: 2, lapses: 6, ease: 1.5 },
+      "de:A1:Haus::prod": { reps: 2, interval: 2, lapses: 1, ease: 2.2 },
+    };
+    expect(weakestCards({ entries, lang: "de", cards })[0].direction).toBe("recognise");
+  });
+
+  it("still says nothing about a word with no trouble in either direction", () => {
+    const cards = {
+      "de:A1:Haus": { reps: 6, interval: 30, lapses: 0, ease: 2.3 },
+      "de:A1:Haus::prod": { reps: 5, interval: 20, lapses: 0, ease: 2.3 },
+    };
+    expect(weakestCards({ entries, lang: "de", cards })).toEqual([]);
+  });
+
+  it("works for a learner who has no production cards yet", () => {
+    const cards = { "de:A1:Haus": { reps: 2, interval: 2, lapses: 3, ease: 1.9 } };
+    const [top] = weakestCards({ entries, lang: "de", cards });
+    expect(top.direction).toBe("recognise");
+  });
+});
+
+describe("kindsForCard: recognition and production are separate", () => {
+  const word = { t: "Haus", e: "house", b: "Das _____ ist alt.", ba: "Haus" };
+  const withCloze = { hasCloze: () => true };
+  const known = { reps: 4, interval: 10, lapses: 0 };
+
+  it("asks only recognition until the word has come back once", () => {
+    expect(kindsForCard(word, { rec: { reps: 0, interval: 0 }, prod: null }, withCloze)).toEqual(["toEnglish"]);
+  });
+
+  it("paces the cloze by the production card, not the recognition one", () => {
+    /* Recognised for a month, produced only yesterday: the cloze is the
+     * hardest question there is and must follow the weaker half. */
+    const kinds = kindsForCard(word, { rec: { reps: 9, interval: 30 }, prod: { reps: 1, interval: 1 } }, withCloze);
+    expect(kinds).toContain("toTarget");
+    expect(kinds).not.toContain("fillBlank");
+  });
+
+  it("adds the cloze once production itself has stuck", () => {
+    expect(kindsForCard(word, { rec: { reps: 9, interval: 30 }, prod: { reps: 3, interval: 5 } }, withCloze))
+      .toContain("fillBlank");
+  });
+
+  it("drops production for a word whose production is a leech, keeping recognition", () => {
+    /* The case the single shared card could not represent: you can read it
+     * perfectly well and have failed to produce it eight times. */
+    const kinds = kindsForCard(word, { rec: known, prod: { reps: 0, interval: 0, lapses: 8 } }, withCloze);
+    expect(kinds).toEqual(["toEnglish"]);
+  });
+
+  it("falls back to the recognition card when production has never been graded", () => {
+    /* An existing learner's word, before any production answer has been
+     * recorded against the new card. Behaviour must be what it always was. */
+    const split = kindsForCard(word, { rec: known, prod: null }, withCloze);
+    expect(split).toEqual(kindsForCard(word, known, withCloze));
+    expect(split).toContain("fillBlank");
+  });
+});
+
 describe("nextAction", () => {
   const none = { dueCount: 0, weakCount: 0, leechCount: 0, unstartedDrawer: null, untouchedTense: null, dueToday: 0, goal: 20 };
 
@@ -301,6 +437,83 @@ describe("nextAction", () => {
 
   it("always returns something actionable", () => {
     expect(nextAction({ ...none }).label).toBeTruthy();
+  });
+
+  /* The strand gap is the only way anything outside vocabulary can ever be
+   * recommended, so what it must and must not outrank is worth pinning. */
+  const readingGap = { strand: "input", section: "reading", activity: "reading", invite: "Read a passage", never: false, days: 9 };
+
+  it("recommends a neglected strand ahead of new vocabulary", () => {
+    const a = nextAction({ ...none, unstartedDrawer: "Animals", strandGap: readingGap });
+    expect(a.kind).toBe("strand");
+    expect(a.label).toBe("Read a passage");
+    expect(a.section).toBe("reading");
+  });
+
+  it("still puts due work first — a strand gap is not urgent", () => {
+    expect(nextAction({ ...none, dueCount: 4, strandGap: readingGap }).kind).toBe("due");
+  });
+
+  it("does not let a strand gap hide a pattern being got wrong", () => {
+    expect(nextAction({ ...none, mistakeCount: 3, strandGap: readingGap }).kind).toBe("mistakes");
+  });
+
+  it("defers to the concrete suggestion when the neglected strand is study itself", () => {
+    /* "Start Animals" is a better sentence than "Study words", and means the
+     * same thing — so the generic invitation must not displace it. */
+    const formGap = { strand: "form", section: "study", activity: "study", invite: "Study words", never: false, days: 5 };
+    expect(nextAction({ ...none, unstartedDrawer: "Animals", strandGap: formGap }).label).toBe("Start Animals");
+    expect(nextAction({ ...none, untouchedTense: "Subjonctif", strandGap: formGap }).label).toBe("Try Subjonctif");
+  });
+
+  it("uses the study gap when there is no drawer or tense left to name", () => {
+    const formGap = { strand: "form", section: "phrases", activity: "phrases", invite: "Match some idioms", never: true, days: null };
+    expect(nextAction({ ...none, strandGap: formGap }).label).toBe("Match some idioms");
+  });
+
+  it("carries a section the caller can navigate to", () => {
+    expect(nextAction({ ...none, strandGap: readingGap }).section).toBeTruthy();
+  });
+});
+
+describe("mergeProgress: the activity record", () => {
+  const base = { cards: { a: { lastSeen: "2026-09-01", reps: 1 } }, history: {} };
+
+  it("brings across work the other device did and this one never has", () => {
+    const { progress } = mergeProgress(
+      { ...base, activity: {} },
+      { cards: {}, activity: { reading: { first: "2026-09-01", last: "2026-09-02", days: 2 } } },
+    );
+    expect(progress.activity.reading.days).toBe(2);
+  });
+
+  it("adds the days of both devices", () => {
+    const { progress } = mergeProgress(
+      { ...base, activity: { reading: { first: "2026-09-01", last: "2026-09-03", days: 2 } } },
+      { cards: {}, activity: { reading: { first: "2026-09-05", last: "2026-09-06", days: 2 } } },
+    );
+    expect(progress.activity.reading).toMatchObject({ days: 4, first: "2026-09-01", last: "2026-09-06" });
+  });
+
+  it("cannot count more days than have elapsed — re-importing must not inflate it", () => {
+    /* The same two days of reading, imported from a copy of itself. Adding
+     * blindly would claim four days of reading inside a two-day span. */
+    const record = { reading: { first: "2026-09-01", last: "2026-09-02", days: 2 } };
+    const { progress } = mergeProgress({ ...base, activity: record }, { cards: {}, activity: record });
+    expect(progress.activity.reading.days).toBe(2);
+  });
+
+  it("ignores an activity key it does not recognise", () => {
+    const { progress } = mergeProgress(
+      { ...base, activity: {} },
+      { cards: {}, activity: { sabotage: { last: "2026-09-02", days: 99 } } },
+    );
+    expect(progress.activity.sabotage).toBeUndefined();
+  });
+
+  it("survives a file written before activity existed", () => {
+    const { progress } = mergeProgress({ ...base }, { cards: {} });
+    expect(progress.activity).toEqual({});
   });
 });
 

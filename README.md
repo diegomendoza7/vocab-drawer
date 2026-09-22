@@ -1541,3 +1541,148 @@ per file, and the Listening & Speaking screen names them. `npm run check` runs
 `scripts/check-voices.mjs`, which fails on a missing file, a missing speaker or
 licence, a key that is not a deck headword, or a file too small to be audio —
 and prints coverage, so it is a number that moves rather than an intention.
+
+## Why, not just what
+
+The app used to be able to tell you that you were wrong and never why. The
+checker knew the exact rule broken — `de-verb-second`, `CAT_GRAMMAIRE` — and
+printed LanguageTool's sentence-specific message ("le should be la here"),
+which teaches nothing about the rule, so the same error came back next week.
+Every flagged error now carries a **Why** you can open: the rule in two or
+three sentences, and a button to the grammar note that covers it. It is folded
+shut on purpose — six open essays is a panel nobody reads — but it is one
+click away at the moment you are looking at your own mistake, which is the
+only moment a grammar note is genuinely wanted.
+
+A missed conjugation had the same hole: it showed the right form and its
+English, so you learned what to memorise and never how the tense is built, and
+the next verb in the same tense was a fresh guess. Every tense now carries a
+`form` line — how it is actually constructed — shown on a miss in the drill,
+and permanently in the workbench's side panel, where the table is already open
+in front of you.
+
+Both of those are links from one data file to another, and a broken link is
+**invisible**: the UI matches a note title against the notes that exist and
+renders nothing when it misses, which looks exactly like "no note exists". So
+`scripts/check-explanations.mjs` fails the build when a rule the German checker
+can emit has no explanation, when a note reference names a note that is not in
+that language, when a tense has no `form`, or when an emphasis marker is left
+unclosed and the asterisks would be printed to the learner.
+
+## The four strands
+
+`nextAction` — the "what should I do now" on the home screen — could only ever
+name a due card, a weak word, an unopened drawer or an undrilled tense. Every
+one of those is deliberate study, the strand a drill app naturally over-serves,
+and the other thirteen sections had no path to them at all.
+
+Paul Nation's Four Strands (Nation 2007) is the least controversial design
+principle in language teaching: roughly equal *time* in meaning-focused input,
+meaning-focused output, language-focused learning, and fluency development.
+Not equal value — equal time. `src/lib/strands.js` maps every activity in the
+app to its strand and records which have actually been done, so the app can
+answer the question it could not: what has gone longest untouched.
+
+The record is one row per activity — the last day it was done and how many
+distinct days — so it cannot grow without bound. Days, not sessions: three
+passages in one evening is one day of reading, and counting it as three would
+let a single enthusiastic sitting claim a balanced week.
+
+Two placements are judgement calls, made explicitly. Dictation is listening
+*for the exact form*, which Nation would call language-focused; it counts as
+input because it is the only sustained listening in the app and calling it
+study would leave that strand looking emptier than the learner's ears actually
+are. Sentence Constructions produces language, but to a specification rather
+than to say something, so it counts as study rather than output.
+
+The suggestion is now a **button**, not a sentence — a recommendation you
+cannot act on is an observation. It never outranks the schedule or a mistake
+pattern, and when the neglected strand *is* deliberate study it steps aside for
+the concrete suggestion, because "Start Animals" is a better sentence than
+"Study words" and means the same thing.
+
+## Recognising a word and being able to say it
+
+Knowing that *Schwierigkeit* means difficulty and producing *Schwierigkeit*
+when you want to say difficulty are two different pieces of knowledge, and the
+second is reliably far weaker. The app asked both — a word was shown to-English
+and to-target — and graded them into **one card**, so one ease, one interval
+and one due date covered both. A word you could read fluently and could not
+produce at all averaged out to "fine", and the scheduler had no way to ask the
+harder half more often.
+
+A word now has two cards. The recognition card keeps the original id, so every
+card already earned stays exactly where it is; production takes a `::prod`
+suffix and is created the first time a production answer is graded. To-English
+is evidence about recognition; to-target, the cloze, the sentence stage,
+dictation and speaking are evidence about production.
+
+The seeding is the part that makes it safe to ship: a production card that has
+never been graded starts **from the recognition card**, not from nothing. The
+single card that came before the split was graded on production answers too, so
+it is real evidence — and starting production at zero would have made every
+word an existing learner already knew fall due again on the day of the change.
+`scheduleResults` was lifted out of the component so that rule could be tested,
+since it is the most expensive place in the app to be wrong.
+
+What follows from the split: a word can be due to produce while its recognition
+card is still weeks away, which is the normal case rather than the exception.
+The end-of-batch table shows a word twice when it was asked both ways, tagged
+*to recognise* and *to produce* — two rows for one word is the point, not a
+bug. And "weak spots" now scores both halves and keeps the worse one, so a word
+you read without effort and cannot say finally surfaces as what it is.
+
+## Where to start, and what you can do
+
+**Placement.** The app had one answer for a new learner and it was A1, drawer
+one, word one. `src/lib/placement.js` is a short adaptive check of recognition
+vocabulary in the tradition of the yes/no vocabulary size tests (Meara & Buxton
+1987), except that it asks for the meaning rather than for a self-report,
+because self-reports are reliably generous and a multiple choice is
+self-verifying. It works up through the levels, six words each, and stops as
+soon as the words stop being familiar.
+
+Two things it deliberately does not do. It does not write SM-2 cards: marking
+six hundred words "known" from a thirty-word sample would be inventing evidence
+the scheduler would then pace reviews off. And it does not claim precision —
+the estimate is a sample scaled to a level, and is always shown with the sample
+size attached, "a bearing rather than a count".
+
+**Ability, not activity.** The progress screen counted a streak, answers today,
+reviews coming due, drawers started. All of that says you turned up; none of it
+says how far along you are. The new panel says how many words you can recognise
+and how many you can produce, how many of the commonest 1,000 and 2,000 you are
+holding, and how wide the gap between the two directions is.
+
+The wording is chosen to stay measured. A word is **held** when it has come
+back correctly after a week away — the only evidence of retention the app has —
+and the panel says so in as many words. It does not say "you know 340 words",
+because a card at a seven-day interval is not that claim. Nor does it print a
+text-coverage percentage: the frequency data here is a rank list with no counts
+in it, so any "you can read 84% of ordinary text" figure would be borrowed from
+the literature and presented as if it had been measured on this learner.
+
+## Learning steps: the second look
+
+A brand-new card answered correctly went straight to a one-day interval, so the
+entire first encounter with a word was one sitting and then nothing until
+tomorrow. The spacing literature is unusually consistent that the first re-test
+matters most and should come soon (Cepeda et al. 2006), and the cheapest real
+gain available was a second retrieval later the same day, before the schedule
+proper starts.
+
+A new card now graduates only after being recalled twice, and the second time
+has to be at least ten minutes after the first. **That gap is the whole point**
+— without it, clicking "review due" straight after a batch would graduate every
+word in it seconds later, which is massed repetition wearing the costume of
+spaced repetition. Answering inside the gap is harmless and simply does not
+advance the step. `easy` skips the steps, as in Anki: someone who says a word
+was easy on sight is not asking for a second look. A lapse sends a card back
+through them, because the reason it lapsed is that it was never consolidated.
+
+This is why the due count reads `isReady` rather than `isDue`. A word met
+minutes ago is due by the calendar and is not worth asking — it would be
+answered out of working memory, teach nothing, and still be counted. Right
+after a batch the home screen says **0 due**; ten minutes later it says 8. The
+summary marks those words **later today** and explains why they are coming
+back.

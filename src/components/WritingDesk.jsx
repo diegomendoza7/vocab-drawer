@@ -49,7 +49,7 @@ function Trend({ entries }) {
   );
 }
 
-export default function WritingDesk({ lang, langName, levels, startLevel, entries, onSave, check, canSpeak, say, hasKeys }) {
+export default function WritingDesk({ lang, langName, levels, startLevel, entries, onSave, check, canSpeak, say, hasKeys, noteTitles, onOpenNote }) {
   const [initial] = useState(() => readDraft(lang));
   const firstLevel = levels.includes(startLevel) ? startLevel : levels[0];
   const [level, setLevel] = useState(() => {
@@ -257,6 +257,8 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
               onSay={say}
               onApplyFix={applyOne}
               minWords={isFree ? null : prompt.min}
+              noteTitles={noteTitles}
+              onOpenNote={onOpenNote}
             />
           )}
         </main>

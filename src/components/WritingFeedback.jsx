@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { ExternalLink, WifiOff, Clock, Check, X } from "lucide-react";
+import { ExternalLink, WifiOff, Clock, Check, X, BookOpen } from "lucide-react";
 import { C, TINT, shade } from "../theme.js";
 import { KIND_LABEL, COUNTED, accuracyLabel } from "../lib/grammar.js";
+import { ruleInfo, ruleKeyOf } from "../lib/errors.js";
 import { COPY_LIMIT, BANDS } from "../lib/writing.js";
 import SpeakButton from "./SpeakButton.jsx";
+import Emphasised from "./Emphasised.jsx";
 
 /* What a check found, in the order it matters.
  *
@@ -80,8 +82,46 @@ function Status({ status, waitMs, lang }) {
   return <span>LanguageTool returned an error, so grammar and spelling weren't checked.{extra}</span>;
 }
 
+/* The rule behind one flagged error, offered rather than forced.
+ *
+ * LanguageTool's own message says what is wrong with *this* sentence ("le
+ * should be la here"). It never says what the rule is, so the same error
+ * arrives again next week having taught nothing. The explanation is folded
+ * shut because a panel of six open essays is a panel nobody reads — but it is
+ * one click away at the exact moment the learner is looking at their own
+ * mistake, which is the only moment a grammar note is genuinely wanted.
+ */
+function Why({ issue, noteTitles, onOpenNote }) {
+  const info = ruleInfo(ruleKeyOf(issue));
+  if (!info.why) return null;
+  const note = info.note && noteTitles.includes(info.note) ? info.note : null;
+  return (
+    <details className="mt-0.5">
+      <summary className="text-[0.6875rem] font-semibold cursor-pointer inline-flex items-center gap-1" style={{ color: C.muted }}>
+        Why — {info.title}
+      </summary>
+      <div className="mt-1 pl-2" style={{ borderLeft: `2px solid ${C.line}` }}>
+        <p className="font-serif text-[0.8125rem]" style={{ color: C.muted, lineHeight: 1.6, maxWidth: "60ch" }}>
+          <Emphasised text={info.why} />
+        </p>
+        {note && onOpenNote && (
+          <button
+            type="button"
+            onClick={() => onOpenNote(note)}
+            className="mt-1.5 px-2 py-1 rounded text-[0.6875rem] font-semibold inline-flex items-center gap-1"
+            style={{ backgroundColor: C.paper, color: C.ink, border: `1px solid ${C.line}` }}
+          >
+            <BookOpen size={11} /> Read: {note}
+          </button>
+        )}
+      </div>
+    </details>
+  );
+}
+
 export default function WritingFeedback({
   lang, entry, stale, model, canSpeak, onSay, onApplyFix, passageProfile, minWords, minSentenceWords,
+  noteTitles = [], onOpenNote,
 }) {
   const [active, setActive] = useState(null);
   const { result, shape, copied, ideas, fixed, text } = entry;
@@ -126,6 +166,7 @@ export default function WritingFeedback({
           </button>
         ))}
       </div>
+      {COUNTED.has(i.kind) && <Why issue={i} noteTitles={noteTitles} onOpenNote={onOpenNote} />}
     </li>
   );
 

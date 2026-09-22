@@ -1,0 +1,961 @@
+{
+ "Kind": {
+  "file": "kind.ogg",
+  "bytes": 10727,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Kind.ogg"
+ },
+ "Mutter": {
+  "file": "mutter.ogg",
+  "bytes": 12826,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Mutter.ogg"
+ },
+ "Wasser": {
+  "file": "wasser.ogg",
+  "bytes": 10341,
+  "speaker": "Tosca",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Wasser.ogg"
+ },
+ "rot": {
+  "file": "rot.ogg",
+  "bytes": 11063,
+  "speaker": "Bleibein",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-rot.ogg"
+ },
+ "Pferd": {
+  "file": "pferd.mp3",
+  "bytes": 19027,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Pferd.wav"
+ },
+ "Vogel": {
+  "file": "vogel.mp3",
+  "bytes": 17618,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Vogel.wav"
+ },
+ "zufrieden": {
+  "file": "zufrieden.ogg",
+  "bytes": 18312,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-zufrieden.ogg"
+ },
+ "Buch": {
+  "file": "buch.mp3",
+  "bytes": 14435,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Buch.wav"
+ },
+ "Haus": {
+  "file": "haus.ogg",
+  "bytes": 15290,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Haus.ogg"
+ },
+ "Vater": {
+  "file": "vater.ogg",
+  "bytes": 15974,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Vater.ogg"
+ },
+ "Auto": {
+  "file": "auto.ogg",
+  "bytes": 16112,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Auto.ogg"
+ },
+ "Brot": {
+  "file": "brot.ogg",
+  "bytes": 13863,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Brot.ogg"
+ },
+ "Tisch": {
+  "file": "tisch.ogg",
+  "bytes": 12607,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Tisch.ogg"
+ },
+ "Fisch": {
+  "file": "fisch.ogg",
+  "bytes": 15358,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Fisch.ogg"
+ },
+ "Apfel": {
+  "file": "apfel.ogg",
+  "bytes": 13576,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Apfel.ogg"
+ },
+ "Kuh": {
+  "file": "kuh.ogg",
+  "bytes": 13122,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Kuh.ogg"
+ },
+ "Hund": {
+  "file": "hund.ogg",
+  "bytes": 13025,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Hund.ogg"
+ },
+ "Großvater": {
+  "file": "grossvater.ogg",
+  "bytes": 18822,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Gro%C3%9Fvater.ogg"
+ },
+ "Mann": {
+  "file": "mann.ogg",
+  "bytes": 10577,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Mann.ogg"
+ },
+ "Ei": {
+  "file": "ei.ogg",
+  "bytes": 8679,
+  "speaker": "User:Tosca",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Ei.ogg"
+ },
+ "blau": {
+  "file": "blau.ogg",
+  "bytes": 15298,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-blau.ogg"
+ },
+ "Katze": {
+  "file": "katze.ogg",
+  "bytes": 14546,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Katze.ogg"
+ },
+ "Gemüse": {
+  "file": "gemuse.ogg",
+  "bytes": 18801,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Gem%C3%BCse.ogg"
+ },
+ "Schule": {
+  "file": "schule.ogg",
+  "bytes": 10249,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Schule.ogg"
+ },
+ "schwarz": {
+  "file": "schwarz.ogg",
+  "bytes": 11243,
+  "speaker": "User:Tosca",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-schwarz.ogg"
+ },
+ "zwei": {
+  "file": "zwei.ogg",
+  "bytes": 12164,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-zwei.ogg"
+ },
+ "sechs": {
+  "file": "sechs.ogg",
+  "bytes": 11737,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-sechs.ogg"
+ },
+ "drei": {
+  "file": "drei.ogg",
+  "bytes": 9914,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-drei.ogg"
+ },
+ "fünf": {
+  "file": "funf.ogg",
+  "bytes": 11091,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-f%C3%BCnf.ogg"
+ },
+ "sieben": {
+  "file": "sieben.ogg",
+  "bytes": 9830,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-sieben.ogg"
+ },
+ "acht": {
+  "file": "acht.ogg",
+  "bytes": 10413,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-acht.ogg"
+ },
+ "zehn": {
+  "file": "zehn.ogg",
+  "bytes": 9388,
+  "speaker": "Wikimedia contributor",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-zehn.ogg"
+ },
+ "eins": {
+  "file": "eins.ogg",
+  "bytes": 12693,
+  "speaker": "Wikimedia contributor",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-eins.ogg"
+ },
+ "gelb": {
+  "file": "gelb.ogg",
+  "bytes": 13794,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-gelb.ogg"
+ },
+ "Ente": {
+  "file": "ente.ogg",
+  "bytes": 13856,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Ente.ogg"
+ },
+ "grün": {
+  "file": "grun.ogg",
+  "bytes": 16243,
+  "speaker": "Priwo",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-gr%C3%BCn.ogg"
+ },
+ "Bruder": {
+  "file": "bruder.ogg",
+  "bytes": 11068,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Bruder.ogg"
+ },
+ "Schwester": {
+  "file": "schwester.ogg",
+  "bytes": 12960,
+  "speaker": "joni",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Schwester.ogg"
+ },
+ "Hase": {
+  "file": "hase.ogg",
+  "bytes": 12821,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Hase.ogg"
+ },
+ "Freund": {
+  "file": "freund.ogg",
+  "bytes": 17345,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Freund.ogg"
+ },
+ "hallo": {
+  "file": "hallo.ogg",
+  "bytes": 13881,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-hallo.ogg"
+ },
+ "ja": {
+  "file": "ja.ogg",
+  "bytes": 12679,
+  "speaker": "MiER",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-ja.ogg"
+ },
+ "danke": {
+  "file": "danke.ogg",
+  "bytes": 23100,
+  "speaker": "Wikimedia contributor",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Danke.ogg"
+ },
+ "bitte": {
+  "file": "bitte.ogg",
+  "bytes": 14143,
+  "speaker": "Bleibein",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-bitte.ogg"
+ },
+ "nein": {
+  "file": "nein.ogg",
+  "bytes": 21118,
+  "speaker": "Priwo",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-nein.ogg"
+ },
+ "grau": {
+  "file": "grau.ogg",
+  "bytes": 11879,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-grau.ogg"
+ },
+ "sein": {
+  "file": "sein.mp3",
+  "bytes": 16943,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-sein.wav"
+ },
+ "Zeit": {
+  "file": "zeit.wav",
+  "bytes": 92972,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Zeit.wav"
+ },
+ "Woche": {
+  "file": "woche.mp3",
+  "bytes": 16624,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Woche.wav"
+ },
+ "Jahr": {
+  "file": "jahr.ogg",
+  "bytes": 12263,
+  "speaker": "Wikimedia contributor",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Jahr.ogg"
+ },
+ "machen": {
+  "file": "machen.ogg",
+  "bytes": 16590,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-machen.ogg"
+ },
+ "kaufen": {
+  "file": "kaufen.ogg",
+  "bytes": 15824,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-kaufen.ogg"
+ },
+ "Tag": {
+  "file": "tag.ogg",
+  "bytes": 10528,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Tag.ogg"
+ },
+ "Wetter": {
+  "file": "wetter.mp3",
+  "bytes": 18423,
+  "speaker": "PetiteTrolline ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-PetiteTrolline-Wetter.wav"
+ },
+ "sehen": {
+  "file": "sehen.mp3",
+  "bytes": 18918,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-sehen.wav"
+ },
+ "Bett": {
+  "file": "bett.ogg",
+  "bytes": 12999,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Bett.ogg"
+ },
+ "Gewitter": {
+  "file": "gewitter.mp3",
+  "bytes": 20330,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Gewitter.wav"
+ },
+ "essen": {
+  "file": "essen.mp3",
+  "bytes": 18089,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-essen.wav"
+ },
+ "trinken": {
+  "file": "trinken.ogg",
+  "bytes": 16060,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-trinken.ogg"
+ },
+ "Sonne": {
+  "file": "sonne.mp3",
+  "bytes": 16004,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Sonne.wav"
+ },
+ "Regen": {
+  "file": "regen.ogg",
+  "bytes": 14042,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Regen.ogg"
+ },
+ "neu": {
+  "file": "neu.mp3",
+  "bytes": 17408,
+  "speaker": "Lucas Werkmeister ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Lucas%20Werkmeister-neu.wav"
+ },
+ "schön": {
+  "file": "schon.ogg",
+  "bytes": 16703,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-sch%C3%B6n.ogg"
+ },
+ "Geld": {
+  "file": "geld.ogg",
+  "bytes": 12835,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Geld.ogg"
+ },
+ "groß": {
+  "file": "gross.ogg",
+  "bytes": 17229,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-gro%C3%9F.ogg"
+ },
+ "sprechen": {
+  "file": "sprechen.ogg",
+  "bytes": 18392,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-sprechen.ogg"
+ },
+ "haben": {
+  "file": "haben.ogg",
+  "bytes": 25110,
+  "speaker": "Leni Berlin",
+  "licence": "CC BY-SA 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-haben.ogg"
+ },
+ "Nebel": {
+  "file": "nebel.ogg",
+  "bytes": 13725,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Nebel.ogg"
+ },
+ "immer": {
+  "file": "immer.ogg",
+  "bytes": 15066,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-immer.ogg"
+ },
+ "Abend": {
+  "file": "abend.ogg",
+  "bytes": 12325,
+  "speaker": "Arnim Faryn",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Abend.ogg"
+ },
+ "Fenster": {
+  "file": "fenster.mp3",
+  "bytes": 21585,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Fenster.wav"
+ },
+ "klein": {
+  "file": "klein.ogg",
+  "bytes": 16385,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-klein.ogg"
+ },
+ "Wolke": {
+  "file": "wolke.mp3",
+  "bytes": 21221,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Wolke.wav"
+ },
+ "Tür": {
+  "file": "tur.ogg",
+  "bytes": 15597,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-T%C3%BCr.OGG"
+ },
+ "Morgen": {
+  "file": "morgen.ogg",
+  "bytes": 13188,
+  "speaker": "Wikimedia contributor",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Morgen.ogg"
+ },
+ "Wind": {
+  "file": "wind.ogg",
+  "bytes": 13461,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Wind.ogg"
+ },
+ "mögen": {
+  "file": "mogen.ogg",
+  "bytes": 15093,
+  "speaker": "Priwo",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-m%C3%B6gen.ogg"
+ },
+ "Nacht": {
+  "file": "nacht.mp3",
+  "bytes": 14096,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Nacht.wav"
+ },
+ "spät": {
+  "file": "spat.ogg",
+  "bytes": 18681,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-sp%C3%A4t.ogg"
+ },
+ "früh": {
+  "file": "fruh.ogg",
+  "bytes": 15399,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-fr%C3%BCh.ogg"
+ },
+ "heute": {
+  "file": "heute.ogg",
+  "bytes": 16591,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-heute.ogg"
+ },
+ "kommen": {
+  "file": "kommen.ogg",
+  "bytes": 10334,
+  "speaker": "User:Tosca",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-kommen.ogg"
+ },
+ "oft": {
+  "file": "oft.ogg",
+  "bytes": 16898,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-oft.ogg"
+ },
+ "kalt": {
+  "file": "kalt.ogg",
+  "bytes": 10592,
+  "speaker": "User:Tosca",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-kalt.ogg"
+ },
+ "einfach": {
+  "file": "einfach.ogg",
+  "bytes": 15201,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-einfach.ogg"
+ },
+ "heiß": {
+  "file": "heiss.ogg",
+  "bytes": 17836,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-hei%C3%9F.ogg"
+ },
+ "jetzt": {
+  "file": "jetzt.ogg",
+  "bytes": 15951,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-jetzt.ogg"
+ },
+ "Flugzeug": {
+  "file": "flugzeug.ogg",
+  "bytes": 21899,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Flugzeug.ogg"
+ },
+ "Flughafen": {
+  "file": "flughafen.ogg",
+  "bytes": 15117,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Flughafen.ogg"
+ },
+ "Stadt": {
+  "file": "stadt.ogg",
+  "bytes": 11447,
+  "speaker": "T.Voekler",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Stadt.OGG"
+ },
+ "müde": {
+  "file": "mude.ogg",
+  "bytes": 17892,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-m%C3%BCde.ogg"
+ },
+ "Straße": {
+  "file": "strasse.ogg",
+  "bytes": 16042,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Stra%C3%9Fe.ogg"
+ },
+ "verstehen": {
+  "file": "verstehen.ogg",
+  "bytes": 20959,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-verstehen.ogg"
+ },
+ "Arbeit": {
+  "file": "arbeit.wav",
+  "bytes": 101164,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Arbeit.wav"
+ },
+ "lernen": {
+  "file": "lernen.ogg",
+  "bytes": 17846,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-lernen.ogg"
+ },
+ "aufstehen": {
+  "file": "aufstehen.ogg",
+  "bytes": 18584,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-aufstehen.ogg"
+ },
+ "Preis": {
+  "file": "preis.ogg",
+  "bytes": 12519,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Preis.ogg"
+ },
+ "stolz": {
+  "file": "stolz.ogg",
+  "bytes": 17174,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-stolz.ogg"
+ },
+ "Küche": {
+  "file": "kuche.ogg",
+  "bytes": 15574,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-K%C3%BCche.ogg"
+ },
+ "Zimmer": {
+  "file": "zimmer.oga",
+  "bytes": 16378,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Zimmer.oga"
+ },
+ "Wohnzimmer": {
+  "file": "wohnzimmer.ogg",
+  "bytes": 17554,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Wohnzimmer.ogg"
+ },
+ "ankommen": {
+  "file": "ankommen.ogg",
+  "bytes": 21725,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-ankommen.ogg"
+ },
+ "Garten": {
+  "file": "garten.ogg",
+  "bytes": 17942,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Garten.ogg"
+ },
+ "Adresse": {
+  "file": "adresse.ogg",
+  "bytes": 14494,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Adresse.ogg"
+ },
+ "Aufgabe": {
+  "file": "aufgabe.ogg",
+  "bytes": 19007,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Aufgabe.ogg"
+ },
+ "Markt": {
+  "file": "markt.ogg",
+  "bytes": 15828,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Markt.ogg"
+ },
+ "Bahnhof": {
+  "file": "bahnhof.ogg",
+  "bytes": 20974,
+  "speaker": "T.Voekler",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Bahnhof.OGG"
+ },
+ "abreisen": {
+  "file": "abreisen.ogg",
+  "bytes": 14694,
+  "speaker": "Pill",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-abreisen.ogg"
+ },
+ "rechts": {
+  "file": "rechts.ogg",
+  "bytes": 18158,
+  "speaker": "Priwo",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-rechts.ogg"
+ },
+ "beenden": {
+  "file": "beenden.ogg",
+  "bytes": 19658,
+  "speaker": "Priwo",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-beenden.ogg"
+ },
+ "links": {
+  "file": "links.ogg",
+  "bytes": 17340,
+  "speaker": "Priwo",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-links.ogg"
+ },
+ "Fahrkarte": {
+  "file": "fahrkarte.ogg",
+  "bytes": 17461,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Fahrkarte.ogg"
+ },
+ "Geschäft": {
+  "file": "geschaft.ogg",
+  "bytes": 17557,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Gesch%C3%A4ft.ogg"
+ },
+ "Pause": {
+  "file": "pause.mp3",
+  "bytes": 17722,
+  "speaker": "Sebastian Wallroth ",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALL-Q188%20(deu)-Sebastian%20Wallroth-Pause.wav"
+ },
+ "krank": {
+  "file": "krank.ogg",
+  "bytes": 16785,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-krank.ogg"
+ },
+ "Koffer": {
+  "file": "koffer.ogg",
+  "bytes": 11997,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Koffer.ogg"
+ },
+ "Kollege": {
+  "file": "kollege.ogg",
+  "bytes": 11491,
+  "speaker": "Bleibein",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Kollege.ogg"
+ },
+ "bezahlen": {
+  "file": "bezahlen.ogg",
+  "bytes": 18927,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-bezahlen.ogg"
+ },
+ "wütend": {
+  "file": "wutend.ogg",
+  "bytes": 16704,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-w%C3%BCtend.ogg"
+ },
+ "glücklich": {
+  "file": "glucklich.ogg",
+  "bytes": 15779,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-gl%C3%BCcklich.ogg"
+ },
+ "Chef": {
+  "file": "chef.ogg",
+  "bytes": 12407,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Chef.ogg"
+ },
+ "Besprechung": {
+  "file": "besprechung.ogg",
+  "bytes": 14657,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Besprechung.ogg"
+ },
+ "Kasse": {
+  "file": "kasse.ogg",
+  "bytes": 13178,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Kasse.ogg"
+ },
+ "besorgt": {
+  "file": "besorgt.ogg",
+  "bytes": 19347,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-besorgt.ogg"
+ },
+ "überrascht": {
+  "file": "uberrascht.ogg",
+  "bytes": 17365,
+  "speaker": "Kampy",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-%C3%BCberrascht.ogg"
+ },
+ "Reisepass": {
+  "file": "reisepass.ogg",
+  "bytes": 17621,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-Reisepass.ogg"
+ },
+ "schon": {
+  "file": "schon.ogg",
+  "bytes": 15937,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-schon.ogg"
+ },
+ "können": {
+  "file": "konnen.ogg",
+  "bytes": 9231,
+  "speaker": "Bleibein",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-k%C3%B6nnen.ogg"
+ },
+ "denken": {
+  "file": "denken.ogg",
+  "bytes": 16161,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-denken.ogg"
+ },
+ "zu": {
+  "file": "zu.ogg",
+  "bytes": 13599,
+  "speaker": "T.Voekler",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADE-zu.OGG"
+ },
+ "nur": {
+  "file": "nur.ogg",
+  "bytes": 16545,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-nur.ogg"
+ },
+ "noch": {
+  "file": "noch.ogg",
+  "bytes": 15488,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-noch.ogg"
+ },
+ "schnell": {
+  "file": "schnell.ogg",
+  "bytes": 16962,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-schnell.ogg"
+ },
+ "wirklich": {
+  "file": "wirklich.ogg",
+  "bytes": 16597,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-wirklich.ogg"
+ },
+ "eher": {
+  "file": "eher.ogg",
+  "bytes": 13747,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-eher.ogg"
+ },
+ "vielleicht": {
+  "file": "vielleicht.ogg",
+  "bytes": 16277,
+  "speaker": "Alexandra Poelzlbauers, Vion Nicolas",
+  "licence": "CC BY 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-at-vielleicht.ogg"
+ },
+ "genug": {
+  "file": "genug.ogg",
+  "bytes": 13922,
+  "speaker": "Jeuwre",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADe-genug.ogg"
+ }
+}

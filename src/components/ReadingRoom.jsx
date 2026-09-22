@@ -59,7 +59,7 @@ function Stat({ value, label, strong }) {
 
 export default function ReadingRoom({
   lang, langName, passages, levels, startLevel, records, onRecord, today,
-  check, glossOf, canSpeak, say, onSaveWords, hasKeys,
+  check, glossOf, canSpeak, say, onSaveWords, hasKeys, noteTitles, onOpenNote,
 }) {
   const [level, setLevel] = useState(levels.includes(startLevel) ? startLevel : levels[0]);
   const [openId, setOpenId] = useState(null);
@@ -476,6 +476,8 @@ export default function ReadingRoom({
               passageProfile={task.kind === "write" ? profileHere : null}
               minWords={task.kind === "write" ? task.min : null}
               minSentenceWords={task.kind === "q" ? MIN_ANSWER_WORDS[passage.level] : null}
+              noteTitles={noteTitles}
+              onOpenNote={onOpenNote}
             />
           )}
 

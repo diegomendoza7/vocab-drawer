@@ -18,6 +18,9 @@ export default function ProgressBoard({
   maturity, levels, myWords, habit, forecast, beyond, trend,
   currentLevel, onExport, onImport, importReport,
   reach,
+  strands, strandGap, onNavigate,
+  ability, gap, reachLine, placement, onPlace,
+  footer,
 }) {
   const [open, setOpen] = useState({ [currentLevel]: true });
   const total = maturity.new + maturity.learning + maturity.young + maturity.mature || 1;
@@ -77,6 +80,59 @@ export default function ProgressBoard({
       </div>
 
       {/* ---------------- maturity ---------------- */}
+      {/* ---------------- what you can do ---------------- */}
+      {/* Everything below this panel is activity: a streak, answers today, a
+        * forecast. All of it says you turned up. This is the only part that
+        * answers "how far along am I", and it is careful about how it says
+        * so — a word is "held" when it has survived a real gap, which is a
+        * measured claim, rather than "known", which would not be. */}
+      {ability && (
+        <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
+          <div className="flex items-baseline justify-between flex-wrap gap-2 mb-3">
+            <div className="text-xs uppercase tracking-wide font-semibold" style={{ color: C.muted }}>What you can do</div>
+            {placement ? (
+              <div className="font-serif text-xs" style={{ color: C.muted }}>
+                Placed at <b style={{ color: C.ink }}>{placement.level}</b> on {placement.at} ·{" "}
+                <button onClick={onPlace} className="underline" style={{ color: C.muted }}>check again</button>
+              </div>
+            ) : (
+              <button onClick={onPlace} className="font-serif text-xs underline" style={{ color: C.ink }}>
+                Not sure where you are? Find your level
+              </button>
+            )}
+          </div>
+
+          <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+            <div>
+              <div className="font-type text-3xl" style={{ color: C.ink }}>{ability.recognise.holding}</div>
+              <div className="font-serif text-sm" style={{ color: C.muted }}>words you can recognise</div>
+              <div className="font-serif text-xs" style={{ color: C.muted }}>{ability.recognise.solid} of them well settled</div>
+            </div>
+            <div>
+              <div className="font-type text-3xl" style={{ color: C.ink }}>{ability.produce.holding}</div>
+              <div className="font-serif text-sm" style={{ color: C.muted }}>words you can produce</div>
+              <div className="font-serif text-xs" style={{ color: C.muted }}>{ability.produce.solid} of them well settled</div>
+            </div>
+            <div>
+              <div className="font-type text-3xl" style={{ color: C.ink }}>{ability.bands.top2000.holding}</div>
+              <div className="font-serif text-sm" style={{ color: C.muted }}>of the commonest 2,000</div>
+              <div className="font-serif text-xs" style={{ color: C.muted }}>{ability.bands.top1000.holding} in the top 1,000</div>
+            </div>
+          </div>
+
+          <p className="font-serif text-sm mt-3" style={{ color: C.muted, maxWidth: "72ch", lineHeight: 1.6 }}>
+            {reachLine}
+            {gap?.wide && (
+              <> Recognising far outruns producing at the moment — normal, and the thing that
+              closes it is saying and writing them rather than reading them again.</>
+            )}
+          </p>
+          <p className="font-serif text-xs mt-2" style={{ color: C.muted }}>
+            "Held" means a word has come back correctly after a week away — the only evidence of retention there is.
+          </p>
+        </div>
+      )}
+
       <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
         <div className="text-xs uppercase tracking-wide font-semibold mb-3" style={{ color: C.muted }}>Deck maturity</div>
         <div className="flex rounded-full overflow-hidden mb-4" style={{ height: 11, backgroundColor: C.paper }}>
@@ -94,6 +150,56 @@ export default function ProgressBoard({
           "Mature" means the interval has stretched past three weeks — the word is sticking.
         </div>
       </div>
+
+      {/* ---------------- the four strands ---------------- */}
+      {/* What the rest of this screen cannot say. Everything else here counts
+        * words: how many are mature, how many are due, how accurate you are.
+        * All of that is one strand of a course. This is the only panel that
+        * answers "what is my practice actually made of", which is the question
+        * that decides whether the words ever become a language. */}
+      {strands && (
+        <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
+          <div className="flex items-baseline justify-between flex-wrap gap-2 mb-3">
+            <div className="text-xs uppercase tracking-wide font-semibold" style={{ color: C.muted }}>The four strands</div>
+            <div className="font-serif text-xs" style={{ color: C.muted }}>
+              days you have done each kind of work — aim for roughly a quarter each
+            </div>
+          </div>
+          <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+            {strands.map((s) => (
+              <div key={s.strand}>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="font-type text-2xl" style={{ color: C.ink }}>{s.days}</span>
+                  <span className="font-serif text-xs" style={{ color: C.muted }}>
+                    {s.days ? `${Math.round(s.share * 100)}%` : ""}
+                  </span>
+                </div>
+                <div className="rounded-full overflow-hidden my-1" style={{ height: 5, backgroundColor: C.paper }}>
+                  <div style={{ width: `${Math.round(s.share * 100)}%`, height: "100%", backgroundColor: s.strand === strandGap?.strand ? C.gold : shade("45%") }} />
+                </div>
+                <div className="font-serif text-sm" style={{ color: C.ink }}>{s.label}</div>
+                <div className="font-serif text-xs" style={{ color: C.muted }}>
+                  {s.since === null ? "never" : s.since === 0 ? "today" : `${s.since}d ago`}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="font-serif text-sm mt-3" style={{ color: C.muted, maxWidth: "70ch" }}>
+            {strandGap
+              ? <>Thinnest right now: <b style={{ color: C.ink }}>{strandGap.label}</b>. </>
+              : "All four have had a turn recently. "}
+            A course wants roughly equal time in all four — the drills teach words, and the other three are where they turn into a language.
+            {strandGap && onNavigate && (
+              <>
+                {" "}
+                <button onClick={() => onNavigate(strandGap.section)} className="underline font-semibold" style={{ color: C.ink }}>
+                  {strandGap.invite}
+                </button>
+              </>
+            )}
+          </p>
+        </div>
+      )}
 
       <div className="grid gap-4 items-start" style={{ gridTemplateColumns: "1fr 300px" }}>
         {/* ---------------- mastery by drawer ---------------- */}
@@ -236,6 +342,7 @@ export default function ProgressBoard({
           </div>
         </div>
       </div>
+      {footer}
     </div>
   );
 }
