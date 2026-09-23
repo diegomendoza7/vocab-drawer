@@ -172,6 +172,13 @@ const SUBORDINATORS = new Set([
   "bis", "sobald", "falls", "seitdem", "sodass", "indem", "ehe",
 ]);
 const COORD = new Set(["und", "aber", "oder", "denn", "sondern"]);
+
+/* Subordinators whose clause, placed first, can be trusted to be a clause even
+ * when its verb is not in the verb tables (rule 1b). « wenn » and « falls »
+ * are not here: a relevance conditional ("Wenn du Durst hast, im Kühlschrank
+ * ist Bier") stands loose in front and is correct, so for those the rule still
+ * insists on recognising the verb. */
+const FRONTED_SUB = new Set(["als", "weil", "obwohl", "nachdem", "bevor", "sobald", "seitdem"]);
 const SEP = new Set([
   "ab", "an", "auf", "aus", "bei", "ein", "fest", "fort", "her", "hin", "los", "mit", "nach",
   "vor", "weg", "zu", "zurück", "zusammen", "weiter", "heim", "fern",
@@ -556,10 +563,18 @@ export function germanIssues(text, lex) {
 
     /* 1b. A clause that opens the sentence is its first element, so the verb
      * follows the comma — "Wenn ich Zeit habe, ich gehe" is wrong. The opening
-     * clause must hold a verb, or "Bis bald, ich freue mich" would trip it. */
+     * clause must be recognisably a clause, or "Bis bald, ich freue mich" would
+     * trip it: either it holds a verb from the tables, or it opens with one of
+     * the FRONTED_SUB words followed by a subject. The second way exists
+     * because the tables are not every verb — "Als er aufwachte, er lag…"
+     * went unflagged for want of « aufwachen », and it is the exact mistake
+     * Lesson 2 teaches and then asks the learner to avoid in writing. */
     const opener = sentence[0];
-    if (sentence.length > 1 && SUBORDINATORS.has(toks[opener[0]].lo) && opener.length >= 3
-      && opener.slice(1).some((ti) => fin(toks[ti]))) {
+    const sub = toks[opener[0]];
+    const subject = toks[opener[1]];
+    const clauseLike = opener.slice(1).some((ti) => fin(toks[ti]))
+      || (FRONTED_SUB.has(sub.lo) && !!subject && (isPron(subject) || !!familyOf(subject.lo)));
+    if (sentence.length > 1 && SUBORDINATORS.has(sub.lo) && opener.length >= 3 && clauseLike) {
       const main = sentence[1];
       const p = toks[main[0]], v = main.length > 1 ? toks[main[1]] : null;
       if (isPron(p) && v && fin(v)) {

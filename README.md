@@ -1686,3 +1686,89 @@ answered out of working memory, teach nothing, and still be counted. Right
 after a batch the home screen says **0 due**; ten minutes later it says 8. The
 summary marks those words **later today** and explains why they are coming
 back.
+
+
+## Lessons
+
+Everything else in the app either **tests** (the drills) or **explains after
+the fact** (the "Why" under a flagged error, the rule shown on a missed
+conjugation, the mistakes screen). None of that teaches in advance: a learner
+who has never been shown a rule could only find it by breaking it. Lessons are
+the missing third thing — the app teaching first.
+
+There are deliberately few, and each is dense: one famous public-domain text,
+taken all the way apart in eight stages, about forty minutes.
+
+| | French | German |
+|---|---|---|
+| **Lesson 1** | *Déclaration des droits de l'homme* (1789) — agreement, and « ne … que » | *Grundgesetz*, Art. 1–3 (1949) — the genitive, and the verb at the end |
+| **Lesson 2** | Proust, *Du côté de chez Swann* (1913) — three pasts, and verbs that take être | Kafka, *Die Verwandlung* (1915) — the Präteritum, and the verb after the comma |
+
+The two lessons in each language pair up: Lesson 1 is a founding text about
+rights, Lesson 2 is the most famous opening in the literature. Every extract
+was checked word for word against a published source (linked from the lesson);
+the texts are public domain, or — the Basic Law — an official work that German
+copyright law (§ 5 UrhG) does not protect.
+
+**The eight stages.** *Read* (every word clickable, glossed for this text, with
+context on why the text matters) → *Understand* (comprehension, each wrong
+option explained) → *Structure* (tap the verb, then see the sentence's anatomy;
+rebuild sentences from their pieces) → *Grammar* (the rule the text
+demonstrates, taught properly, with the tense-formation lines and the matching
+grammar note; then 9–10 drill items, each with its own explanation) → *Words*
+(each defined in the target language, with a quote from the text and its word
+family; one click adds them to My Words so they come back on the schedule) →
+*Name it* (the definition, you give the word) → *Translate* (into English,
+judged by key ideas; into the language, judged against known-good versions) →
+*Your turn* (write in the same pattern, checked by the full grammar checker,
+with the lesson's model answer). A lesson remembers the stage you stopped at,
+and the home screen offers to resume it.
+
+**What each check can and cannot know**, because a checker that overclaims
+teaches the learner to distrust it. A typed word is compared exactly; an
+accent-only slip is accepted with a note. A German noun with the wrong article
+is *not* accepted — "right word, wrong gender" is a real mistake and is named as
+one. A translation into English passes on its key ideas, and a missing idea is
+reported back ("Missing: *only*" is how ne … que actually gets learned). A
+translation into French or German that matches none of the known versions is
+**not** marked wrong: the lesson says what it could verify — the forms the
+sentence needs, and the grammar checker's view — and lets the learner mark it
+"mine means the same". That is counted separately in the summary, so a
+self-marked answer never masquerades as a verified one.
+
+**`scripts/check-lessons.mjs`** holds every lesson to its own promises, all of
+which fail silently on screen: a sentence's chunks must add up to a real
+passage of the text; every accepted rebuild order must use exactly the chunks
+offered; every model translation must pass its own check; every German model
+must pass the offline German rules (zero alarms, the same standard as the rest
+of the app); every quotation must actually be in the text; and **no definition
+may contain an answer it accepts**. That last one was found by using the
+lesson: « Rester dans le même état » accepted « rester », so the answer was the
+definition's first word — and seven more definitions had the same flaw.
+
+**Two fixes found by walking a lesson through as a learner.** In the rebuild
+exercise, the chunk that opens the sentence was the only capitalised one, so
+the capital told you where to start, and moving it mid-sentence printed
+« Er fand sich Eines Morgens » — wrong German. Chunks now lose that positional
+capital and whichever one you put first gains it. And the German word-order
+rule missed « Als er aufwachte, **er lag** … » whenever the first clause's verb
+was not in the verb tables — the exact mistake Lesson 2 teaches and then asks
+you to avoid in writing. The rule now also trusts a clause that opens with
+als / weil / obwohl / nachdem / bevor / sobald / seitdem followed by a subject
+(not « wenn », where a loose clause can be correct German), still with zero
+alarms across the 1,808 known-correct German sentences.
+
+## Where the explanations live
+
+The rule explanations built earlier are real but reactive — they appear at the
+moment of a mistake, which is also why they are hard to find by looking:
+
+- **Reading Room and Writing Desk** — after *Check my writing*, every flagged
+  error has a folded **Why — …** line; open it for the rule and a link to the
+  grammar note.
+- **Grammar & Verbs** — the workbench's side panel always shows **How it is
+  built** for the open tense; the conjugation drill shows the same on a miss.
+- **Your mistakes** — each recurring pattern, with its explanation and your own
+  sentences to fix.
+
+Lessons are where the same rules are taught *before* you need them.

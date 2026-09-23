@@ -19,7 +19,12 @@ export const SECTION_OF = {
   sentcSetup: "sentences", sentcWords: "sentences",
   sentcBuild: "sentences", sentcDone: "sentences",
 
-  reading: "reading", writing: "writing",
+  reading: "reading", writing: "writing", mistakes: "mistakes",
+
+  lessons: "lessons",
+
+  /* Placement belongs to Progress: it is the one screen about ability. */
+  placement: "progress",
 
   phraseSelect: "phrases", phraseMatch: "phrases", phraseDone: "phrases",
 
@@ -70,11 +75,11 @@ export const FULL_WIDTH_SCREENS = new Set([
   "setup",                                        // HomeDesktop
   "grammarWorkbench", "grammarHub", "summary",
   "wordsHub", "wordsInput", "wordsReview",
-  "readingSelect", "readingQuiz", "readingDone",
+  "reading", "writing", "mistakes",
   "phraseSelect", "phraseMatch", "phraseDone",
   "listenSelect", "dictation", "dictationDone", "speaking", "speakingDone",
   "importPaste", "importReader", "importLibrary",
-  "progress", "sentence",
+  "progress", "sentence", "placement", "lessons",
   /* The etymology tree forks into two columns and the law tables are four
    * columns wide; both need the room. */
   "etymology", "etymDrill",
@@ -82,7 +87,7 @@ export const FULL_WIDTH_SCREENS = new Set([
 ]);
 
 /** The reading measure for screens that are still one phone-width column. */
-export const COLUMN_WIDTH = 720;
+export const COLUMN_WIDTH = "45rem";
 
 /* The widest the main column ever gets. Past this the content centres rather
  * than sprawling. Set generously — the screens that would suffer from the

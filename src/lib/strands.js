@@ -71,6 +71,9 @@ export const ACTIVITIES = {
   speaking: { strand: "output", section: "listening", label: "Speaking", invite: "Say something aloud" },
 
   study: { strand: "form", section: "study", label: "Study", invite: "Study words" },
+  /* A lesson spans three strands. Its reading stage is logged as reading and
+   * its writing task as writing, so what is left — the exercises — is study. */
+  lessons: { strand: "form", section: "lessons", label: "Lessons", invite: "Take a lesson" },
   grammar: { strand: "form", section: "grammar", label: "Grammar & Verbs", invite: "Drill a tense" },
   sentences: { strand: "form", section: "sentences", label: "Sentence Constructions", invite: "Build a sentence" },
   mywords: { strand: "form", section: "mywords", label: "My Words", invite: "Add words of your own" },

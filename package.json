@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "vite build && vitest run && node scripts/check-answers.mjs && node scripts/check-verbs.mjs && node scripts/audit-c1.mjs && node scripts/check-etymology.mjs && node scripts/check-morphology.mjs && node scripts/check-sentences.mjs && node scripts/check-images.mjs && oxlint"
+    "check": "vite build && vitest run && node scripts/check-answers.mjs && node scripts/check-verbs.mjs && node scripts/audit-c1.mjs && node scripts/check-etymology.mjs && node scripts/check-morphology.mjs && node scripts/check-sentences.mjs && node scripts/check-images.mjs && node scripts/check-reading.mjs && node scripts/check-voices.mjs && node scripts/check-explanations.mjs && node scripts/check-lessons.mjs && oxlint"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",

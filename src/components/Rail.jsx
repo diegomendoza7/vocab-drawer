@@ -1,9 +1,10 @@
 import {
-  LayoutGrid, Sparkles, GraduationCap, Blocks, BookOpen, Quote,
-  Headphones, FileText, Activity, CalendarCheck, CloudOff, GitBranch, Zap, Link2, PenLine,
+  LayoutGrid, Sparkles, GraduationCap, Blocks, BookOpen, Quote, ScrollText,
+  Headphones, FileText, Activity, CalendarCheck, CloudOff, GitBranch, Zap, Link2, PenLine, TriangleAlert,
 } from "lucide-react";
 import { C } from "../theme.js";
 import ThemeToggle from "./ThemeToggle.jsx";
+import TypeScale from "./TypeScale.jsx";
 import { LANG_INFO } from "../data/vocab.js";
 
 /* The desktop navigation rail.
@@ -17,10 +18,13 @@ import { LANG_INFO } from "../data/vocab.js";
 
 const ITEMS = [
   { id: "study", label: "Study", icon: LayoutGrid },
+  { id: "lessons", label: "Lessons", icon: ScrollText },
   { id: "mywords", label: "My Words", icon: Sparkles },
   { id: "grammar", label: "Grammar & Verbs", icon: GraduationCap },
   { id: "sentences", label: "Sentence Constructions", icon: Blocks },
-  { id: "reading", label: "Reading Corner", icon: BookOpen },
+  { id: "reading", label: "Reading Room", icon: BookOpen },
+  { id: "writing", label: "Writing Desk", icon: PenLine },
+  { id: "mistakes", label: "Your mistakes", icon: TriangleAlert },
   { id: "phrases", label: "Phrase Match", icon: Quote },
   { id: "listening", label: "Listening & Speaking", icon: Headphones },
   { id: "etymology", label: "Word Roots", icon: GitBranch },
@@ -30,11 +34,11 @@ const ITEMS = [
   { id: "progress", label: "Progress", icon: Activity },
 ];
 
-export default function Rail({ activeSection, onNavigate, lang, onLangChange, level, badges, storageOn, theme, onThemeChange }) {
+export default function Rail({ activeSection, onNavigate, lang, onLangChange, level, badges, storageOn, theme, onThemeChange, typeScale, onTypeScale }) {
   return (
     <nav
       className="flex flex-col shrink-0"
-      style={{ width: 212, borderRight: `1px solid ${C.line}`, backgroundColor: C.card }}
+      style={{ width: "13.25rem", borderRight: `1px solid ${C.line}`, backgroundColor: C.card }}
       aria-label="Sections"
     >
       <button onClick={() => onNavigate("study")} className="flex items-center gap-2 px-4 py-4" aria-label="Vocab Drawer home">
@@ -58,13 +62,13 @@ export default function Rail({ activeSection, onNavigate, lang, onLangChange, le
               }}
             >
               <Icon size={15} style={{ color: active ? C.gold : C.muted, flexShrink: 0 }} />
-              <span className="text-[13px] font-semibold flex-1 min-w-0 leading-tight" style={{ color: C.ink }}>{label}</span>
+              <span className="text-[0.8125rem] font-semibold flex-1 min-w-0 leading-tight" style={{ color: C.ink }}>{label}</span>
               {id === "study" && (
-                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: C.paper, color: C.muted, border: `1px solid ${C.line}` }}>{level}</span>
+                <span className="text-[0.625rem] font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: C.paper, color: C.muted, border: `1px solid ${C.line}` }}>{level}</span>
               )}
               {badge ? (
                 <span
-                  className="text-[10px] px-1.5 py-0.5 rounded-full font-semibold shrink-0"
+                  className="text-[0.625rem] px-1.5 py-0.5 rounded-full font-semibold shrink-0"
                   style={{ backgroundColor: badge.urgent ? C.gold : C.paper, color: badge.urgent ? C.ink : C.muted, border: badge.urgent ? "none" : `1px solid ${C.line}` }}
                 >
                   {badge.text}
@@ -94,10 +98,13 @@ export default function Rail({ activeSection, onNavigate, lang, onLangChange, le
             </button>
           ))}
         </div>
-        <span className="inline-flex items-center gap-1 text-[10px]" style={{ color: C.muted }}>
+        <span className="inline-flex items-center gap-1 text-[0.625rem]" style={{ color: C.muted }}>
           {storageOn === null ? "Checking storage…" : storageOn ? (<><CalendarCheck size={10} /> Progress saving: on</>) : (<><CloudOff size={10} /> Saving: off (session only)</>)}
         </span>
-        <ThemeToggle theme={theme} onChange={onThemeChange} compact />
+        <div className="flex flex-wrap items-center gap-1.5">
+          <ThemeToggle theme={theme} onChange={onThemeChange} compact />
+          <TypeScale scale={typeScale} onChange={onTypeScale} compact />
+        </div>
       </div>
     </nav>
   );

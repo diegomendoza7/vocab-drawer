@@ -26,6 +26,22 @@ describe("German word order", () => {
   it("wants the verb straight after a clause that opens the sentence", () => {
     expect(fixes("Wenn ich Zeit habe, ich gehe ins Kino.")).toContain("gehe ich");
   });
+  it("catches it even when the opening clause's verb is not in the tables", () => {
+    /* « aufwachen » is not in the verb tables, so the rule used to stay
+     * silent here — on the very mistake Lesson 2 teaches. */
+    expect(fixes("Als er aufwachte, er sah seinen Bauch.")).toContain("sah er");
+    expect(fixes("Nachdem wir gegessen hatten, wir sind gegangen.")).toContain("sind wir");
+  });
+  it("still leaves the correct order alone", () => {
+    expect(rules("Als er aufwachte, sah er seinen Bauch.")).toEqual([]);
+  });
+  it("does not mistake a phrase for a clause", () => {
+    expect(rules("Bis bald, ich freue mich.")).toEqual([]);
+    expect(rules("Als Kind war ich oft krank.")).toEqual([]);
+  });
+  it("leaves a relevance conditional alone when it cannot see a verb", () => {
+    expect(rules("Wenn du Durst hast, im Kühlschrank ist Bier.")).toEqual([]);
+  });
   it("sends the conjugated verb to the end of a subordinate clause", () => {
     expect(fixes("Ich habe keine Zeit, weil ich muss arbeiten.")).toContain("arbeiten muss");
     expect(fixes("Ich weiß, dass er hat keine Zeit.")).toContain("keine Zeit hat");

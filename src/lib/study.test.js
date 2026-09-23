@@ -474,6 +474,25 @@ describe("nextAction", () => {
   it("carries a section the caller can navigate to", () => {
     expect(nextAction({ ...none, strandGap: readingGap }).section).toBeTruthy();
   });
+
+  it("brings back a lesson left halfway, naming the stage it stopped at", () => {
+    const a = nextAction({ ...none, strandGap: readingGap, unfinishedLesson: { n: 1, title: "Libres et égaux", stage: "Grammar" } });
+    expect(a.kind).toBe("lesson");
+    expect(a.label).toBe("Finish Lesson 1: Libres et égaux");
+    expect(a.why).toMatch(/Grammar/);
+    expect(a.section).toBe("lessons");
+  });
+
+  it("offers the first lesson to someone who has only ever been tested", () => {
+    const a = nextAction({ ...none, unstartedDrawer: "Animals", strandGap: readingGap, firstLesson: { n: 1, title: "Libres et égaux" } });
+    expect(a.label).toBe("Take Lesson 1: Libres et égaux");
+  });
+
+  it("never lets a lesson outrank due work or a mistake pattern", () => {
+    const lesson = { unfinishedLesson: { n: 1, title: "x", stage: "Read" }, firstLesson: { n: 1, title: "x" } };
+    expect(nextAction({ ...none, ...lesson, dueCount: 3 }).kind).toBe("due");
+    expect(nextAction({ ...none, ...lesson, mistakeCount: 2 }).kind).toBe("mistakes");
+  });
 });
 
 describe("mergeProgress: the activity record", () => {
