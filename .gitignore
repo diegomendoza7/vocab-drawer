@@ -32,3 +32,6 @@ dist-ssr
 # `node scripts/fetch-wiktionary.mjs --lang fr|de`; the parsed JSON the audit
 # actually reads is small and is kept.
 scripts/c1-cache/wiktionary-*.json
+
+# Built copy of the site for sharing
+vocab-drawer-site.zip

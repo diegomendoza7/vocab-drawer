@@ -1772,3 +1772,9 @@ moment of a mistake, which is also why they are hard to find by looking:
   sentences to fix.
 
 Lessons are where the same rules are taught *before* you need them.
+
+## About this history
+
+Built locally between August and September 2026. Uploaded to GitHub on October 6, 2026. Commit dates reflect when the work was done on my machine. History is reconstructed from file timestamps and session logs, so early intermediate versions may be missing.
+
+The main file, src/VocabDrawer.jsx, first appears on September 23 because its earlier versions couldn't be recovered.
