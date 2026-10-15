@@ -122,7 +122,7 @@ export default function CoverageMatrix({
         ))}
 
         {hidden > 0 && (
-          <button onClick={() => setShowAll(true)} className="font-serif text-sm mt-1" style={{ color: C.gold }}>
+          <button onClick={() => setShowAll(true)} className="font-serif text-sm mt-1" style={{ color: C.accent }}>
             …{hidden} more
           </button>
         )}
@@ -138,7 +138,7 @@ export default function CoverageMatrix({
           <span style={{ width: 26, height: 12, borderRadius: 2, backgroundImage: `repeating-linear-gradient(135deg, transparent 0 4px, ${C.line} 4px 5px)` }} />
           <span className="text-xs font-serif" style={{ color: C.muted }}>no such form</span>
           <span className="flex-1" />
-          <span className="text-xs font-serif" style={{ color: C.gold }}>outlined = due</span>
+          <span className="text-xs font-serif" style={{ color: C.accent }}>outlined = due</span>
         </div>
       </div>
 
@@ -152,7 +152,7 @@ export default function CoverageMatrix({
         </button>
         <button onClick={onDrill} disabled={selected.size === 0}
           className="px-4 py-2 rounded-md font-semibold text-sm flex items-center gap-2 disabled:opacity-40"
-          style={{ backgroundColor: C.gold, color: C.ink }}>
+          style={{ backgroundColor: C.gold, color: C.onGold }}>
           Drill {selected.size || ""} selected <ArrowRight size={15} />
         </button>
       </div>

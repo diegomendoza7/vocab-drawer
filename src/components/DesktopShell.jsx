@@ -17,6 +17,7 @@ export default function DesktopShell({
      * they re-theme without knowing which shell they are in. */
     <div className="vd-classical min-h-screen w-full flex" style={{ backgroundColor: C.paper, fontFamily: "var(--vd-body)", color: C.ink }}>
       <GlobalStyles />
+      <a className="vd-skip" href="#main-content">Skip to activity</a>
       <Rail
         activeSection={activeSection}
         onNavigate={onNavigate}
@@ -36,7 +37,7 @@ export default function DesktopShell({
         * div is what caps and centres: past `CONTENT_MAX` the content stops
         * growing and takes the middle, instead of stretching a card grid to
         * arm's length across a wide monitor. */}
-      <main
+      <main id="main-content" tabIndex={-1}
         className="flex-1 min-w-0 overflow-x-hidden"
         style={{ padding: "clamp(16px, 2.2vw, 40px) clamp(18px, 2.6vw, 56px)" }}
       >

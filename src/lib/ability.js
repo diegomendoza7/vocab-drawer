@@ -23,8 +23,8 @@ export const SOLID_DAYS = 21;
 
 const countsFor = (card) => ({
   met: !!card,
-  holding: !!card && (card.interval || 0) >= HOLDING_DAYS,
-  solid: !!card && (card.interval || 0) >= SOLID_DAYS,
+  holding: !!card && (card.retainedDays || 0) >= HOLDING_DAYS,
+  solid: !!card && (card.retainedDays || 0) >= SOLID_DAYS,
 });
 
 /**
@@ -49,7 +49,7 @@ export function abilityFrom({ entries, lang, cards = {}, rankOf = null }) {
     /* Production falls back to the recognition card exactly as the queue does:
      * before the split there was one card covering both, and reporting those
      * words as "never produced" would understate a real learner's history. */
-    const prod = countsFor(cards[id + PROD_SUFFIX] ?? cards[id]);
+    const prod = countsFor(cards[id + PROD_SUFFIX]);
 
     for (const k of ["met", "holding", "solid"]) {
       if (rec[k]) recognise[k] += 1;
@@ -68,7 +68,9 @@ export function abilityFrom({ entries, lang, cards = {}, rankOf = null }) {
     }
   }
 
-  return { recognise, produce, bands, total: entries.length };
+  const estimated={recognise:0,produce:0};
+  for(const entry of entries){const word=entry.word||entry;const id=cardId(lang,entry.level,word.t);for(const [name,key] of [["recognise",id],["produce",id+PROD_SUFFIX]]){const c=cards[key];if(c&&(c.retainedDays==null)&&(c.interval||0)>=HOLDING_DAYS)estimated[name]++;}}
+  return { recognise, produce, bands, estimated,total: entries.length };
 }
 
 /**

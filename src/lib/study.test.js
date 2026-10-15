@@ -92,14 +92,14 @@ describe("buildSummaryRows", () => {
      * interval twice. Reading `scheduled` is what keeps the shown date equal
      * to the written one.
      *
-     * Graded "hard" rather than "again" on purpose — "again" relearns today
+     * Graded "good" rather than "again" on purpose — "again" relearns today
      * whether you schedule once or twice, so it cannot tell the two apart. */
     const id = cardId("fr", "A1", "chien");
-    const oneMiss = new Map([[id, { word: w("chien"), level: "A1", wrongCount: 1 }]]);
+    const oneMiss = new Map([[id, { word: w("chien"), level: "A1", wrongCount: 0 }]]);
     const before = { ease: 2.3, interval: 1, reps: 1, lapses: 0, due: todayKey(), lastSeen: null };
 
-    const committed = scheduleCard(before, gradeFromWrongCount(1));
-    const doubled = scheduleCard(committed, gradeFromWrongCount(1));
+    const committed = scheduleCard(before, gradeFromWrongCount(0));
+    const doubled = scheduleCard(committed, gradeFromWrongCount(0));
     expect(daysBetween(committed.due)).not.toBe(daysBetween(doubled.due));  // the two are distinguishable
 
     const rows = buildSummaryRows({
@@ -282,12 +282,10 @@ describe("scheduleResults: the two cards move independently", () => {
   /* A word an existing learner knows well: one card, a month's interval. */
   const known = { ease: 2.3, interval: 30, reps: 6, lapses: 0, due: "2026-09-01", lastSeen: "2026-08-02" };
 
-  it("seeds a first production answer from the card that covered both", () => {
-    /* The invariant the whole split rests on. Starting from nothing would
-     * give interval 1 and make every known word due again tomorrow. */
-    const { cards } = scheduleResults({ [REC]: known }, [[PROD, { wrongCount: 0 }]]);
-    expect(cards[PROD].reps).toBe(7);
-    expect(cards[PROD].interval).toBeGreaterThan(30);
+  it("requires new independent production evidence instead of seeding recognition", () => {
+    const {cards}=scheduleResults({[REC]:known},[[PROD,{wrongCount:0}]]);
+    expect(cards[REC]).toEqual(known);
+    expect(cards[PROD]).toMatchObject({reps:0,interval:0,learning:1});
   });
 
   it("leaves the recognition card untouched when only production was answered", () => {
@@ -316,8 +314,9 @@ describe("scheduleResults: the two cards move independently", () => {
   it("schedules a recognition answer exactly as it always did", () => {
     /* The no-regression check: nothing about an existing card's handling may
      * change for a learner who never answers a production question. */
-    const { cards } = scheduleResults({ [REC]: known }, [[REC, { wrongCount: 1 }]]);
-    expect(cards[REC]).toEqual(scheduleCard(known, "hard", REC));
+    const now=Date.now();
+    const { cards } = scheduleResults({ [REC]: known }, [[REC, { wrongCount: 1,answeredAt:now }]]);
+    expect(cards[REC]).toEqual(scheduleCard(known, "again", REC,now));
   });
 
   it("reports only the cards it touched", () => {
@@ -396,21 +395,18 @@ describe("kindsForCard: recognition and production are separate", () => {
       .toContain("fillBlank");
   });
 
-  it("drops production for a word whose production is a leech, keeping recognition", () => {
+  it("keeps a route to production recovery for a production leech", () => {
     /* The case the single shared card could not represent: you can read it
      * perfectly well and have failed to produce it eight times. */
     const kinds = kindsForCard(word, { rec: known, prod: { reps: 0, interval: 0, lapses: 8 } }, withCloze);
-    expect(kinds).toEqual(["toEnglish"]);
+    expect(kinds).toEqual(["toEnglish","toTarget"]);
   });
 
-  it("falls back to the recognition card when production has never been graded", () => {
-    /* An existing learner's word, before any production answer has been
-     * recorded against the new card. Behaviour must be what it always was. */
-    const split = kindsForCard(word, { rec: known, prod: null }, withCloze);
-    expect(split).toEqual(kindsForCard(word, known, withCloze));
-    expect(split).toContain("fillBlank");
-  });
-});
+  it("does not infer production strength from recognition", () => {
+    const kinds=kindsForCard(word,{rec:known,prod:null},withCloze);
+    expect(kinds).toContain("toTarget");
+    expect(kinds).not.toContain("fillBlank");
+  });});
 
 describe("nextAction", () => {
   const none = { dueCount: 0, weakCount: 0, leechCount: 0, unstartedDrawer: null, untouchedTense: null, dueToday: 0, goal: 20 };
@@ -587,10 +583,10 @@ describe("mergeProgress", () => {
     expect(newer.stats.updated).toBe(1);
   });
 
-  it("sums a day both devices studied", () => {
+  it("merges unidentifiable legacy counters conservatively", () => {
     const mine = { ...base, history: { "2026-09-01": { reviews: 10, correct: 8 } } };
     const { progress } = mergeProgress(mine, { cards: {}, history: { "2026-09-01": { reviews: 5, correct: 5 } } });
-    expect(progress.history["2026-09-01"]).toEqual({ reviews: 15, correct: 13 });
+    expect(progress.history["2026-09-01"]).toEqual({ reviews: 10, correct: 8 });
   });
 
   it("never deletes anything the local device had", () => {

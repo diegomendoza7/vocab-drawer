@@ -7,7 +7,6 @@ import { C } from "../theme.js";
 export default function GlobalStyles() {
   return (
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
         .font-type { font-family: var(--vd-heading); }
         .font-serif { font-family: var(--vd-reading); }
         @keyframes stampIn { 0% { transform: scale(2.2) rotate(-10deg); opacity: 0; } 55% { transform: scale(0.92) rotate(4deg); opacity: 1; } 100% { transform: scale(1) rotate(-4deg); opacity: 1; } }

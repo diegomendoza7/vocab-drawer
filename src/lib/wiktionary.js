@@ -50,7 +50,7 @@ export async function lookupWiktionary(word, lang, { fetchImpl = globalThis.fetc
     }
     let res;
     try {
-      res = await fetchImpl(BASE + encodeURIComponent(w));
+      res = await fetchImpl(BASE + encodeURIComponent(w), {signal:AbortSignal.timeout(12000)});
     } catch {
       return null;
     }

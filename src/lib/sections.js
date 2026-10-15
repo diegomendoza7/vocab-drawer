@@ -6,6 +6,7 @@
  * here rather than storing one.
  */
 export const SECTION_OF = {
+  browserExtension:"media",deviceFiles:"progress",humanListening:"listeningLab",repair:"study",clinic:"mistakes",backups:"progress",today:"today",library:"library",missions:"missions",listeningLab:"listeningLab",media:"media",journal:"journal",phrasebook:"phrasebook",pronunciation:"pronunciation",retelling:"retelling",passport:"progress",challenge:"missions",shelf:"reading",
   setup: "study", learn: "study", matching: "study", choose: "study",
   practice: "study", sentence: "study", summary: "study",
 
@@ -72,6 +73,7 @@ export const STUDY_SCREENS = new Set(["learn", "matching", "choose", "practice",
  * window empty.
  */
 export const FULL_WIDTH_SCREENS = new Set([
+  "browserExtension","deviceFiles","humanListening","clinic","repair","backups","today","library","missions","listeningLab","media","journal","phrasebook","pronunciation","retelling","passport","challenge","shelf",
   "setup",                                        // HomeDesktop
   "grammarWorkbench", "grammarHub", "summary",
   "wordsHub", "wordsInput", "wordsReview",

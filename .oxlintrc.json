@@ -29,10 +29,24 @@
         "node": true,
         "browser": false
       }
+    },
+    {
+      "files": [
+        "scripts/browser-check.mjs",
+        "scripts/model-check.mjs",
+        "extension/**/*.js"
+      ],
+      "env": {
+        "node": true,
+        "browser": true
+      }
     }
   ],
   "ignorePatterns": [
     "design_handoff_vocab_drawer_desktop*/**",
     "dist/**"
-  ]
+  ],
+  "globals": {
+    "chrome": "readonly"
+  }
 }

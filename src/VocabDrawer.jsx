@@ -1,4 +1,8 @@
-import { useState, useMemo, useEffect, useRef } from "react";
+import {speechEvidence} from "./lib/speech-evidence.js";
+import {usePracticeTime} from "./hooks/usePracticeTime.js";
+import GlobalStyles from "./components/GlobalStyles.jsx";
+import ProgressStatus from "./components/ProgressStatus.jsx";
+import { useState, useMemo, useEffect, useRef, lazy, Suspense } from "react";
 import {
   Volume2, VolumeX, Check, X, ChevronRight, ChevronLeft, RotateCcw, ArrowRight, Shuffle,
   Settings2, Repeat, Home, Zap, Sparkles, Cog, LayoutGrid, Layers, BookOpen, Quote, Eye,
@@ -63,7 +67,7 @@ import WordBuilder from "./components/WordBuilder.jsx";
 import { acceptableEnglish } from "./lib/gloss.js";
 import {
   todayKey, addDays, daysUntil, cardId, prodCardId, idForKind,
-  gradeFromWrongCount, scheduleCard, isDue, isReady, cardStage, isLeech } from "./lib/srs.js";
+  newCard, LEARNING_GAP_MS, gradeFromWrongCount, scheduleCard, isDue, isReady, cardStage, isLeech } from "./lib/srs.js";
 import { buildBatchLedger, buildSummaryRows, scheduleResults, matrixCell, weakestCards, drillScopeTenses, effectiveScope, kindsForCard, estimateMinutes, nextAction, accuracyTrend, mergeProgress, typeAhead, commitTypeAhead, frequencyReach, WRITING_KEEP } from "./lib/study.js";
 import { recordActivity, neglectedStrand, strandBalance, ACTIVITIES, STRANDS } from "./lib/strands.js";
 import { buildPlacementLevel, placementResult, shouldContinue, PLACEMENT_LEVELS } from "./lib/placement.js";
@@ -74,9 +78,9 @@ import { lessonsFor, LESSON_STAGES } from "./data/lessons.js";
 import { buildDictionary, describe as describeWord, lookupInflected, segmentSentence } from "./lib/dictionary.js";
 import {
   SUBJECTS as SENT_SUBJECTS, buildSentence, nounPoolFor, usableVerbs, timePhrasesFor,
-  SENTENCE_SHAPES, shapeInfo, pickModal, pickOpener,
+  SENTENCE_SHAPES, pickModal, pickOpener,
 } from "./lib/sentences.js";
-import { DATA, CORE_LEVELS, levelsFor, audioLevelsFor, levelInfo, LANG_INFO, flattenLevel } from "./data/vocab.js";
+import { DATA, loadVocabulary, subscribeVocabulary, CORE_LEVELS, levelsFor, audioLevelsFor, levelInfo, LANG_INFO, flattenLevel } from "./data/vocab.js";
 import {
   PHRASES,
   FR_PRONOUNS,
@@ -91,7 +95,6 @@ import {
   conjugate,
   conjugationAlternates,
   conjugateEnglish,
-  verbContext,
   displayPronoun,
   GRAMMAR,
   NOTE_KINDS,
@@ -101,8 +104,28 @@ import {
 
 import { glossBatch, translate, verifyBatch } from "./lib/api.js";
 import { storage } from "./lib/storage.js";
+import {useProgress,recoverSession} from "./hooks/useProgress.js";
+import {logAnswer,eventId} from "./lib/progress.js";
 import { parseWordList, FORMAT_LABELS } from "./lib/wordlist.js";
 
+
+
+const BackupManager=lazy(()=>import('./components/BackupManager.jsx'));
+const WordRepair=lazy(()=>import('./components/WordRepair.jsx'));
+const ContrastClinic=lazy(()=>import('./components/ContrastClinic.jsx'));
+const TodayDashboard=lazy(()=>import('./components/TodayDashboard.jsx'));
+const MissionLesson=lazy(()=>import('./components/MissionLesson.jsx'));
+const BrowserExtensionGuide=lazy(()=>import("./components/BrowserExtensionGuide.jsx"));
+const DeviceFiles=lazy(()=>import("./components/DeviceFiles.jsx"));
+const HumanListening=lazy(()=>import('./components/HumanListening.jsx'));
+const MediaStudio=lazy(()=>import('./components/MediaStudio.jsx'));
+const PracticeLibrary=lazy(()=>import('./components/PracticeLibrary.jsx'));
+const ExtensiveShelf=lazy(()=>import('./components/ExtensiveShelf.jsx'));
+const PhraseNotebook=lazy(()=>import('./components/LearningTools.jsx').then(m=>({default:m.PhraseNotebook})));
+const LanguageJournal=lazy(()=>import('./components/LearningTools.jsx').then(m=>({default:m.LanguageJournal})));
+const PronunciationLab=lazy(()=>import('./components/LearningTools.jsx').then(m=>({default:m.PronunciationLab})));
+const RetellingPractice=lazy(()=>import('./components/LearningTools.jsx').then(m=>({default:m.RetellingPractice})));
+const SkillPassport=lazy(()=>import('./components/LearningTools.jsx').then(m=>({default:m.SkillPassport})));
 
 /* ---------------------------------------------------------------------- */
 /* Text import: tokenizing + lookup                                        */
@@ -262,16 +285,21 @@ function verbKey(v) {
  * the old behaviour — every kind for every word — which is what a caller with
  * no scheduling context should get.
  */
-function buildPracticeQueue(entries, cardFor) {
+function buildPracticeQueue(entries, cardFor, {review=false}={}) {
   const items = [];
-  entries.forEach(({ word: w, level: lv }) => {
+  entries.forEach(({ word: w, level: lv, directions }) => {
     const kinds = cardFor
       ? kindsForCard(w, cardFor(w, lv), { hasCloze })
       /* Without a cloze this renders an empty prompt and then marks the
        * learner wrong for not guessing it. */
       : QUESTION_KINDS.filter((k) => k !== "fillBlank" || hasCloze(w));
-    kinds.forEach((kind) => {
-      items.push({ kind, word: w, level: lv, id: `${lv}::${w.t}::${kind}` });
+    const selected = review && directions?.length
+      ? kinds.filter(kind=>directions.includes(kind==="toEnglish"?"recognise":"produce"))
+      : kinds;
+    if(review && directions?.includes("produce") && !selected.some(kind=>kind!=="toEnglish")) selected.push("toTarget");
+    selected.forEach((kind) => {
+      const pair=cardFor?.(w,lv);const card=kind==="toEnglish"?pair?.rec:pair?.prod;
+      items.push({ kind, word: w, level: lv, practiceOnly:!!card&&!isReady(card),id: `${lv}::${w.t}::${kind}` });
     });
   });
   return shuffle(items);
@@ -427,33 +455,6 @@ function speakWith(text, voice, locale, rate = SPEECH_RATE.NORMAL) {
 /* lasts for the session, exactly like the previous behaviour. Nothing     */
 /* here ever throws into the UI.                                           */
 /* ---------------------------------------------------------------------- */
-const STORE_KEY = "vocabdrawer:progress:v1";
-const MEM_FALLBACK = { data: null };
-
-async function loadProgress() {
-  try {
-    const r = await storage.get(STORE_KEY);
-    return { state: r && r.value ? JSON.parse(r.value) : null, persisted: true };
-  } catch (e) {
-    // IndexedDB unavailable (private browsing, disabled, quota). Fall back to
-    // memory so the session still works, but report persisted:false so the UI
-    // can warn — losing SRS history silently is the one failure mode we won't
-    // repeat from the artifact build.
-    console.error("[storage] load failed:", e.message);
-    return { state: MEM_FALLBACK.data, persisted: false };
-  }
-}
-async function saveProgress(state) {
-  MEM_FALLBACK.data = state;
-  try {
-    await storage.set(STORE_KEY, JSON.stringify(state));
-    return true;
-  } catch (e) {
-    console.error("[storage] save failed:", e.message);
-    return false;
-  }
-}
-
 /**
  * Bring a stored word record up to the current shape, at read time.
  *
@@ -473,22 +474,14 @@ function normalizeImportedRecord(rec) {
 }
 
 /* ---- progress shape ---- */
-function emptyProgress() {
-  return { cards: {}, history: {}, streak: 0, longest: 0, lastStudy: null, dailyGoal: 20, imported: { fr: {}, de: {} } };
-}
 function bumpStreak(p) {
   const today = todayKey();
   if (p.lastStudy === today) return p;
   const streak = p.lastStudy === addDays(today, -1) ? (p.streak || 0) + 1 : 1;
   return { ...p, streak, longest: Math.max(p.longest || 0, streak), lastStudy: today };
 }
-function logReview(p, correct) {
-  const today = todayKey();
-  const day = p.history[today] || { reviews: 0, correct: 0 };
-  return {
-    ...p,
-    history: { ...p.history, [today]: { reviews: day.reviews + 1, correct: day.correct + (correct ? 1 : 0) } },
-  };
+function logReview(p, correct, details = {}) {
+  return logAnswer(p, correct, details);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -788,7 +781,7 @@ function AnswerGloss({ w, kind, lang }) {
           pair together is the thing that actually sticks. */}
       <span style={{ color: C.ink }}>{target}</span>
       <span style={{ color: C.muted }}> — {w.e}</span>
-      {w.n && <div className="italic text-xs" style={{ color: C.gold }}>{w.n}</div>}
+      {w.n && <div className="italic text-xs" style={{ color: C.accent }}>{w.n}</div>}
       {kind === "fillBlank" && w.se && <div className="text-xs" style={{ color: C.muted }}>{w.se}</div>}
     </div>
   );
@@ -838,10 +831,48 @@ function VerdictPill({ v }) {
 /* ---------------------------------------------------------------------- */
 /* Main component                                                          */
 /* ---------------------------------------------------------------------- */
+  function conjMcOptions(item,lang,tenseSet) {
+    const forms = conjugate(lang, item.verb, item.tenseKey);
+    const correct = forms[item.personIdx];
+    const seen = new Set([normalize(correct)]);
+    const pool = [];
+    forms.forEach((f, i) => {
+      if (i === item.personIdx || f == null) return;
+      const k = normalize(f);
+      if (seen.has(k)) return;
+      seen.add(k);
+      pool.push(f);
+    });
+    // Some verbs repeat a form across persons (German wir/sie, French je/il), so
+    // there may be fewer than four distinct forms. Top up from the same verb's
+    // other tenses rather than showing two options.
+    if (pool.length < 3) {
+      for (const t of tenseSet) {
+        if (t.key === item.tenseKey) continue;
+        for (const f of conjugate(lang, item.verb, t.key)) {
+          if (f == null) continue;
+          const k = normalize(f);
+          if (seen.has(k)) continue;
+          seen.add(k);
+          pool.push(f);
+          if (pool.length >= 3) break;
+        }
+        if (pool.length >= 3) break;
+      }
+    }
+    return { correct, options: shuffle([correct, ...shuffle(pool).slice(0, 3)]) };
+  }
+
+
 export default function VocabDrawer() {
-  const [screen, setScreen] = useState("setup");
+  const [screen, setScreen] = useState("today");
   const [lang, setLang] = useState("fr");
+  const [studioContext,setStudioContext]=useState({});
   const [level, setLevel] = useState("A1");
+  const importGeneration=useRef(0);
+  const [vocabularyRevision,setVocabularyRevision]=useState(0);
+  const [vocabularyLoading,setVocabularyLoading]=useState(false);
+  const [vocabularyError,setVocabularyError]=useState("");
   const [mode, setMode] = useState("theme"); // 'theme' | 'mixed'
   const [batchSize, setBatchSize] = useState(10);
   const [batchIndex, setBatchIndex] = useState(0);
@@ -866,7 +897,19 @@ export default function VocabDrawer() {
   const firstWrongRef = useRef(new Set());
   const missedRef = useRef(new Map());
   const everMissedRef = useRef(new Set());
-  const sessionResultsRef = useRef(new Map()); // wordKey -> { word, level, wrongCount }
+  const sessionResultsRef = useRef(new Map());
+  const sessionMetaRef = useRef({id:eventId(),lang});
+  const assistedRef = useRef(new Set());
+  function beginReviewSession() {
+    sessionMetaRef.current={id:eventId(),lang};
+    sessionResultsRef.current=new Map();
+    assistedRef.current=new Set();
+    sessionCommittedRef.current=false;
+  }
+  function snapshotSession() {
+    if(sessionCommittedRef.current)return null;
+    return {...sessionMetaRef.current, results:[...sessionResultsRef.current].map(([id,row])=>[id,{...row,answeredAt:row.answeredAt||Date.now()}])};
+  }
 
   // --- Sentence stage: type the whole example, not just the word ---
   /* A queue rather than an index walk: a sentence you got wrong comes back
@@ -1033,29 +1076,33 @@ export default function VocabDrawer() {
     });
   };
 
-  // --- Progress / scheduling state ---
-  const [progress, setProgress] = useState(emptyProgress);
-  const [storageOn, setStorageOn] = useState(null); // null = still checking
-  const [progressLoaded, setProgressLoaded] = useState(false);
-  const [reviewOnly, setReviewOnly] = useState(false); // true when session came from "Review Due"
+  // Persist complete answer evidence and show actual write status.
+  const {progress,setProgress,progressLoaded,saveStatus,storageOn,retrySave,recovered,readOnly}=useProgress(snapshotSession);
+  const [reviewOnly,setReviewOnly]=useState(false);
+  const [activityOverride,setActivityOverride]=useState(null);
+  useEffect(()=>setActivityOverride(null),[screen,lang]);
+  const activityForScreen={humanListening:'listeningMeaning',today:null,media:'media',missions:'missions',listeningLab:'listeningMeaning',journal:'writing',pronunciation:'pronunciation',retelling:'retelling',challenge:'missions',shelf:'reading',phrasebook:'phrases'}[screen]||({study:'study',reading:'reading',writing:'writing',grammar:'grammar',listening:'dictation',mistakes:'mistakes',lessons:'lessons',phrases:'phrases',fluency:'fluency',collocations:'collocations',etymology:'etymology'}[sectionOf(screen)]);
+  usePracticeTime({lang,activity:activityOverride||activityForScreen,loaded:progressLoaded,setProgress,enabled:progress.preferences?.trackTime!==false&&!readOnly});
+  const [clock,setClock]=useState(Date.now());
+  const profileHydrated=useRef(false);
+  useEffect(()=>{if(progressLoaded&&!profileHydrated.current){profileHydrated.current=true;if(['fr','de'].includes(progress.preferences?.lang))setLang(progress.preferences.lang);if(['A1','A2','B1','B2','C1'].includes(progress.preferences?.level))setLevel(progress.preferences.level);}},[progressLoaded,progress.preferences]);
+  useEffect(()=>{
+    const refresh=()=>setClock(Date.now());
+    const timer=setInterval(refresh,15000);
+    window.addEventListener('focus',refresh);
+    document.addEventListener('visibilitychange',refresh);
+    return()=>{clearInterval(timer);window.removeEventListener('focus',refresh);document.removeEventListener('visibilitychange',refresh);};
+  },[]);
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const { state, persisted } = await loadProgress();
-      if (cancelled) return;
-      if (state) setProgress({ ...emptyProgress(), ...state });
-      setStorageOn(persisted);
-      setProgressLoaded(true);
-    })();
-    return () => { cancelled = true; };
-  }, []);
-
-  // Autosave whenever progress changes (after the initial load has settled).
-  useEffect(() => {
-    if (!progressLoaded) return;
-    saveProgress(progress);
-  }, [progress, progressLoaded]);
+  useEffect(()=>subscribeVocabulary(()=>setVocabularyRevision(n=>n+1)),[]);
+  useEffect(()=>{
+    setVocabularyLoading(false);
+    const needed=level==='C1'||['placement','progress','passport'].includes(screen)||['listenSelect','dictation','grammarWorkbench'].includes(screen)||Object.keys(progress.cards).some(id=>id.startsWith(`${lang}:C1:`));
+    if(!needed||DATA[lang].C1.length)return;
+    let active=true;setVocabularyLoading(true);setVocabularyError('');
+    loadVocabulary(lang).then(()=>{if(active){setVocabularyLoading(false);}}).catch(()=>{if(active){setVocabularyLoading(false);setVocabularyError('Additional vocabulary is unavailable offline. Reconnect and reload to download it.');}});
+    return()=>{active=false;};
+  },[lang,level,screen,progress.cards]);
 
   /** Record one answer against the scheduler. */
 
@@ -1081,12 +1128,13 @@ export default function VocabDrawer() {
 
   /** Every word in the current language, flattened across all levels, with its level tag. */
   const allWordsForLang = useMemo(() => {
+    void vocabularyRevision; // DATA is populated by lazy vocabulary loads.
     const out = [];
     levelsFor(lang).forEach((lv) => {
       DATA[lang][lv].forEach((g) => g.words.forEach((w) => out.push({ word: w, level: lv })));
     });
     return out.concat(importedWords);
-  }, [lang, importedWords]);
+  }, [lang, importedWords,vocabularyRevision]);
 
   /* The words with the most evidence of difficulty, whether or not they are
    * due. Capped at 12 so the session is a sitting rather than a slog. */
@@ -1101,14 +1149,17 @@ export default function VocabDrawer() {
    * away, which is the normal case rather than the exception: production
    * decays faster. Before the split that word simply did not come back. */
   const dueCards = useMemo(() => {
-    return allWordsForLang.filter(({ word, level: lv }) => {
+    return allWordsForLang.map(entry=>{
+      const rec=progress.cards[cardId(lang,entry.level,entry.word.t)],prod=progress.cards[prodCardId(lang,entry.level,entry.word.t)];
+      return {...entry,directions:[...(rec&&isReady(rec,clock)?["recognise"]:[]),...(prod&&isReady(prod,clock)?["produce"]:[])]};
+    }).filter(({ word, level: lv }) => {
       const rec = progress.cards[cardId(lang, lv, word.t)];
       const prod = progress.cards[prodCardId(lang, lv, word.t)];
       /* `isReady`, not `isDue`: a word met minutes ago is due by the
        * calendar and is not worth asking yet. */
-      return (rec && isReady(rec)) || (prod && isReady(prod));
+      return (rec && isReady(rec,clock)) || (prod && isReady(prod,clock));
     });
-  }, [allWordsForLang, progress, lang]);
+  }, [allWordsForLang, progress, lang, clock]);
 
   const studiedCount = useMemo(
     () => allWordsForLang.filter(({ word, level: lv }) => !!progress.cards[cardId(lang, lv, word.t)]).length,
@@ -1191,7 +1242,7 @@ export default function VocabDrawer() {
     setDictResult(null);
     setDictScore(0);
     setDictShowHint(false);
-    sessionResultsRef.current = new Map();
+    beginReviewSession();
     sessionCommittedRef.current = false;
     setScreen("dictation");
     // speak the first sentence shortly after the screen mounts
@@ -1208,13 +1259,7 @@ export default function VocabDrawer() {
     if (ok) setDictScore((s) => s + 1);
     recordAudioLine(dictIdx, ok ? "first try" : overlap >= 0.7 ? "near miss" : "missed");
 
-    /* Feed the scheduler: dictation is a legitimate review of that word, and
-     * it is a production review — you have to write the form, not pick it. */
-    const key = prodCardId(lang, dictItem.level, dictItem.word.t);
-    const prev = sessionResultsRef.current.get(key) || { word: dictItem.word, level: dictItem.level, wrongCount: 0 };
-    if (!ok) prev.wrongCount += overlap >= 0.7 ? 1 : 2; // near-miss vs. genuinely lost
-    sessionResultsRef.current.set(key, prev);
-    setProgress((p) => bumpStreak(logReview(p, ok)));
+    setProgress((p) => bumpStreak(logReview(p, ok,{lang,kind:audioReady?"dictation":"supported-copy",assisted:!audioReady||dictShowHint})));
   }
 
   function nextDictation() {
@@ -1241,7 +1286,7 @@ export default function VocabDrawer() {
     setSpeakResult(null);
     setSpeakError(null);
     setSpeakScore(0);
-    sessionResultsRef.current = new Map();
+    beginReviewSession();
     sessionCommittedRef.current = false;
     setScreen("speaking");
   }
@@ -1262,20 +1307,17 @@ export default function VocabDrawer() {
       r.onresult = (e) => {
         const said = e.results?.[0]?.[0]?.transcript || "";
         setSpeakTranscript(said);
-        const overlap = tokenOverlap(speakItem.word.s, said);
+        if(sessionMetaRef.current.lang!==lang)return;
+        const evidence=speechEvidence(speakItem.word.s,said);
+        const overlap=evidence.overlap;
         /* A percentage says how much came through and never which word did
          * not. `heardWords` marks each word of the target against the
          * transcript — the same per-word treatment dictation has always had,
          * and the thing that makes the feedback actionable. */
         setSpeakResult({ overlap, words: heardWords(speakItem.word.s, said) });
-        if (overlap >= 0.7) setSpeakScore((s) => s + 1);
-        recordAudioLine(speakIdx, overlap >= 0.7 ? "first try" : "missed");
-        // Saying it aloud is the most productive answer the app can ask for.
-        const key = prodCardId(lang, speakItem.level, speakItem.word.t);
-        const prev = sessionResultsRef.current.get(key) || { word: speakItem.word, level: speakItem.level, wrongCount: 0 };
-        if (overlap < 0.7) prev.wrongCount += 1;
-        sessionResultsRef.current.set(key, prev);
-        setProgress((p) => bumpStreak(logReview(p, overlap >= 0.7)));
+        if (evidence.matches) setSpeakScore((s) => s + 1);
+        recordAudioLine(speakIdx, evidence.matches ? "first try" : "missed");
+        setProgress((p) => bumpStreak(logReview(p, evidence.matches,{kind:"read-aloud",lang,assisted:true})));
         noteWork("speaking");
       };
       r.onerror = (e) => {
@@ -1346,7 +1388,7 @@ export default function VocabDrawer() {
     for (const lv of placeLevels) out[lv] = wordsAtLevel(lv).length;
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lang, placeLevels]);
+  }, [lang, placeLevels,vocabularyRevision]);
 
   function startPlacement() {
     /* A fresh seed each run, so a retake is a different sample rather than a
@@ -1464,8 +1506,8 @@ export default function VocabDrawer() {
   const conjMcItem = conjMcQueue[0];
   // Memoised so the four options don't reshuffle on every render.
   const conjMcOpts = useMemo(
-    () => (conjMcItem ? conjMcOptions(conjMcItem) : null),
-    [conjMcItem, lang],
+    () => (conjMcItem ? conjMcOptions(conjMcItem,lang,tenseSet) : null),
+    [conjMcItem, lang,tenseSet],
   );
   const conjTenseLabel = tenseSet.find((t) => t.key === conjTense)?.label || "";
 
@@ -1527,7 +1569,7 @@ export default function VocabDrawer() {
   const conjDueCount = useMemo(() => {
     let n = 0;
     verbSet.forEach((v) => tenseSet.forEach((t) => {
-      const c = progress.cards[conjCardId(v, t.key)];
+      const c = progress.cards[`${lang}:conj:${verbKey(v)}:${t.key}`];
       if (c && isDue(c)) n++;
     }));
     return n;
@@ -1539,7 +1581,7 @@ export default function VocabDrawer() {
       tenseSet.forEach((t) => {
         if (tenseKey && t.key !== tenseKey) return;
         if (dueOnly) {
-          const c = progress.cards[conjCardId(v, t.key)];
+          const c = progress.cards[`${lang}:conj:${verbKey(v)}:${t.key}`];
           if (!c || !isDue(c)) return;
         }
         if (!hasTense(lang, v, t.key)) return;
@@ -1555,7 +1597,7 @@ export default function VocabDrawer() {
     setConjInput("");
     setConjResult(null);
     setConjScore(0);
-    sessionResultsRef.current = new Map();
+    beginReviewSession();
     sessionCommittedRef.current = false;
     conjMissedRef.current = new Map();
     setConjPracticeOnly(false);
@@ -1598,7 +1640,7 @@ export default function VocabDrawer() {
     setConjInput("");
     setConjResult(null);
     setConjScore(0);
-    sessionResultsRef.current = new Map();
+    beginReviewSession();
     sessionCommittedRef.current = false;
     conjMissedRef.current = new Map();
     setConjPracticeOnly(false);
@@ -1684,7 +1726,7 @@ export default function VocabDrawer() {
     tenseKey: wbTenseKey,
     tenses: tenseSet,
     cards: progress.cards,
-    cardIdFor: (k) => conjCardId(wbVerb, k),
+    cardIdFor: (k) => `${lang}:conj:${verbKey(wbVerb)}:${k}`,
     hasTense: (k) => hasTense(lang, wbVerb, k),
   }), [wbVerb, wbTenseKey, tenseSet, lang, progress.cards]);
 
@@ -1731,37 +1773,6 @@ export default function VocabDrawer() {
 
   /** Distractors are other persons of the same verb+tense — the ending you'd
    *  actually confuse, rather than a different verb you'd never confuse. */
-  function conjMcOptions(item) {
-    const forms = conjugate(lang, item.verb, item.tenseKey);
-    const correct = forms[item.personIdx];
-    const seen = new Set([normalize(correct)]);
-    const pool = [];
-    forms.forEach((f, i) => {
-      if (i === item.personIdx || f == null) return;
-      const k = normalize(f);
-      if (seen.has(k)) return;
-      seen.add(k);
-      pool.push(f);
-    });
-    // Some verbs repeat a form across persons (German wir/sie, French je/il), so
-    // there may be fewer than four distinct forms. Top up from the same verb's
-    // other tenses rather than showing two options.
-    if (pool.length < 3) {
-      for (const t of tenseSet) {
-        if (t.key === item.tenseKey) continue;
-        for (const f of conjugate(lang, item.verb, t.key)) {
-          if (f == null) continue;
-          const k = normalize(f);
-          if (seen.has(k)) continue;
-          seen.add(k);
-          pool.push(f);
-          if (pool.length >= 3) break;
-        }
-        if (pool.length >= 3) break;
-      }
-    }
-    return { correct, options: shuffle([correct, ...shuffle(pool).slice(0, 3)]) };
-  }
 
   function noteConjMiss(item) {
     conjMissedRef.current.set(`${verbKey(item.verb)}:${item.tenseKey}:${item.personIdx}`, {
@@ -1898,7 +1909,7 @@ export default function VocabDrawer() {
     setConjMcRetired(0);
     setConjMcPicked(null);
     // Grading starts here; the table and matching steps are practice only.
-    sessionResultsRef.current = new Map();
+    beginReviewSession();
     sessionCommittedRef.current = false;
     setScreen("conjChoose");
   }
@@ -1908,10 +1919,6 @@ export default function VocabDrawer() {
     if (!conjMcItem || conjMcPicked || !conjMcOpts) return;
     const ok = normalize(value) === normalize(conjMcOpts.correct);
     if (!ok) noteConjMiss(conjMcItem);
-    const id = conjCardId(conjMcItem.verb, conjMcItem.tenseKey);
-    const prev = sessionResultsRef.current.get(id) || { conj: true, wrongCount: 0 };
-    if (!ok) prev.wrongCount += 1;
-    sessionResultsRef.current.set(id, prev);
     setProgress((p) => bumpStreak(logReview(p, ok)));
     setConjMcPicked(value);
   }
@@ -1946,7 +1953,7 @@ export default function VocabDrawer() {
     setConjResult(null);
     setConjScore(0);
     if (!opts.keepSession) {
-      sessionResultsRef.current = new Map();
+      beginReviewSession();
       sessionCommittedRef.current = false;
     }
     setScreen("conjugation");
@@ -2086,6 +2093,7 @@ export default function VocabDrawer() {
   }, [progress, lang]);
 
   async function analyzeImport() {
+    const generation=++importGeneration.current;
     const text = importText.trim();
     if (!text) return;
     setImportError(null);
@@ -2135,6 +2143,7 @@ export default function VocabDrawer() {
     let anySuccess = false;
     for (let i = 0; i < chunks.length; i++) {
       const rows = await apiLookupBatch(lang, chunks[i].map((u) => u.form));
+      if(generation!==importGeneration.current)return;
       if (rows.length) anySuccess = true;
       rows.forEach((r) => {
         if (!r || !r.w) return;
@@ -2158,11 +2167,13 @@ export default function VocabDrawer() {
   }
 
   async function selectImportWord(word, sentenceIdx) {
+    const generation=importGeneration.current;
     setSelectedTok({ word, sentenceIdx });
     setLookupCount((n) => n + 1);
     if (sentenceTrans[sentenceIdx] === undefined) {
       setTransBusy(true);
       const t = await apiTranslate(lang, importSentences[sentenceIdx]);
+      if(generation!==importGeneration.current)return;
       setSentenceTrans((m) => ({ ...m, [sentenceIdx]: t }));
       setTransBusy(false);
     }
@@ -2259,6 +2270,7 @@ export default function VocabDrawer() {
    * check its own output would produce agreement, not verification.
    */
   async function runCheck(rows) {
+    const generation=++importGeneration.current;
     // Clear the previous run's failure: it outlived its cause and sat next to a
     // library that had saved perfectly well.
     setWordsError(null);
@@ -2281,6 +2293,7 @@ export default function VocabDrawer() {
     const glossed = {};
     for (const chunk of glossChunks) {
       const got = await apiLookupBatch(lang, chunk.map((r) => r.term));
+      if(generation!==importGeneration.current)return;
       got.forEach((g) => { if (g && g.w) glossed[normalize(String(g.w))] = g; });
       tick();
     }
@@ -2302,6 +2315,7 @@ export default function VocabDrawer() {
       });
 
       const { rows: got, model: usedModel } = await apiVerifyBatch(lang, "IMP", payload);
+      if(generation!==importGeneration.current)return;
       if (got.length) { anySuccess = true; model = usedModel || model; }
 
       /* Pair by index, then verify the pairing held. The prompt asks for
@@ -2519,7 +2533,11 @@ export default function VocabDrawer() {
   /* The rail routes through the same entry points the mobile home cards use,
    * so there is one navigation path rather than a parallel desktop one. */
   function navigateToSection(id) {
+    commitSession();
+    stopListening();
+    stopRecording();
     const first = {
+      today:'today',library:'library',missions:'missions',listeningLab:'listeningLab',media:'media',journal:'journal',phrasebook:'phrasebook',pronunciation:'pronunciation',retelling:'retelling',passport:'passport',challenge:'challenge',shelf:'shelf',backups:'backups',clinic:'clinic',repair:'repair',humanListening:'humanListening',deviceFiles:'deviceFiles',browserExtension:'browserExtension',
       study: "setup", mywords: "wordsHub",
       // Desktop lands on the workbench; the coverage map is one click from it.
       // Mobile has no workbench, so it keeps the hub.
@@ -2634,11 +2652,21 @@ export default function VocabDrawer() {
     }
   }, [lang, level]);
 
+  function changeLanguage(l) {
+    if(l===lang)return;
+    commitSession();stopListening();stopRecording();
+    importGeneration.current++;setImportBusy(false);setTransBusy(false);setWordsBusy(false);
+    setImportText("");setImportSentences([]);setGlosses({});setSentenceTrans({});setSelectedTok(null);setActiveTextId(null);
+    setStaged([]);setStagedInfo(null);setVerifyRows([]);setDecisions({});setWordsError(null);setPasteText("");
+    setProgress(p=>({...p,preferences:{...p.preferences,lang:l,level}}));
+    setLang(l);setDemoIdx(0);resetPosition();setScreen("today");
+  }
   function resetPosition() {
     setBatchIndex(0);
     setThemeIdx(0);
   }
   function startMixed() {
+    if(!flatWords.length)return;
     setMode("mixed");
     setBatchIndex(0);
     setLearnIdx(0);
@@ -2646,6 +2674,9 @@ export default function VocabDrawer() {
     setScreen("learn");
   }
   function startTheme(idx) {
+    if(!currentGroups[idx])return;
+    const entries=currentGroups[idx]?.words.map(word=>({word,level}))||[];
+    if(entries.length&&entries.every(({word})=>progress.cards[cardId(lang,level,word.t)]?.reps>0))return goToPractice(entries,{review:true});
     setMode("theme");
     setThemeIdx(idx);
     setLearnIdx(0);
@@ -2698,7 +2729,7 @@ export default function VocabDrawer() {
    * production answer splits them. */
   const cardForEntry = (w, lv) => ({
     rec: progress.cards[cardId(lang, lv, w.t)],
-    prod: progress.cards[prodCardId(lang, lv, w.t)] ?? progress.cards[cardId(lang, lv, w.t)],
+    prod: progress.cards[prodCardId(lang, lv, w.t)],
   });
 
   /** Multiple-choice warm-up. Feeds the same session results as the typing step. */
@@ -2713,7 +2744,7 @@ export default function VocabDrawer() {
     setChooseStreak(0);
     chooseSeenRef.current = new Set();
     chooseFirstWrongRef.current = new Set();
-    sessionResultsRef.current = new Map();
+    beginReviewSession();
     sessionCommittedRef.current = false;
     setScreen("choose");
   }
@@ -2728,15 +2759,6 @@ export default function VocabDrawer() {
       chooseSeenRef.current.add(chooseItem.id);
       if (!ok) chooseFirstWrongRef.current.add(chooseItem.id);
     }
-
-    /* Same accumulator the typing step uses, so both stages produce one honest
-     * grade — but per direction now: a to-English answer is evidence about
-     * recognition and a to-target answer about production, and averaging them
-     * into one card is what hid a word you could read and could not say. */
-    const wKey = idForKind(chooseItem.kind, lang, chooseItem.level, chooseItem.word.t);
-    const prev = sessionResultsRef.current.get(wKey) || { word: chooseItem.word, level: chooseItem.level, wrongCount: 0 };
-    if (!ok) prev.wrongCount += 1;
-    sessionResultsRef.current.set(wKey, prev);
 
     setProgress((p) => bumpStreak(logReview(p, ok)));
     setChooseStreak((s) => (ok ? s + 1 : 0));
@@ -2768,7 +2790,7 @@ export default function VocabDrawer() {
     // Accepts either plain word objects (current drawer) or {word, level} entries.
     const entries = asEntries(list);
     sessionListRef.current = entries;
-    const q = buildPracticeQueue(entries, cardForEntry);
+    const q = buildPracticeQueue(entries, cardForEntry,{review:!!opts.review}).map(item=>opts.supported?{...item,supported:true}:item);
     setQueue(q);
     setTotalItems(q.length);
     setRetired(0);
@@ -2782,7 +2804,7 @@ export default function VocabDrawer() {
     // Coming from the Choose step, keep the accumulated results so the word is
     // scheduled once for the whole sitting rather than twice.
     if (!opts.keepSession) {
-      sessionResultsRef.current = new Map();
+      beginReviewSession();
       sessionCommittedRef.current = false;
     }
     setReviewOnly(!!opts.review);
@@ -2871,7 +2893,11 @@ export default function VocabDrawer() {
     // Accumulate per-direction outcome; scheduling is applied once at session end.
     const wKey = idForKind(currentQ.kind, lang, currentQ.level, currentQ.word.t);
     const prev = sessionResultsRef.current.get(wKey) || { word: currentQ.word, level: currentQ.level, wrongCount: 0 };
-    if (!isCorrect) prev.wrongCount += 1;
+    const assisted=currentQ.supported||assistedRef.current.has(wKey);
+    if(!assisted){prev.unassistedAttempts=(prev.unassistedAttempts||0)+1;if(!isCorrect)prev.wrongCount+=1;prev.answeredAt=Date.now();}
+    prev.independent=(prev.unassistedAttempts||0)>0;
+    prev.assisted=!prev.independent;
+    prev.practiceOnly=currentQ.practiceOnly;
     sessionResultsRef.current.set(wKey, prev);
 
     // Activity log drives the streak and the heatmap; cheap to record per answer.
@@ -2893,6 +2919,7 @@ export default function VocabDrawer() {
    * sitting, so a word is graded once across all five stages.
    */
   function goToSentence() {
+    if(reviewOnly){commitSession();setScreen("summary");return;}
     const withSentence = sessionListRef.current.filter(({ word }) => word.s && word.s.trim());
     if (!withSentence.length) { commitSession(); setScreen("summary"); return; }
     const q = shuffle(withSentence);
@@ -2930,12 +2957,7 @@ export default function VocabDrawer() {
       return;
     }
 
-    const wKey = prodCardId(lang, sentItem.level, sentItem.word.t);
-    const prev = sessionResultsRef.current.get(wKey) || { word: sentItem.word, level: sentItem.level, wrongCount: 0 };
-    if (!ok) prev.wrongCount += 1;
-    sessionResultsRef.current.set(wKey, prev);
-    if (!ok) missedRef.current.set(cardId(lang, sentItem.level, sentItem.word.t), { word: sentItem.word, level: sentItem.level });
-
+    if (!ok) missedRef.current.set(cardId(lang,sentItem.level,sentItem.word.t),{word:sentItem.word,level:sentItem.level});
     setProgress((p) => bumpStreak(logReview(p, ok)));
     setSentResult({ ok, slips, diff });
   }
@@ -3020,8 +3042,8 @@ export default function VocabDrawer() {
    * verbs, and the closed-class function words. Rebuilt only on a language
    * change. */
   const dictionary = useMemo(
-    () => buildDictionary(lang, DATA, lang === "fr" ? FR_VERBS : DE_VERBS, lang === "fr" ? FR_TENSES : DE_TENSES),
-    [lang],
+    () => {void vocabularyRevision; return buildDictionary(lang, DATA, lang === "fr" ? FR_VERBS : DE_VERBS, lang === "fr" ? FR_TENSES : DE_TENSES);},
+    [lang,vocabularyRevision],
   );
 
   /** How many verb × tense cells have been drilled at least once. */
@@ -3053,6 +3075,8 @@ export default function VocabDrawer() {
     if (!file) return;
     setImportReport(null);
     try {
+      if(file.size>25*1024*1024)throw new Error("Backup exceeds 25 MB.");
+      await storage.set("vocabdrawer:pre-import",JSON.stringify(progress));
       const { progress: merged, stats } = mergeProgress(progress, JSON.parse(await file.text()));
       setProgress(merged);
       setImportReport({
@@ -3182,11 +3206,13 @@ export default function VocabDrawer() {
     setFlIdx((i) => i + 1);
   }
 
+  const finishFluencyRef=useRef(finishFluency);
+  finishFluencyRef.current=finishFluency;
   /* The clock. It owns ending the round, so a learner who stops answering
    * still gets a score rather than a screen that waits forever. */
   useEffect(() => {
     if (flPhase !== "running") return undefined;
-    if (flLeft <= 0) { finishFluency(); return undefined; }
+    if (flLeft <= 0) { finishFluencyRef.current(); return undefined; }
     const t = setTimeout(() => setFlLeft((n) => n - 1), 1000);
     return () => clearTimeout(t);
   }, [flPhase, flLeft]);
@@ -3412,12 +3438,12 @@ export default function VocabDrawer() {
     if (!Object.keys(progress.cards || {}).length) { available.delete("fluency"); available.delete("mistakes"); }
     if (!mistakeList.length) available.delete("mistakes");
     if (!importedWords.length) available.delete("mywords");
-    return neglectedStrand(progress.activity, todayKey(), { available });
+    return neglectedStrand(progress.activity, todayKey(), { available,lang });
   }, [progress.activity, progress.cards, lang, mistakeList.length, importedWords.length]);
 
   const strandRows = useMemo(
-    () => strandBalance(progress.activity, todayKey()).map((r) => ({ ...r, label: STRANDS[r.strand].short })),
-    [progress.activity],
+    () => strandBalance(progress.activity, todayKey(),{lang}).map((r) => ({ ...r, label: STRANDS[r.strand].short })),
+    [progress.activity,lang],
   );
 
   const suggestion = useMemo(() => {
@@ -3437,7 +3463,7 @@ export default function VocabDrawer() {
       unfinishedLesson: halfway
         ? { n: halfway.n, title: halfway.title, stage: LESSON_STAGES[lessonRecs[halfway.id].stage || 0]?.label || "the start" }
         : null,
-      firstLesson: neverTaken && lessonList[0] ? { n: lessonList[0].n, title: lessonList[0].title } : null,
+      firstLesson: level !== "A1" && neverTaken && lessonList[0] ? { n: lessonList[0].n, title: lessonList[0].title } : null,
       strandGap,
       mistakeCount: mistakeList.length,
       dueCount: dueCards.length,
@@ -3461,9 +3487,11 @@ export default function VocabDrawer() {
     const buckets = Array.from({ length: 8 }, () => 0);
     for (const { word, level: lv } of allWordsForLang) {
       const card = progress.cards[cardId(lang, lv, word.t)];
+      const prod=progress.cards[prodCardId(lang,lv,word.t)];
       maturity[cardStage(card)] += 1;
-      if (!card) continue;
-      const d = Math.max(0, daysUntil(card.due));
+      if (!card&&!prod) continue;
+      const dates=[card?.due,prod?.due].filter(Boolean);
+      const d = Math.max(0,Math.min(...dates.map(daysUntil)));
       if (d <= 7) buckets[d] += 1;
     }
 
@@ -3512,7 +3540,7 @@ export default function VocabDrawer() {
   /* What the German grammar rules know: every finite form in the verb tables
    * and the gender of every noun in the deck. It depends only on the data, so
    * it is built once. */
-  const deLexicon = useMemo(() => germanLexicon({ data: DATA, verbs: [...DE_VERBS, ...DE_C1_VERBS] }), []);
+  const deLexicon = useMemo(() => {void vocabularyRevision; return germanLexicon({ data: DATA, verbs: [...DE_VERBS, ...DE_C1_VERBS] });}, [vocabularyRevision]);
 
   /* Headwords this learner has actually studied, for the "from drawers you've
    * studied" line under a piece of writing. Keyed loosely so an inflected
@@ -3561,10 +3589,11 @@ export default function VocabDrawer() {
    * it on every keystroke-check would be a state update per answer for a fact
    * that changes once a day. */
   function noteWork(key) {
+    setActivityOverride(key);
     setProgress((prev) => {
       const today = todayKey();
-      if (prev.activity?.[key]?.last === today) return prev;
-      return { ...prev, activity: recordActivity(prev.activity, key, today) };
+      if (prev.activity?.[`${lang}:${key}`]?.last === today) return prev;
+      return { ...prev, activity: recordActivity(prev.activity, `${lang}:${key}`, today) };
     });
   }
 
@@ -3936,7 +3965,7 @@ export default function VocabDrawer() {
    */
   function leaveStudy() {
     commitSession();
-    setScreen("setup");
+    setScreen("today");
   }
 
   /** Apply one scheduling update per item studied, exactly once per session. */
@@ -3944,6 +3973,7 @@ export default function VocabDrawer() {
     if (sessionCommittedRef.current) return;
     sessionCommittedRef.current = true;
     const results = [...sessionResultsRef.current.entries()];
+    const committedId=sessionMetaRef.current.id;
     if (!results.length) return;
 
     /* Schedule from the cards as they stand *now*, and keep the result.
@@ -3955,13 +3985,14 @@ export default function VocabDrawer() {
      * time. Recording the answer here is both cheaper and the only version
      * that is right. */
     setProgress((p) => {
+      if(p.committedSessions?.[committedId])return p;
       const { cards, scheduled } = scheduleResults(p.cards, results);
       /* Recorded from inside the updater so it sees the same pre-commit cards
        * the write does, even if another progress update is already queued.
        * `scheduleResults` is deterministic, so a replayed updater records the
        * identical result. */
       sessionScheduleRef.current = scheduled;
-      return { ...p, cards };
+      return {...p,cards,pendingSession:null,committedSessions:{...p.committedSessions,[committedId]:Date.now()}};
     });
   }
 
@@ -4181,7 +4212,7 @@ export default function VocabDrawer() {
               ) : inputTab === "file" ? (
                 <div className="text-center py-4">
                   <input ref={fileRef} type="file" accept=".csv,.tsv,.txt,.json,text/plain,application/json" onChange={handleWordFile} style={{ display: "none" }} />
-                  <button onClick={() => fileRef.current?.click()} className="px-5 py-3 rounded-md font-semibold inline-flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={() => fileRef.current?.click()} className="px-5 py-3 rounded-md font-semibold inline-flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     <Upload size={17} /> Choose a file
                   </button>
                   <p className="text-xs font-serif mt-3" style={{ color: C.muted }}>
@@ -4218,7 +4249,7 @@ export default function VocabDrawer() {
                 {inputTab !== "one" && (
                   <div className="flex items-center gap-2 mt-2">
                     <span className="text-xs font-serif" style={{ color: C.muted }}>Read as</span>
-                    <select
+                    <select aria-label="Word list format"
                       value={formatOverride} onChange={(e) => setFormatOverride(e.target.value)}
                       className="text-xs px-2 py-1 rounded-md font-serif flex-1"
                       style={{ backgroundColor: C.paper, border: `1px solid ${C.line}`, color: C.ink }}
@@ -4283,7 +4314,7 @@ export default function VocabDrawer() {
                     onClick={() => runCheck(chosen)}
                     disabled={!chosen.length || wordsBusy}
                     className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 disabled:opacity-40"
-                    style={{ backgroundColor: C.gold, color: C.ink }}
+                    style={{ backgroundColor: C.gold, color: C.onGold }}
                   >
                     {wordsBusy ? <>Checking… {wordsPct}%</> : <><Sparkles size={17} /> Check {chosen.length} {chosen.length === 1 ? "word" : "words"}</>}
                   </button>
@@ -4298,8 +4329,58 @@ export default function VocabDrawer() {
     </>
   );
 
+  function studioAction(task) {
+    if(!task)return;
+    commitSession();stopListening();stopRecording();
+    setStudioContext({missionId:task.missionId||null,humanId:task.humanId||null});
+    if(task.action==='review')return goToPractice(dueCards.slice(0,Math.max(5,progress.preferences?.minutes||15)),{review:true});
+    if(task.action==='weak')return navigateToSection('repair');
+    navigateToSection(task.action);
+  }
+  async function applyBackup(incoming,mode) {
+    const before=recoverSession({...progress,pendingSession:snapshotSession()||progress.pendingSession});
+    commitSession();
+    await storage.set('vocabdrawer:pre-import',JSON.stringify(before));
+    const {progress:merged}=mergeProgress(before,incoming,{restore:mode==='restore'});
+    setProgress(recoverSession(merged));
+    profileHydrated.current=false;
+  }
+  function savePhrase(phrase) {
+    if(!phrase.text?.trim())return;
+    setProgress(p=>({...p,phrasebook:[{...phrase,text:phrase.text.trim(),lang,id:eventId(),at:new Date().toISOString()},...(p.phrasebook||[])].slice(0,2000)}));
+  }
+  function missionRecord(id,row) {
+    setProgress(p=>({...p,missions:{...p.missions,[id]:{...p.missions?.[id],...row,updatedAt:Date.now()}}}));
+  }
+  function skillEvidence(row) {
+    setProgress(p=>({...p,skillEvidence:[...(p.skillEvidence||[]),{...row,id:eventId(),at:new Date().toISOString()}].slice(-2000)}));
+    noteWork('missions');
+  }
+  const waiting=allWordsForLang.filter(({word,level:lv})=>[progress.cards[cardId(lang,lv,word.t)],progress.cards[prodCardId(lang,lv,word.t)]].some(c=>c?.readyAt>clock)).length;
+  const modernScreens=(<Suspense fallback={<p role="status">Loading this activity…</p>}>
+    {screen==='today'&&<TodayDashboard lang={lang} level={level} progress={progress} loaded={progressLoaded&&!vocabularyLoading} due={dueCards.length} weak={weakCards.length} waiting={waiting} onLanguage={changeLanguage} onLevel={setLevel} onPreferences={preferences=>setProgress(p=>({...p,preferences:{...preferences,lang,level}}))} onAction={studioAction}/>}
+    {['missions','listeningLab','challenge'].includes(screen)&&<MissionLesson key={`${lang}:${screen}`} lang={lang} level={level} mode={screen} missionId={studioContext.missionId} records={progress.missions||{}} onRecord={missionRecord} onComplete={skillEvidence} onSavePhrase={savePhrase} onWork={noteWork} glossOf={glossOf} check={checkWritingNow} goal={progress.preferences?.goal} onHome={()=>navigateToSection('today')}/>}
+    {screen==='browserExtension'&&<BrowserExtensionGuide/>}
+    {screen==='deviceFiles'&&<DeviceFiles progress={progress} onRemoved={key=>setProgress(p=>{const [kind,id]=key.split(':');return {...p,journal:(p.journal||[]).map(row=>kind==='photo'&&row.photo===id?{...row,photo:null,updatedAt:Date.now()}:kind==='recording'&&row.recording===id?{...row,recording:null,updatedAt:Date.now()}:row),mediaSessions:kind==='media'?Object.fromEntries(Object.entries(p.mediaSessions||{}).map(([k,row])=>[k,k===id?{...row,hasMedia:false,updatedAt:Date.now()}:row])):p.mediaSessions};})}/>}
+    {screen==='humanListening' &&<HumanListening key={lang} lang={lang} onWork={noteWork} onEvidence={skillEvidence} onAction={studioAction}/>}
+    {screen==='media'&&<MediaStudio initialHumanId={studioContext.humanId} onRemoveSession={id=>setProgress(p=>({...p,mediaSessions:Object.fromEntries(Object.entries(p.mediaSessions||{}).filter(([key])=>key!==id))}))} key={lang} lang={lang} sessions={progress.mediaSessions||{}} onSession={row=>setProgress(p=>({...p,mediaSessions:{...p.mediaSessions,[row.id]:row}}))} onSavePhrase={savePhrase} onWork={noteWork} glossOf={glossOf} onHome={()=>navigateToSection('today')}/>}
+    {screen==='library'&&<PracticeLibrary onAction={studioAction}/>}
+    {screen==='shelf'&&<ExtensiveShelf key={lang} lang={lang} level={level} onWork={noteWork} glossOf={glossOf} onRead={id=>recordReading(id,{practice:true,completedAt:new Date().toISOString()})} onAction={studioAction}/>}
+    {screen==='phrasebook'&&<PhraseNotebook key={lang} lang={lang} phrases={progress.phrasebook||[]} onChange={phrasebook=>setProgress(p=>({...p,phrasebook}))} onWork={noteWork}/>}
+    {screen==='journal'&&<LanguageJournal key={lang} lang={lang} entries={progress.journal||[]} onChange={update=>setProgress(p=>({...p,journal:typeof update==='function'?update(p.journal||[]):update}))} onWork={noteWork} check={checkWritingNow}/>}
+    {screen==='pronunciation'&&<PronunciationLab key={lang} lang={lang} onWork={noteWork}/>}
+    {screen==='retelling'&&<RetellingPractice key={lang} lang={lang} onWork={noteWork} onEvidence={skillEvidence}/>}
+    {screen==='repair'&&<WordRepair key={lang} lang={lang} entries={[...weakCards,...allWordsForLang.filter(e=>[progress.cards[cardId(lang,e.level,e.word.t)],progress.cards[prodCardId(lang,e.level,e.word.t)]].some(c=>c?.suspended))]} cards={progress.cards} onChange={updates=>setProgress(p=>({...p,cards:{...p.cards,...updates}}))} onSavePhrase={savePhrase} onPractice={entry=>goToPractice([entry],{review:true,supported:true})}/>}
+    {screen==='clinic'&&<ContrastClinic key={lang} lang={lang} mistakes={mistakeList} check={checkWritingNow} onEvidence={skillEvidence} onWork={noteWork}/>}
+    {screen==='backups'&&<BackupManager onExport={exportProgress} onApply={applyBackup}/>}
+    {screen==='passport'&&<SkillPassport lang={lang} evidence={progress.skillEvidence||[]} ability={ability}/>}
+  </Suspense>);
+
   const screens = (
     <>
+      {vocabularyLoading&&<p role="status" className="vd-notice">Loading additional vocabulary…</p>}
+      {vocabularyError&&<p role="alert" className="vd-notice">{vocabularyError}</p>}
+      {modernScreens}
         {/* ============================ SETUP ============================ */}
         {screen === "setup" && isDesktop && (
           <HomeDesktop
@@ -4359,7 +4440,7 @@ export default function VocabDrawer() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="text-center">
-                    <div className="flex items-center gap-1 font-semibold" style={{ color: progress.streak ? C.gold : C.muted }}>
+                    <div className="flex items-center gap-1 font-semibold" style={{ color: progress.streak ? C.accent : C.muted }}>
                       <Flame size={16} /> {progress.streak || 0}
                     </div>
                     <div className="text-[0.625rem] uppercase tracking-wide" style={{ color: C.muted }}>streak</div>
@@ -4379,7 +4460,7 @@ export default function VocabDrawer() {
                 </button>
               )}
               {dueCards.length > 0 ? (
-                <button onClick={() => goToPractice(dueCards, { review: true })} className="w-full py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button onClick={() => goToPractice(dueCards, { review: true })} className="w-full py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   <Repeat size={15} /> Review {dueCards.length} Due {dueCards.length === 1 ? "Word" : "Words"}
                 </button>
               ) : (
@@ -4444,7 +4525,7 @@ export default function VocabDrawer() {
                     return (
                       <button key={g.topic} onClick={() => startTheme(i)} className="text-left p-3 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.paper, border: `1px solid ${C.line}` }}>
                         <div className="flex items-center gap-2">
-                          <Icon size={16} style={{ color: C.gold }} />
+                          <Icon size={16} style={{ color: C.accent }} />
                           <span className="text-sm font-semibold" style={{ color: C.ink }}>{g.topic}</span>
                         </div>
                         <span className="text-xs font-serif" style={{ color: C.muted }}>{g.words.length} words</span>
@@ -4462,7 +4543,7 @@ export default function VocabDrawer() {
                       {totalBatches} batch{totalBatches > 1 ? "es" : ""} at this size, mixed across all themes.
                     </div>
                   </div>
-                  <button onClick={startMixed} className="w-full mt-3 py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={startMixed} className="w-full mt-3 py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     Start Drawer <ArrowRight size={18} />
                   </button>
                 </div>
@@ -4480,11 +4561,11 @@ export default function VocabDrawer() {
                 <span className="text-xs font-serif" style={{ color: C.muted }}>One famous text, taken all the way apart — grammar, structure, words, translation.</span>
               </button>
               <button onClick={() => setScreen("reading")} className="text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
-                <div className="flex items-center gap-2"><BookOpen size={17} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Reading Room</span></div>
+                <div className="flex items-center gap-2"><BookOpen size={17} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Reading Room</span></div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>Passages from A1 to C1 — answer in full sentences, checked for grammar.</span>
               </button>
               <button onClick={() => setScreen("writing")} className="text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
-                <div className="flex items-center gap-2"><PenLine size={17} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Writing Desk</span></div>
+                <div className="flex items-center gap-2"><PenLine size={17} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Writing Desk</span></div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>Write freely — grammar checked first, vocabulary second.</span>
               </button>
               <button onClick={() => setScreen("mistakes")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.red}` }}>
@@ -4492,36 +4573,36 @@ export default function VocabDrawer() {
                 <span className="text-xs font-serif" style={{ color: C.muted }}>The patterns the checker keeps finding — with your own sentences to fix.</span>
               </button>
               <button onClick={() => setScreen("sentcSetup")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
-                <div className="flex items-center gap-2"><Blocks size={17} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Sentence Constructions</span></div>
+                <div className="flex items-center gap-2"><Blocks size={17} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Sentence Constructions</span></div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>Build a whole sentence from its words, in the tense you choose.</span>
               </button>
               <button onClick={() => setScreen("phraseSelect")} className="text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
-                <div className="flex items-center gap-2"><Quote size={17} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Phrase Match</span></div>
+                <div className="flex items-center gap-2"><Quote size={17} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Phrase Match</span></div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>Match idioms to their real meaning — not the literal words.</span>
               </button>
               <button onClick={() => setScreen("listenSelect")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
-                <div className="flex items-center gap-2"><Headphones size={17} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Listening &amp; Speaking</span></div>
+                <div className="flex items-center gap-2"><Headphones size={17} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Listening &amp; Speaking</span></div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>Dictation — hear a sentence and type it. Plus microphone practice, if your browser allows it.</span>
               </button>
               <button onClick={() => setScreen("fluency")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
-                <div className="flex items-center gap-2"><Zap size={17} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Fluency</span></div>
+                <div className="flex items-center gap-2"><Zap size={17} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Fluency</span></div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>One minute, words you already know, as fast as you can. Speed is its own skill.</span>
               </button>
               <button onClick={() => setScreen("etymology")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
-                <div className="flex items-center gap-2"><GitBranch size={17} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Word Roots</span></div>
+                <div className="flex items-center gap-2"><GitBranch size={17} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Word Roots</span></div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>Where a word came from, where French and German split, and the sound changes that let you guess the next one.</span>
               </button>
               <button onClick={() => setScreen("grammarHub")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
                 <div className="flex items-center gap-2">
-                  <GraduationCap size={17} style={{ color: C.gold }} />
+                  <GraduationCap size={17} style={{ color: C.accent }} />
                   <span className="text-sm font-semibold" style={{ color: C.ink }}>Grammar &amp; Verbs</span>
-                  {conjDueCount > 0 && <span className="text-[0.625rem] px-1.5 py-0.5 rounded-full font-semibold" style={{ backgroundColor: C.gold, color: C.ink }}>{conjDueCount} due</span>}
+                  {conjDueCount > 0 && <span className="text-[0.625rem] px-1.5 py-0.5 rounded-full font-semibold" style={{ backgroundColor: C.gold, color: C.onGold }}>{conjDueCount} due</span>}
                 </div>
                 <span className="text-xs font-serif" style={{ color: C.muted }}>Conjugation drills across four tenses, and short notes on the rules that actually trip people up.</span>
               </button>
               <button onClick={() => setScreen("wordsHub")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
                 <div className="flex items-center gap-2">
-                  <Sparkles size={17} style={{ color: C.gold }} />
+                  <Sparkles size={17} style={{ color: C.accent }} />
                   <span className="text-sm font-semibold" style={{ color: C.ink }}>My Words</span>
                   {importedWords.length > 0 && <span className="text-[0.625rem] px-1.5 py-0.5 rounded-full font-semibold" style={{ backgroundColor: C.paper, color: C.muted }}>{importedWords.length} words</span>}
                   {uncheckedWords.length > 0 && <span className="text-[0.625rem] px-1.5 py-0.5 rounded-full font-semibold" style={{ backgroundColor: C.red, color: C.card }}>{uncheckedWords.length} unchecked</span>}
@@ -4530,7 +4611,7 @@ export default function VocabDrawer() {
               </button>
               <button onClick={() => setScreen("importPaste")} className="col-span-2 text-left p-4 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `4px solid ${C.gold}` }}>
                 <div className="flex items-center gap-2">
-                  <FileText size={17} style={{ color: C.gold }} />
+                  <FileText size={17} style={{ color: C.accent }} />
                   <span className="text-sm font-semibold" style={{ color: C.ink }}>Import Your Own Text</span>
                   {importedWords.length > 0 && <span className="text-[0.625rem] px-1.5 py-0.5 rounded-full font-semibold" style={{ backgroundColor: C.paper, color: C.muted }}>{importedWords.length} saved</span>}
                 </div>
@@ -4562,15 +4643,15 @@ export default function VocabDrawer() {
               <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: C.muted }}>Add words</div>
               <div className="grid grid-cols-3 gap-2">
                 <button onClick={() => { setInputTab("paste"); setScreen("wordsInput"); }} className="p-3 rounded-md flex flex-col items-center gap-1.5" style={{ backgroundColor: C.paper, border: `1px solid ${C.line}` }}>
-                  <ClipboardList size={17} style={{ color: C.gold }} />
+                  <ClipboardList size={17} style={{ color: C.accent }} />
                   <span className="text-xs font-semibold" style={{ color: C.ink }}>Paste a list</span>
                 </button>
                 <button onClick={() => { setInputTab("file"); setScreen("wordsInput"); }} className="p-3 rounded-md flex flex-col items-center gap-1.5" style={{ backgroundColor: C.paper, border: `1px solid ${C.line}` }}>
-                  <Upload size={17} style={{ color: C.gold }} />
+                  <Upload size={17} style={{ color: C.accent }} />
                   <span className="text-xs font-semibold" style={{ color: C.ink }}>Upload a file</span>
                 </button>
                 <button onClick={() => { setInputTab("one"); setScreen("wordsInput"); }} className="p-3 rounded-md flex flex-col items-center gap-1.5" style={{ backgroundColor: C.paper, border: `1px solid ${C.line}` }}>
-                  <Plus size={17} style={{ color: C.gold }} />
+                  <Plus size={17} style={{ color: C.accent }} />
                   <span className="text-xs font-semibold" style={{ color: C.ink }}>Type one</span>
                 </button>
               </div>
@@ -4597,7 +4678,7 @@ export default function VocabDrawer() {
                   </div>
                 </div>
 
-                <button onClick={startMine} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button onClick={startMine} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   Study my words <ArrowRight size={17} />
                 </button>
 
@@ -4767,7 +4848,7 @@ export default function VocabDrawer() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <button onClick={saveReviewed} disabled={!kept.length} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button onClick={saveReviewed} disabled={!kept.length} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   Save {kept.length} {kept.length === 1 ? "word" : "words"} <ArrowRight size={17} />
                 </button>
                 {unaccepted > 0 && (
@@ -4826,7 +4907,7 @@ export default function VocabDrawer() {
                 onClick={analyzeImport}
                 disabled={!importText.trim() || importBusy}
                 className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 disabled:opacity-40"
-                style={{ backgroundColor: C.gold, color: C.ink }}
+                style={{ backgroundColor: C.gold, color: C.onGold }}
               >
                 {importBusy ? <>Looking up words… {importProgressPct}%</> : <><Sparkle size={17} /> Analyze Text</>}
               </button>
@@ -4941,7 +5022,7 @@ export default function VocabDrawer() {
                       onClick={addImportedWord}
                       disabled={alreadySaved || knownKeys.has(k)}
                       className="flex-1 py-2 rounded-md font-semibold text-sm disabled:opacity-40"
-                      style={{ backgroundColor: C.gold, color: C.ink }}
+                      style={{ backgroundColor: C.gold, color: C.onGold }}
                     >
                       {knownKeys.has(k) ? "Already in your deck" : alreadySaved ? "Saved" : "Add to deck"}
                     </button>
@@ -4952,7 +5033,7 @@ export default function VocabDrawer() {
 
             <div className="flex flex-col gap-2">
               {importedWords.length > 0 && (
-                <button onClick={() => startMine()} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button onClick={() => startMine()} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   Study my {importedWords.length} imported {importedWords.length === 1 ? "word" : "words"} <ArrowRight size={17} />
                 </button>
               )}
@@ -4981,7 +5062,7 @@ export default function VocabDrawer() {
                   <div className="text-xs font-serif" style={{ color: C.ink }}>
                     {uncheckedWords.length} {uncheckedWords.length === 1 ? "word has" : "words have"} never been fact-checked.
                   </div>
-                  <button onClick={() => recheckSaved(uncheckedWords)} disabled={wordsBusy} className="px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={() => recheckSaved(uncheckedWords)} disabled={wordsBusy} className="px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     {wordsBusy ? `Checking… ${wordsPct}%` : "Check them"}
                   </button>
                 </div>
@@ -5027,7 +5108,7 @@ export default function VocabDrawer() {
 
               <div className="flex flex-col gap-2">
                 {importedWords.length > 0 && (
-                  <button onClick={() => startMine()} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={() => startMine()} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     Study these <ArrowRight size={17} />
                   </button>
                 )}
@@ -5056,13 +5137,13 @@ export default function VocabDrawer() {
             </div>
 
             <div className="rounded-lg p-5 mb-3" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `5px solid ${C.gold}` }}>
-              <div className="flex items-center gap-2 mb-1"><Zap size={16} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Conjugation trainer</span></div>
+              <div className="flex items-center gap-2 mb-1"><Zap size={16} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Conjugation trainer</span></div>
               <p className="text-xs font-serif mb-4" style={{ color: C.muted }}>
                 {verbSet.length} core verbs across {tenseSet.length} tenses. Pick a tense to choose your verbs and work through the table, matching, multiple choice and typing. These schedule for review on their own track.
               </p>
 
               {conjDueCount > 0 && (
-                <button onClick={() => startConjugation(null, true)} className="w-full py-2.5 rounded-md font-semibold text-sm mb-2 flex items-center justify-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button onClick={() => startConjugation(null, true)} className="w-full py-2.5 rounded-md font-semibold text-sm mb-2 flex items-center justify-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   <Repeat size={15} /> Review {conjDueCount} due
                 </button>
               )}
@@ -5081,9 +5162,9 @@ export default function VocabDrawer() {
             </div>
 
             <div className="rounded-lg p-5 mb-5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `5px solid ${C.gold}` }}>
-              <div className="flex items-center gap-2 mb-1"><Cog size={16} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Grammar notes</span></div>
+              <div className="flex items-center gap-2 mb-1"><Cog size={16} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Grammar notes</span></div>
               <p className="text-xs font-serif mb-3" style={{ color: C.muted }}>Short explanations of the rules learners actually get stuck on.</p>
-              <button onClick={() => { setGrammarIdx(null); setScreen("grammarNotes"); }} className="w-full py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={() => { setGrammarIdx(null); setScreen("grammarNotes"); }} className="w-full py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 Read {GRAMMAR[lang].length} notes
               </button>
             </div>
@@ -5129,7 +5210,7 @@ export default function VocabDrawer() {
 
             {conjVerbMode === "random" ? (
               <div className="rounded-lg p-5 mb-4 text-center" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
-                <Shuffle size={20} style={{ color: C.gold }} className="mx-auto mb-2" />
+                <Shuffle size={20} style={{ color: C.accent }} className="mx-auto mb-2" />
                 <p className="text-sm font-serif" style={{ color: C.muted }}>
                   {RANDOM_VERB_COUNT} verbs picked at random from the {verbSet.length} core verbs, in the {conjTenseLabel.toLowerCase()}.
                 </p>
@@ -5141,7 +5222,7 @@ export default function VocabDrawer() {
                     {conjVerbMode === "single" ? "Choose one" : `${conjPicked.length} selected`}
                   </span>
                   {conjVerbMode === "multi" && conjPicked.length > 0 && (
-                    <button onClick={() => setConjPicked([])} className="text-xs font-semibold" style={{ color: C.gold }}>Clear</button>
+                    <button onClick={() => setConjPicked([])} className="text-xs font-semibold" style={{ color: C.accent }}>Clear</button>
                   )}
                 </div>
                 <div className="grid grid-cols-2 gap-1.5">
@@ -5234,7 +5315,7 @@ export default function VocabDrawer() {
                 <button
                   onClick={() => (last ? goToConjMatch() : setConjTableIdx((i) => i + 1))}
                   className="flex-1 py-3 rounded-md font-semibold flex items-center justify-center gap-2"
-                  style={{ backgroundColor: C.gold, color: C.ink }}
+                  style={{ backgroundColor: C.gold, color: C.onGold }}
                 >
                   {last ? "Start matching" : "Next verb"} <ArrowRight size={17} />
                 </button>
@@ -5314,7 +5395,7 @@ export default function VocabDrawer() {
               </div>
 
               {boardDone && (
-                <button onClick={advanceConjMatch} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button onClick={advanceConjMatch} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   {conjMatchPool.length ? "Next set" : "Start multiple choice"} <ArrowRight size={17} />
                 </button>
               )}
@@ -5352,7 +5433,7 @@ export default function VocabDrawer() {
                 </div>
 
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="font-serif text-xl font-semibold" style={{ color: C.gold }}>{pronounSet[conjMcItem.personIdx]}</span>
+                  <span className="font-serif text-xl font-semibold" style={{ color: C.accent }}>{pronounSet[conjMcItem.personIdx]}</span>
                   <span className="font-serif text-xl" style={{ color: C.line }}>_______</span>
                   {verbFrame(lang, conjMcItem.verb, conjMcItem.tenseKey) && (
                     <span className="font-serif text-xl" style={{ color: C.muted }}>{verbFrame(lang, conjMcItem.verb, conjMcItem.tenseKey)}</span>
@@ -5408,7 +5489,7 @@ export default function VocabDrawer() {
                     </button>
                   ) : <span />}
                   {answered && (
-                    <button onClick={continueConjMc} className="px-5 py-2.5 rounded-md font-semibold flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                    <button onClick={continueConjMc} className="px-5 py-2.5 rounded-md font-semibold flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                       {conjMcQueue.length === 1 && wasRight ? "Start typing" : "Next"} {hasKeys ? <KeyCap n="↵" /> : <ArrowRight size={15} />}
                     </button>
                   )}
@@ -5447,7 +5528,7 @@ export default function VocabDrawer() {
               </div>
 
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="font-serif text-xl font-semibold" style={{ color: C.gold }}>{pronounSet[conjItem.personIdx]}</span>
+                <span className="font-serif text-xl font-semibold" style={{ color: C.accent }}>{pronounSet[conjItem.personIdx]}</span>
                 <span className="font-serif text-xl" style={{ color: C.line }}>_______</span>
                 {verbFrame(lang, conjItem.verb, conjItem.tenseKey) && (
                   <span className="font-serif text-xl" style={{ color: C.muted }}>{verbFrame(lang, conjItem.verb, conjItem.tenseKey)}</span>
@@ -5478,7 +5559,7 @@ export default function VocabDrawer() {
                     <span style={{ color: C.muted }}> · {verbKey(conjItem.verb)} = {conjItem.verb.en}</span>
                   </div>
                   {conjResult.note && (
-                    <div className="text-xs font-serif italic mt-1" style={{ color: C.gold }}>{conjResult.note}</div>
+                    <div className="text-xs font-serif italic mt-1" style={{ color: C.accent }}>{conjResult.note}</div>
                   )}
                   {lang === "fr" && conjItem.tenseKey === "passe" && conjItem.verb.aux === "être" && (
                     <div className="text-xs font-serif mt-1" style={{ color: C.muted }}>
@@ -5526,7 +5607,7 @@ export default function VocabDrawer() {
                 {!conjResult ? (
                   <button onClick={checkConjugation} className="px-5 py-2 rounded-md font-semibold text-sm" style={{ backgroundColor: C.ink, color: C.card }}>Check</button>
                 ) : (
-                  <button onClick={nextConjugation} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={nextConjugation} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     {conjIdx + 1 < conjQueue.length ? "Next" : "Finish"} <ArrowRight size={15} />
                   </button>
                 )}
@@ -5634,7 +5715,7 @@ export default function VocabDrawer() {
 
               <div className="flex flex-col gap-2">
                 {canContinue && nextTense && (
-                  <button onClick={continueSameVerbsNextTense} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={continueSameVerbsNextTense} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     Same verbs · {nextTense.label} <ArrowRight size={17} />
                   </button>
                 )}
@@ -5738,7 +5819,7 @@ export default function VocabDrawer() {
                     <ChevronLeft size={15} /> All notes
                   </button>
                   {grammarIdx + 1 < GRAMMAR[lang].length && (
-                    <button onClick={() => setGrammarIdx((i) => i + 1)} className="flex-1 py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                    <button onClick={() => setGrammarIdx((i) => i + 1)} className="flex-1 py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                       Next note <ChevronRight size={15} />
                     </button>
                   )}
@@ -5781,12 +5862,12 @@ export default function VocabDrawer() {
 
             {/* Dictation */}
             <div className="rounded-lg p-5 mb-3" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `5px solid ${C.gold}` }}>
-              <div className="flex items-center gap-2 mb-1"><Headphones size={16} style={{ color: C.gold }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Dictation</span></div>
+              <div className="flex items-center gap-2 mb-1"><Headphones size={16} style={{ color: C.accent }} /><span className="text-sm font-semibold" style={{ color: C.ink }}>Dictation</span></div>
               <p className="text-xs font-serif mb-4" style={{ color: C.muted }}>
                 A sentence plays; you type what you hear. Replay as often as you like, at normal or slow speed. Counts as a review.
               </p>
               <div className="flex flex-col gap-2">
-                <button disabled={!audioReady} onClick={() => startDictation("level", dictLevel)} className="w-full py-2.5 rounded-md font-semibold text-sm disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button disabled={!audioReady} onClick={() => startDictation("level", dictLevel)} className="w-full py-2.5 rounded-md font-semibold text-sm disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   10 sentences from {dictLevel}
                 </button>
                 {dueCards.length > 0 && (
@@ -5800,7 +5881,7 @@ export default function VocabDrawer() {
             {/* Speaking */}
             <div className="rounded-lg p-5 mb-5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `5px solid ${micSupported ? C.gold : C.line}` }}>
               <div className="flex items-center gap-2 mb-1">
-                {micSupported ? <Mic size={16} style={{ color: C.gold }} /> : <MicOff size={16} style={{ color: C.muted }} />}
+                {micSupported ? <Mic size={16} style={{ color: C.accent }} /> : <MicOff size={16} style={{ color: C.muted }} />}
                 <span className="text-sm font-semibold" style={{ color: C.ink }}>Speaking</span>
                 <span className="text-[0.625rem] uppercase tracking-wide px-1.5 py-0.5 rounded" style={{ backgroundColor: C.paper, color: C.muted }}>experimental</span>
               </div>
@@ -5809,7 +5890,7 @@ export default function VocabDrawer() {
                   <p className="text-xs font-serif mb-4" style={{ color: C.muted }}>
                     Read a sentence aloud and your browser transcribes it. Accuracy varies a lot by browser, and microphone access is often blocked inside embedded frames — if it fails, that's the sandbox, not you.
                   </p>
-                  <button onClick={() => startSpeaking("level", dictLevel)} className="w-full py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={() => startSpeaking("level", dictLevel)} className="w-full py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     8 sentences from {dictLevel}
                   </button>
                 </>
@@ -5903,7 +5984,7 @@ export default function VocabDrawer() {
                 {!dictResult ? (
                   <button onClick={checkDictation} className="px-5 py-2 rounded-md font-semibold text-sm" style={{ backgroundColor: C.ink, color: C.card }}>Check</button>
                 ) : (
-                  <button onClick={nextDictation} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={nextDictation} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     {dictIdx + 1 < dictQueue.length ? "Next" : "Finish"} <ArrowRight size={15} />
                   </button>
                 )}
@@ -5921,7 +6002,7 @@ export default function VocabDrawer() {
               <div className="font-serif text-sm" style={{ color: C.muted }}>transcribed exactly · these words are now scheduled for review</div>
             </div>
             <div className="flex flex-col gap-2">
-              <button onClick={() => setScreen("listenSelect")} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={() => setScreen("listenSelect")} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 <Headphones size={17} /> Another Round
               </button>
               <button onClick={() => setScreen("setup")} className="w-full py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ border: `1px solid ${C.line}`, color: C.ink }}>
@@ -5982,7 +6063,7 @@ export default function VocabDrawer() {
               )}
 
               <div className="flex justify-end mt-5">
-                <button onClick={nextSpeaking} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                <button onClick={nextSpeaking} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                   {speakIdx + 1 < speakQueue.length ? "Next" : "Finish"} <ArrowRight size={15} />
                 </button>
               </div>
@@ -6003,7 +6084,7 @@ export default function VocabDrawer() {
               <div className="font-serif text-sm" style={{ color: C.muted }}>sentences recognised well</div>
             </div>
             <div className="flex flex-col gap-2">
-              <button onClick={() => setScreen("listenSelect")} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={() => setScreen("listenSelect")} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 <Mic size={17} /> Another Round
               </button>
               <button onClick={() => setScreen("setup")} className="w-full py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ border: `1px solid ${C.line}`, color: C.ink }}>
@@ -6115,7 +6196,7 @@ export default function VocabDrawer() {
               <div className="flex flex-col gap-3">
                 {etymGroups.map((g) => (
                   <div key={g.id}>
-                    <div className="font-serif text-xs uppercase tracking-wide" style={{ color: C.gold }}>{g.label}</div>
+                    <div className="font-serif text-xs uppercase tracking-wide" style={{ color: C.accent }}>{g.label}</div>
                     <p className="font-serif text-xs mb-1.5" style={{ color: C.muted }}>{g.blurb}</p>
                     {g.laws.map((l) => (
                       <button key={l.id} onClick={() => selectEtymLaw(l.id)}
@@ -6232,7 +6313,7 @@ export default function VocabDrawer() {
                   const labels = [
                     { k: "new", label: "Not started", color: C.muted },
                     { k: "learning", label: "Learning", color: C.red },
-                    { k: "young", label: "Young", color: C.gold },
+                    { k: "young", label: "Young", color: C.accent },
                     { k: "mature", label: "Mature", color: C.green },
                   ];
                   return labels.map((l) => (
@@ -6289,7 +6370,7 @@ export default function VocabDrawer() {
                   <div className="mt-4 pt-4" style={{ borderTop: `1px solid ${C.line}` }}>
                     <div className="flex justify-between items-baseline mb-1.5">
                       <span className="text-sm font-semibold flex items-center gap-1.5" style={{ color: C.ink }}>
-                        <Sparkles size={13} style={{ color: C.gold }} /> My Words
+                        <Sparkles size={13} style={{ color: C.accent }} /> My Words
                       </span>
                       <span className="text-xs font-serif" style={{ color: C.muted }}>{started}/{importedWords.length}</span>
                     </div>
@@ -6472,7 +6553,7 @@ export default function VocabDrawer() {
               ))}
             </div>
 
-            <button onClick={() => startPhrases(phraseLevel)} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+            <button onClick={() => startPhrases(phraseLevel)} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
               Start Matching ({PHRASES[lang][phraseLevel].length} idioms) <ArrowRight size={18} />
             </button>
           </div>
@@ -6485,7 +6566,7 @@ export default function VocabDrawer() {
               Match each idiom to its real meaning. {phraseMatched.length}/{phraseLeft.length} matched.
             </p>
             {phraseLastMatched && (
-              <p className="text-center font-serif text-xs italic mb-3" style={{ color: C.gold }}>
+              <p className="text-center font-serif text-xs italic mb-3" style={{ color: C.accent }}>
                 "{phraseLastMatched.phrase}" — {phraseLastMatched.literal}
               </p>
             )}
@@ -6495,7 +6576,7 @@ export default function VocabDrawer() {
                   const isMatched = phraseMatched.includes(p.phrase);
                   const isSelected = phrasePending.left === p.phrase;
                   return (
-                    <button key={p.phrase} disabled={isMatched} onClick={() => selectPhraseTile("left", p.phrase)} className={`text-left px-3 py-2.5 rounded-md text-sm font-serif transition-all ${isSelected && phraseWrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
+                    <button key={p.phrase} disabled={isMatched} onClick={() => selectPhraseTile("left", p.phrase)} className={`text-left px-3 py-2.5 rounded-md text-sm font-serif transition-all ${isSelected && phraseWrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : isSelected ? C.onGold : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
                       {p.phrase}
                     </button>
                   );
@@ -6506,7 +6587,7 @@ export default function VocabDrawer() {
                   const isMatched = phraseMatched.includes(p.phrase);
                   const isSelected = phrasePending.right === p.phrase;
                   return (
-                    <button key={p.phrase + "-e"} disabled={isMatched} onClick={() => selectPhraseTile("right", p.phrase)} className={`text-left px-3 py-2.5 rounded-md text-sm font-serif transition-all ${isSelected && phraseWrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
+                    <button key={p.phrase + "-e"} disabled={isMatched} onClick={() => selectPhraseTile("right", p.phrase)} className={`text-left px-3 py-2.5 rounded-md text-sm font-serif transition-all ${isSelected && phraseWrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : isSelected ? C.onGold : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
                       {p.meaning}
                     </button>
                   );
@@ -6514,7 +6595,7 @@ export default function VocabDrawer() {
               </div>
             </div>
             {phraseMatched.length === phraseLeft.length && (
-              <button onClick={() => setScreen("phraseDone")} className="w-full mt-6 py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={() => setScreen("phraseDone")} className="w-full mt-6 py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 See Full List <ArrowRight size={18} />
               </button>
             )}
@@ -6540,7 +6621,7 @@ export default function VocabDrawer() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <button onClick={() => setScreen("phraseSelect")} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={() => setScreen("phraseSelect")} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 <Quote size={17} /> Try Another Level
               </button>
               <button onClick={() => setScreen("setup")} className="w-full py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ border: `1px solid ${C.line}`, color: C.ink }}>
@@ -6554,8 +6635,8 @@ export default function VocabDrawer() {
         {screen === "learn" && currentBatch.length > 0 && (
           <div>
             <div className="text-center text-sm font-semibold mb-3 flex items-center justify-center gap-2" style={{ color: C.muted }}>
-              {mode === "theme" && ActiveIcon && <ActiveIcon size={15} style={{ color: C.gold }} />}
-              {mode === "mine" && <Sparkles size={15} style={{ color: C.gold }} />}
+              {mode === "theme" && ActiveIcon && <ActiveIcon size={15} style={{ color: C.accent }} />}
+              {mode === "mine" && <Sparkles size={15} style={{ color: C.accent }} />}
               {mode === "theme"
                 ? <span>{lang.toUpperCase()} · {level} · {activeTheme?.topic} · Card {learnIdx + 1}/{currentBatch.length}</span>
                 : <span>{lang.toUpperCase()} · {mode === "mine" ? "My Words" : level} · Batch {batchIndex + 1}/{totalBatches} · Card {learnIdx + 1}/{currentBatch.length}</span>}
@@ -6625,7 +6706,7 @@ export default function VocabDrawer() {
                   const isMatched = matchedIds.includes(w.t);
                   const isSelected = pending.left === w.t;
                   return (
-                    <button key={w.t} disabled={isMatched} onClick={() => selectTile("left", w.t)} className={`text-left px-3 py-2.5 rounded-md text-sm transition-all ${isSelected && wrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
+                    <button key={w.t} disabled={isMatched} onClick={() => selectTile("left", w.t)} className={`text-left px-3 py-2.5 rounded-md text-sm transition-all ${isSelected && wrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : isSelected ? C.onGold : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
                       {lang === "de" && w.g && <><GenderTag g={w.g} /> </>}
                       {lang === "fr" && w.art && <><ArticleTag w={w} /> </>}
                       <span className="font-type">{w.t}</span>
@@ -6639,7 +6720,7 @@ export default function VocabDrawer() {
                   const isMatched = matchedIds.includes(w.t);
                   const isSelected = pending.right === w.t;
                   return (
-                    <button key={w.t + "-e"} disabled={isMatched} onClick={() => selectTile("right", w.t)} className={`text-left px-3 py-2.5 rounded-md text-sm font-serif transition-all ${isSelected && wrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
+                    <button key={w.t + "-e"} disabled={isMatched} onClick={() => selectTile("right", w.t)} className={`text-left px-3 py-2.5 rounded-md text-sm font-serif transition-all ${isSelected && wrongFlash ? "shake" : ""}`} style={{ backgroundColor: isMatched ? "transparent" : isSelected ? C.gold : C.card, color: isMatched ? C.line : isSelected ? C.onGold : C.ink, border: `1px solid ${isMatched ? C.line : isSelected ? C.gold : C.line}`, opacity: isMatched ? 0.4 : 1 }}>
                       {w.e}
                     </button>
                   );
@@ -6647,7 +6728,7 @@ export default function VocabDrawer() {
               </div>
             </div>
             {matchedIds.length === currentBatch.length && (
-              <button onClick={() => goToChoose()} className="w-full mt-6 py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>Continue <ArrowRight size={18} /></button>
+              <button onClick={() => goToChoose()} className="w-full mt-6 py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>Continue <ArrowRight size={18} /></button>
             )}
           </div>
         )}
@@ -6659,7 +6740,7 @@ export default function VocabDrawer() {
               <div className="flex justify-between text-xs font-semibold mb-1.5" style={{ color: C.muted }}>
                 <span>{chooseRetired}/{chooseTotal} cleared</span>
                 {chooseStreak >= 3 && (
-                  <span className="inline-flex items-center gap-1" style={{ color: C.gold }}>
+                  <span className="inline-flex items-center gap-1" style={{ color: C.accent }}>
                     <Flame size={12} /> {chooseStreak} in a row
                   </span>
                 )}
@@ -6787,7 +6868,7 @@ export default function VocabDrawer() {
                         <Volume2 size={15} />
                       </button>
                     )}
-                    <button onClick={continueChoose} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                    <button onClick={continueChoose} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                       Continue {hasKeys ? <KeyCap n="↵" /> : <ArrowRight size={15} />}
                     </button>
                   </div>
@@ -6805,6 +6886,7 @@ export default function VocabDrawer() {
         {/* ============================ PRACTICE (SRS) ============================ */}
         {screen === "practice" && currentQ && (
           <div>
+            {currentQ.supported&&<p className="vd-notice">Supported practice after seeing the model. Return after a gap for an independent review.</p>}
             <div className="mb-4">
               <div className="flex justify-between text-xs font-semibold mb-1.5" style={{ color: C.muted }}>
                 <span>{retired}/{totalItems} mastered</span>
@@ -6850,7 +6932,7 @@ export default function VocabDrawer() {
               <input ref={inputRef} type="text" value={inputVal} disabled={!!feedback} onChange={(e) => { setInputVal(e.target.value); if (blankNudge) setBlankNudge(false); }} onKeyDown={handleInputKeyDown} placeholder="Type your answer" autoComplete="off" autoCapitalize="off" autoCorrect="off" spellCheck={false} className="w-full px-3 py-2.5 rounded-md font-serif text-base" style={{ backgroundColor: C.paper, border: `1px solid ${feedback ? (feedback.correct ? C.green : C.red) : C.line}`, color: C.ink }} />
 
               {retryMode && !feedback && (
-                <div className="mt-3 text-xs font-serif" style={{ color: C.gold }}>From memory — type it again.</div>
+                <div className="mt-3 text-xs font-serif" style={{ color: C.accent }}>From memory — type it again.</div>
               )}
               {blankNudge && !feedback && (
                 <div className="mt-3 text-xs font-serif" style={{ color: C.red }}>Type an answer first — nothing was marked.</div>
@@ -6879,7 +6961,7 @@ export default function VocabDrawer() {
                     <RotateCcw size={15} /> Try it again {hasKeys && <KeyCap n="↵" tone="card" />}
                   </button>
                 ) : (
-                  <button onClick={handleContinue} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>Continue {hasKeys ? <KeyCap n="↵" /> : <ArrowRight size={15} />}</button>
+                  <button onClick={handleContinue} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>Continue {hasKeys ? <KeyCap n="↵" /> : <ArrowRight size={15} />}</button>
                 )}
               </div>
             </div>
@@ -6959,7 +7041,7 @@ export default function VocabDrawer() {
                     {sentcVerbMode === "single" ? "Choose one" : `${sentcPicked.length} selected`}
                   </span>
                   {sentcVerbMode === "multi" && sentcPicked.length > 0 && (
-                    <button onClick={() => setSentcPicked([])} className="text-xs font-semibold" style={{ color: C.gold }}>Clear</button>
+                    <button onClick={() => setSentcPicked([])} className="text-xs font-semibold" style={{ color: C.accent }}>Clear</button>
                   )}
                 </div>
                 <div className="grid grid-cols-2 gap-1.5">
@@ -7022,7 +7104,7 @@ export default function VocabDrawer() {
               </div>
             </div>
 
-            <button onClick={startSentcRun} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 mb-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+            <button onClick={startSentcRun} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 mb-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
               Start building <ArrowRight size={17} />
             </button>
             <button onClick={() => setScreen("sentcSetup")} className="w-full py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5" style={{ border: `1px solid ${C.line}`, color: C.ink }}>
@@ -7162,7 +7244,7 @@ export default function VocabDrawer() {
                     Check {hasKeys && <KeyCap n="↵" tone="card" />}
                   </button>
                 ) : (
-                  <button onClick={nextSentc} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={nextSentc} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     {sentcIdx + 1 < sentcRound.length ? "Next" : "See results"}
                     {hasKeys ? <KeyCap n="↵" /> : <ArrowRight size={15} />}
                   </button>
@@ -7176,7 +7258,7 @@ export default function VocabDrawer() {
           <div className="text-center">
             <div className="font-type text-2xl mb-1" style={{ color: C.ink }}>{sentcRight}/{sentcRound.length} built</div>
             <p className="font-serif italic text-sm mb-5" style={{ color: C.muted }}>{sentcTenseLabel}</p>
-            <button onClick={prepareSentcRound} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 mb-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+            <button onClick={prepareSentcRound} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2 mb-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
               <RotateCcw size={17} /> Another round
             </button>
             <button onClick={() => setScreen("sentcSetup")} className="w-full py-2.5 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5 mb-2" style={{ border: `1px solid ${C.line}`, color: C.ink }}>
@@ -7194,7 +7276,7 @@ export default function VocabDrawer() {
             <div className="mb-4">
               <div className="flex justify-between text-xs font-semibold mb-1.5" style={{ color: C.muted }}>
                 <span>{sentRetired}/{sentTotal} done</span>
-                {sentQueue.length > sentTotal - sentRetired && <span style={{ color: C.gold }}>{sentQueue.length - (sentTotal - sentRetired)} to revisit</span>}
+                {sentQueue.length > sentTotal - sentRetired && <span style={{ color: C.accent }}>{sentQueue.length - (sentTotal - sentRetired)} to revisit</span>}
               </div>
               <div className="w-full h-1.5 rounded-full" style={{ backgroundColor: C.line }}>
                 <div className="h-1.5 rounded-full transition-all" style={{ width: `${(sentRetired / Math.max(1, sentTotal)) * 100}%`, backgroundColor: C.green }} />
@@ -7222,7 +7304,7 @@ export default function VocabDrawer() {
               />
 
               {sentRetry && !sentResult && (
-                <div className="mt-3 text-xs font-serif" style={{ color: C.gold }}>From memory — write it again.</div>
+                <div className="mt-3 text-xs font-serif" style={{ color: C.accent }}>From memory — write it again.</div>
               )}
               {blankNudge && !sentResult && (
                 <div className="mt-3 text-xs font-serif" style={{ color: C.red }}>Write the sentence first — nothing was marked.</div>
@@ -7286,7 +7368,7 @@ export default function VocabDrawer() {
                     <RotateCcw size={15} /> Try it again {hasKeys && <KeyCap n="↵" tone="card" />}
                   </button>
                 ) : (
-                  <button onClick={nextSentence} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+                  <button onClick={nextSentence} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                     {sentQueue.length > 1 || !(sentResult.ok && !sentResult.retry) ? "Next" : "See results"}
                     {hasKeys ? <KeyCap n="↵" /> : <ArrowRight size={15} />}
                   </button>
@@ -7325,7 +7407,7 @@ export default function VocabDrawer() {
             )}
 
             <div className="flex flex-col gap-2">
-              <button onClick={nextAfterSummary} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={nextAfterSummary} className="w-full py-3 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 {mode === "theme"
                   ? (themeIdx + 1 < totalThemes ? <>Next Drawer ({themeIdx + 2}/{totalThemes}) <ArrowRight size={18} /></> : <>Finish Level <ArrowRight size={18} /></>)
                   : batchIndex + 1 < totalBatches ? <>Next Batch ({batchIndex + 2}/{totalBatches}) <ArrowRight size={18} /></>
@@ -7339,13 +7421,14 @@ export default function VocabDrawer() {
     </>
   );
 
+  if(readOnly)return <main style={{padding:24,maxWidth:700,margin:'auto'}}><GlobalStyles/><section className="vd-panel"><h1>Progress is open in another tab</h1><p>This tab is paused so two study sessions cannot overwrite each other. Close the other study tab, then reload this one. If this tab has unsaved work, export it before reloading.</p><div className="vd-toolbar"><button className="vd-button vd-primary" onClick={()=>location.reload()}>Reload this tab</button><button className="vd-button" onClick={exportProgress}>Export this tab’s progress</button></div></section></main>;
   if (isDesktop) {
     return (
       <DesktopShell
         activeSection={activeSection}
         onNavigate={navigateToSection}
         lang={lang}
-        onLangChange={(l) => { setLang(l); setDemoIdx(0); resetPosition(); }}
+        onLangChange={changeLanguage}
         level={level}
         badges={railBadges}
         storageOn={storageOn}
@@ -7354,6 +7437,7 @@ export default function VocabDrawer() {
         typeScale={typeScale}
         onTypeScale={setTypeScale}
       >
+        <ProgressStatus status={saveStatus} onRetry={retrySave} recovered={recovered}/>
         {screen === "grammarWorkbench" ? (
           <GrammarWorkbench
             verbs={verbSet.map((v) => ({ key: verbKey(v), verb: v }))}
@@ -7625,7 +7709,7 @@ export default function VocabDrawer() {
               </div>
               <StudyLedger
                 rows={batchLedger}
-                onWordClick={(r) => setLedgerPeek(r)}
+                onWordClick={(r) => {if(currentQ?.word.t===r.word.t){const id=idForKind(currentQ.kind,lang,currentQ.level,currentQ.word.t);assistedRef.current.add(id);setProgress(p=>({...p,cards:{...p.cards,[id]:{...newCard(),...p.cards[id],readyAt:Date.now()+LEARNING_GAP_MS,seenAt:Date.now()}}}));}setLedgerPeek(r);}}
                 peek={ledgerPeek}
                 onClosePeek={() => setLedgerPeek(null)}
               />
@@ -7690,7 +7774,7 @@ export default function VocabDrawer() {
           <ProgressBoard
             langName={LANG_INFO[lang].name}
             lang={lang}
-            onLangChange={(l) => { setLang(l); setDemoIdx(0); resetPosition(); }}
+            onLangChange={changeLanguage}
             totalWords={allWordsForLang.length}
             currentLevel={level}
             maturity={progressBoard.maturity}
@@ -7795,8 +7879,8 @@ export default function VocabDrawer() {
   }
 
   return (
-    <MobileShell screen={screen} onGoHome={leaveStudy} stepIndex={stepIndex} audioReady={audioReady} lang={lang} theme={theme} onThemeChange={setTheme} typeScale={typeScale} onTypeScale={setTypeScale}>
-      {screens}
+    <MobileShell screen={screen} onGoHome={leaveStudy} stepIndex={stepIndex} audioReady={audioReady} lang={lang} theme={theme} onThemeChange={setTheme} typeScale={typeScale} onTypeScale={setTypeScale} onNavigate={navigateToSection} activeSection={sectionOf(screen)}>
+      <ProgressStatus status={saveStatus} onRetry={retrySave} recovered={recovered}/>{screens}
     </MobileShell>
   );
 }

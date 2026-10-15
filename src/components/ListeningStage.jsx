@@ -30,12 +30,12 @@ function Finished({ mode, score, total, langName, onAgain, onLeave }) {
       <div className="font-type text-4xl mb-1" style={{ color: C.ink }}>{score}/{total}</div>
       <p className="font-serif text-sm mb-5" style={{ color: C.muted }}>
         {dict
-          ? "transcribed exactly · these words are now scheduled for review"
-          : "read closely enough to be recognised · these words are now scheduled for review"}
+          ? "matched the supplied wording · listening practice recorded"
+          : "matched the target wording · supported read-aloud practice recorded"}
       </p>
       <div className="flex gap-2">
         <button onClick={onAgain} className="px-5 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2"
-          style={{ backgroundColor: C.gold, color: C.ink }}>
+          style={{ backgroundColor: C.gold, color: C.onGold }}>
           Another round in {langName} <ArrowRight size={14} />
         </button>
         <button onClick={onLeave} className="px-4 py-2.5 rounded-md font-semibold text-sm"
@@ -112,7 +112,7 @@ export default function ListeningStage({
                     {!audioReady ? (
                       <div className="flex items-start gap-2 mb-3 font-serif text-sm" style={{ color: C.ink }}>
                         <VolumeX size={16} style={{ color: C.red, flexShrink: 0, marginTop: 2 }} />
-                        <span>No {langName} voice is installed on this device, so nothing can be played. The sentence is shown instead of read.</span>
+                        <span>No {langName} voice is installed on this device, so nothing can be played. The sentence is shown for supported copying; this is not a listening test.</span>
                       </div>
                     ) : (
                       <div className="flex items-center gap-3 mb-4">
@@ -127,7 +127,7 @@ export default function ListeningStage({
                     {!audioReady && <div className="font-serif text-lg mb-3" style={{ color: C.ink }}>{item.word.s}</div>}
 
                     <input
-                      ref={inputRef} type="text" value={input} disabled={!!result}
+                      ref={inputRef} aria-label="Your transcription" type="text" value={input} disabled={!!result}
                       onChange={(e) => onInput(e.target.value)}
                       placeholder="Type the sentence" autoComplete="off" autoCapitalize="off" autoCorrect="off" spellCheck={false}
                       className="w-full px-3 py-2.5 rounded-md font-serif text-base"
@@ -137,12 +137,12 @@ export default function ListeningStage({
                     <div className="flex gap-2 mt-3">
                       {result ? (
                         <button onClick={onNext} className="flex-1 py-2 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5"
-                          style={{ backgroundColor: C.gold, color: C.ink }}>
+                          style={{ backgroundColor: C.gold, color: C.onGold }}>
                           {idx + 1 < total ? "Next" : "Finish"} <ArrowRight size={14} />
                         </button>
                       ) : (
                         <button onClick={onCheck} className="flex-1 py-2 rounded-md font-semibold text-sm"
-                          style={{ border: `1px solid ${C.gold}`, color: C.gold }}>Check</button>
+                          style={{ border: `1px solid ${C.gold}`, color: C.accent }}>Check</button>
                       )}
                       <button onClick={onPlay} disabled={!audioReady} className="px-3 py-2 rounded-md font-semibold text-sm disabled:opacity-40"
                         style={{ border: `1px solid ${C.line}`, color: C.ink }}>Hear again</button>
@@ -173,7 +173,7 @@ export default function ListeningStage({
                       <>
                         <button onClick={onListen}
                           className="w-full py-3 rounded-md font-semibold text-sm flex items-center justify-center gap-2"
-                          style={{ backgroundColor: listening ? C.red : C.gold, color: listening ? C.card : C.ink }}>
+                          style={{ backgroundColor: listening ? C.red : C.gold, color: listening ? C.card : C.onGold }}>
                           {listening ? <><MicOff size={16} /> Stop</> : <><Mic size={16} /> Hold to speak</>}
                         </button>
                         {transcript && (
@@ -184,7 +184,7 @@ export default function ListeningStage({
                         {speakError && <div className="font-serif text-sm mt-2" style={{ color: C.red }}>{speakError}</div>}
                         {speakResult && (
                           <button onClick={onNextSpeak} className="w-full mt-3 py-2 rounded-md font-semibold text-sm flex items-center justify-center gap-1.5"
-                            style={{ backgroundColor: C.gold, color: C.ink }}>
+                            style={{ backgroundColor: C.gold, color: C.onGold }}>
                             {idx + 1 < total ? "Next" : "Finish"} <ArrowRight size={14} />
                           </button>
                         )}
@@ -250,7 +250,7 @@ export default function ListeningStage({
                   <div className="font-serif text-base leading-relaxed mb-2 flex flex-wrap gap-x-1.5" style={{ color: C.ink }}>
                     {(speakResult.words || []).map((w, i) => (
                       <span key={i} style={{
-                        color: w.state === "missed" ? C.red : w.state === "unclear" ? C.gold : C.ink,
+                        color: w.state === "missed" ? C.red : w.state === "unclear" ? C.accent : C.ink,
                         textDecoration: w.state === "heard" ? "none" : "underline",
                         textDecorationStyle: w.state === "unclear" ? "dotted" : "wavy",
                         textUnderlineOffset: "3px",
@@ -260,7 +260,7 @@ export default function ListeningStage({
 
                   <div className="flex items-center gap-3 font-serif text-xs mb-1" style={{ color: C.muted }}>
                     <span><span style={{ color: C.ink }}>plain</span> = heard</span>
-                    <span><span style={{ color: C.gold }}>dotted</span> = close, check the sounds</span>
+                    <span><span style={{ color: C.accent }}>dotted</span> = close, check the sounds</span>
                     <span><span style={{ color: C.red }}>wavy</span> = not heard</span>
                   </div>
                   <div className="font-serif text-xs" style={{ color: C.muted }}>
@@ -281,8 +281,8 @@ export default function ListeningStage({
           <div className="font-type text-lg mb-2" style={{ color: C.ink }}>This set</div>
           {log.map((row, i) => (
             <div key={i} className="flex items-baseline justify-between gap-2 py-0.5">
-              <span className="font-serif text-sm truncate" style={{ color: i === idx ? C.gold : C.ink }}>{row.label}</span>
-              <span className="font-serif text-xs shrink-0" style={{ color: i === idx ? C.gold : row.state === "first try" ? C.green : row.state === "missed" ? C.red : C.muted }}>
+              <span className="font-serif text-sm truncate" style={{ color: i === idx ? C.accent : C.ink }}>{row.label}</span>
+              <span className="font-serif text-xs shrink-0" style={{ color: i === idx ? C.accent : row.state === "first try" ? C.green : row.state === "missed" ? C.red : C.muted }}>
                 {i === idx && !row.settled ? "answering…" : row.state}
               </span>
             </div>

@@ -20,7 +20,7 @@ import Emphasised from "./Emphasised.jsx";
  * the weighting fades old mistakes — when you stop making it.
  */
 
-const PRIMARY = { backgroundColor: C.gold, color: C.ink };
+const PRIMARY = { backgroundColor: C.gold, color: C.onGold };
 const QUIET = { border: `1px solid ${C.line}`, color: C.ink };
 
 /* The explanations are written with **bold** around the part that matters,
@@ -43,8 +43,9 @@ function Drill({ mistake, lang, check, onDone, hasKeys }) {
       const r = await check(input.trim());
       const still = (r.issues || []).find((i) => ruleKeyOf(i) === mistake.rule);
       const other = (r.issues || []).filter((i) => ruleKeyOf(i) !== mistake.rule && (i.kind === "grammar" || i.kind === "spelling"));
-      if (!still) setFixed((n) => n + 1);
-      setResult({ ok: !still, still, other, offline: r.status !== "ok" });
+      const verified=r.status==='ok'||(mistake.rule.startsWith('de-')&&r.assessment?.coverage==='selected-german-rules');
+      if (!still && verified) setFixed((n) => n + 1);
+      setResult({ ok: !still && verified, unverified:!verified, still, other, offline: r.status !== "ok" });
     } finally {
       setBusy(false);
     }
@@ -119,7 +120,7 @@ function Drill({ mistake, lang, check, onDone, hasKeys }) {
       {result && (
         <div className="rounded-md p-3" style={{ backgroundColor: result.ok ? TINT : C.paper, border: `1px solid ${result.ok ? C.green : C.red}` }}>
           <div className="flex items-center gap-1.5 font-semibold text-sm mb-1" style={{ color: result.ok ? C.green : C.red }}>
-            {result.ok ? <><Check size={15} /> Fixed — that pattern is gone from this sentence.</> : <><X size={15} /> Still there.</>}
+            {result.unverified ? 'Not verified — the required checker is unavailable.' : result.ok ? <><Check size={15} /> Fixed — that pattern is gone from this sentence.</> : <><X size={15} /> Still there.</>}
           </div>
           {result.still && <p className="font-serif text-sm" style={{ color: C.ink }}>{result.still.message}</p>}
           {!result.still && item.fix && (

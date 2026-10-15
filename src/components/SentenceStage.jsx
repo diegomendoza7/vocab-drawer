@@ -48,7 +48,7 @@ export default function SentenceStage({
             {breadcrumb} · sentence stage · {retired} of {total}
           </span>
           <span className="flex-1" />
-          {revisit > 0 && <span className="font-serif text-xs" style={{ color: C.gold }}>{revisit} to revisit</span>}
+          {revisit > 0 && <span className="font-serif text-xs" style={{ color: C.accent }}>{revisit} to revisit</span>}
           {streak > 1 && <span className="font-serif text-xs" style={{ color: C.muted }}>{streak} in a row</span>}
         </div>
 
@@ -139,7 +139,7 @@ export default function SentenceStage({
           )}
 
           {retry && !answered && (
-            <div className="font-serif text-xs mb-2" style={{ color: C.gold }}>From memory — build it again.</div>
+            <div className="font-serif text-xs mb-2" style={{ color: C.accent }}>From memory — build it again.</div>
           )}
           {blankNudge && !answered && (
             <div className="font-serif text-xs mb-2" style={{ color: C.red }}>
@@ -178,7 +178,7 @@ export default function SentenceStage({
             {!answered ? (
               <>
                 <button onClick={onCheck} className="px-5 py-2 rounded-md font-semibold text-sm"
-                  style={{ border: `1px solid ${C.gold}`, color: C.gold }}>Check</button>
+                  style={{ border: `1px solid ${C.gold}`, color: C.accent }}>Check</button>
                 <button onClick={() => onMode(chips ? "typing" : "chips")}
                   className="px-3 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5"
                   style={{ border: `1px solid ${C.line}`, color: C.ink }}>
@@ -191,12 +191,12 @@ export default function SentenceStage({
               </>
             ) : !result.ok && !result.retry ? (
               <button onClick={onRetry} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5"
-                style={{ backgroundColor: C.gold, color: C.ink }}>
+                style={{ backgroundColor: C.gold, color: C.onGold }}>
                 <RotateCcw size={14} /> Try it again
               </button>
             ) : (
               <button onClick={onNext} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5"
-                style={{ backgroundColor: C.gold, color: C.ink }}>
+                style={{ backgroundColor: C.gold, color: C.onGold }}>
                 {revisit > 0 || !(result.ok && !result.retry) ? "Next" : "See results"} <ArrowRight size={14} />
               </button>
             )}

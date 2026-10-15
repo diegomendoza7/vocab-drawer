@@ -69,7 +69,7 @@ export default function ImportReader({
             </div>
             <button onClick={onAnalyze} disabled={!text.trim() || busy}
               className="w-full py-1.5 rounded-md text-xs font-semibold disabled:opacity-40"
-              style={{ backgroundColor: C.gold, color: C.ink }}>
+              style={{ backgroundColor: C.gold, color: C.onGold }}>
               {busy ? `Reading… ${pct}%` : "Read this"}
             </button>
             <button onClick={onCancelPaste} className="w-full py-1.5 mt-1 rounded-md text-xs font-semibold"
@@ -148,7 +148,7 @@ export default function ImportReader({
               <span className="flex-1" />
               {savedCount > 0 && (
                 <button onClick={onStudySaved} className="px-3 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5"
-                  style={{ border: `1px solid ${C.gold}`, color: C.gold }}>
+                  style={{ border: `1px solid ${C.gold}`, color: C.accent }}>
                   Study these {savedCount} <ArrowRight size={13} />
                 </button>
               )}
@@ -196,7 +196,7 @@ export default function ImportReader({
               )}
               <button onClick={onAdd} disabled={addState !== "add"}
                 className="flex-1 py-2 rounded-md font-semibold text-sm disabled:opacity-40"
-                style={{ border: `1px solid ${C.gold}`, color: C.gold }}>
+                style={{ border: `1px solid ${C.gold}`, color: C.accent }}>
                 {addState === "known" ? "Already in your deck" : addState === "saved" ? "Saved" : "Add to deck"}
               </button>
             </div>

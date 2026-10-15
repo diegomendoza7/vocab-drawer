@@ -6,6 +6,7 @@ import { C } from "../theme.js";
 import ThemeToggle from "./ThemeToggle.jsx";
 import TypeScale from "./TypeScale.jsx";
 import { LANG_INFO } from "../data/vocab.js";
+import {CalendarDays,Library,Clapperboard,NotebookPen} from 'lucide-react';
 
 /* The desktop navigation rail.
  *
@@ -33,20 +34,31 @@ const ITEMS = [
   { id: "import", label: "Import a text", icon: FileText },
   { id: "progress", label: "Progress", icon: Activity },
 ];
+const PRIMARY=[
+  {id:'today',label:'Today',icon:CalendarDays},
+  {id:'missions',label:'Practical missions',icon:ScrollText},
+  {id:'media',label:'Media Studio',icon:Clapperboard},
+  {id:'journal',label:'Language journal',icon:NotebookPen},
+  {id:'library',label:'Practice library',icon:Library},
+  {id:'progress',label:'Progress',icon:Activity},
+];
 
 export default function Rail({ activeSection, onNavigate, lang, onLangChange, level, badges, storageOn, theme, onThemeChange, typeScale, onTypeScale }) {
   return (
     <nav
       className="flex flex-col shrink-0"
-      style={{ width: "13.25rem", borderRight: `1px solid ${C.line}`, backgroundColor: C.card }}
+      style={{ width: "13.25rem", height:'100dvh',position:'sticky',top:0,overflowY:'auto',borderRight: `1px solid ${C.line}`, backgroundColor: C.card }}
       aria-label="Sections"
     >
-      <button onClick={() => onNavigate("study")} className="flex items-center gap-2 px-4 py-4" aria-label="Vocab Drawer home">
+      <button onClick={() => onNavigate("today")} className="flex items-center gap-2 px-4 py-4" aria-label="Vocab Drawer home">
         <div className="w-8 h-8 rounded-sm flex items-center justify-center text-sm font-bold shrink-0" style={{ backgroundColor: C.ink, color: C.card }}>V</div>
         <span className="font-type text-lg tracking-tight text-left" style={{ color: C.ink }}>Vocab Drawer</span>
       </button>
 
       <div className="flex flex-col gap-0.5 px-2">
+        {PRIMARY.map(({id,label,icon:Icon})=><button key={id} onClick={()=>onNavigate(id)} aria-current={activeSection===id?'page':undefined} className="flex items-center gap-2 px-2.5 py-3 rounded-md text-left" style={{backgroundColor:activeSection===id?C.paper:'transparent',color:C.ink}}><Icon size={16}/><span className="text-sm font-semibold">{label}</span></button>)}
+        <details open={ITEMS.some(item=>item.id===activeSection&&item.id!=='progress')}>
+        <summary className="px-2.5 py-3 text-sm font-semibold cursor-pointer" style={{color:C.muted}}>More practice & reference</summary>
         {ITEMS.map(({ id, label, icon: Icon }) => {
           const active = activeSection === id;
           const badge = badges[id];
@@ -61,7 +73,7 @@ export default function Rail({ activeSection, onNavigate, lang, onLangChange, le
                 border: `1px solid ${active ? C.line : "transparent"}`,
               }}
             >
-              <Icon size={15} style={{ color: active ? C.gold : C.muted, flexShrink: 0 }} />
+              <Icon size={15} style={{ color: active ? C.accent : C.muted, flexShrink: 0 }} />
               <span className="text-[0.8125rem] font-semibold flex-1 min-w-0 leading-tight" style={{ color: C.ink }}>{label}</span>
               {id === "study" && (
                 <span className="text-[0.625rem] font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: C.paper, color: C.muted, border: `1px solid ${C.line}` }}>{level}</span>
@@ -77,6 +89,7 @@ export default function Rail({ activeSection, onNavigate, lang, onLangChange, le
             </button>
           );
         })}
+        </details>
       </div>
 
       <div className="flex-1" />

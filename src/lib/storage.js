@@ -54,9 +54,14 @@ function tx(mode, fn) {
       new Promise((resolve, reject) => {
         const t = db.transaction(STORE, mode);
         const req = fn(t.objectStore(STORE));
-        req.onsuccess = () => resolve(req.result);
+        let result;
+        req.onsuccess = () => {
+          result = req.result;
+        };
+        t.oncomplete = () => resolve(result);
         req.onerror = () => reject(req.error);
-        t.onabort = () => reject(t.error);
+        t.onabort = () =>
+          reject(t.error || new Error("Storage transaction aborted"));
       }),
   );
 }
@@ -70,6 +75,42 @@ export const storage = {
   async set(key, value) {
     await tx("readwrite", (s) => s.put(value, key));
     return true;
+  },
+
+  async keys() {
+    return await tx("readonly", (s) => s.getAllKeys());
+  },
+
+  async compareAndSet(key, expected, value) {
+    return await openDB().then(
+      (db) =>
+        new Promise((resolve, reject) => {
+          const t = db.transaction(STORE, "readwrite"),
+            store = t.objectStore(STORE),
+            get = store.get(key);
+          let wrote = false,
+            failure;
+          get.onsuccess = () => {
+            try {
+              if ((get.result ?? null) !== expected) return;
+              store.put(value, key);
+              wrote = true;
+            } catch (error) {
+              failure = error;
+              t.abort();
+            }
+          };
+          t.oncomplete = () => resolve(wrote);
+          t.onabort = () =>
+            reject(
+              failure || t.error || new Error("Storage transaction aborted"),
+            );
+          t.onerror = () =>
+            reject(
+              failure || t.error || new Error("Storage transaction failed"),
+            );
+        }),
+    );
   },
 
   async remove(key) {

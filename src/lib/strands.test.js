@@ -55,7 +55,7 @@ describe("strandBalance", () => {
 
   it("adds the days of every activity in a strand", () => {
     let a = recordActivity({}, "reading", "2026-09-18");
-    a = recordActivity(a, "dictation", "2026-09-19");
+    a = recordActivity(a, "listeningMeaning", "2026-09-19");
     a = recordActivity(a, "import", T);
     const input = strandBalance(a, T).find((r) => r.strand === "input");
     expect(input.days).toBe(3);
@@ -114,9 +114,9 @@ describe("neglectedStrand", () => {
     /* Reading done long ago, dictation never. The input suggestion should be
      * the part of the app with no path to it, not the part already found. */
     const a = recordActivity({}, "reading", "2026-09-01");
-    const gap = neglectedStrand(a, T, { available: new Set(["reading", "dictation", "import"]) });
+    const gap = neglectedStrand(a, T, { available: new Set(["reading", "listeningMeaning", "import"]) });
     expect(gap.strand).toBe("input");
-    expect(["dictation", "import"]).toContain(gap.activity);
+    expect(["listeningMeaning", "import"]).toContain(gap.activity);
   });
 
   it("never recommends work the caller says is unavailable", () => {

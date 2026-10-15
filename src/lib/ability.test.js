@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { abilityFrom, productionGap, reachSentence, HOLDING_DAYS, SOLID_DAYS } from "./ability.js";
 
 const entry = (t, level = "A1") => ({ word: { t, e: t }, level });
-const card = (interval) => ({ interval, reps: 3, lapses: 0, ease: 2.3, due: "2026-10-01" });
+const card = (interval) => ({ interval, retainedDays:interval,reps: 3, lapses: 0, ease: 2.3, due: "2026-10-01" });
 
 describe("abilityFrom", () => {
   it("counts a word as held only once it has survived a real gap", () => {
@@ -27,11 +27,11 @@ describe("abilityFrom", () => {
     expect(ab.produce.holding).toBe(1);
   });
 
-  it("does not understate an old learner who has no production cards yet", () => {
+  it("keeps legacy recognition separate from unmeasured production", () => {
     /* Their single card covered both directions, so reporting zero produced
      * would be wrong about history the app actually has. */
     const ab = abilityFrom({ entries: [entry("a")], lang: "fr", cards: { "fr:A1:a": card(30) } });
-    expect(ab.produce.holding).toBe(1);
+    expect(ab.produce.holding).toBe(0);
   });
 
   it("counts nothing for a word never studied", () => {

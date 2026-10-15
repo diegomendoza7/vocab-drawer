@@ -1,0 +1,350 @@
+function challenge(
+  lang,
+  key,
+  title,
+  level,
+  lines,
+  question,
+  options,
+  answer,
+  personal,
+  canDo,
+) {
+  return {
+    id: `${lang}-challenge-${key}`,
+    key,
+    title,
+    level,
+    lang,
+    goal: "everyday",
+    minutes: 5,
+    order: 100,
+    canDo,
+    lines: lines.map(([text, en], i) => ({
+      speaker: i % 2 ? "B" : "A",
+      text,
+      en,
+    })),
+    chunks: lines.slice(0, 3).map(([text, en]) => ({ text, en })),
+    question: { prompt: question, options, answer },
+    personal,
+    pattern:
+      "Try this new situation without copying the original dialogue. Read the model only after your first attempt.",
+    audio: `/listen/challenges/${lang}-challenge-${key}.mp3`,
+    captions: `/listen/challenges/${lang}-challenge-${key}.vtt`,
+    englishCaptions: `/listen/challenges/${lang}-challenge-${key}.en.vtt`,
+    source: {
+      type: "original",
+      label: "Original transfer challenge",
+      audio: "Synthetic speech — eSpeak NG 1.52",
+      license: "CC BY 4.0",
+    },
+  };
+}
+export const CHALLENGES = {
+  fr: [
+    challenge(
+      "fr",
+      "market",
+      "At a different stall",
+      "A1",
+      [
+        ["Bonjour. Vous avez des poires ?", "Hello. Do you have pears?"],
+        ["Oui. Vous en voulez combien ?", "Yes. How many would you like?"],
+        [
+          "Trois, s’il vous plaît. Je n’ai pas besoin d’un sac.",
+          "Three, please. I do not need a bag.",
+        ],
+      ],
+      "How many pears does the customer want?",
+      ["Two", "Three", "Four"],
+      1,
+      "Ask for a different food and a different quantity.",
+      "Adapt a shopping request to a new item",
+    ),
+    challenge(
+      "fr",
+      "bus",
+      "A changed departure",
+      "A1",
+      [
+        [
+          "Le bus pour Nantes part à onze heures.",
+          "The bus to Nantes leaves at eleven.",
+        ],
+        [
+          "C’est le bus devant la gare ?",
+          "Is it the bus in front of the station?",
+        ],
+        [
+          "Non, il est à droite de la gare.",
+          "No, it is to the right of the station.",
+        ],
+      ],
+      "Where is the bus?",
+      [
+        "In front of the station",
+        "Left of the station",
+        "Right of the station",
+      ],
+      2,
+      "Ask about a departure and confirm the location.",
+      "Understand a new time and location",
+    ),
+    challenge(
+      "fr",
+      "booking",
+      "Change a booking",
+      "A2",
+      [
+        [
+          "Je voudrais changer ma réservation.",
+          "I would like to change my reservation.",
+        ],
+        ["Pour quelle date ?", "For which date?"],
+        [
+          "Pour vendredi, au lieu de jeudi.",
+          "For Friday, instead of Thursday.",
+        ],
+        ["D’accord. Pour une nuit ?", "All right. For one night?"],
+        ["Non, pour trois nuits.", "No, for three nights."],
+      ],
+      "What is the new booking?",
+      ["Thursday, one night", "Friday, three nights", "Friday, one night"],
+      1,
+      "Change the date of an appointment or booking and clarify a detail.",
+      "Clarify a changed arrangement",
+    ),
+    challenge(
+      "fr",
+      "weather",
+      "Plans under a constraint",
+      "A2",
+      [
+        [
+          "On voulait faire un pique-nique samedi.",
+          "We wanted to have a picnic on Saturday.",
+        ],
+        ["Mais il va pleuvoir.", "But it is going to rain."],
+        [
+          "Alors, on peut déjeuner chez moi.",
+          "Then we can have lunch at my place.",
+        ],
+        [
+          "Bonne idée. J’apporte une salade.",
+          "Good idea. I will bring a salad.",
+        ],
+      ],
+      "Why do they change the plan?",
+      ["Rain is expected", "Someone is working", "They have no food"],
+      0,
+      "Propose a different plan and explain why it is needed.",
+      "Adapt a plan and give a reason",
+    ),
+    challenge(
+      "fr",
+      "decision",
+      "Choose between options",
+      "B1",
+      [
+        [
+          "Le vélo est moins cher que le train.",
+          "The bicycle is cheaper than the train.",
+        ],
+        [
+          "C’est vrai, mais le trajet est long.",
+          "That is true, but the journey is long.",
+        ],
+        [
+          "Je préfère prendre le train cette fois, parce que je dois arriver tôt.",
+          "I prefer taking the train this time because I need to arrive early.",
+        ],
+      ],
+      "Why does the speaker choose the train?",
+      ["They dislike cycling", "They need to arrive early", "It is cheaper"],
+      1,
+      "Compare two travel options and justify your choice.",
+      "Compare options with a relevant reason",
+    ),
+    challenge(
+      "fr",
+      "proposal",
+      "Respond to a proposal",
+      "B2",
+      [
+        [
+          "Réduire les voitures au centre-ville améliorerait la qualité de l’air.",
+          "Reducing cars in the city centre would improve air quality.",
+        ],
+        [
+          "Cependant, certains habitants ont besoin de leur voiture pour travailler.",
+          "However, some residents need their car for work.",
+        ],
+        [
+          "Il faudrait donc améliorer les transports publics avant de changer les règles.",
+          "Public transport should therefore be improved before changing the rules.",
+        ],
+      ],
+      "What does the speaker propose first?",
+      [
+        "Ban every car immediately",
+        "Improve public transport",
+        "Close the city centre",
+      ],
+      1,
+      "Give a proposal, one limitation, and a practical next step.",
+      "Support a proposal while acknowledging a limitation",
+    ),
+  ],
+  de: [
+    challenge(
+      "de",
+      "market",
+      "At a different stall",
+      "A1",
+      [
+        ["Guten Tag. Haben Sie Birnen?", "Hello. Do you have pears?"],
+        ["Ja. Wie viele möchten Sie?", "Yes. How many would you like?"],
+        [
+          "Drei, bitte. Ich brauche keine Tasche.",
+          "Three, please. I do not need a bag.",
+        ],
+      ],
+      "How many pears does the customer want?",
+      ["Two", "Three", "Four"],
+      1,
+      "Ask for a different food and a different quantity.",
+      "Adapt a shopping request to a new item",
+    ),
+    challenge(
+      "de",
+      "bus",
+      "A changed departure",
+      "A1",
+      [
+        [
+          "Der Bus nach Bremen fährt um elf Uhr.",
+          "The bus to Bremen leaves at eleven.",
+        ],
+        [
+          "Ist das der Bus vor dem Bahnhof?",
+          "Is it the bus in front of the station?",
+        ],
+        [
+          "Nein, er steht rechts vom Bahnhof.",
+          "No, it is to the right of the station.",
+        ],
+      ],
+      "Where is the bus?",
+      [
+        "In front of the station",
+        "Left of the station",
+        "Right of the station",
+      ],
+      2,
+      "Ask about a departure and confirm the location.",
+      "Understand a new time and location",
+    ),
+    challenge(
+      "de",
+      "booking",
+      "Change a booking",
+      "A2",
+      [
+        [
+          "Ich möchte meine Reservierung ändern.",
+          "I would like to change my reservation.",
+        ],
+        ["Für welches Datum?", "For which date?"],
+        ["Für Freitag statt Donnerstag.", "For Friday instead of Thursday."],
+        ["Gut. Für eine Nacht?", "All right. For one night?"],
+        ["Nein, für drei Nächte.", "No, for three nights."],
+      ],
+      "What is the new booking?",
+      ["Thursday, one night", "Friday, three nights", "Friday, one night"],
+      1,
+      "Change the date of an appointment or booking and clarify a detail.",
+      "Clarify a changed arrangement",
+    ),
+    challenge(
+      "de",
+      "weather",
+      "Plans under a constraint",
+      "A2",
+      [
+        [
+          "Wir wollten am Samstag ein Picknick machen.",
+          "We wanted to have a picnic on Saturday.",
+        ],
+        ["Aber es wird regnen.", "But it is going to rain."],
+        [
+          "Dann können wir bei mir zu Mittag essen.",
+          "Then we can have lunch at my place.",
+        ],
+        [
+          "Gute Idee. Ich bringe einen Salat mit.",
+          "Good idea. I will bring a salad.",
+        ],
+      ],
+      "Why do they change the plan?",
+      ["Rain is expected", "Someone is working", "They have no food"],
+      0,
+      "Propose a different plan and explain why it is needed.",
+      "Adapt a plan and give a reason",
+    ),
+    challenge(
+      "de",
+      "decision",
+      "Choose between options",
+      "B1",
+      [
+        [
+          "Das Fahrrad ist günstiger als der Zug.",
+          "The bicycle is cheaper than the train.",
+        ],
+        [
+          "Das stimmt, aber der Weg ist lang.",
+          "That is true, but the journey is long.",
+        ],
+        [
+          "Diesmal nehme ich lieber den Zug, weil ich früh ankommen muss.",
+          "I prefer taking the train this time because I need to arrive early.",
+        ],
+      ],
+      "Why does the speaker choose the train?",
+      ["They dislike cycling", "They need to arrive early", "It is cheaper"],
+      1,
+      "Compare two travel options and justify your choice.",
+      "Compare options with a relevant reason",
+    ),
+    challenge(
+      "de",
+      "proposal",
+      "Respond to a proposal",
+      "B2",
+      [
+        [
+          "Weniger Autos in der Innenstadt würden die Luftqualität verbessern.",
+          "Fewer cars in the city centre would improve air quality.",
+        ],
+        [
+          "Allerdings brauchen manche Menschen ihr Auto für die Arbeit.",
+          "However, some people need their car for work.",
+        ],
+        [
+          "Deshalb sollte man zuerst den öffentlichen Nahverkehr verbessern.",
+          "Public transport should therefore be improved first.",
+        ],
+      ],
+      "What does the speaker propose first?",
+      [
+        "Ban every car immediately",
+        "Improve public transport",
+        "Close the city centre",
+      ],
+      1,
+      "Give a proposal, one limitation, and a practical next step.",
+      "Support a proposal while acknowledging a limitation",
+    ),
+  ],
+};

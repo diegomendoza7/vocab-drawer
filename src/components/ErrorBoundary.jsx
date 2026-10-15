@@ -54,7 +54,7 @@ export default class ErrorBoundary extends Component {
             <button
               onClick={() => { this.setState({ error: null }); this.props.onReset?.(); }}
               className="px-4 py-2 rounded-md font-semibold text-sm"
-              style={{ backgroundColor: C.gold, color: C.ink }}
+              style={{ backgroundColor: C.gold, color: C.onGold }}
             >
               Back to home
             </button>

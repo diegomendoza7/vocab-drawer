@@ -35,3 +35,6 @@ scripts/c1-cache/wiktionary-*.json
 
 # Built copy of the site for sharing
 vocab-drawer-site.zip
+
+# Optional, checksum-verified browser models (reproducible via download:models).
+public/models/

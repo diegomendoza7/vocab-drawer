@@ -87,7 +87,7 @@ export default function FluencyRound({
         <div className="flex gap-2">
           {onStudy && (
             <button onClick={onStudy} className="px-4 py-2 rounded-md font-semibold text-sm"
-              style={{ backgroundColor: C.gold, color: C.ink }}>Study a drawer</button>
+              style={{ backgroundColor: C.gold, color: C.onGold }}>Study a drawer</button>
           )}
           <button onClick={onHome} className="px-4 py-2 rounded-md font-semibold text-sm"
             style={{ border: `1px solid ${C.line}`, color: C.ink }}>Not now</button>
@@ -117,7 +117,7 @@ export default function FluencyRound({
         <div className="rounded-lg p-6 mb-3 text-center" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.gold}` }}>
           <div className="font-type text-[1.875rem] leading-tight" style={{ color: C.ink }}>{item.prompt}</div>
           {streak >= 3 && (
-            <div className="font-serif text-xs mt-1" style={{ color: C.gold }}>{streak} in a row</div>
+            <div className="font-serif text-xs mt-1" style={{ color: C.accent }}>{streak} in a row</div>
           )}
         </div>
 
@@ -165,7 +165,7 @@ export default function FluencyRound({
         {record?.runs?.length > 1 && (
           <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
             <div className="flex items-baseline gap-2 mb-2">
-              <TrendingUp size={14} style={{ color: C.gold }} />
+              <TrendingUp size={14} style={{ color: C.accent }} />
               <span className="font-serif text-xs uppercase tracking-wide" style={{ color: C.muted }}>Your last rounds</span>
               <span className="flex-1" />
               <span className="font-serif text-xs" style={{ color: C.muted }}>best {record.best}/min</span>
@@ -179,7 +179,7 @@ export default function FluencyRound({
 
         <div className="flex gap-2">
           <button onClick={onAgain} className="px-5 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2"
-            style={{ backgroundColor: C.gold, color: C.ink }}>
+            style={{ backgroundColor: C.gold, color: C.onGold }}>
             <RotateCcw size={15} /> Go again {hasKeys && <Cap n="↵" />}
           </button>
           <button onClick={onHome} className="px-4 py-2.5 rounded-md font-semibold text-sm"
@@ -234,7 +234,7 @@ export default function FluencyRound({
       )}
 
       <button onClick={onStart} className="px-6 py-3 rounded-md font-semibold flex items-center gap-2"
-        style={{ backgroundColor: C.gold, color: C.ink }}>
+        style={{ backgroundColor: C.gold, color: C.onGold }}>
         Start <ArrowRight size={16} />
       </button>
       {hasKeys && (

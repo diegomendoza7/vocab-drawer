@@ -51,7 +51,7 @@ export default function SummaryTable({ title, caption, rows, missCount, onNext, 
               {r.direction === "produce" ? "to produce" : "to recognise"}
             </span>
             <span style={{ color: r.firstTry ? C.green : C.red }}>{r.firstTry ? "✓" : `×${r.misses}`}</span>
-            <span style={{ color: r.learning ? C.gold : C.muted }}>{dueLabel(r.dueInDays, r.learning)}</span>
+            <span style={{ color: r.learning ? C.accent : C.muted }}>{dueLabel(r.dueInDays, r.learning)}</span>
           </div>
         ))}
       </div>
@@ -65,7 +65,7 @@ export default function SummaryTable({ title, caption, rows, missCount, onNext, 
       )}
 
       <div className="flex gap-2 flex-wrap">
-        <button onClick={onNext} className="px-4 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+        <button onClick={onNext} className="px-4 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
           {nextLabel} <ArrowRight size={16} />
         </button>
         {missCount > 0 && (

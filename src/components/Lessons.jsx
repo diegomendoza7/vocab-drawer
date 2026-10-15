@@ -1,3 +1,4 @@
+import LookupText from "./LookupText.jsx";
 import { useMemo, useRef, useState } from "react";
 import {
   ArrowRight, ArrowLeft, Check, X, Volume2, BookOpen, ExternalLink, RotateCcw, Plus, ScrollText, Eye, EyeOff,
@@ -8,7 +9,6 @@ import {
   checkTyped, checkOrder, keyIdeas, checkInto, usesMissing, wordCount, lessonGloss, shuffleChunks,
   normalizeAnswer, lessonTotal,
 } from "../lib/lessons.js";
-import { segmentSentence } from "../lib/dictionary.js";
 import { applyFixToCheck } from "../lib/checkWriting.js";
 import { COUNTED } from "../lib/grammar.js";
 import Emphasised from "./Emphasised.jsx";
@@ -31,7 +31,7 @@ import WritingFeedback from "./WritingFeedback.jsx";
  */
 
 const QUIET = { border: `1px solid ${C.line}`, color: C.ink };
-const GOLD = { backgroundColor: C.gold, color: C.ink };
+const GOLD = { backgroundColor: C.gold, color: C.onGold };
 
 const ROLE = {
   subject: { label: "subject", bg: shade("10%") },
@@ -135,16 +135,7 @@ function Extract({ lesson, glossOf, canSpeak, say, compact = false }) {
         <div key={i} className={compact ? "mb-2" : "mb-4"}>
           {p.label && <Kicker>{p.label}</Kicker>}
           <p className="font-serif" style={{ color: C.ink, maxWidth: "64ch", lineHeight: compact ? 1.7 : 1.9, fontSize: compact ? "0.9375rem" : "1.0625rem" }}>
-            {segmentSentence(p.text).map((seg, j) => (seg.type === "word" ? (
-              <span
-                key={j}
-                onClick={() => setPicked(seg.v)}
-                className="cursor-pointer rounded-sm hover:underline"
-                style={{ backgroundColor: picked === seg.v ? TINT : "transparent", textUnderlineOffset: 3 }}
-              >
-                {seg.v}
-              </span>
-            ) : <span key={j}>{seg.v}</span>))}
+            <LookupText text={p.text} lang={lesson.id.startsWith("fr")?"fr":"de"} selected={picked} onLookup={setPicked} />
           </p>
         </div>
       ))}
@@ -227,7 +218,7 @@ function ReadStage({ lesson, glossOf, canSpeak, say, onDone }) {
             <ul className="flex flex-col gap-1.5">
               {lesson.goals.map((g) => (
                 <li key={g} className="font-serif text-sm flex gap-2" style={{ color: C.ink, lineHeight: 1.55 }}>
-                  <span style={{ color: C.gold }}>•</span><span>{g}</span>
+                  <span style={{ color: C.accent }}>•</span><span>{g}</span>
                 </li>
               ))}
             </ul>
@@ -813,7 +804,7 @@ function TranslateStage({ lesson, lang, langName, canSpeak, say, checkQuiet, onD
               <Verdict ok>{result.note || "Right — that is one of the versions this lesson knows."}</Verdict>
             ) : (
               <>
-                <div className="font-semibold text-sm" style={{ color: result.missing.length ? C.red : C.gold }}>
+                <div className="font-semibold text-sm" style={{ color: result.missing.length ? C.red : C.accent }}>
                   {result.missing.length ? "Something the sentence needs is missing" : "Not one of the versions this lesson knows — it may still be right"}
                 </div>
                 {result.missing.length > 0 && (
@@ -899,7 +890,7 @@ function YourTurnStage({ lesson, lang, check, canSpeak, say, noteTitles, onOpenN
         {showEn && <p className="font-serif text-sm italic mb-2" style={{ color: C.muted }}>{y.en}</p>}
         <ul className="flex flex-col gap-1 mb-3">
           {y.tips.map((t) => (
-            <li key={t} className="font-serif text-sm flex gap-1.5" style={{ color: C.muted }}><span style={{ color: C.gold }}>•</span> {t}</li>
+            <li key={t} className="font-serif text-sm flex gap-1.5" style={{ color: C.muted }}><span style={{ color: C.accent }}>•</span> {t}</li>
           ))}
         </ul>
         <Answer lang={lang} value={text} onChange={setText} onEnter={run} multiline placeholder="Write here — ⌘/Ctrl+Enter to check" />
@@ -919,7 +910,7 @@ function YourTurnStage({ lesson, lang, check, canSpeak, say, noteTitles, onOpenN
           {nudges.length > 0 && (
             <ul className="flex flex-col gap-1">
               {nudges.map((m) => (
-                <li key={m} className="font-serif text-sm flex gap-1.5" style={{ color: C.ink }}><span style={{ color: C.gold }}>•</span> {m}</li>
+                <li key={m} className="font-serif text-sm flex gap-1.5" style={{ color: C.ink }}><span style={{ color: C.accent }}>•</span> {m}</li>
               ))}
             </ul>
           )}
@@ -936,10 +927,10 @@ function YourTurnStage({ lesson, lang, check, canSpeak, say, noteTitles, onOpenN
             onOpenNote={onOpenNote}
           />
           <div>
-            <Next onClick={() => onDone([current.result.score.errorFree, current.result.score.sentences])} disabled={stale}>
+            <Next onClick={() => onDone(current.result.score.errorFree == null ? null : [current.result.score.errorFree, current.result.score.sentences])} disabled={stale}>
               Finish the lesson
             </Next>
-            {stale && <span className="text-xs ml-2" style={{ color: C.gold }}>Check again first, so the score matches what you wrote.</span>}
+            {stale && <span className="text-xs ml-2" style={{ color: C.accent }}>Check again first, so the score matches what you wrote.</span>}
           </div>
         </div>
       )}

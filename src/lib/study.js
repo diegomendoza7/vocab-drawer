@@ -5,8 +5,8 @@
  * their inputs, so they live here and are tested directly.
  */
 
-import { cardId, daysUntil, cardStage, isDue, EASE_START, PROD_SUFFIX, isProdId, baseCardId, scheduleCard, gradeFromWrongCount, isLearning } from "./srs.js";
-import { strandWhy, ACTIVITIES } from "./strands.js";
+import { cardId, daysUntil, cardStage, isDue, EASE_START, PROD_SUFFIX, isProdId, scheduleCard, gradeFromWrongCount, isLearning } from "./srs.js";
+import { strandWhy } from "./strands.js";
 
 /** Stage order, so the ledger can say how far a word has got. */
 const STATUS = { unseen: 0, seen: 1, matched: 2, chosen: 3, typed: 4 };
@@ -89,17 +89,9 @@ export function buildSummaryRows({ results, scheduled = {}, cards = {}, lang }) 
 /**
  * Turn a sitting's results into scheduled cards.
  *
- * Lifted out of the component because it is the most expensive place in the
- * app to be wrong — a bad interval is invisible until a card fails to come
- * back — and because the production split gave it a rule that has to hold
- * exactly: **a production card that has never been graded starts from the
- * recognition card**, not from nothing.
- *
- * That seeding is what makes the split safe to ship. The single card that
- * came before it was graded on production answers as well as recognition
- * ones, so it is real evidence about production; starting production from
- * zero would have made every word an existing learner already knew fall due
- * again on the day of the change.
+ * Only independent lexical evidence reaches this scheduler. Production starts
+ * with its own card; legacy recognition estimates are preserved separately
+ * instead of being treated as verified production.
  *
  * Returns both the new card set and just the cards it touched — the summary
  * needs the latter, because by the time it renders `progress` already holds
@@ -109,8 +101,10 @@ export function scheduleResults(cards, results) {
   const next = { ...cards };
   const scheduled = {};
   for (const [id, r] of results) {
-    const prev = next[id] ?? (isProdId(id) ? cards[baseCardId(id)] : undefined);
-    next[id] = scheduleCard(prev, gradeFromWrongCount(r.wrongCount), id);
+    if (r.assisted || r.independent === false) continue;
+    if (r.practiceOnly && !r.wrongCount) continue;
+    const prev = next[id];
+    next[id] = scheduleCard(prev, gradeFromWrongCount(r.wrongCount), id, r.answeredAt || Date.now());
     scheduled[id] = next[id];
   }
   return { cards: next, scheduled };
@@ -156,7 +150,7 @@ export function weakestCards({ entries, lang, cards = {}, limit = 20 }) {
    * `direction` that comes back says which half is the problem — which is the
    * part a learner can act on. */
   const scoreOf = (card) => {
-    if (!card || (card.reps === 0 && !card.lapses)) return null;
+    if (!card || card.suspended || (card.reps === 0 && !card.lapses)) return null;
     const lapses = card.lapses || 0;
     const easeDrop = Math.max(0, EASE_START - (card.ease ?? EASE_START));
     return { card, lapses, easeDrop, score: lapses * 2 + easeDrop * 3 };
@@ -228,10 +222,10 @@ export function kindsForCard(word, cards, { hasCloze }) {
    * caller with no production context should get, and keeps the old meaning:
    * one card gating both directions. */
   const rec = cards && Object.hasOwn(cards, "rec") ? cards.rec : cards;
-  const prod = cards && Object.hasOwn(cards, "prod") ? (cards.prod ?? rec) : rec;
+  const prod = cards && Object.hasOwn(cards, "prod") ? cards.prod : rec;
 
   const recReps = rec?.reps ?? 0;
-  const recStuck = (rec?.lapses ?? 0) >= 8;
+  const recStuck = (rec?.recentLapses ?? rec?.lapses ?? 0) >= 8 && (rec?.recoverySuccesses || 0) < 2;
 
   /* Recognition first, always. A word met a minute ago is asked only in the
    * direction you have just seen, and a word failed eight times is walked
@@ -245,8 +239,8 @@ export function kindsForCard(word, cards, { hasCloze }) {
    * lapsed eight times drops back to recognition on its own, even while the
    * recognition card is healthy — which is exactly the case the single shared
    * card could not represent. */
-  const prodStuck = (prod?.lapses ?? 0) >= 8;
-  if (!prodStuck) kinds.push("toTarget");
+  const prodStuck = (prod?.recentLapses ?? prod?.lapses ?? 0) >= 8 && (prod?.recoverySuccesses || 0) < 2;
+  kinds.push("toTarget");
 
   /* Fill-in-the-blank is the hardest of the three — no prompt but the
    * sentence — so it waits for production to have some interval behind it,
@@ -406,90 +400,7 @@ export function accuracyTrend(history = {}, days, today, addDaysFn) {
 /** How many pieces of writing are kept. Each holds its text, so this is the cap on the journal. */
 export const WRITING_KEEP = 60;
 
-export function mergeProgress(mine, theirs) {
-  if (!theirs || typeof theirs !== "object") throw new Error("That file is not a progress export.");
-  if (!theirs.cards || typeof theirs.cards !== "object") throw new Error("That file has no cards in it.");
-
-  const cards = { ...mine.cards };
-  let added = 0, updated = 0, kept = 0;
-  for (const [id, incoming] of Object.entries(theirs.cards)) {
-    const current = cards[id];
-    if (!current) { cards[id] = incoming; added += 1; continue; }
-    const newer = (incoming.lastSeen || "") > (current.lastSeen || "")
-      || ((incoming.lastSeen || "") === (current.lastSeen || "") && (incoming.reps || 0) > (current.reps || 0));
-    if (newer) { cards[id] = incoming; updated += 1; } else { kept += 1; }
-  }
-
-  const history = { ...mine.history };
-  for (const [day, entry] of Object.entries(theirs.history || {})) {
-    const here = history[day];
-    history[day] = here
-      ? { reviews: here.reviews + (entry.reviews || 0), correct: here.correct + (entry.correct || 0) }
-      : entry;
-  }
-
-  /* Imported words merge per language, keeping the local copy on a clash —
-   * the local one may carry a fact-check verdict the other device never ran. */
-  const imported = { fr: { ...(mine.imported?.fr || {}) }, de: { ...(mine.imported?.de || {}) } };
-  let words = 0;
-  for (const lang of ["fr", "de"]) {
-    for (const [term, rec] of Object.entries(theirs.imported?.[lang] || {})) {
-      if (!imported[lang][term]) { imported[lang][term] = rec; words += 1; }
-    }
-  }
-
-  /* Which strands were worked, per activity. Days add up and the later `last`
-   * wins: two devices used on different days are two days of that work, and
-   * taking one side's record wholesale would throw the other's away. Days are
-   * capped at the days actually elapsed so a re-import cannot inflate them. */
-  const activity = { ...(mine.activity || {}) };
-  for (const [key, row] of Object.entries(theirs.activity || {})) {
-    if (!ACTIVITIES[key] || !row) continue;
-    const here = activity[key];
-    if (!here) { activity[key] = row; continue; }
-    const first = [here.first, row.first].filter(Boolean).sort()[0] || here.first;
-    const last = (row.last || "") > (here.last || "") ? row.last : here.last;
-    const elapsed = first && last
-      ? Math.round((new Date(`${last}T00:00:00`) - new Date(`${first}T00:00:00`)) / 86400000) + 1
-      : Infinity;
-    activity[key] = {
-      first,
-      last,
-      days: Math.min((here.days || 0) + (row.days || 0), elapsed),
-    };
-  }
-
-  /* Writing is a journal, not a schedule: nothing on either device is a stale
-   * copy of the other, so entries union by id, newest first. */
-  const seenWriting = new Set();
-  const writing = [...(mine.writing || []), ...(theirs.writing || [])]
-    .filter((e) => e?.id && !seenWriting.has(e.id) && seenWriting.add(e.id))
-    .sort((a, b) => String(b.at || "").localeCompare(String(a.at || "")))
-    .slice(0, WRITING_KEEP);
-
-  const merged = {
-    ...mine,
-    cards,
-    history,
-    imported,
-    /* Streak is recomputed from the merged history rather than taken from
-     * either side, or importing an old file could award a streak that neither
-     * device actually earned. */
-    longest: Math.max(mine.longest || 0, theirs.longest || 0),
-    texts: { ...(theirs.texts || {}), ...(mine.texts || {}) },
-    // A passage record is one sitting's result; the local one wins a clash.
-    reading: { ...(theirs.reading || {}), ...(mine.reading || {}) },
-    writing,
-    activity,
-    /* A lesson record is where you stopped and how you scored; per lesson,
-     * the local copy wins, as with a reading record. */
-    lessons: {
-      fr: { ...(theirs.lessons?.fr || {}), ...(mine.lessons?.fr || {}) },
-      de: { ...(theirs.lessons?.de || {}), ...(mine.lessons?.de || {}) },
-    },
-  };
-  return { progress: merged, stats: { added, updated, kept, words } };
-}
+export { mergeBackup as mergeProgress } from "./progress.js";
 
 /* ---------------------------------------------------------------------- */
 /* Type-ahead for the sentence word bank                                   */

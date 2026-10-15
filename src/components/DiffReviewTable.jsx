@@ -88,7 +88,7 @@ export default function DiffReviewTable({
                 <span className="font-type block truncate" style={{ color: C.ink }}>
                   {lang === "de" && (choice === "proposed" ? res?.g : row.gender) ? `${choice === "proposed" ? res.g : row.gender} ` : ""}{row.term}
                 </span>
-                <span className="text-[0.6875rem]" style={{ color: attention ? C.gold : C.muted }}>
+                <span className="text-[0.6875rem]" style={{ color: attention ? C.accent : C.muted }}>
                   {res ? VERDICT_TEXT[res.verdict] || res.verdict : "could not be checked"}
                 </span>
               </span>
@@ -147,7 +147,7 @@ export default function DiffReviewTable({
         <span className="flex-1" />
         <button onClick={onBack} className="px-3 py-2 rounded-md font-semibold text-sm" style={{ border: `1px solid ${C.line}`, color: C.ink }}>Back to input</button>
         <button onClick={onSave} disabled={!kept.length || busy}
-          className="px-4 py-2 rounded-md font-semibold text-sm disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.ink }}>
+          className="px-4 py-2 rounded-md font-semibold text-sm disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.onGold }}>
           Save {kept.length} {kept.length === 1 ? "word" : "words"} to my deck
         </button>
       </div>

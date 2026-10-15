@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Vocab Drawer — bilingual video study",
+  "version": "1.0.0",
+  "description": "Study an accessible HTML5 player with your own subtitles, line replay, pattern notes, and phrase exports.",
+  "permissions": ["activeTab", "scripting"],
+  "action": { "default_popup": "popup.html", "default_title": "Study this video" }
+}

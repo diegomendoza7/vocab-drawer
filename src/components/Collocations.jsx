@@ -38,7 +38,7 @@ export default function Collocations({
         </div>
 
         <button onClick={onStart} className="px-6 py-3 rounded-md font-semibold flex items-center gap-2"
-          style={{ backgroundColor: C.gold, color: C.ink }}>
+          style={{ backgroundColor: C.gold, color: C.onGold }}>
           Start <ArrowRight size={16} />
         </button>
         {hasKeys && (
@@ -87,7 +87,7 @@ export default function Collocations({
         )}
 
         <button onClick={onStart} className="px-5 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2"
-          style={{ backgroundColor: C.gold, color: C.ink }}>
+          style={{ backgroundColor: C.gold, color: C.onGold }}>
           <RotateCcw size={15} /> Go again
         </button>
       </div>
@@ -142,11 +142,11 @@ export default function Collocations({
             {/* The trap is the lesson — an arbitrary pairing only sticks once
               * you are told what your own language does instead. */}
             <p className="font-serif text-sm flex items-baseline gap-1.5" style={{ color: C.muted }}>
-              <Lightbulb size={13} style={{ color: C.gold, flexShrink: 0, position: "relative", top: 2 }} />
+              <Lightbulb size={13} style={{ color: C.accent, flexShrink: 0, position: "relative", top: 2 }} />
               {quiz.trap}
             </p>
             <button onClick={onNext} className="mt-4 px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5"
-              style={{ backgroundColor: C.gold, color: C.ink }}>
+              style={{ backgroundColor: C.gold, color: C.onGold }}>
               Next <ArrowRight size={14} />
             </button>
           </div>

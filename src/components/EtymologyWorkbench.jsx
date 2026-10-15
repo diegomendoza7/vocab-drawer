@@ -49,7 +49,7 @@ function Pairs({ pairs, hide, onSay, canSpeak }) {
               <th key={c} className="font-serif text-xs font-normal pb-1.5 pr-3" style={{ color: C.muted }}>{LANG_NAME[c]}</th>
             ))}
             {anyKin && (
-              <th className="font-serif text-xs font-normal pb-1.5" style={{ color: C.gold }}>
+              <th className="font-serif text-xs font-normal pb-1.5" style={{ color: C.accent }}>
 same root, different meaning
               </th>
             )}
@@ -64,7 +64,7 @@ same root, different meaning
                 const hidden = hide === c;
                 return (
                   <td key={c} className="font-type text-[0.9375rem] py-1.5 pr-3"
-                    style={{ color: blank ? C.muted : hidden ? C.gold : C.ink, opacity: blank ? 0.5 : 1 }}>
+                    style={{ color: blank ? C.muted : hidden ? C.accent : C.ink, opacity: blank ? 0.5 : 1 }}>
                     {hidden ? "?" : (p[c] || "—")}
                     {/* Only the two the device can actually pronounce. */}
                     {!hidden && !blank && (c === "fr" || c === "de") && (
@@ -79,7 +79,7 @@ same root, different meaning
                     <div key={word} className="leading-tight">
                       <span className="font-type text-[0.9375rem]" style={{ color: C.ink }}>{word}</span>
                       {lang && lang !== "en" && (
-                        <span className="font-serif text-[0.625rem] uppercase tracking-wide ml-1" style={{ color: C.gold }}>{lang}</span>
+                        <span className="font-serif text-[0.625rem] uppercase tracking-wide ml-1" style={{ color: C.accent }}>{lang}</span>
                       )}
                       <span className="font-serif text-xs ml-1.5" style={{ color: C.muted }}>{sense}</span>
                     </div>
@@ -101,7 +101,7 @@ function LawDetail({ law, onPractise, canSpeak, onSay, sayIn, canSayIn }) {
     <div>
       <div className="flex items-baseline gap-3 flex-wrap mb-1">
         <h2 className="font-type text-2xl" style={{ color: C.ink }}>{law.name}</h2>
-        <span className="font-type text-sm px-2 py-0.5 rounded" style={{ backgroundColor: TINT, color: C.gold, border: `1px solid ${C.line}` }}>
+        <span className="font-type text-sm px-2 py-0.5 rounded" style={{ backgroundColor: TINT, color: C.accent, border: `1px solid ${C.line}` }}>
           {law.from} → {law.to}
         </span>
       </div>
@@ -126,7 +126,7 @@ function LawDetail({ law, onPractise, canSpeak, onSay, sayIn, canSayIn }) {
 
       <div className="flex items-center gap-2 mt-5">
         <button onClick={onPractise} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-2"
-          style={{ backgroundColor: C.gold, color: C.ink }}>
+          style={{ backgroundColor: C.gold, color: C.onGold }}>
           Practise this rule <ArrowRight size={14} />
         </button>
         {canSpeak && (
@@ -182,10 +182,10 @@ function Quiz({ quiz, input, onInput, result, onCheck, onNext, onBack, stats, in
         <div className="flex items-center gap-2">
           {!result ? (
             <button onClick={onCheck} className="px-5 py-2 rounded-md font-semibold text-sm"
-              style={{ border: `1px solid ${C.gold}`, color: C.gold }}>Check</button>
+              style={{ border: `1px solid ${C.gold}`, color: C.accent }}>Check</button>
           ) : (
             <button onClick={onNext} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5"
-              style={{ backgroundColor: C.gold, color: C.ink }}>
+              style={{ backgroundColor: C.gold, color: C.onGold }}>
               Next <ArrowRight size={14} />
             </button>
           )}
@@ -332,7 +332,7 @@ export default function EtymologyWorkbench({
           <div className="flex flex-col gap-3">
             {groups.map((g) => (
               <div key={g.id}>
-                <div className="font-serif text-xs uppercase tracking-wide" style={{ color: C.gold }}>{g.label}</div>
+                <div className="font-serif text-xs uppercase tracking-wide" style={{ color: C.accent }}>{g.label}</div>
                 <div className="font-serif text-[0.6875rem] mb-1.5" style={{ color: C.muted }}>{g.when}</div>
                 <div className="flex flex-col gap-0.5">
                   {g.laws.map((l) => {

@@ -1,10 +1,9 @@
+import {CORE_EXPANSION} from "./core-expansion.js";
 /* Vocabulary data — themed drawers per language and CEFR level.
    Extracted verbatim from the original single-file app. */
 
 import { AlertTriangle, BarChart3, Briefcase, Clock, CloudRain, Cog, Hash, HeartPulse, Home, Landmark, Link2, MapPin, MessageCircle, MessageSquare, Newspaper, Palette, PawPrint, Plane, Scale, ShoppingBag, Smile, Sparkles, TrendingUp, Users, UtensilsCrossed, Zap } from "lucide-react";
 
-import { FR_C1, FR_C1_STAGED } from "./vocab-fr-c1.js";
-import { DE_C1, DE_C1_STAGED } from "./vocab-de-c1.js";
 
 /* ========================= FRENCH — A1 ========================= */
 export const FR_A1 = [
@@ -856,9 +855,32 @@ export const DE_B2 = [
  * list against the DWDS corpus (scripts/audit-c1.mjs). Order matters — the
  * core is what the level is *for*, so it comes first. */
 export const DATA = {
-  fr: { A1: FR_A1, A2: FR_A2, B1: FR_B1, B2: FR_B2, C1: [...FR_C1, ...FR_C1_STAGED] },
-  de: { A1: DE_A1, A2: DE_A2, B1: DE_B1, B2: DE_B2, C1: [...DE_C1, ...DE_C1_STAGED] },
+  fr: { A1: FR_A1, A2: FR_A2, B1: FR_B1, B2: FR_B2, C1: [] },
+  de: { A1: DE_A1, A2: DE_A2, B1: DE_B1, B2: DE_B2, C1: [] },
 };
+
+for(const lang of ['fr','de'])for(const [level,words] of Object.entries(CORE_EXPANSION[lang])) {
+  const known=new Set(DATA[lang][level].flatMap(group=>group.words).map(word=>word.t));
+  const added=words.filter(word=>!known.has(word.t));
+  if(added.length)DATA[lang][level].push({topic:'Connectors & Useful Patterns',icon:Link2,words:added});
+}
+
+const advancedLoads={};
+const vocabularyListeners=new Set();
+export function subscribeVocabulary(listener){vocabularyListeners.add(listener);return ()=>vocabularyListeners.delete(listener);}
+export async function loadVocabulary(lang) {
+  if(!['fr','de'].includes(lang))throw new Error('Unknown language');
+  if(DATA[lang].C1.length)return DATA[lang].C1;
+  if(!advancedLoads[lang])advancedLoads[lang]=(lang==='fr'?import('./vocab-fr-c1.js'):import('./vocab-de-c1.js')).then(mod=>{
+    DATA[lang].C1=lang==='fr'?[...mod.FR_C1,...mod.FR_C1_STAGED]:[...mod.DE_C1,...mod.DE_C1_STAGED];
+    for(const listener of vocabularyListeners)listener(lang);
+    return DATA[lang].C1;
+  }).catch(error=>{delete advancedLoads[lang];throw error;});
+  return advancedLoads[lang];
+}
+// Data audits run under Node and must inspect the complete catalog. The browser
+// loads advanced vocabulary only for that level, placement, or existing reviews.
+if(typeof window==='undefined')await Promise.all([loadVocabulary('fr'),loadVocabulary('de')]);
 
 /** Every vocabulary level the app knows about, in order. */
 export const LEVELS = ["A1", "A2", "B1", "B2", "C1"];
@@ -884,7 +906,7 @@ export function audioLevelsFor(lang) {
 
 /** The levels this language actually has words for. */
 export function levelsFor(lang) {
-  return LEVELS.filter((lv) => (DATA[lang]?.[lv] || []).length > 0);
+  return LEVELS.filter((lv) => !!DATA[lang] && ((DATA[lang][lv] || []).length > 0 || lv === "C1"));
 }
 
 export const LEVEL_INFO = {

@@ -11,7 +11,7 @@ import { C, TINT } from "../theme.js";
 const CHECK_STYLE = {
   ok: { label: "ok", color: C.green, border: C.line },
   fixed: { label: "fixed", color: C.ink, border: C.line },
-  ambiguous: { label: "sense", color: C.gold, border: C.gold },
+  ambiguous: { label: "sense", color: C.accent, border: C.gold },
   "needs-fix": { label: "needs a fix", color: C.red, border: C.red },
   unchecked: { label: "unchecked", color: C.muted, border: C.line },
 };
@@ -51,7 +51,7 @@ export default function MyWordsWorkspace({
         </span>
         <span className="flex-1" />
         {rows.length > 0 && (
-          <button onClick={onStudy} className="px-4 py-2 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+          <button onClick={onStudy} className="px-4 py-2 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
             Study my words <ArrowRight size={15} />
           </button>
         )}

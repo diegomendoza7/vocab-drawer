@@ -175,20 +175,20 @@ export default function WritingFeedback({
       {/* ---- grammar: the headline ---- */}
       <div className="flex items-baseline gap-3 flex-wrap">
         <span className="font-type text-3xl tabular-nums" style={{ color: clean ? C.green : C.ink }}>
-          {score.errorFree}/{score.sentences}
+          {score.errorFree == null ? '—' : score.errorFree}/{score.sentences}
         </span>
         <span className="font-serif text-sm" style={{ color: C.muted }}>
-          sentence{score.sentences === 1 ? "" : "s"} with no grammar or spelling error
+          {score.accuracy==null?'sentence count · complete grammar score unavailable':<>sentence{score.sentences === 1 ? "" : "s"} with no grammar or spelling error</>}
         </span>
         <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ backgroundColor: clean ? C.green : C.paper, color: clean ? C.card : C.ink, border: clean ? "none" : `1px solid ${C.line}` }}>
-          {accuracyLabel(score.accuracy)}
+          {score.accuracy == null ? 'Not fully assessed' : accuracyLabel(score.accuracy)}
         </span>
       </div>
       <div className="text-[0.6875rem] font-serif" style={{ color: C.muted }}>
         <Status status={status} waitMs={waitMs} lang={lang} />
       </div>
       {(stale || fixed > 0) && (
-        <div className="text-xs font-serif" style={{ color: C.gold }}>
+        <div className="text-xs font-serif" style={{ color: C.accent }}>
           {stale ? "You've edited this since the check — " : `${fixed} fix${fixed === 1 ? "" : "es"} applied — `}check again to rescore.
         </div>
       )}
@@ -221,7 +221,7 @@ export default function WritingFeedback({
         <ul className="flex flex-col gap-1">
           {nudges.map((n) => (
             <li key={n} className="font-serif text-sm flex gap-1.5" style={{ color: C.ink }}>
-              <span style={{ color: C.gold }}>•</span> {n}
+              <span style={{ color: C.accent }}>•</span> {n}
             </li>
           ))}
         </ul>
@@ -230,7 +230,7 @@ export default function WritingFeedback({
       {/* ---- comprehension ---- */}
       {ideas && (
         <div className="flex items-center gap-1.5 text-sm font-serif" style={{ color: ideas.missing.length ? C.ink : C.green }}>
-          {ideas.missing.length ? <X size={15} style={{ color: C.gold }} /> : <Check size={15} />}
+          {ideas.missing.length ? <X size={15} style={{ color: C.accent }} /> : <Check size={15} />}
           {ideas.found.length} of {ideas.total} key idea{ideas.total === 1 ? "" : "s"} in your answer
           {ideas.missing.length > 0 && <span style={{ color: C.muted }}> — compare with the model answer</span>}
         </div>

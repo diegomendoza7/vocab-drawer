@@ -4,7 +4,7 @@ import { scheduleCard, gradeFromWrongCount, isDue, cardStage, newCard, todayKey,
 describe("gradeFromWrongCount", () => {
   it("maps misses to SM-2 grades", () => {
     expect(gradeFromWrongCount(0)).toBe("good");
-    expect(gradeFromWrongCount(1)).toBe("hard");
+    expect(gradeFromWrongCount(1)).toBe("again");
     expect(gradeFromWrongCount(2)).toBe("again");
     expect(gradeFromWrongCount(9)).toBe("again");
   });
@@ -27,7 +27,7 @@ describe("scheduleCard", () => {
     const second = scheduleCard(first, "good", "id", t0 + LEARNING_GAP_MS);
     expect(second.reps).toBe(1);
     expect(second.interval).toBe(1);
-    expect(second.due).toBe(addDays(todayKey(), 1));
+    expect(second.due).toBe(addDays(todayKey(new Date(t0)), 1));
     expect(second.learning).toBe(0);
   });
 
@@ -39,7 +39,7 @@ describe("scheduleCard", () => {
     const again = scheduleCard(first, "good", "id", t0 + 30_000);
     expect(again.reps).toBe(0);
     expect(again.learning).toBe(1);
-    expect(again.due).toBe(todayKey());
+    expect(again.due).toBe(todayKey(new Date(t0)));
   });
 
   it("lets 'easy' skip the steps — no second look was asked for", () => {
@@ -214,7 +214,7 @@ describe("the two cards a word has", () => {
 
   it("sends each question kind to the card it is evidence about", () => {
     expect(idForKind("toEnglish", "de", "A1", "Haus")).toBe("de:A1:Haus");
-    for (const kind of ["toTarget", "fillBlank", "sentence", "dictation", "speaking"]) {
+    for (const kind of ["toTarget", "fillBlank"]) {
       expect(idForKind(kind, "de", "A1", "Haus"), kind).toBe("de:A1:Haus::prod");
     }
   });
@@ -237,7 +237,8 @@ describe("the two cards a word has", () => {
 
   it("holds every production kind the queue can emit", () => {
     expect(PRODUCTION_KINDS.has("toEnglish")).toBe(false);
-    expect(PRODUCTION_KINDS.size).toBeGreaterThanOrEqual(5);
+    expect([...PRODUCTION_KINDS]).toEqual(["toTarget","fillBlank"]);
+    expect(PRODUCTION_KINDS.has("speaking")).toBe(false);
   });
 });
 
@@ -256,7 +257,7 @@ describe("isReady", () => {
   });
 
   it("does not hold back a card that is on the schedule proper", () => {
-    const graduated = { reps: 3, interval: 10, due: todayKey(), seenAt: t0 };
+    const graduated = { reps: 3, interval: 10, due: todayKey(new Date(t0)), seenAt: t0 };
     expect(isReady(graduated, t0 + 1000)).toBe(true);
   });
 

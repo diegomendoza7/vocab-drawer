@@ -12,6 +12,8 @@ export const C = {
   red: "var(--vd-red)",
   green: "var(--vd-green)",
   gold: "var(--vd-gold)",
+  onGold: "#201f1d",
+  accent: "var(--vd-accent)",
   muted: "var(--vd-muted)",
 };
 

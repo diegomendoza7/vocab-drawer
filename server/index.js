@@ -56,6 +56,17 @@ const LANG_NAME = { fr: "French", de: "German" };
 
 const app = express();
 app.use(express.json({ limit: "1mb" }));
+const requestWindows=new Map();
+app.use('/api',(req,res,next)=>{
+  if(req.method!=='POST')return next();
+  const now=Date.now(),key=req.ip;
+  const previous=requestWindows.get(key);
+  const entry=previous&&now-previous.start<60000?previous:{start:now,count:0};
+  entry.count++;requestWindows.set(key,entry);
+  if(requestWindows.size>10000)for(const [ip,row] of requestWindows)if(now-row.start>=60000)requestWindows.delete(ip);
+  if(entry.count>30){res.set('Retry-After',String(Math.ceil((60000-(now-entry.start))/1000)));return res.status(429).json({error:'Too many requests. Wait a minute before trying again.'});}
+  next();
+});
 
 /* Structured output schema for word lookup.
  *
@@ -157,7 +168,7 @@ function assertUsable(message) {
 app.post("/api/gloss", async (req, res) => {
   if (!requireKey(res)) return;
   const { lang, words } = req.body ?? {};
-  if (!LANG_NAME[lang] || !Array.isArray(words) || !words.length) {
+  if (!LANG_NAME[lang] || !Array.isArray(words) || (!words.length || words.length>50)) {
     res.status(400).json({ error: "Expected { lang: 'fr'|'de', words: [...] }" });
     return;
   }
@@ -239,7 +250,7 @@ app.post("/api/verify", async (req, res) => {
 app.post("/api/translate", async (req, res) => {
   if (!requireKey(res)) return;
   const { lang, sentence } = req.body ?? {};
-  if (!LANG_NAME[lang] || typeof sentence !== "string" || !sentence.trim()) {
+  if (!LANG_NAME[lang] || typeof sentence !== "string" || !sentence.trim() || sentence.length>6000) {
     res.status(400).json({ error: "Expected { lang: 'fr'|'de', sentence: '...' }" });
     return;
   }
@@ -265,7 +276,8 @@ app.get("/api/health", (_req, res) =>
   res.json({ ok: true, hasKey: HAS_KEY, models: MODELS }),
 );
 
-app.listen(PORT, () => {
+app.listen(PORT,process.env.API_HOST||"127.0.0.1", (error) => {
+  if(error){console.error(`API could not start on port ${PORT}: ${error.code||error.message}`);process.exitCode=1;return;}
   console.log(`  API proxy   http://localhost:${PORT}`);
   console.log(`  gloss       ${MODELS.gloss}`);
   console.log(`  verify      ${MODELS.verify}`);

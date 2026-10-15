@@ -33,7 +33,7 @@ function Affixes({ affixes, onOpen, openId, onSay, canSpeak }) {
               <button onClick={() => onOpen(open ? null : a.id)}
                 className="w-full text-left px-3 py-2 rounded-md flex items-baseline gap-2"
                 style={{ backgroundColor: open ? TINT : C.card, border: `1px solid ${C.line}` }}>
-                <span className="font-type text-[0.9375rem]" style={{ color: C.gold, minWidth: 74 }}>{a.form}</span>
+                <span className="font-type text-[0.9375rem]" style={{ color: C.accent, minWidth: 74 }}>{a.form}</span>
                 <span className="font-serif text-sm flex-1" style={{ color: C.ink }}>{a.sense}</span>
                 {a.en && a.en !== "—" && (
                   <span className="font-serif text-xs shrink-0" style={{ color: C.muted }}>≈ {a.en}</span>
@@ -91,10 +91,10 @@ function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix, onSay,
               {w.g && <span style={{ color: C.muted }}>{w.g} </span>}
               {w.e}
             </span>
-            {w.base && <span className="font-serif text-xs" style={{ color: C.gold }}>the root itself</span>}
+            {w.base && <span className="font-serif text-xs" style={{ color: C.accent }}>the root itself</span>}
             {w.n && (
               <span className="font-serif text-xs w-full flex items-baseline gap-1.5" style={{ color: C.muted }}>
-                <Lightbulb size={12} style={{ color: C.gold, flexShrink: 0, position: "relative", top: 2 }} /> {w.n}
+                <Lightbulb size={12} style={{ color: C.accent, flexShrink: 0, position: "relative", top: 2 }} /> {w.n}
               </span>
             )}
           </div>
@@ -102,7 +102,7 @@ function FamilyDetail({ family, lang, onPractise, openAffix, onOpenAffix, onSay,
       </div>
 
       <button onClick={onPractise} className="mt-4 px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-2"
-        style={{ backgroundColor: C.gold, color: C.ink }}>
+        style={{ backgroundColor: C.gold, color: C.onGold }}>
         Practise this family <ArrowRight size={14} />
       </button>
 
@@ -148,7 +148,7 @@ function Quiz({ quiz, picked, onPick, onNext, onBack, stats, onSay, canSpeak }) 
         <div className="flex items-center gap-2 mt-4">
           {picked && (
             <button onClick={onNext} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5"
-              style={{ backgroundColor: C.gold, color: C.ink }}>
+              style={{ backgroundColor: C.gold, color: C.onGold }}>
               Next <ArrowRight size={14} />
             </button>
           )}

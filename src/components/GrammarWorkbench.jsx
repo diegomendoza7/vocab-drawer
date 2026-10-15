@@ -46,7 +46,7 @@ export default function GrammarWorkbench({
                 className="text-left px-2 py-1.5 rounded-md font-serif text-sm flex items-baseline justify-between gap-2"
                 style={{ backgroundColor: active ? C.gold : "transparent", color: C.ink }}>
                 <span className="truncate">{v.key}</span>
-                {due > 0 && <span className="text-[0.625rem] shrink-0" style={{ color: active ? C.ink : C.gold }}>{due} due</span>}
+                {due > 0 && <span className="text-[0.625rem] shrink-0" style={{ color: active ? C.ink : C.accent }}>{due} due</span>}
               </button>
             );
           })}
@@ -85,7 +85,7 @@ export default function GrammarWorkbench({
             );
           })}
           <span className="font-serif text-xs" style={{ color: C.muted }}>
-            <span style={{ color: C.gold }}>•</span> started · {dueTotal} due on the verb track
+            <span style={{ color: C.accent }}>•</span> started · {dueTotal} due on the verb track
           </span>
         </div>
 
@@ -118,7 +118,7 @@ export default function GrammarWorkbench({
                 {isBlank ? (
                   <span className="flex items-center gap-2">
                     <input
-                      autoFocus type="text" value={input} disabled={!!result}
+                      aria-label={`Conjugate ${selectedVerb} for ${r.pronoun}`} autoFocus type="text" value={input} disabled={!!result}
                       onChange={(e) => onInput(e.target.value)}
                       onKeyDown={(e) => { if (e.key !== "Enter") return; if (result) onNext(); else onCheck(); }}
                       className="px-2 py-1 rounded-md font-serif text-base w-32"
@@ -155,7 +155,7 @@ export default function GrammarWorkbench({
                 <button onClick={onCheck} className="px-4 py-1.5 rounded-md text-sm font-semibold" style={{ backgroundColor: C.ink, color: C.card }}>Check</button>
               </>
             ) : (
-              <button onClick={onNext} className="px-4 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={onNext} className="px-4 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 Next cell <ArrowRight size={14} />
               </button>
             )}
@@ -238,7 +238,7 @@ export default function GrammarWorkbench({
             onClick={onDrillVerb}
             disabled={scopeCounts[drillScope] === 0}
             className="w-full py-2 rounded-md text-sm font-semibold disabled:opacity-40"
-            style={{ backgroundColor: C.gold, color: C.ink }}
+            style={{ backgroundColor: C.gold, color: C.onGold }}
           >
             Drill {selectedVerb} · {scopeCounts[drillScope]} {scopeCounts[drillScope] === 1 ? "tense" : "tenses"}
           </button>

@@ -57,7 +57,7 @@ export function baseCardId(id) {
 }
 
 /** Which of a word's two cards a question kind is evidence about. */
-export const PRODUCTION_KINDS = new Set(["toTarget", "fillBlank", "sentence", "dictation", "speaking"]);
+export const PRODUCTION_KINDS = new Set(["toTarget", "fillBlank"]);
 export function idForKind(kind, lang, level, headword) {
   return PRODUCTION_KINDS.has(kind) ? prodCardId(lang, level, headword) : cardId(lang, level, headword);
 }
@@ -101,7 +101,7 @@ export function newCard() {
  * preview has to reach the same answer the commit will, and two copies of this
  * rule would eventually disagree. */
 export function gradeFromWrongCount(n) {
-  return n === 0 ? "good" : n === 1 ? "hard" : "again";
+  return n === 0 ? "good" : "again";
 }
 
 /* Learning steps: a new word does not leave the day it was met.
@@ -128,11 +128,24 @@ export const LEARNING_GAP_MS = 10 * 60 * 1000;
 
 /** Is this card still inside its first day, rather than on the schedule? */
 export function isLearning(card) {
-  return Boolean(card && (card.reps || 0) === 0 && (card.learning || 0) > 0);
+  return Boolean(card && (card.reps || 0) === 0 && ((card.learning || 0) > 0 || card.readyAt));
 }
 
 export function scheduleCard(card, grade, seedKey = "", now = Date.now()) {
-  const c = card ? { ...card } : newCard();
+  const c = {...newCard(),...(card||{})};
+  const day = todayKey(new Date(now));
+  const gap = c.seenAt ? Math.max(0, (now - c.seenAt) / 86400000) : 0;
+  if (grade !== "again") {
+    c.retainedDays = Math.max(c.retainedDays || 0, Math.floor(gap));
+    if (isLeech(c) && gap * 86400000 >= LEARNING_GAP_MS) {
+      c.recoverySuccesses = (c.recoverySuccesses || 0) + 1;
+      if (c.recoverySuccesses >= 2) c.recentLapses = 0;
+    } else if (!isLeech(c)) c.recentLapses = 0;
+    if(isLeech(c)){
+      c.reps=0;c.learning=1;c.interval=0;c.readyAt=now+LEARNING_GAP_MS;c.seenAt=now;c.due=day;c.lastSeen=day;
+      return c;
+    }
+  }
 
   /* Still inside the learning steps: stay on today.
    *
@@ -145,16 +158,21 @@ export function scheduleCard(card, grade, seedKey = "", now = Date.now()) {
     if (!ready) {
       if (enoughGap) c.learning = (c.learning || 0) + 1;
       c.seenAt = now;
+      c.readyAt = now + LEARNING_GAP_MS;
       c.interval = 0;
-      c.due = todayKey();
-      c.lastSeen = todayKey();
+      c.due = day;
+      c.lastSeen = day;
       return c;
     }
   }
 
   c.seenAt = now;
   if (grade === "again") {
-    c.lapses += 1;
+    c.lapses = (c.lapses || 0) + 1;
+    c.recentLapses = (c.recentLapses ?? ((card?.lapses || 0))) + 1;
+    c.recoverySuccesses = 0;
+    c.retainedDays = 0;
+    c.readyAt = now + LEARNING_GAP_MS;
     c.reps = 0;
     /* A lapse sends the card back through the learning steps rather than
      * straight onto the schedule — the reason it lapsed is that it was not
@@ -175,19 +193,20 @@ export function scheduleCard(card, grade, seedKey = "", now = Date.now()) {
     if (grade === "easy") c.ease = Math.min(EASE_MAX, c.ease + 0.15);
     c.reps += 1;
     c.learning = 0;   // graduated; the steps are behind it
+    delete c.readyAt;
   }
-  c.due = addDays(todayKey(), fuzzed(c.interval, hashOf(seedKey + c.reps)));
-  c.lastSeen = todayKey();
+  c.due = addDays(day, Math.min(INTERVAL_CAP, fuzzed(c.interval, hashOf(seedKey + c.reps))));
+  c.lastSeen = day;
   return c;
 }
 
 /** Has this card lapsed often enough to need handling rather than repeating? */
 export function isLeech(card) {
-  return Boolean(card && (card.lapses || 0) >= LEECH_LAPSES);
+  return Boolean(card && !card.suspended && (card.recentLapses ?? card.lapses ?? 0) >= LEECH_LAPSES && (card.recoverySuccesses || 0) < 2);
 }
-export function isDue(card) {
+export function isDue(card,now=Date.now()) {
   if (!card) return true; // never studied
-  return daysUntil(card.due) <= 0;
+  return card.due <= todayKey(new Date(now));
 }
 /**
  * Due *and* actually worth asking now.
@@ -199,7 +218,8 @@ export function isDue(card) {
  * mean twelve things genuinely ready rather than the batch just finished.
  */
 export function isReady(card, now = Date.now()) {
-  if (!isDue(card)) return false;
+  if (card?.suspended || (card?.readyAt && now < card.readyAt)) return false;
+  if (!isDue(card,now)) return false;
   if (isLearning(card) && now - (card.seenAt || 0) < LEARNING_GAP_MS) return false;
   return true;
 }

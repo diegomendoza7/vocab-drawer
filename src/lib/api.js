@@ -18,6 +18,7 @@ async function post(path, body) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
+      signal: AbortSignal.timeout(45000),
     });
   } catch (cause) {
     throw new Error("Could not reach the local API server.", { cause });

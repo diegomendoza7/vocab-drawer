@@ -13,9 +13,9 @@ import { segment } from "../lib/morphology.js";
  */
 
 const KIND_STYLE = {
-  prefix: { color: C.gold, weight: 600 },
+  prefix: { color: C.accent, weight: 600 },
   root:   { color: C.ink, weight: 700, tinted: true },
-  suffix: { color: C.gold, weight: 600 },
+  suffix: { color: C.accent, weight: 600 },
   ending: { color: C.muted, weight: 400 },
 };
 

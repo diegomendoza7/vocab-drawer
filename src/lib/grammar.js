@@ -112,6 +112,7 @@ export async function checkWithLanguageTool(text, lang, { fetchImpl = globalThis
   let res;
   try {
     res = await fetchImpl(url, {
+      signal: AbortSignal.timeout(15000),
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       /* motherTongue switches on the false-friend rules — "actuellement" used
@@ -681,5 +682,9 @@ export async function checkGrammar(text, lang, { lexicon = null, ...opts } = {})
   const local = lang === "de" ? germanIssues(text, lexicon) : [];
   const remote = await checkWithLanguageTool(text, lang, opts);
   const issues = mergeIssues(remote.issues, local);
-  return { status: remote.status, waitMs: remote.waitMs || 0, issues, score: scoreGrammar(text, issues) };
+  const measured=scoreGrammar(text,issues);
+  const assessed=remote.status==='ok';
+  return { status: remote.status, waitMs: remote.waitMs || 0, issues,
+    assessment:{verified:assessed,coverage:assessed?'grammar-and-spelling':lang==='de'?'selected-german-rules':'unavailable',checker:'LanguageTool + drawer rules',version:1,at:new Date().toISOString()},
+    score:assessed?measured:{...measured,errorFree:null,accuracy:null} };
 }

@@ -6,7 +6,7 @@
  * translation happens here, once, and is tested.
  */
 
-import { FAMILIES, AFFIXES } from "../data/morphology.js";
+import { AFFIXES } from "../data/morphology.js";
 
 const SIGIL = { "<": "prefix", "=": "root", ">": "suffix", ".": "ending" };
 

@@ -114,6 +114,8 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
       errorFree: s.errorFree,
       accuracy: s.accuracy,
       errors: s.errors,
+      assessment: current.result.assessment,
+      checkStatus: current.result.status,
       beyond2k: pr?.tokens ? Math.round(pr.beyond2k * 100) : null,
       types: pr?.types ?? null,
     };
@@ -191,7 +193,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
         </aside>
 
         {/* ---------------- the page ---------------- */}
-        <main className="min-w-0 flex flex-col gap-3">
+        <section aria-label="Writing workspace" className="min-w-0 flex flex-col gap-3">
           <div className="rounded-lg p-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.gold}` }}>
             <div className="text-xs font-semibold mb-1" style={{ color: C.muted }}>
               {isFree ? "Your own topic" : `${prompt.level} · at least ${prompt.min} words`}
@@ -231,7 +233,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
             </div>
 
             <div className="flex gap-2 mt-3 flex-wrap">
-              <button type="button" onClick={runCheck} disabled={!text.trim() || busy} className="px-4 py-2 rounded-md font-semibold text-sm disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button type="button" onClick={runCheck} disabled={!text.trim() || busy} className="px-4 py-2 rounded-md font-semibold text-sm disabled:opacity-40" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 {busy ? "Checking…" : current ? "Check again" : "Check my writing"}
               </button>
               <button type="button" onClick={save} disabled={!canSave} className="px-4 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5 disabled:opacity-40" style={{ border: `1px solid ${C.line}`, color: C.ink }}>
@@ -261,7 +263,7 @@ export default function WritingDesk({ lang, langName, levels, startLevel, entrie
               onOpenNote={onOpenNote}
             />
           )}
-        </main>
+        </section>
 
         {/* ---------------- journal ---------------- */}
         <aside className="rounded-lg p-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>

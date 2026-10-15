@@ -106,7 +106,7 @@ export default function PhraseMatch({
         </div>
         <button onClick={onNextLevel} disabled={done < total}
           className="px-4 py-2 rounded-md font-semibold text-sm flex items-center gap-2 disabled:opacity-40"
-          style={{ border: `1px solid ${C.gold}`, color: C.gold }}>
+          style={{ border: `1px solid ${C.gold}`, color: C.accent }}>
           Next six <ArrowRight size={14} />
         </button>
       </div>

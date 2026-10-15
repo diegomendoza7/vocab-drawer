@@ -86,6 +86,7 @@ export default function ProgressBoard({
         * answers "how far along am I", and it is careful about how it says
         * so — a word is "held" when it has survived a real gap, which is a
         * measured claim, rather than "known", which would not be. */}
+      {ability?.estimated?.recognise>0&&<p className="vd-notice">Your previous schedules are preserved: {ability.estimated.recognise} recognition cards have intervals of a week or longer. The new retention counts below use observed delayed recall, so legacy estimates stay separate.</p>}
       {ability && (
         <div className="rounded-lg p-5 mb-4" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
           <div className="flex items-baseline justify-between flex-wrap gap-2 mb-3">
@@ -105,12 +106,12 @@ export default function ProgressBoard({
           <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
             <div>
               <div className="font-type text-3xl" style={{ color: C.ink }}>{ability.recognise.holding}</div>
-              <div className="font-serif text-sm" style={{ color: C.muted }}>words you can recognise</div>
+              <div className="font-serif text-sm" style={{ color: C.muted }}>words recognized after an observed gap</div>
               <div className="font-serif text-xs" style={{ color: C.muted }}>{ability.recognise.solid} of them well settled</div>
             </div>
             <div>
               <div className="font-type text-3xl" style={{ color: C.ink }}>{ability.produce.holding}</div>
-              <div className="font-serif text-sm" style={{ color: C.muted }}>words you can produce</div>
+              <div className="font-serif text-sm" style={{ color: C.muted }}>words independently recalled after a gap</div>
               <div className="font-serif text-xs" style={{ color: C.muted }}>{ability.produce.solid} of them well settled</div>
             </div>
             <div>
@@ -247,7 +248,7 @@ export default function ProgressBoard({
             <div className="mt-4 pt-4" style={{ borderTop: `1px solid ${C.line}` }}>
               <div className="flex justify-between items-baseline mb-1.5">
                 <span className="font-type text-lg flex items-center gap-1.5" style={{ color: C.ink }}>
-                  <Sparkles size={14} style={{ color: C.gold }} /> My Words
+                  <Sparkles size={14} style={{ color: C.accent }} /> My Words
                 </span>
                 <span className="font-serif text-sm tabular-nums" style={{ color: C.muted }}>{myWords.started}/{myWords.total}</span>
               </div>

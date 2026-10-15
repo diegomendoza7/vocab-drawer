@@ -95,7 +95,7 @@ describeIfBuilt("generated service worker", () => {
 
   it("names the cache from a hash of the file list, so a new build evicts the old", () => {
     const name = source.match(/const CACHE = "(.*?)"/)[1];
-    expect(name).toMatch(/^vd-[0-9a-f]{12}$/);
+    expect(name).toMatch(/^vd-app-[0-9a-f]{12}$/);
   });
 
   it("serves a precached asset without touching the network", async () => {
@@ -107,6 +107,14 @@ describeIfBuilt("generated service worker", () => {
     }, () => Promise.reject(new Error("network should not have been used")));
     expect(res).toBeDefined();
     expect(res.url).toBe(asset);
+  });
+
+  it("reuses public static assets across preview-server Vary: Origin differences", async () => {
+    const original=scope.caches.match;
+    scope.caches.match=async (request,options)=>{expect(options?.ignoreVary).toBe(true);return original(request);};
+    try{const list=JSON.parse(source.match(/const PRECACHE = (\[[\s\S]*?\]);/)[1]);const asset=list.find(f=>f.endsWith('.js'));
+      expect(await runFetch(scope,{method:'GET',mode:'cors',url:`${ORIGIN}${asset}`},()=>Promise.reject(new Error('offline')))).toBeDefined();
+    }finally{scope.caches.match=original;}
   });
 
   it("falls back to the cached shell when a navigation cannot reach the network", async () => {

@@ -18,7 +18,7 @@ export default function Placement({
     return (
       <div style={{ maxWidth: "44rem" }}>
         <div className="flex items-center gap-2 mb-2">
-          <Compass size={20} style={{ color: C.gold }} />
+          <Compass size={20} style={{ color: C.accent }} />
           <h2 className="font-type text-2xl" style={{ color: C.ink }}>Where should you start?</h2>
         </div>
         <p className="font-serif mb-4" style={{ color: C.muted, lineHeight: 1.7, maxWidth: "62ch" }}>
@@ -33,7 +33,7 @@ export default function Placement({
             {lastResult.estimate ? <> — roughly {lastResult.estimate.toLocaleString()} words.</> : "."}
           </p>
         )}
-        <button onClick={onStart} className="px-5 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+        <button onClick={onStart} className="px-5 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
           Start the check <ArrowRight size={16} />
         </button>
       </div>
@@ -82,7 +82,7 @@ export default function Placement({
 
           {picked != null && (
             <div className="flex justify-end mt-5">
-              <button onClick={onNext} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+              <button onClick={onNext} className="px-5 py-2 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
                 Next <ArrowRight size={15} />
               </button>
             </div>
@@ -135,7 +135,7 @@ export default function Placement({
         )}
 
         <div className="flex gap-2 flex-wrap">
-          <button onClick={onAccept} className="px-4 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+          <button onClick={onAccept} className="px-4 py-2.5 rounded-md font-semibold text-sm flex items-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
             Start at {result.level} <ArrowRight size={16} />
           </button>
           <button onClick={onKeep} className="px-4 py-2.5 rounded-md font-semibold text-sm" style={{ border: `1px solid ${C.line}`, color: C.ink }}>

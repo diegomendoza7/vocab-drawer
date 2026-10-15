@@ -27,7 +27,7 @@ function DrawerCard({ g, drawerMastery, onStartTheme }) {
   return (
     <button onClick={() => onStartTheme(g.idx)} className="text-left p-3 rounded-md flex flex-col gap-1.5" style={{ backgroundColor: C.card, border: `1px solid ${C.line}` }}>
       <div className="flex items-center gap-2">
-        <Icon size={15} style={{ color: C.gold, flexShrink: 0 }} />
+        <Icon size={15} style={{ color: C.accent, flexShrink: 0 }} />
         <span className="text-sm font-semibold truncate" style={{ color: C.ink }}>{g.topic}</span>
       </div>
       <span className="text-xs font-serif" style={{ color: C.muted }}>
@@ -180,7 +180,7 @@ export default function HomeDesktop({
 
         <div className="flex items-center gap-5 shrink-0">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-1 font-semibold" style={{ color: streak ? C.gold : C.muted }}>
+            <div className="flex items-center justify-center gap-1 font-semibold" style={{ color: streak ? C.accent : C.muted }}>
               <Flame size={15} /> {streak || 0}
             </div>
             <div className="text-[0.625rem] uppercase tracking-wide" style={{ color: C.muted }}>streak</div>
@@ -206,7 +206,7 @@ export default function HomeDesktop({
           </button>
         )}
         {dueCards.length > 0 ? (
-          <button onClick={onReviewDue} className="shrink-0 px-4 py-2.5 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.ink }}>
+          <button onClick={onReviewDue} className="shrink-0 px-4 py-2.5 rounded-md font-semibold text-sm flex items-center gap-1.5" style={{ backgroundColor: C.gold, color: C.onGold }}>
             <Repeat size={15} /> Review {dueCards.length} due {dueCards.length === 1 ? "word" : "words"}
           </button>
         ) : (
@@ -286,7 +286,7 @@ export default function HomeDesktop({
           <div className="text-xs mt-2 font-serif" style={{ color: C.muted }}>
             {totalBatches} batch{totalBatches > 1 ? "es" : ""} at this size, mixed across all themes.
           </div>
-          <button onClick={onStartMixed} className="w-full mt-3 py-2.5 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.ink }}>
+          <button onClick={onStartMixed} className="w-full mt-3 py-2.5 rounded-md font-semibold flex items-center justify-center gap-2" style={{ backgroundColor: C.gold, color: C.onGold }}>
             Start drawer <ArrowRight size={17} />
           </button>
         </div>

@@ -1,3 +1,4 @@
+import LookupText from "./LookupText.jsx";
 import { useState, useRef, useEffect, useMemo } from "react";
 import { ArrowLeft, ArrowRight, Check, Eye, EyeOff, Volume2, Plus, X, ExternalLink, PenLine } from "lucide-react";
 import { C, TINT } from "../theme.js";
@@ -9,7 +10,7 @@ import { GENRES, MIN_ANSWER_WORDS, passageText, readingMinutes, wordCount } from
 import { keyIdeas, copiedStretch, sentenceShape, summarize, vocabProfile, loadRanks } from "../lib/writing.js";
 import { applyFixToCheck } from "../lib/checkWriting.js";
 import { lookupWiktionary, wiktionaryUrl } from "../lib/wiktionary.js";
-import { segmentSentence, stripElision } from "../lib/dictionary.js";
+import { stripElision } from "../lib/dictionary.js";
 
 /* The Reading Room.
  *
@@ -26,7 +27,7 @@ import { segmentSentence, stripElision } from "../lib/dictionary.js";
  * Wiktionary's when it does not.
  */
 
-const PRIMARY = { backgroundColor: C.gold, color: C.ink };
+const PRIMARY = { backgroundColor: C.gold, color: C.onGold };
 const QUIET = { border: `1px solid ${C.line}`, color: C.ink };
 
 export function LevelTabs({ levels, level, onChange, counts }) {
@@ -311,16 +312,7 @@ export default function ReadingRoom({
           {passage.paras.map(([text, en], i) => (
             <div key={i} className="mb-4">
               <p className="font-serif text-[1rem]" style={{ color: C.ink, maxWidth: "62ch", lineHeight: 1.85, whiteSpace: "pre-line" }}>
-                {segmentSentence(text).map((seg, j) => (seg.type === "word" ? (
-                  <span
-                    key={j}
-                    onClick={() => lookUp(seg.v)}
-                    className="cursor-pointer rounded-sm hover:underline"
-                    style={{ backgroundColor: gloss?.word === seg.v ? TINT : "transparent", textUnderlineOffset: 3 }}
-                  >
-                    {seg.v}
-                  </span>
-                ) : <span key={j}>{seg.v}</span>))}
+                <LookupText text={text} lang={lang} onLookup={lookUp} selected={gloss?.word} />
               </p>
               {showEn && (
                 <p className="font-serif italic text-sm mt-1" style={{ color: C.muted, maxWidth: "62ch", lineHeight: 1.6, whiteSpace: "pre-line" }}>{en}</p>

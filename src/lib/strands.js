@@ -63,12 +63,17 @@ export const STRAND_ORDER = ["input", "output", "form", "fluency"];
  * something, so it is study, not output.
  */
 export const ACTIVITIES = {
+  media:{strand:'input',section:'media',label:'Media Studio',invite:'Listen to your own media'},
+  listeningMeaning:{strand:'input',section:'listeningLab',label:'Listen for meaning',invite:'Follow a short dialogue'},
+  pronunciation:{strand:'form',section:'pronunciation',label:'Sound contrasts',invite:'Compare a sound contrast'},
+  retelling:{strand:'fluency',section:'retelling',label:'Retelling',invite:'Retell a familiar situation'},
+  missions:{strand:'form',section:'missions',label:'Practical missions',invite:'Take a short practical lesson'},
   reading: { strand: "input", section: "reading", label: "Reading Room", invite: "Read a passage" },
-  dictation: { strand: "input", section: "listening", label: "Listening", invite: "Listen and write it down" },
+  dictation: { strand: "form", section: "listening", label: "Dictation", invite: "Listen and write it down" },
   import: { strand: "input", section: "import", label: "a text of your own", invite: "Bring in a text" },
 
   writing: { strand: "output", section: "writing", label: "Writing Desk", invite: "Write something" },
-  speaking: { strand: "output", section: "listening", label: "Speaking", invite: "Say something aloud" },
+  speaking: { strand: "form", section: "listening", label: "Read-aloud", invite: "Practise reading aloud" },
 
   study: { strand: "form", section: "study", label: "Study", invite: "Study words" },
   /* A lesson spans three strands. Its reading stage is logged as reading and
@@ -100,13 +105,15 @@ export function daysSince(dateKey, today) {
  * enthusiastic sitting claim a balanced week.
  */
 export function recordActivity(activity, key, today) {
-  if (!ACTIVITIES[key]) return activity || {};
+  const base=key.includes(':')?key.split(':').at(-1):key;
+  if (!ACTIVITIES[base]) return activity || {};
   const next = { ...(activity || {}) };
   const prev = next[key];
   next[key] = {
     last: today,
     days: prev?.last === today ? prev.days : (prev?.days || 0) + 1,
     first: prev?.first || today,
+    dates:[...new Set([...(prev?.dates||[]),today])].sort().slice(-90),
   };
   return next;
 }
@@ -120,16 +127,20 @@ export function recordActivity(activity, key, today) {
  * actually know — and Nation's guidance is about time. Days is the honest
  * approximation available, and it is a good one over weeks.
  */
-export function strandBalance(activity, today) {
+export function strandBalance(activity, today, {lang=null}={}) {
   const rows = STRAND_ORDER.map((strand) => {
     let days = 0;
     let last = null;
+    const dates=new Set();
     for (const [key, entry] of Object.entries(activity || {})) {
-      if (ACTIVITIES[key]?.strand !== strand || !entry) continue;
-      days += entry.days || 0;
+      const base=key.includes(':')?key.split(':').at(-1):key;
+      if(lang&&key.includes(':')&&!key.startsWith(`${lang}:`))continue;
+      if (ACTIVITIES[base]?.strand !== strand || !entry) continue;
+      for(const date of entry.dates||[entry.last].filter(Boolean))dates.add(date);
+      days=Math.max(days,entry.days||0);
       if (!last || (entry.last || "") > last) last = entry.last;
     }
-    return { strand, days, last, since: daysSince(last, today) };
+    return { strand, days:dates.size||days, last, since: daysSince(last, today) };
   });
   const total = rows.reduce((n, r) => n + r.days, 0);
   return rows.map((r) => ({ ...r, share: total ? r.days / total : 0 }));
@@ -149,7 +160,7 @@ export const STALE_DAYS = 3;
  * `available` lets the caller exclude work that cannot actually be started —
  * there is no point recommending Collocations in a language that has none.
  */
-export function neglectedStrand(activity, today, { available = null, staleDays = STALE_DAYS } = {}) {
+export function neglectedStrand(activity, today, { available = null, staleDays = STALE_DAYS,lang=null } = {}) {
   const can = (key) => !available || available.has(key);
   const candidates = [];
 
@@ -157,7 +168,7 @@ export function neglectedStrand(activity, today, { available = null, staleDays =
     const keys = Object.keys(ACTIVITIES).filter((k) => ACTIVITIES[k].strand === strand && can(k));
     if (!keys.length) continue;
 
-    const rows = keys.map((key) => ({ key, ...(activity?.[key] || {}) }));
+    const rows = keys.map((key) => ({ key, ...(activity?.[lang?`${lang}:${key}`:key] || activity?.[key] || {}) }));
     const last = rows.reduce((acc, r) => (!acc || (r.last || "") > acc ? r.last || acc : acc), null);
     const since = daysSince(last, today);
     /* Never done is the strongest case there is, and has no number of days. */

@@ -1,0 +1,512 @@
+{
+  "version": 1,
+  "audioType": "human",
+  "entries": [
+    {
+      "id": "de-red-riding-hood",
+      "lang": "de",
+      "title": "File:Brüder Grimm - Rotkäppchen.ogg",
+      "url": "/listen/human/de-red-riding-hood.ogg",
+      "bytes": 3927689,
+      "seconds": 511.792086,
+      "sha1": "1fd192528c052360c779ec2deba18aef3b3f8c17",
+      "sha256": "2bb2ebb80de54b1020083fd0d74a21688103191c5f4427508fc94f348c0db180",
+      "source": "https://commons.wikimedia.org/wiki/File:Br%C3%BCder_Grimm_-_Rotk%C3%A4ppchen.ogg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/69/Br%C3%BCder_Grimm_-_Rotk%C3%A4ppchen.ogg",
+      "metadata": {
+        "DateTime": {
+          "value": "2016-08-10 07:55:29",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Brüder Grimm - Rotkäppchen",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "CC-Zero|LibriVox recordings|Audiobooks in German",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Brüder Grimm, Rotkäppchen",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2016-08-10",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://librivox.org/maerchen-der-brueder-grimm-by-jacob-wilhelm-grimm/\">https://librivox.org/maerchen-der-brueder-grimm-by-jacob-wilhelm-grimm/</a>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "Brüder Grimm. Reads Hans Hafen",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "id": "de-hand-knife",
+      "lang": "de",
+      "title": "File:De-Die Hand mit dem Messer-wikisource.ogg",
+      "url": "/listen/human/de-hand-knife.ogg",
+      "bytes": 1227760,
+      "seconds": 123.855238,
+      "sha1": "93f8f5c63cd28e34c920b5d9547a4870e8673895",
+      "sha256": "29712edc5f6ecfe5c87b26ed4d53338bf6f06ed56bcd4ffc8f6a154f840864e3",
+      "source": "https://commons.wikimedia.org/wiki/File:De-Die_Hand_mit_dem_Messer-wikisource.ogg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/De-Die_Hand_mit_dem_Messer-wikisource.ogg",
+      "metadata": {
+        "DateTime": {
+          "value": "2009-05-12 14:30:48",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "De-Die Hand mit dem Messer-wikisource",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Fairy tales|Self-published work|Grimm's Fairy Tales spoken|1812 texts|Spoken by Liondancer",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "<a href=\"https://en.wikisource.org/wiki/de:Die_Hand_mit_dem_Messer_(1812)\" class=\"extiw\" title=\"s:de:Die Hand mit dem Messer (1812)\"><b>Die Hand mit dem Messer</b> (1812)</a>, ein schottisches Märchen aus der Sammlung der <a href=\"//commons.wikimedia.org/wiki/Brothers_Grimm\" class=\"mw-redirect\" title=\"Brothers Grimm\">Brüder Grimm</a> (KHM 8)",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2009-05-12",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a class=\"external free\" data-mw-original-href=\"http://de.wikisource.org/wiki/Die_Hand_mit_dem_Messer_(1812)\" href=\"https://de.wikisource.org/wiki/Die_Hand_mit_dem_Messer_(1812)\">http://de.wikisource.org/wiki/Die_Hand_mit_dem_Messer_(1812)</a> (text)",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "Brüder Grimm, <a href=\"//commons.wikimedia.org/wiki/User:Liondancer\" title=\"User:Liondancer\">user:Liondancer</a> (Sprecher)",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 3.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 3.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/3.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-3.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "id": "fr-frog-ox",
+      "lang": "fr",
+      "title": "File:La-grenouille-qui-se-veut-faire-aussi-grosse-que-le-boeuf.ogg",
+      "url": "/listen/human/fr-frog-ox.ogg",
+      "bytes": 489454,
+      "seconds": 49.824,
+      "sha1": "c8cd1ebb3549b3a6c0683e98be4c16f541dfb174",
+      "sha256": "8108439d6177883669a62cd9eaf2190f25722a485cbdfeb466e2038f9a5a3581",
+      "source": "https://commons.wikimedia.org/wiki/File:La-grenouille-qui-se-veut-faire-aussi-grosse-que-le-boeuf.ogg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/La-grenouille-qui-se-veut-faire-aussi-grosse-que-le-boeuf.ogg",
+      "metadata": {
+        "DateTime": {
+          "value": "2024-03-24 09:44:49",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "La-grenouille-qui-se-veut-faire-aussi-grosse-que-le-boeuf",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Jean de La Fontaine|Fables|Author died more than 70 years ago public domain images|CC-PD-Mark|PD-old missing SDC copyright status",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Lecture fable",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "1668",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "Wikipédia",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "Jean de la Fontaine",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "id": "fr-crow-fox",
+      "lang": "fr",
+      "title": "File:Le-corbeau-et-le-renardOGGTHOM.ogg",
+      "url": "/listen/human/fr-crow-fox.ogg",
+      "bytes": 510510,
+      "seconds": 52.056,
+      "sha1": "bd451a0feb16116d7bfe1d3b3c1adb23e81717b8",
+      "sha256": "6f7a51c7b10d12d95b40544ca30de814a70a21417f725936dd0653358aaffb6f",
+      "source": "https://commons.wikimedia.org/wiki/File:Le-corbeau-et-le-renardOGGTHOM.ogg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Le-corbeau-et-le-renardOGGTHOM.ogg",
+      "metadata": {
+        "DateTime": {
+          "value": "2024-03-24 08:31:25",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Le-corbeau-et-le-renardOGGTHOM",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Jean de La Fontaine|Fables|Author died more than 70 years ago public domain images|CC-PD-Mark|PD-old missing SDC copyright status",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Recitation of \"The Fox and the Crow\", from Aesop's Fables.",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "1668",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "wikipedia",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "Jean de la fontaine",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "id": "fr-hare-tortoise",
+      "lang": "fr",
+      "title": "File:Le-lièvre-et-la-tortueOGGTHOM.ogg",
+      "url": "/listen/human/fr-hare-tortoise.ogg",
+      "bytes": 859760,
+      "seconds": 85.344,
+      "sha1": "6a42518dc9497dd5a0667d82644243dedf4a0b3c",
+      "sha256": "097d78f3896d6498734fa7fb00e6fe36186ae2106b51dadc0902f8ac303dabc0",
+      "source": "https://commons.wikimedia.org/wiki/File:Le-li%C3%A8vre-et-la-tortueOGGTHOM.ogg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Le-li%C3%A8vre-et-la-tortueOGGTHOM.ogg",
+      "metadata": {
+        "DateTime": {
+          "value": "2024-04-01 08:33:29",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Le-lièvre-et-la-tortueOGGTHOM",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Jean de La Fontaine|Fables|Author died more than 70 years ago public domain images|CC-PD-Mark|PD-old missing SDC copyright status",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Fable",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "1668",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "Wikipédia",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "Jean de la fontaine",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "id": "fr-wolf-lamb",
+      "lang": "fr",
+      "title": "File:Le-loup-et-l agneauOGGTHOM.ogg",
+      "url": "/listen/human/fr-wolf-lamb.ogg",
+      "bytes": 704747,
+      "seconds": 71.904,
+      "sha1": "f053ffcea9633b605ce24c10c4ae9ef923f6f75d",
+      "sha256": "dc04d7104694bb26a46f5ed385c388cc9d3c6db76c65a9de239a05a9dab455e5",
+      "source": "https://commons.wikimedia.org/wiki/File:Le-loup-et-l_agneauOGGTHOM.ogg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Le-loup-et-l_agneauOGGTHOM.ogg",
+      "metadata": {
+        "DateTime": {
+          "value": "2024-04-01 09:02:24",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Le-loup-et-l agneauOGGTHOM",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Jean de La Fontaine|Author died more than 70 years ago public domain images|CC-PD-Mark|PD-old missing SDC copyright status|Fables de La Fontaine",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Lecture Le loup et l'agneau",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "1668",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a rel=\"nofollow\" class=\"external free\" href=\"http://www.la-fontaine-ch-thierry.net/louagneau.htm\">http://www.la-fontaine-ch-thierry.net/louagneau.htm</a>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "Jean de la Fontaine",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    }
+  ]
+}
